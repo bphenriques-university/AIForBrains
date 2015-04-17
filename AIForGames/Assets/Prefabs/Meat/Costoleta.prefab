@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 480042}
   - 33: {fileID: 3313764}
   - 23: {fileID: 2316048}
+  - 114: {fileID: 11464738}
+  - 65: {fileID: 6535626}
   m_Layer: 0
   m_Name: Costoleta
   m_TagString: Untagged
@@ -24,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .151375055, y: .0677682459, z: 8.69777966}
+  m_LocalPosition: {x: .67117393, y: .0677682459, z: 1.52694988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,6 +62,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146898}
   m_Mesh: {fileID: 4300000, guid: 5d8d87842098577449127755ec7550f0, type: 3}
+--- !u!65 &6535626
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .453873634, y: .168777466, z: .687973022}
+  m_Center: {x: -.00377702713, y: .016620636, z: 0}
+--- !u!114 &11464738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70cfea0fc1e38654382fba19da633e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodPoints: 20
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

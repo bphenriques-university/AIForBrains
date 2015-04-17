@@ -21,6 +21,18 @@ using System.Collections;
 		hunger = startingHunger;
 	}
 
+	void OnCollisionEnter (Collision other){
+	
+		Food food = other.collider.GetComponent<Food> ();
+
+		if (food != null) {
+
+			hunger += food.eat ();
+
+		}
+
+	}
+
 	void Update()
 	{
 		if (!playerHealth.isHumanDead()){
@@ -28,8 +40,8 @@ using System.Collections;
 				playerHealth.Death();
 			else {
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
-				//FIXME: Print debug
-				//print (hunger);
+			
+				print (hunger);
 			}
 		}
 	}

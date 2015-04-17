@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 436568}
   - 33: {fileID: 3373700}
   - 23: {fileID: 2391114}
+  - 114: {fileID: 11471148}
+  - 65: {fileID: 6500648}
   m_Layer: 0
   m_Name: PernaPorco
   m_TagString: Untagged
@@ -24,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .136203766, y: .0914613456, z: 6.07661009}
+  m_LocalPosition: {x: .0875474513, y: .0914613456, z: 1.94690108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,6 +62,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196318}
   m_Mesh: {fileID: 4300000, guid: 03824a96f3f16fa49ad1bced2f243748, type: 3}
+--- !u!65 &6500648
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .329605103, y: .317839622, z: .608071327}
+  m_Center: {x: .0204238892, y: .0674586296, z: -.026828289}
+--- !u!114 &11471148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70cfea0fc1e38654382fba19da633e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodPoints: 20
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
