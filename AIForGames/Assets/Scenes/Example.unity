@@ -3627,7 +3627,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11403010, guid: 4faae9d435397e740b49598f159aeb0e, type: 2}
       propertyPath: rotateSmoothing
-      value: .0299999993
+      value: .0199999996
       objectReference: {fileID: 0}
     - target: {fileID: 11409740, guid: 4faae9d435397e740b49598f159aeb0e, type: 2}
       propertyPath: cameraRotateSpeed
