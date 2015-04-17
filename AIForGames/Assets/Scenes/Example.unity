@@ -4389,11 +4389,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1802009600 stripped
+--- !u!4 &1802009600
 Transform:
   m_PrefabParentObject: {fileID: 464630, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
   m_PrefabInternal: {fileID: 1802009594}
---- !u!114 &1802009601 stripped
+--- !u!114 &1802009601
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11456654, guid: 55eafd25243db43339a481c4ae8e440a,
     type: 2}
@@ -4727,7 +4727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1802009601}
   enemy: {fileID: 112496, guid: 2cf53420411b842858e53fb55c9e41e0, type: 2}
-  spawnTime: 3
+  spawnTime: 3.40282347e+38
   spawnPoints:
   - {fileID: 525167467}
 --- !u!4 &1895198026
@@ -4755,7 +4755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1802009601}
   enemy: {fileID: 100000, guid: 6fd694fb865e5524486da2da372b9730, type: 2}
-  spawnTime: 10
+  spawnTime: 3.40282347e+38
   spawnPoints:
   - {fileID: 921069846}
 --- !u!114 &1895198028
@@ -4771,7 +4771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1802009601}
   enemy: {fileID: 100000, guid: 7bca9c2cd581dbb4f971ad087c21f5f9, type: 2}
-  spawnTime: 3
+  spawnTime: 3.40282347e+38
   spawnPoints:
   - {fileID: 1039426171}
 --- !u!1 &1942891413

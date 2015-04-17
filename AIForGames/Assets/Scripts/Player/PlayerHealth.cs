@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
 	AudioSource playerAudio;                                    // Reference to the AudioSource component.
 	PlayerMovement playerMovement;                              // Reference to the player's movement.
 	PlayerShooting playerShooting;                              // Reference to the PlayerShooting script.
-	bool isDead;                                                // Whether the player is dead.
+	bool isDead = false;                                                // Whether the player is dead.
 	bool damaged;                                               // True when the player gets damaged.
 	
 	
@@ -77,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
 	}
 	
 	
-	void Death ()
+	public void Death ()
 	{
 		// Set the death flag so this function won't be called again.
 		isDead = true;
@@ -95,5 +95,9 @@ public class PlayerHealth : MonoBehaviour
 		// Turn off the movement and shooting scripts.
 		playerMovement.enabled = false;
 		playerShooting.enabled = false;
-	}       
+	}
+
+	public bool isHumanDead(){
+		return isDead;
+	}
 }
