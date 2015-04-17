@@ -41,7 +41,7 @@ using System.Collections;
 			else {
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
 			
-				print (hunger);
+				//print (hunger);
 			}
 		}
 	}
