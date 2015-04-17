@@ -13,6 +13,7 @@ public class HumanInRange : ReactiveBehaviour
 	
 	void Awake ()
 	{
+		lastKnownPosition = this.transform.position;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		nav = this.transform.root.gameObject.GetComponent <NavMeshAgent> ();
 	}
@@ -28,8 +29,7 @@ public class HumanInRange : ReactiveBehaviour
 		if (smelledHuman) {
 			nav.SetDestination (smellingObject.transform.position);
 		} else {
-			if(lastKnownPosition != null)
-				nav.SetDestination (lastKnownPosition);
+			nav.SetDestination (lastKnownPosition);
 		}
 
 		if (heardSound) {
