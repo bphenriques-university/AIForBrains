@@ -341,6 +341,7 @@ MonoBehaviour:
   damagePerShot: 20
   timeBetweenBullets: .150000006
   range: 100
+  rangeShootingSound: 10
 --- !u!114 &11416386
 MonoBehaviour:
   m_ObjectHideFlags: 1
