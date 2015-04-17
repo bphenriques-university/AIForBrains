@@ -9,13 +9,12 @@ public class ReactiveBehaviourManager : MonoBehaviour
 	public void Update(){
 		foreach (ReactiveBehaviour r in behaviours) {
 			r.UpdateSituation();
-		}
 
-		foreach (ReactiveBehaviour r in behaviours) {
-			if (r.triggered){
+			if(r.triggered){
 				r.Action();
-				return;
+				break;
 			}
 		}
+
 	}
 }

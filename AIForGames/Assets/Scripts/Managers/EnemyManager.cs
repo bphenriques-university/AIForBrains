@@ -2,32 +2,33 @@
 
 public class EnemyManager : MonoBehaviour
 {
-	public PlayerHealth playerHealth;       // Reference to the player's heatlh.
-	public GameObject enemy;                // The enemy prefab to be spawned.
-	public float spawnTime = 3f;            // How long between each spawn.
-	public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
-	
-	
+	public GameObject enemy;
+	public Transform[] spawnAreas;
+	public float radius;
+	public int max_number_zombies;
+
 	void Start ()
 	{
-		// Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
-		InvokeRepeating ("Spawn", spawnTime, spawnTime);
-	}
-	
-	
-	void Spawn ()
-	{
-		// If the player has no health left...
-		if(playerHealth.currentHealth <= 0f)
-		{
-			// ... exit the function.
-			return;
+
+		int numZombiesPerArea = max_number_zombies / spawnAreas.Length;
+		print ("numZombiesPerArea = " + numZombiesPerArea);
+
+		int remainingZombies = max_number_zombies - (numZombiesPerArea * spawnAreas.Length);
+		Instantiate (enemy, spawnAreas [0].position, spawnAreas [0].rotation);
+
+		foreach (Transform t in spawnAreas) {
+
+			for(int i = 0; i < numZombiesPerArea ; i++){
+
+				Transform copy = t;
+
+				copy.position = t.position + Random.insideUnitSphere * radius;
+				Vector3 newPos = copy.position;
+				newPos.y = 0;
+				copy.position = newPos;
+
+				Instantiate (enemy, copy.position, copy.rotation);
+			}
 		}
-		
-		// Find a random index between zero and one less than the number of spawn points.
-		int spawnPointIndex = Random.Range (0, spawnPoints.Length);
-		
-		// Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-		Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 	}
 }

@@ -26,10 +26,10 @@ public class EnemyAttack : ReactiveBehaviour
 	
 	void OnTriggerEnter (Collider other)
 	{
-		print ("@@@@@@@@@@@ IN RANGE FOR ATTACK");
+		//print ("@@@@@@@@@@@ IN RANGE FOR ATTACK");
 		if(other.gameObject == player)
 		{
-			print ("@@@Updating playerInRange to true");
+			//print ("@@@Updating playerInRange to true");
 			playerInRange = true;
 		}
 	}
@@ -43,10 +43,10 @@ public class EnemyAttack : ReactiveBehaviour
 	
 	void OnTriggerExit (Collider other)
 	{
-		print ("@@@@@@@@@@@ OUT OF RANGEFOR ATTACK");
+		//print ("@@@@@@@@@@@ OUT OF RANGEFOR ATTACK");
 		if(other.gameObject == player)
 		{
-			print ("@@@Updating playerInRange to false");
+			//print ("@@@Updating playerInRange to false");
 			playerInRange = false;
 		}
 	}

@@ -52,7 +52,7 @@ public class EnemySmell : ReactiveBehaviour
 	}
 
 	protected override void Execute(){
-		print ("EXECUTING SMELL ACTION");
+		//print ("EXECUTING SMELL ACTION");
 		if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
 		{
 			nav.SetDestination (player.transform.position);
