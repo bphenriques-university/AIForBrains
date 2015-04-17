@@ -17,7 +17,6 @@ public class PlayerShooting : MonoBehaviour
 	Light gunLight;                                 // Reference to the light component.
 	float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
 
-
 	int AbleToHearLayer = 10;
 
 	void Awake ()
@@ -30,23 +29,19 @@ public class PlayerShooting : MonoBehaviour
 		gunAudio = GetComponent<AudioSource> ();
 		gunLight = GetComponent<Light> ();
 	}
-	
+
 	void Update ()
 	{
-		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
 		
-		// If the Fire1 button is being press and it's time to fire...
 		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets)
 		{
 			// ... shoot the gun.
 			Shoot ();
 		}
 		
-		// If the timer has exceeded the proportion of timeBetweenBullets that the effects should be displayed for...
 		if(timer >= timeBetweenBullets * effectsDisplayTime)
 		{
-			// ... disable the effects.
 			DisableEffects ();
 		}
 	}
@@ -74,20 +69,12 @@ public class PlayerShooting : MonoBehaviour
 		gunParticles.Play ();
 
 
-
-
-		Collider[] possibleEnemiesWhoHeardMe = Physics.OverlapSphere(this.transform.position, rangeShootingSound, 1 << AbleToHearLayer);
+		Collider[] possibleEnemiesWhoHeardMe = Physics.OverlapSphere(this.transform.position, 1, 1 << AbleToHearLayer);
 		foreach (Collider enemy in possibleEnemiesWhoHeardMe )
 		{
-			print("Colliding with: " + enemy.gameObject.name); //+ " ---- " + enemy.transform.parent.gameObject.name
-			enemy.SendMessage("heardShot", this.gameObject);
+			print("Colliding with: " + enemy.gameObject.name);
+			enemy.SendMessage("HeardShot", this.gameObject);
 		}
-
-
-
-
-
-
 
 		// Enable the line renderer and set it's first position to be the end of the gun.
 		gunLine.enabled = true;

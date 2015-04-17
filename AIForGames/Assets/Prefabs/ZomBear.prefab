@@ -73,7 +73,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &111026
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -84,6 +84,39 @@ GameObject:
   - 54: {fileID: 5457750}
   m_Layer: 0
   m_Name: Smell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &128504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 497302}
+  - 114: {fileID: 11471514}
+  m_Layer: 9
+  m_Name: FollowHumanBehaviour
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &130604
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 469794}
+  - 136: {fileID: 13626210}
+  - 114: {fileID: 11408460}
+  m_Layer: 10
+  m_Name: Hearing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,15 +163,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0, z: -9.34000015}
+  m_LocalPosition: {x: 5.21000004, y: 0, z: -8.38000011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
   - {fileID: 400002}
   - {fileID: 400004}
   - {fileID: 424518}
-  - {fileID: 456530}
   - {fileID: 446266}
+  - {fileID: 497302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400002
@@ -200,7 +233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!4 &456530
 Transform:
   m_ObjectHideFlags: 1
@@ -211,8 +244,34 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 497302}
+  m_RootOrder: 0
+--- !u!4 &469794
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497302}
+  m_RootOrder: 1
+--- !u!4 &497302
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 456530}
+  - {fileID: 469794}
   m_Father: {fileID: 400000}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -352,10 +411,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 111026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47a1b52e34565453ea0702577e1b668e, type: 3}
+  m_Script: {fileID: 11500000, guid: bdffd332a89514092a72b47cead09815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggered: 0
+  zombieState: {fileID: 11471514}
+--- !u!114 &11408460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996b05a7762f040ebbd78f982464b3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombieState: {fileID: 11471514}
 --- !u!114 &11420396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -399,7 +470,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - {fileID: 11425564}
-  - {fileID: 11401892}
+  - {fileID: 11471514}
+--- !u!114 &11471514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4a90266643f45609bb84f8d6f87485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
+  smellingObject: {fileID: 0}
+  lastKnownPosition: {x: 0, y: 0, z: 0}
+  heardSound: 0
+  smelledHuman: 0
 --- !u!135 &13516660
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -434,6 +521,19 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .5
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: .800000012, z: 0}
+--- !u!136 &13626210
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 10
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: .800000012, z: 0}
