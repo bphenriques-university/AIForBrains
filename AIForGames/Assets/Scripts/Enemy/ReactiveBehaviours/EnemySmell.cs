@@ -12,6 +12,9 @@ public class EnemySmell : ReactiveBehaviour
 	bool playerInRange;
 	GameObject parent;
 	Animator anim;
+
+	public ZombieState zombieState;
+
 	void Awake ()
 	{
 		// Set up the references.
@@ -19,16 +22,10 @@ public class EnemySmell : ReactiveBehaviour
 		playerHealth = player.GetComponent <PlayerHealth> ();
 
 		parent = this.transform.parent.gameObject;
-		enemyHealth = parent.GetComponent <EnemyHealth> ();
 		nav = parent.GetComponent <NavMeshAgent> ();
+		enemyHealth = parent.GetComponent <EnemyHealth> ();
 		anim = parent.GetComponent<Animator> ();
 
-	}
-
-	// Update is called once per frame
-	void Update ()
-	{
-		
 	}
 
 	void OnTriggerEnter (Collider other)

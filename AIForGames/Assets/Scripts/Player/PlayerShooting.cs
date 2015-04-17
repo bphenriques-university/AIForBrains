@@ -5,6 +5,7 @@ public class PlayerShooting : MonoBehaviour
 	public int damagePerShot = 20;                  // The damage inflicted by each bullet.
 	public float timeBetweenBullets = 0.15f;        // The time between each shot.
 	public float range = 100f;                      // The distance the gun can fire.
+	public float rangeShootingSound = 10;
 	
 	float timer;                                    // A timer to determine when to fire.
 	Ray shootRay;                                   // A ray from the gun end forwards.
@@ -15,12 +16,14 @@ public class PlayerShooting : MonoBehaviour
 	AudioSource gunAudio;                           // Reference to the audio source.
 	Light gunLight;                                 // Reference to the light component.
 	float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-	
+
+
+	int AbleToHearLayer = 10;
+
 	void Awake ()
 	{
 		// Create a layer mask for the Shootable layer.
 		shootableMask = LayerMask.GetMask ("Shootable");
-		
 		// Set up the references.
 		gunParticles = GetComponent<ParticleSystem> ();
 		gunLine = GetComponent <LineRenderer> ();
@@ -69,7 +72,23 @@ public class PlayerShooting : MonoBehaviour
 		// Stop the particles from playing if they were, then start the particles.
 		gunParticles.Stop ();
 		gunParticles.Play ();
-		
+
+
+
+
+		Collider[] possibleEnemiesWhoHeardMe = Physics.OverlapSphere(this.transform.position, rangeShootingSound, 1 << AbleToHearLayer);
+		foreach (Collider enemy in possibleEnemiesWhoHeardMe )
+		{
+			print("Colliding with: " + enemy.gameObject.name); //+ " ---- " + enemy.transform.parent.gameObject.name
+			enemy.SendMessage("heardShot", this.gameObject);
+		}
+
+
+
+
+
+
+
 		// Enable the line renderer and set it's first position to be the end of the gun.
 		gunLine.enabled = true;
 		gunLine.SetPosition (0, transform.position);
