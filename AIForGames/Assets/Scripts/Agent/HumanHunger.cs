@@ -3,20 +3,20 @@ using UnityEngine.UI;
 using System.Collections;
 
 
-	public class HumanHunger : MonoBehaviour
-	{
+public class HumanHunger : MonoBehaviour
+{
 		
 	public float startingHunger = 80f;
 	private float hunger;
 	public float hungerLossSpeed = 1.0f;
 
 	private GameObject player;
-	PlayerHealth playerHealth;
+	HumanHealth hoomanHealth;
 
 	void Awake ()
 	{
 		// Setting up the references.
-		playerHealth = GetComponent <PlayerHealth> ();
+		hoomanHealth = GetComponent <HumanHealth> ();
 		// Set the initial hunger of the player.
 		hunger = startingHunger;
 	}
@@ -35,9 +35,9 @@ using System.Collections;
 
 	void Update()
 	{
-		if (!playerHealth.isHumanDead()){
+		if (!hoomanHealth.isHumanDead()){
 			if (hunger <= 0)
-				playerHealth.Death();
+				hoomanHealth.Death();
 			else {
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
 			
@@ -45,11 +45,7 @@ using System.Collections;
 			}
 		}
 	}
-	
 
-		public HumanHunger ()
-		{
-		}
-	}
+}
 
 
