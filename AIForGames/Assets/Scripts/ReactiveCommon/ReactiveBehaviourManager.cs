@@ -9,7 +9,7 @@ public class ReactiveBehaviourManager : MonoBehaviour
 	public void Update(){
 
 		//check if this object was not destroyed
-		if (this.enabled) {
+		if (transform.root.gameObject.activeInHierarchy) {
 			foreach (ReactiveBehaviour r in behaviours) {
 				r.UpdateSituation ();
 

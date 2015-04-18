@@ -26,14 +26,6 @@ public class EnemyHealth : MonoBehaviour
 		currentHealth = startingHealth;
 	}
 	
-	void Update ()
-	{
-		if(isSinking)
-		{
-			transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
-		}
-	}
-	
 	
 	public void TakeDamage (int amount, Vector3 hitPoint)
 	{
@@ -57,25 +49,19 @@ public class EnemyHealth : MonoBehaviour
 	
 	void Death ()
 	{
+		GetComponent <NavMeshAgent> ().enabled = false;
+
+		foreach( Transform child in transform )
+		{
+			if(child.gameObject.name == "ReactiveBehaviourManager")
+				child.gameObject.SetActive( false );
+		}
+
 		isDead = true;
-		
-		capsuleCollider.isTrigger = true;
 		
 		anim.SetTrigger ("Dead");
 		
 		enemyAudio.clip = deathClip;
 		enemyAudio.Play ();
-	}
-	
-	
-	public void StartSinking ()
-	{
-		GetComponent <NavMeshAgent> ().enabled = false;
-		GetComponent <Rigidbody> ().isKinematic = true;
-		
-		isSinking = true;
-	
-		
-		Destroy (gameObject, 2f);
 	}
 }
