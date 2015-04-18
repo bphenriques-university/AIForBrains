@@ -13,7 +13,7 @@ public class ReactiveBehaviourManager : MonoBehaviour
 			foreach (ReactiveBehaviour r in behaviours) {
 				r.UpdateSituation ();
 
-				if (r.triggered) {
+				if (r.WasTriggered()) {
 					r.Action ();
 					break;
 				}

@@ -4,10 +4,7 @@ using System.Collections;
 
 public abstract class ReactiveBehaviour : MonoBehaviour
 {
-	public bool triggered = false;
-
-
-
+	bool triggered = false;
 
 	public void UpdateSituation(){
 		triggered = IsInSituation();
@@ -16,6 +13,10 @@ public abstract class ReactiveBehaviour : MonoBehaviour
 	public void Action(){
 		Execute ();
 		triggered = false;
+	}
+
+	public bool WasTriggered(){
+		return triggered;
 	}
 
 	protected abstract bool IsInSituation();
