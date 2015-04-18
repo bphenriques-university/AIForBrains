@@ -2,22 +2,22 @@
 
 public class EnemyManager : MonoBehaviour
 {
-	public GameObject enemy;
+	public GameObject spawneeObject;
 	public Transform[] spawnAreas;
 	public float radius;
-	public int max_number_zombies;
+	public int max_number_spawns;
 
 	void Start ()
 	{
-		if (max_number_zombies <= 0)
+		if (max_number_spawns <= 0)
 			return;
 
-		int numZombiesPerArea = max_number_zombies / spawnAreas.Length;
-		print ("numZombiesPerArea = " + numZombiesPerArea);
+		int numSpawnsPerArea = max_number_spawns / spawnAreas.Length;
+		print ("numSpawnPerArea = " + numSpawnsPerArea);
 	
 		
 		foreach (Transform t in spawnAreas) {
-			for(int i = 0; i < numZombiesPerArea ; i++){
+			for(int i = 0; i < numSpawnsPerArea ; i++){
 
 				Transform copy = t;
 
@@ -26,13 +26,13 @@ public class EnemyManager : MonoBehaviour
 				newPos.y = 0;
 				copy.position = newPos;
 
-				Instantiate (enemy, copy.position, copy.rotation);
+				Instantiate (spawneeObject, copy.position, copy.rotation);
 			}
 		}
 
 
-		int remainingZombies = max_number_zombies - (numZombiesPerArea * spawnAreas.Length);
-		for (int i = 0; i < remainingZombies; i++) {
+		int remainingSpawns = max_number_spawns - (numSpawnsPerArea * spawnAreas.Length);
+		for (int i = 0; i < remainingSpawns; i++) {
 			
 			Transform copy = spawnAreas [0];
 			
@@ -41,7 +41,7 @@ public class EnemyManager : MonoBehaviour
 			newPos.y = 0;
 			copy.position = newPos;
 			
-			Instantiate (enemy, copy.position, copy.rotation);
+			Instantiate (spawneeObject, copy.position, copy.rotation);
 		}
 	}
 }
