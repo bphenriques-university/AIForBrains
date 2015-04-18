@@ -4,41 +4,24 @@ using System.Collections;
 
 public class EnemySmell : ReactiveBehaviour
 {
-	public ZombieState zombieState;
-	public float smellSpeed = 2.5f;
-
+	ZombieState zombieState;
 	GameObject player;
-	GameObject parent;
-
-	GameObject targetSmell;
-	PlayerHealth playerHealth;
-	NavMeshAgent nav;
-
-	Vector3 smellingPoint;
 
 	void Awake ()
 	{
-		parent = this.transform.root.gameObject;
 		player = GameObject.FindGameObjectWithTag ("Player");
-		nav = transform.root.gameObject.GetComponent <NavMeshAgent> ();
+		zombieState = transform.root.GetComponent <ZombieState> ();
 	}
+
 
 	protected override bool IsInSituation ()
 	{
-		return zombieState.smelling;
+		return zombieState.IsSmellingHuman();
 	}
 	
 	protected override void Execute ()
 	{
-		nav.speed = smellSpeed;
-		nav.SetDestination (smellingPoint);
-	}
-
-	public void Update(){
-
-		if (targetSmell != null) {
-			smellingPoint = targetSmell.transform.position;
-		}
+		zombieState.FollowTargetObject ();
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -48,8 +31,7 @@ public class EnemySmell : ReactiveBehaviour
 		{
 			print ("Smelled delicious human");
 			zombieState.smelling = true;
-			targetSmell = other.gameObject;
-			smellingPoint = other.gameObject.transform.position;
+			zombieState.targetObject = other.gameObject;
 		}
 	}
 	

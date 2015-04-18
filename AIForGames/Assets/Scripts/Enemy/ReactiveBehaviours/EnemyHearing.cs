@@ -4,33 +4,27 @@ using System.Collections;
 
 public class EnemyHearing : ReactiveBehaviour 
 {
-	public ZombieState zombieState;
-	public float zombieSpeed = 2.5f;
-
-
-	GameObject parent;
-	NavMeshAgent nav;
+	ZombieState zombieState;
 
 	void Awake(){
-		parent = transform.root.gameObject;
-		nav = transform.root.gameObject.GetComponent <NavMeshAgent> ();
+		zombieState = transform.root.GetComponent <ZombieState> ();
 	}
 
 	void HeardShot(GameObject from){
 		print ("HeardShot!");
 		zombieState.hearing = true;
 		zombieState.targetPosition = from.transform.position;
+
 	}
 
 	protected override bool IsInSituation ()
 	{
-		return zombieState.hearing;
+		return zombieState.DidHeardHuman();
 	}
 	
 	protected override void Execute ()
 	{
-		nav.speed = zombieSpeed;
-		nav.SetDestination (zombieState.targetPosition);
+		zombieState.GoToHeardDirection ();
 		zombieState.hearing = false;
 	}
 }
