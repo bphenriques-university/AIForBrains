@@ -20,7 +20,7 @@ public class EnemyAttack : ReactiveBehaviour
 		playerHealth = player.GetComponent <PlayerHealth> ();
 
 		parent = this.transform.parent.gameObject;
-		enemyHealth = parent.GetComponent <EnemyHealth> ();
+		enemyHealth = transform.root.gameObject.GetComponent <EnemyHealth> ();
 		anim = parent.GetComponent<Animator>();
 	}
 	
