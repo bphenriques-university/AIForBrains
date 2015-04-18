@@ -27,7 +27,12 @@ public class CameraManager : MonoBehaviour {
 		if (Input.GetButton ("CameraChange") && timer > timeBetweenCameraChange) {
 			timer = 0f; 
 			cameras[cameraSelected].enabled = false;
+
+			float previousCameraHeight = cameras[cameraSelected].transform.position.y;
 			cameraSelected = (cameraSelected + 1) % cameras.Length;
+
+			
+			cameras[cameraSelected].setCameraHeight(previousCameraHeight);
 			cameras[cameraSelected].enabled = true;
 		}
 

@@ -16,7 +16,9 @@ public class TopDownCamera : CameraBehaviour
 	public float cameraDistance;
 	public float screenEdgeBoundary;
 
-
+	public override void setCameraHeight(float height) {
+		//no need
+	}
 
 	void Update ()
 	{
@@ -58,9 +60,5 @@ public class TopDownCamera : CameraBehaviour
 		if (rotation != 0) {	
 			transform.Rotate (Vector3.up, rotation, Space.World);
 		}
-
-		
-
-
 	}
 }

@@ -8,9 +8,10 @@ public class CameraFollow : CameraBehaviour
 	public float rotateSmoothing = 0.1f;        // The speed with which the camera will be reseting rotation.
 	public float xOffset = 0f;
 	public float zOffset = -4f;
-
+	public float heightSpeed = 5f;
 
 	Vector3 offset;                     // The initial offset from the target.
+	float offsetRatio = 1f;
 	Quaternion initialRotation;
 
 	void Awake () {
@@ -21,9 +22,16 @@ public class CameraFollow : CameraBehaviour
 		offset.z = target.position.z + zOffset;
 	}
 
+	public override void setCameraHeight (float height) {
+		offset.y = height;
+	}
 	
 	void FixedUpdate ()
 	{
+
+		
+		float height = Input.GetAxisRaw ("HeightCamera")* heightSpeed * Time.deltaTime;
+		offset.y += height;
 		// Create a postion the camera is aiming for based on the offset from the target.
 		Vector3 targetCamPos = target.position + offset;
 		

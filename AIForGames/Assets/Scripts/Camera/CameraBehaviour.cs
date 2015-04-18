@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraBehaviour : MonoBehaviour {
+public abstract class CameraBehaviour : MonoBehaviour {
+
+	public abstract void setCameraHeight (float height);
 
 }
