@@ -3,11 +3,9 @@ using System.Collections;
 
 public class Ammo : MonoBehaviour
 {
-
-	public int ammountAmmo;
+	public int ammountAmmo = 3;
 
 	public virtual int GrabAmmo(){
-		print("AMMOBOX HERE");
 		Object.Destroy (this.gameObject);
 		return ammountAmmo;
 	}

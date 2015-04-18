@@ -51,8 +51,8 @@ public class PlayerShooting : MonoBehaviour
 		
 		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets)
 		{
-			// ... shoot the gun.
-			Shoot ();
+			if(currentAmmo > 0)
+				Shoot ();
 		}
 		
 		if(timer >= timeBetweenBullets * effectsDisplayTime)
@@ -72,6 +72,8 @@ public class PlayerShooting : MonoBehaviour
 	{
 		// Reset the timer.
 		timer = 0f;
+
+		currentAmmo--;
 		
 		// Play the gun shot audioclip.
 		gunAudio.Play ();

@@ -8,11 +8,9 @@ public class ZombieState : MonoBehaviour
 	NavMeshAgent nav;
 
 	void Awake(){
-		print ("HREEEEEE");
 		targetPosition = transform.position;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerHealth> ();
-		print ("@@@@@@@@@@@@@@@@@@@@@@@@@@----> " + gameObject.name);
 		nav = GetComponent <NavMeshAgent> ();
 	}
 

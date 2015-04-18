@@ -13,7 +13,9 @@ GameObject:
   - 82: {fileID: 8291420}
   - 136: {fileID: 13648494}
   - 114: {fileID: 11416386}
-  - 114: {fileID: 11456654}
+  - 114: {fileID: 11438906}
+  - 114: {fileID: 11424532}
+  - 114: {fileID: 11474842}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -342,6 +344,7 @@ MonoBehaviour:
   timeBetweenBullets: .150000006
   range: 100
   rangeShootingSound: 10
+  currentAmmo: 10
 --- !u!114 &11416386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,11 +353,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 128720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b2268f9c7df8764aa2e92dbf55b5ae1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ec45203ae7a1a54c9d02c355f983833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
---- !u!114 &11456654
+  cameraHolderTransform: {fileID: 0}
+--- !u!114 &11424532
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -362,16 +366,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 128720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 544f2064df03e95419b4a5147c506b08, type: 3}
+  m_Script: {fileID: 11500000, guid: 440f83722ecd6784da9a887f944b7f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHunger: 80
+  hungerLossSpeed: 1
+  hungerSlider: {fileID: 0}
+--- !u!114 &11438906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1f861ac64684205a59d462f95f7cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11474842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6343e0c34ef99964680aa0b02986d46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 0}
-  damageImage: {fileID: 0}
-  deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
-  flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: .100000001}
 --- !u!120 &12015554
 LineRenderer:
   m_ObjectHideFlags: 1

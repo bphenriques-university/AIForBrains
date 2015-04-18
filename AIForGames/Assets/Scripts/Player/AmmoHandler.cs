@@ -6,7 +6,7 @@ public class AmmoHandler : MonoBehaviour
 	PlayerShooting playerShotting;
 
 	void Awake(){
-		playerShotting = GetComponent<PlayerShooting> ();
+		playerShotting = this.transform.FindChild("GunBarrelEnd").GetComponent<PlayerShooting> ();
 	}
 
 	void OnCollisionEnter (Collision other){
@@ -14,8 +14,10 @@ public class AmmoHandler : MonoBehaviour
 		Ammo ammo = other.collider.GetComponent<Ammo> ();
 		
 		if (ammo != null) {
-			print("Adding " + ammo.GrabAmmo());
+			print ("@@ " + playerShotting.currentAmmo);
+			print("Adding " + ammo.GrabAmmo() + " ammo.");
 			playerShotting.currentAmmo += ammo.GrabAmmo ();
+			print ("@@ " + playerShotting.currentAmmo);
 		}
 	}
 }
