@@ -30,6 +30,7 @@ public class ReleaseEscape : MonoBehaviour {
 		GameObject go = other.gameObject;
 		if(go.tag == "Human" || go.tag == "Player")
 		{
+
 			Object.Destroy(go);
 		}
 	}

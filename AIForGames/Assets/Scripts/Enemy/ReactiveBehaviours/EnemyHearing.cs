@@ -10,11 +10,28 @@ public class EnemyHearing : ReactiveBehaviour
 		zombieState = transform.root.GetComponent <ZombieState> ();
 	}
 
-	void HeardShot(GameObject from){
-		print ("HeardShot!");
+	public void HeardShot(Transform from){
 		zombieState.hearing = true;
-		zombieState.targetPosition = from.transform.position;
+		zombieState.targetPosition = from.position;
 
+	}
+
+	void OnTriggerEnter (Collider other)
+	{
+		if(other.gameObject.tag == "Human" || other.gameObject.tag == "Player")
+		{
+			PlayerShooting shoot = other.gameObject.GetComponentInChildren<PlayerShooting>();
+			shoot.addEnemyAbleToHear(this);
+		}
+	}
+	
+	void OnTriggerExit (Collider other)
+	{
+		if(other.gameObject.tag == "Human" || other.gameObject.tag == "Player")
+		{
+			PlayerShooting shoot = other.gameObject.GetComponentInChildren<PlayerShooting>();
+			shoot.removeEnemyAbleToHear(this);
+		}
 	}
 
 	protected override bool IsInSituation ()

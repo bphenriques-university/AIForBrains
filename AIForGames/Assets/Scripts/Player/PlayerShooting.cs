@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -18,6 +21,15 @@ public class PlayerShooting : MonoBehaviour
 	float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
 
 	int AbleToHearLayer = 10;
+	List<EnemyHearing> enemysAbleToHear = new List<EnemyHearing> ();
+
+	public void addEnemyAbleToHear(EnemyHearing enemyScript) {
+		enemysAbleToHear.Add (enemyScript);
+	}
+
+	public void removeEnemyAbleToHear(EnemyHearing enemyScript) {
+		enemysAbleToHear.Remove (enemyScript);
+	}
 
 	void Awake ()
 	{
@@ -69,11 +81,10 @@ public class PlayerShooting : MonoBehaviour
 		gunParticles.Play ();
 
 
-		Collider[] possibleEnemiesWhoHeardMe = Physics.OverlapSphere(this.transform.position, 1, 1 << AbleToHearLayer);
-		foreach (Collider enemy in possibleEnemiesWhoHeardMe )
+
+		foreach (EnemyHearing enemy in enemysAbleToHear )
 		{
-			print("Colliding with: " + enemy.gameObject.name);
-			enemy.SendMessage("HeardShot", this.gameObject);
+			enemy.HeardShot(transform);
 		}
 
 		// Enable the line renderer and set it's first position to be the end of the gun.

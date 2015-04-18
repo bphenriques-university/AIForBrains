@@ -49,7 +49,7 @@ public class HumansManager : MonoBehaviour
 			GameObject human = Instantiate (spawneeObject, copy.position, copy.rotation) as GameObject;
 			GameObject label = Instantiate (spawneeLabel, copy.position, Quaternion.identity) as GameObject;
 
-			label.transform.parent = labels.transform;
+			label.transform.SetParent(labels.transform, false);
 			label.GetComponent<GUIObjectLabel>().target = human.transform;
 
 			label.GetComponent<Text>().text = agentNames[nameIndex];
@@ -59,7 +59,6 @@ public class HumansManager : MonoBehaviour
 			human.GetComponent<HumanHealth>().healthSlider = sliders[0];
 			human.GetComponent<HumanHunger>().hungerSlider = sliders[1];
 
-			print(human.transform);
 		}
 	}
 
