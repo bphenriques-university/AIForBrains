@@ -53,7 +53,7 @@ GameObject:
   - 114: {fileID: 11476692}
   m_Layer: 0
   m_Name: Hooman
-  m_TagString: Player
+  m_TagString: Human
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -422,6 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHunger: 80
   hungerLossSpeed: 1
+  hungerSlider: {fileID: 0}
 --- !u!120 &12015904
 LineRenderer:
   m_ObjectHideFlags: 1

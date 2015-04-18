@@ -22,7 +22,7 @@ public class HumansEscapedManager : MonoBehaviour
 	
 	void Update ()
 	{
-		GameObject[] humans = GameObject.FindGameObjectsWithTag ("Player");
+		GameObject[] humans = GameObject.FindGameObjectsWithTag ("Human");
 		if (humans.Length <= 0) {
 			if (!gameWon) {
 				anim.SetTrigger ("HumansEscaped");
