@@ -7,7 +7,10 @@ public class HumanInRange : ReactiveBehaviour
 	public Vector3 lastKnownPosition;
 	public bool heardSound;
 	public bool smelledHuman;
-	
+
+
+
+	PlayerHealth playerHealth;
 	GameObject player;
 	NavMeshAgent nav;
 	
@@ -15,13 +18,14 @@ public class HumanInRange : ReactiveBehaviour
 	{
 		lastKnownPosition = this.transform.position;
 		player = GameObject.FindGameObjectWithTag ("Player");
+		playerHealth.GetComponent<PlayerHealth> ();
 		nav = this.transform.root.gameObject.GetComponent <NavMeshAgent> ();
 	}
 
 
 	protected override bool IsInSituation ()
 	{
-		return true;
+		return playerHealth != null && playerHealth.currentHealth > 0;
 	}
 	
 	protected override void Execute ()
