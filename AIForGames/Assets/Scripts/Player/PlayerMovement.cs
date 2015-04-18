@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
 	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
 
-
 	void Awake ()
 	{
 		// Create a layer mask for the floor layer.
