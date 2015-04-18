@@ -3,13 +3,17 @@ using System.Collections;
 
 public class Sight : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+
+	void OnTriggerEnter (Collider other){
+		
+		EnemyHealth enemyHealth = other.GetComponent<EnemyHealth> ();
+		
+		if (enemyHealth != null) {
+			
+			Debug.Log("INIMIGO!");
+			
+		}
+		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }
