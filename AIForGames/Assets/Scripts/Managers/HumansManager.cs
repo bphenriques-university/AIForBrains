@@ -56,6 +56,7 @@ public class HumansManager : MonoBehaviour
 			nameIndex = (nameIndex + 1) % agentNames.Length;
 
 			Slider[] sliders = label.GetComponentsInChildren<Slider>();
+			human.GetComponent<HumanHealth>().healthSlider = sliders[0];
 			human.GetComponent<HumanHunger>().hungerSlider = sliders[1];
 
 			print(human.transform);
