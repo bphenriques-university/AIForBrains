@@ -6,8 +6,12 @@ public class TopDownCamera : CameraBehaviour
 
 	public float horizontalSpeed;
 	public float horizontalMouseSpeed;
+
 	public float verticalSpeed;
 	public float verticalMouseSpeed;
+
+	public float heightSpeed;
+
 	public float cameraRotateSpeed;
 	public float cameraDistance;
 	public float screenEdgeBoundary;
@@ -18,6 +22,7 @@ public class TopDownCamera : CameraBehaviour
 	{
 		float h = Input.GetAxisRaw ("HorizontalCamera") * horizontalSpeed * Time.deltaTime;
 		float v = Input.GetAxisRaw ("VerticalCamera")* verticalSpeed * Time.deltaTime;
+		float height = Input.GetAxisRaw ("HeightCamera")* heightSpeed * Time.deltaTime;
 		float rotation = Input.GetAxisRaw ("Rotation") * cameraRotateSpeed * Time.deltaTime;
 
 
@@ -45,10 +50,10 @@ public class TopDownCamera : CameraBehaviour
 		}
 
 
-		// Smoothly interpolate between the camera's current position and it's target position.
+
 		transform.Translate	(Vector3.forward * v);
 		transform.Translate (Vector3.right * h);
-
+		transform.Translate (Vector3.up * height);
 
 		if (rotation != 0) {	
 			transform.Rotate (Vector3.up, rotation, Space.World);

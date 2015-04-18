@@ -4,7 +4,6 @@ using System.Collections;
 public class CameraManager : MonoBehaviour {
 
 	public CameraBehaviour[] cameras;
-	public PlayerMovement mov;
 	public float timeBetweenCameraChange = 0.1f;
 
 	int cameraSelected = 0;
