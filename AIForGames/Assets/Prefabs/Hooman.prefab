@@ -51,6 +51,7 @@ GameObject:
   - 136: {fileID: 13671650}
   - 114: {fileID: 11443052}
   - 114: {fileID: 11476692}
+  - 195: {fileID: 19550590}
   m_Layer: 0
   m_Name: Hooman
   m_TagString: Human
@@ -543,6 +544,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -.217404515, y: -4.28408384e-08, z: .106329583}
     m_Extent: {x: .709815741, y: .044386521, z: .323496759}
   m_DirtyAABB: 0
+--- !u!195 &19550590
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168420}
+  m_Enabled: 1
+  m_Radius: .400000006
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.39999998
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &19872360
 ParticleSystem:
   m_ObjectHideFlags: 1

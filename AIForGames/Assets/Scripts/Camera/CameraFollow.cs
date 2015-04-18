@@ -11,7 +11,6 @@ public class CameraFollow : CameraBehaviour
 	public float heightSpeed = 5f;
 
 	Vector3 offset;                     // The initial offset from the target.
-	float offsetRatio = 1f;
 	Quaternion initialRotation;
 
 	void Awake () {

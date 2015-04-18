@@ -11,7 +11,6 @@ public class EnemyHealth : MonoBehaviour
 	Animator anim;                              // Reference to the animator.
 	AudioSource enemyAudio;                     // Reference to the audio source.
 	ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
-	CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
 	bool isDead;                                // Whether the enemy is dead.
 	bool isSinking;                             // Whether the enemy has started sinking through the floor.
 	
@@ -21,7 +20,6 @@ public class EnemyHealth : MonoBehaviour
 		anim = GetComponent <Animator> ();
 		enemyAudio = GetComponent <AudioSource> ();
 		hitParticles = GetComponentInChildren <ParticleSystem> ();
-		capsuleCollider = GetComponent <CapsuleCollider> ();
 		
 		currentHealth = startingHealth;
 	}

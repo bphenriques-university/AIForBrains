@@ -9,9 +9,8 @@ public class HumanHealth : MonoBehaviour
 	public Slider healthSlider;                                 // Reference to the UI's health bar.
 	
 	Animator anim;                                              // Reference to the Animator component.
-	AudioSource agentAudio;                                    // Reference to the AudioSource component.
 	NavMeshAgent agentMovement;                              // Reference to the player's movement.
-	PlayerShooting agentShooting;                              // Reference to the PlayerShooting script.
+	HumanShooting agentShooting;                              // Reference to the PlayerShooting script.
 	bool isDead = false;                                                // Whether the player is dead.
 	bool damaged;                                               // True when the player gets damaged.
 	
@@ -20,6 +19,8 @@ public class HumanHealth : MonoBehaviour
 	{
 		// Setting up the references.
 		anim = GetComponent <Animator> ();
+		agentMovement = GetComponent <NavMeshAgent> ();
+		agentShooting = GetComponentInChildren <HumanShooting> ();
 		
 		// Set the initial health of the player.
 		currentHealth = startingHealth;
@@ -44,9 +45,7 @@ public class HumanHealth : MonoBehaviour
 		
 		// Set the health bar's value to the current health.
 		healthSlider.value = currentHealth;
-		
-		// Play the hurt sound effect.
-		agentAudio.Play ();	
+
 		// If the player has lost all it's health and the death flag hasn't been set yet...
 		if(currentHealth <= 0 && !isDead)
 		{
@@ -74,5 +73,9 @@ public class HumanHealth : MonoBehaviour
 	
 	public bool isHumanDead(){
 		return isDead;
+	}
+
+	public int getHealthLevel() {
+		return currentHealth;
 	}
 }

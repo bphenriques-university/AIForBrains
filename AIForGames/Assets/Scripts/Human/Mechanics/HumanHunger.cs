@@ -7,9 +7,11 @@ public class HumanHunger : MonoBehaviour
 {
 		
 	public float startingHunger = 80f;
-	private float hunger;
 	public float hungerLossSpeed = 1.0f;
 	public Slider hungerSlider;
+
+	
+	private float hunger;
 
 	private GameObject player;
 	HumanHealth hoomanHealth;
@@ -45,6 +47,10 @@ public class HumanHunger : MonoBehaviour
 				//print (hunger);
 			}
 		}
+	}
+
+	public float getHungerLevel() {
+		return hunger;
 	}
 
 }
