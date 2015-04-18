@@ -9,6 +9,7 @@ public class HumanHunger : MonoBehaviour
 	public float startingHunger = 80f;
 	private float hunger;
 	public float hungerLossSpeed = 1.0f;
+	public Slider hungerSlider;
 
 	private GameObject player;
 	HumanHealth hoomanHealth;
@@ -40,7 +41,7 @@ public class HumanHunger : MonoBehaviour
 				hoomanHealth.Death();
 			else {
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
-			
+				hungerSlider.value = hunger;
 				//print (hunger);
 			}
 		}

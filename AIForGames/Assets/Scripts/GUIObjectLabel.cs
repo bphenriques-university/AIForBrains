@@ -9,7 +9,6 @@ public class GUIObjectLabel : MonoBehaviour {
 	public Camera cameraToUse ;   // Only use this if useMainCamera is false
 	Camera cam ;
 	Transform thisTransform;
-	Transform camTransform;
 	
 	void Start () 
 	{
@@ -18,7 +17,6 @@ public class GUIObjectLabel : MonoBehaviour {
 			cam = Camera.main;
 		else
 			cam = cameraToUse;
-		camTransform = cam.transform;
 	}
 	
 	
