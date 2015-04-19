@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+using UnityEngine.UI;
 
 public class HumanShooting : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class HumanShooting : MonoBehaviour
 	AudioSource gunAudio;                           // Reference to the audio source.
 	Light gunLight;                                 // Reference to the light component.
 	float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-	
+	Text ammoText;
 	int AbleToHearLayer = 10;
 	List<EnemyHearing> enemysAbleToHear = new List<EnemyHearing> ();
 	
@@ -41,6 +41,14 @@ public class HumanShooting : MonoBehaviour
 		gunLine = GetComponent <LineRenderer> ();
 		gunAudio = GetComponent<AudioSource> ();
 		gunLight = GetComponent<Light> ();
+
+		foreach (Text c in GetComponentsInChildren<Text>()) {
+			if(c.name == "AmmoText"){
+				ammoText = c;
+				break;
+			}
+		}
+
 	}
 	
 	void Update ()
@@ -79,6 +87,7 @@ public class HumanShooting : MonoBehaviour
 		timer = 0f;
 
 		currentAmmo--;
+		transform.root.Find ("HUD/AmmoText").GetComponent<Text> ().text = currentAmmo + " Bullets";
 
 		// Play the gun shot audioclip.
 		gunAudio.Play ();

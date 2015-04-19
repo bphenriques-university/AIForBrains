@@ -15,6 +15,7 @@ public class HumanSight : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other){
 		
+
 		if (other.gameObject.tag == "Enemy") {
 			//adicionar a uma lista de inimigos?
 			//humanState.addEnemy(other.gameObject);

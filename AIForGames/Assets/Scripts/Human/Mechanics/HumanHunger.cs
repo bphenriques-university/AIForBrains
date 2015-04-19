@@ -8,7 +8,7 @@ public class HumanHunger : MonoBehaviour
 		
 	public float startingHunger = 80f;
 	public float hungerLossSpeed = 1.0f;
-	public Slider hungerSlider;
+	Slider hungerSlider;
 
 	
 	private float hunger;
@@ -17,11 +17,15 @@ public class HumanHunger : MonoBehaviour
 	private GameObject player;
 	HumanHealth hoomanHealth;
 
+	Text playerName;
+
 	void Awake ()
 	{
 		humanState = transform.root.GetComponent <HumanState> ();
 		hoomanHealth = GetComponent <HumanHealth> ();
 		hunger = startingHunger;
+		playerName = transform.Find ("HUD/PlayerName").GetComponent<Text> ();
+		hungerSlider = transform.Find("HUD/Sliders/HungerSlider").GetComponent < Slider> ();
 	}
 
 	void OnCollisionEnter (Collision other){
@@ -44,6 +48,7 @@ public class HumanHunger : MonoBehaviour
 	{
 		if (!hoomanHealth.isHumanDead()){
 			if (hunger <= 0){
+				playerName.color = Color.green;	
 				//hoomanHealth.Death();
 			}
 			else {

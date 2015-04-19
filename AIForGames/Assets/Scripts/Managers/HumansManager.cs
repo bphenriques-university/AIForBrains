@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class HumansManager : MonoBehaviour
 {
 	public GameObject spawneeObject;
-	public GameObject spawneeLabel;
-	public GameObject labels;
 	public Transform[] spawnAreas;
 	public float radius;
 	public int max_number_spawns;
@@ -43,22 +41,11 @@ public class HumansManager : MonoBehaviour
 			newPos.y = 0;
 			copy.position = newPos;
 		
-
 			GameObject human = Instantiate (spawneeObject, copy.position, copy.rotation) as GameObject;
-			GameObject label = Instantiate (spawneeLabel, copy.position, Quaternion.identity) as GameObject;
-
-			label.transform.SetParent(labels.transform, false);
-			label.GetComponent<GUIObjectLabel>().target = human.transform;
-
-			label.GetComponent<Text>().text = agentNames[nameIndex];
+			human.transform.Find ("HUD/PlayerName").GetComponent<Text>().text = agentNames[nameIndex];
 			nameIndex = (nameIndex + 1) % agentNames.Length;
-
-			Slider[] sliders = label.GetComponentsInChildren<Slider>();
-			human.GetComponent<HumanHealth>().healthSlider = sliders[0];
-			human.GetComponent<HumanHunger>().hungerSlider = sliders[1];
 
 			GameOverManager.humansAlive++;
 		}
 	}
-
 }

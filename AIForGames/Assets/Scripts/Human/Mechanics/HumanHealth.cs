@@ -6,7 +6,6 @@ public class HumanHealth : MonoBehaviour
 {
 	public int startingHealth = 100;                            // The amount of health the player starts the game with.
 	public int currentHealth;                                   // The current health the player has.
-	public Slider healthSlider;                                 // Reference to the UI's health bar.
 	public AudioSource hitSound;
 	public AudioSource deadSound;
 
@@ -14,21 +13,29 @@ public class HumanHealth : MonoBehaviour
 	Animator anim;                                              // Reference to the Animator component.
 	NavMeshAgent agentMovement;                              // Reference to the player's movement.
 	HumanShooting agentShooting;                              // Reference to the PlayerShooting script.
+	Slider healthSlider;                                 // Reference to the UI's health bar.
 	bool isDead = false;                                                // Whether the player is dead.
 	bool damaged;
-	
+
+
+	Text playerName;
+
 	void Awake ()
 	{
 		anim = GetComponent <Animator> ();
 		agentMovement = GetComponent <NavMeshAgent> ();
 		agentShooting = GetComponentInChildren <HumanShooting> ();
-		hitSound = GetComponent<AudioSource> ();
 		currentHealth = startingHealth;
+
+		healthSlider = transform.Find("HUD/Sliders/HealthSlider").GetComponent < Slider> ();
+		playerName = transform.Find ("HUD/PlayerName").GetComponent<Text> ();
 	}
 	
 	
 	void Update ()
 	{
+		playerName.color = Color.white;	
+
 		damaged = false;
 	}
 	
@@ -38,8 +45,10 @@ public class HumanHealth : MonoBehaviour
 		if (isDead)
 			return;
 
+		playerName.color = Color.red;	
 
 		damaged = true;
+
 		currentHealth -= amount;
 
 		hitSound.Play ();
@@ -47,6 +56,7 @@ public class HumanHealth : MonoBehaviour
 		//FIXME FIXME FIXME
 		if (healthSlider != null) {
 			healthSlider.value = currentHealth;
+			healthSlider.enabled = false;
 		}
 
 		if(currentHealth <= 0)
