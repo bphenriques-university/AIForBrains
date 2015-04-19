@@ -17,13 +17,11 @@ public class SenseZombie : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		print ("FOLLOWING ZOMBIE");
 		zombieState.FollowNearestZombie ();
 	}
 	
 	void OnTriggerEnter (Collider other)
 	{
-		print ("SENSING ZOMBIE");
 		if(other.gameObject.tag == "Enemy")
 		{
 			zombieState.sensingZombie = true;
@@ -33,7 +31,6 @@ public class SenseZombie : ReactiveBehaviour
 	
 	void OnTriggerExit (Collider other)
 	{
-		print ("NOT SENSING ZOMBIE");
 		if(other.gameObject.tag == "Enemy")
 		{
 			zombieState.sensingZombie = false;

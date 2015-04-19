@@ -120,7 +120,6 @@ public class ZombieState : MonoBehaviour
 	}
 
 	public void Grab(){
-		print (targetObject.name);
 		HumanMovement m = targetObject.GetComponent<HumanMovement>();
 
 		if(m != null){
@@ -160,7 +159,6 @@ public class ZombieState : MonoBehaviour
 		if (nav != null) {
 			Vector3 dest = nav.destination + Random.insideUnitSphere * 5;
 			dest.y = 0;
-			print ("GOING TO MY FELLOW ZOMBIE DESTINATION: " + dest);
 			GotoPosition (dest, randomWalkSpeed);
 		}
 	}
