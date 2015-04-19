@@ -49,8 +49,8 @@ GameObject:
   - 136: {fileID: 13648494}
   - 114: {fileID: 11416386}
   - 114: {fileID: 11425110}
-  - 114: {fileID: 11479504}
-  - 114: {fileID: 11466450}
+  - 114: {fileID: 11401752}
+  - 114: {fileID: 11434558}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -641,6 +641,21 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11401752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb371dea48cdd354ba992290073f23cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHunger: 80
+  hungerLossSpeed: 1
+  hungerSlider: {fileID: 11418790}
+  playerName: {fileID: 11425138}
 --- !u!114 &11402646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -884,6 +899,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11434558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982a915db6330bc4a8abf508f51c4535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11442046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -985,32 +1011,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11466450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440f83722ecd6784da9a887f944b7f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHunger: 80
-  hungerLossSpeed: 1
-  hungerSlider: {fileID: 11418790}
-  playerName: {fileID: 11425138}
---- !u!114 &11479504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0159fb0f03c4498885c4a9741e4157d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!120 &12015554
 LineRenderer:
   m_ObjectHideFlags: 1
