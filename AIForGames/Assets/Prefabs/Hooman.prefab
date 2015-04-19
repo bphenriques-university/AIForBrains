@@ -1006,12 +1006,12 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 2
+    m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ( 10 )
+  m_Text: ( 0 )
 --- !u!114 &11412212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   hungerLossSpeed: 1
   hungerSlider: {fileID: 11481090}
   playerName: {fileID: 11429866}
-  numberFood: {fileID: 0}
+  numberFood: {fileID: 11409984}
 --- !u!114 &11477684
 MonoBehaviour:
   m_ObjectHideFlags: 1
