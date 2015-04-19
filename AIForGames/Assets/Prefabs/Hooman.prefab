@@ -13,7 +13,7 @@ GameObject:
   - 120: {fileID: 12015904}
   - 108: {fileID: 10827640}
   - 82: {fileID: 8203630}
-  - 114: {fileID: 11444154}
+  - 114: {fileID: 11467448}
   m_Layer: 0
   m_Name: GunBarrelEnd
   m_TagString: Untagged
@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 401402}
   - 64: {fileID: 6400282}
-  - 114: {fileID: 11429960}
+  - 114: {fileID: 11477684}
   m_Layer: 0
   m_Name: prop_cctvCam_collision
   m_TagString: Untagged
@@ -443,17 +443,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenChanges: 1.5
   range: 6
---- !u!114 &11429960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b794c30b220f394c90d97d0720928ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11443052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,22 +457,6 @@ MonoBehaviour:
   startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 0}
---- !u!114 &11444154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerShot: 20
-  timeBetweenBullets: .150000006
-  range: 100
-  rangeShootingSound: 10
-  currentAmmo: 10
 --- !u!114 &11459564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,6 +470,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 6
   walkSpeed: 2
+--- !u!114 &11467448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1099a3bbf047874bbf7b872c5dfd8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePerShot: 20
+  timeBetweenBullets: .150000006
+  range: 100
+  rangeShootingSound: 10
 --- !u!114 &11476692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -511,6 +499,17 @@ MonoBehaviour:
   startingHunger: 80
   hungerLossSpeed: 1
   hungerSlider: {fileID: 0}
+--- !u!114 &11477684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b794c30b220f394c90d97d0720928ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11478774
 MonoBehaviour:
   m_ObjectHideFlags: 1

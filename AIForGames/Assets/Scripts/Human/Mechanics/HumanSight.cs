@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Sight : MonoBehaviour {
+public class HumanSight : MonoBehaviour {
 
 
 	void OnTriggerEnter (Collider other){

@@ -20,7 +20,7 @@ public class EnemyHearing : ReactiveBehaviour
 	{
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
-			PlayerShooting shoot = other.gameObject.GetComponentInChildren<PlayerShooting>();
+			HumanShooting shoot = other.gameObject.GetComponentInChildren<HumanShooting>();
 			shoot.addEnemyAbleToHear(this);
 		}
 	}
@@ -29,7 +29,7 @@ public class EnemyHearing : ReactiveBehaviour
 	{
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
-			PlayerShooting shoot = other.gameObject.GetComponentInChildren<PlayerShooting>();
+			HumanShooting shoot = other.gameObject.GetComponentInChildren<HumanShooting>();
 			shoot.removeEnemyAbleToHear(this);
 		}
 	}

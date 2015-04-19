@@ -48,9 +48,7 @@ public class HumanRandomWalk : ReactiveBehaviour
 	}
 
 	private void changeDirection() {
-		int i =0;
 		while (true) {
-			Debug.Log ("In loop " + i++);
 			Vector3 randomDirection = Random.onUnitSphere;
 			randomDirection.y = 0;
 			randomDirection.Normalize ();

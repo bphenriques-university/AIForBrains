@@ -38,8 +38,6 @@ public class HumanMovement : MonoBehaviour
 	}
 
 	public void ChangeDestination(Vector3 pos){
-		
-		Debug.Log ("Changing Destination, new pos: " + pos);
 		nav.SetDestination (pos);
 	}
 

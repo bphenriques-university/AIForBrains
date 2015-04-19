@@ -27,7 +27,6 @@ public class EnemySmell : ReactiveBehaviour
 		//will change this to collider
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
-			print ("Smelled delicious human");
 			zombieState.smelling = true;
 			zombieState.targetObject = other.gameObject;
 		}
@@ -37,7 +36,6 @@ public class EnemySmell : ReactiveBehaviour
 	{
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
-			print ("Not smelling delicious human");
 			zombieState.smelling = false;
 			zombieState.targetPosition = other.gameObject.transform.position;
 		}
