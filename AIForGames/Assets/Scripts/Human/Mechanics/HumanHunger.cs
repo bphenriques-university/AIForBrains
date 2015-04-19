@@ -19,7 +19,6 @@ public class HumanHunger : MonoBehaviour
 	void Awake ()
 	{
 		hoomanHealth = GetComponent <HumanHealth> ();
-
 		hunger = startingHunger;
 	}
 
@@ -35,11 +34,16 @@ public class HumanHunger : MonoBehaviour
 	void Update()
 	{
 		if (!hoomanHealth.isHumanDead()){
-			if (hunger <= 0)
-				hoomanHealth.Death();
+			if (hunger <= 0){
+				//hoomanHealth.Death();
+			}
 			else {
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
-				hungerSlider.value = hunger;
+
+				//FIXME FIXME FIXME
+				if(hungerSlider != null){
+					hungerSlider.value = hunger;
+				}
 			}
 		}
 	}

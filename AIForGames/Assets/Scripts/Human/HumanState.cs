@@ -73,8 +73,6 @@ public class HumanState : MonoBehaviour
 		return movement.isMoving ();
 	}
 
-
-
 	public float HungerLevel() {
 		return hunger.getHungerLevel ();
 	}
@@ -134,6 +132,4 @@ public class HumanState : MonoBehaviour
 		
 		return copy.position;
 	}
-	
-
 }

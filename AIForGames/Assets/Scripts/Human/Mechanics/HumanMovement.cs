@@ -2,6 +2,9 @@
 
 public class HumanMovement : MonoBehaviour
 {
+
+	HumanHealth humanHealth;
+
 	public float runSpeed = 6f;            // The speed that the player will move at.
 	public float walkSpeed = 2f;            // The speed that the player will move at.
 
@@ -15,6 +18,7 @@ public class HumanMovement : MonoBehaviour
 	{
 		nav = GetComponent<NavMeshAgent> ();
 		anim = GetComponent<Animator> ();
+		humanHealth = GetComponent<HumanHealth> ();
 	}
 
 	void Update ()
@@ -42,7 +46,7 @@ public class HumanMovement : MonoBehaviour
 	}
 
 	public bool isMoving() {
-		return nav.destination != transform.position;
+		return Vector3.Distance(nav.destination, transform.position) > 1.0;
 	}
 
 }

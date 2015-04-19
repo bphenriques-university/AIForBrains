@@ -13,9 +13,7 @@ public class EnemyManager : MonoBehaviour
 			return;
 
 		int numSpawnsPerArea = max_number_spawns / spawnAreas.Length;
-		print ("numSpawnPerArea = " + numSpawnsPerArea);
-	
-		
+
 		foreach (Transform t in spawnAreas) {
 			for(int i = 0; i < numSpawnsPerArea ; i++){
 

@@ -86,6 +86,8 @@ GameObject:
   - 195: {fileID: 19550590}
   - 114: {fileID: 11478774}
   - 114: {fileID: 11459564}
+  - 114: {fileID: 11427502}
+  - 114: {fileID: 11440934}
   m_Layer: 0
   m_Name: Hooman
   m_TagString: Human
@@ -443,6 +445,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenChanges: 1.5
   range: 6
+--- !u!114 &11427502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440f83722ecd6784da9a887f944b7f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHunger: 80
+  hungerLossSpeed: 1
+  hungerSlider: {fileID: 0}
+--- !u!114 &11440934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0159fb0f03c4498885c4a9741e4157d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11443052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -485,6 +512,7 @@ MonoBehaviour:
   timeBetweenBullets: .150000006
   range: 100
   rangeShootingSound: 10
+  currentAmmo: 10
 --- !u!114 &11476692
 MonoBehaviour:
   m_ObjectHideFlags: 1

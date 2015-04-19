@@ -3,10 +3,10 @@ using System.Collections;
 
 public class AmmoHandler : MonoBehaviour
 {
-	PlayerShooting playerShotting;
+	HumanShooting playerShotting;
 
 	void Awake(){
-		playerShotting = this.transform.FindChild("GunBarrelEnd").GetComponent<PlayerShooting> ();
+		playerShotting = this.transform.FindChild("GunBarrelEnd").GetComponent<HumanShooting> ();
 	}
 
 	void OnCollisionEnter (Collision other){
@@ -14,10 +14,7 @@ public class AmmoHandler : MonoBehaviour
 		Ammo ammo = other.collider.GetComponent<Ammo> ();
 		
 		if (ammo != null) {
-			print ("@@ " + playerShotting.currentAmmo);
-			print("Adding " + ammo.GrabAmmo() + " ammo.");
 			playerShotting.currentAmmo += ammo.GrabAmmo ();
-			print ("@@ " + playerShotting.currentAmmo);
 		}
 	}
 }

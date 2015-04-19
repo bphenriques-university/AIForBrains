@@ -9,7 +9,8 @@ public class HumanShooting : MonoBehaviour
 	public float timeBetweenBullets = 0.15f;        // The time between each shot.
 	public float range = 100f;                      // The distance the gun can fire.
 	public float rangeShootingSound = 10;
-	
+	public int currentAmmo = 10;
+
 	float timer;                                    // A timer to determine when to fire.
 	Ray shootRay;                                   // A ray from the gun end forwards.
 	RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
@@ -45,6 +46,19 @@ public class HumanShooting : MonoBehaviour
 	void Update ()
 	{
 		timer += Time.deltaTime;
+
+
+		if(this.transform.root.gameObject.tag == "Player" && Input.GetButton ("Fire1") && timer >= timeBetweenBullets)
+		{
+			if(currentAmmo > 0)
+				Shoot ();
+		}
+
+		if(timer >= timeBetweenBullets * effectsDisplayTime)
+		{
+			DisableEffects ();
+		}
+
 	}
 
 	public void DisableEffects ()
@@ -56,14 +70,16 @@ public class HumanShooting : MonoBehaviour
 
 	
 	public bool CanAttack(){
-		return timer >= timeBetweenBullets;
+		return currentAmmo > 0 && timer >= timeBetweenBullets;
 	}
 	
 	public void Shoot ()
 	{
 		// Reset the timer.
 		timer = 0f;
-		
+
+		currentAmmo--;
+
 		// Play the gun shot audioclip.
 		gunAudio.Play ();
 		
@@ -108,7 +124,6 @@ public class HumanShooting : MonoBehaviour
 		// If the raycast didn't hit anything on the shootable layer...
 		else
 		{
-			// ... set the second position of the line renderer to the fullest extent of the gun's range.
 			gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
 		}
 	}
