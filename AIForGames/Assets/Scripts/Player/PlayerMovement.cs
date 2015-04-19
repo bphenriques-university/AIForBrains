@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
 	bool canMove = true;
 
+	HumanHealth humanHealth;
+
 	public void SetMove(bool value){
 		canMove = value;
 	}
@@ -28,11 +30,16 @@ public class PlayerMovement : MonoBehaviour
 		// Set up references.
 		anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
+		humanHealth = GetComponent<HumanHealth> ();
 	}
 	
 	
 	void FixedUpdate ()
 	{
+		if (humanHealth.isHumanDead()) {
+			return;
+		}
+
 		if (canMove) {
 			// Store the input axes.
 			float h = Input.GetAxisRaw ("Horizontal");

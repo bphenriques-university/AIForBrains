@@ -24,7 +24,7 @@ public class HumanSight : MonoBehaviour {
 		if (other.gameObject.tag == "Food") {
 
 			if(isVisible (other)){
-
+				//Debug.Log("Saw Food!");
 				if(humanState.sawFood == true && humanState.foodSeen != null){
 
 					if(isCloser (other.gameObject, humanState.foodSeen))
@@ -56,11 +56,17 @@ public class HumanSight : MonoBehaviour {
 
 		if (other.gameObject.tag == "Ammo") 
 		{
+
 			if(isVisible(other)){
-				if(isCloser (other.gameObject, humanState.ammoSeen))
-				{
-					humanState.ammoSeen = other.gameObject;
+				//Debug.Log("Saw Ammo!");
+				if(humanState.sawAmmo == true && humanState.ammoSeen != null){
+
+					if(isCloser (other.gameObject, humanState.ammoSeen))
+					{
+						humanState.ammoSeen = other.gameObject;
 					
+					}
+
 				}else{
 					
 					humanState.sawAmmo = true;

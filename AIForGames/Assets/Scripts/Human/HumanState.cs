@@ -7,12 +7,14 @@ public class HumanState : MonoBehaviour
 	HumanHealth health;
 	HumanShooting shooting;
 	HumanMovement movement;
-
+	HumanShooting playerShooting;
 
 
 	void Awake(){
 		GameOverManager.humansAlive++;
-
+		
+		Transform gunBarrelEnd = transform.root.FindChild ("GunBarrelEnd");
+		playerShooting = gunBarrelEnd.GetComponent<HumanShooting> ();
 		targetPosition = transform.position;
 		hunger = GetComponent<HumanHunger> ();
 		health = GetComponent<HumanHealth> ();
@@ -135,6 +137,26 @@ public class HumanState : MonoBehaviour
 
 	public void Run(){
 		movement.Run ();
+	}
+
+	public void grabAmmo ()
+	{
+		GameObject ammoObject = ammoSeen;
+		
+		//Due to non-deterministic environment
+		if (ammoObject == null) {
+			onAmmo = false;
+			sawAmmo = false;
+			return;
+		}
+		
+		
+		Ammo ammo = ammoObject.GetComponent<Ammo> ();
+		
+		playerShooting.GrabAmmo(ammo.GrabAmmo ());
+		
+		onAmmo = false;
+		sawAmmo = false;
 	}
 
 	public void ChangeDestination(Vector3 newDirection){

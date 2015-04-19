@@ -148,8 +148,9 @@ public class ZombieState : MonoBehaviour
 
 		PlayerMovement p = targetObject.GetComponent<PlayerMovement> ();
 		if (p != null) {
-			p.SetMove (false);
+			p.SetMove (true);
 			targetGrabbed = false;
+			timerFromGrabUntilAttack = 0;
 			return;
 		}
 	}
