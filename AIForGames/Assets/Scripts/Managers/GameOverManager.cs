@@ -29,7 +29,7 @@ public class GameOverManager : MonoBehaviour
 		if(humansAlive <= 0)
 		{
 			anim.SetTrigger ("GameOver");
-			
+
 			restartTimer += Time.deltaTime;
 			
 			if(restartTimer >= restartDelay)
