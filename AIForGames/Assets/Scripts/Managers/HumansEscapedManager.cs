@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+
 
 public class HumansEscapedManager : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class HumansEscapedManager : MonoBehaviour
 	AudioSource audioSource;                      // Reference to the AudioSource component.
 
 	bool gameWon = false;
-	
+	Text timeUntilEscapeZone;
 	
 	void Awake ()
 	{
