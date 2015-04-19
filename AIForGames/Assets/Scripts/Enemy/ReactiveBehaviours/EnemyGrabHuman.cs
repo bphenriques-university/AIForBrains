@@ -37,7 +37,6 @@ public class EnemyGrabHuman : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		print ("GRABBING HUMAN!");
 		zombieState.Grab ();
 	}
 	

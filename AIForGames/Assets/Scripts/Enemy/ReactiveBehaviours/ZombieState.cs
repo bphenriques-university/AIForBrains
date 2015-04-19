@@ -39,10 +39,11 @@ public class ZombieState : MonoBehaviour
 	bool targetGrabbed;
 	public Vector3 targetPosition;
 	public GameObject targetObject;
+	public GameObject nearestZombie;
 	public bool hearing = false;
 	public bool smelling = false;
 	public bool isAttacking;
-
+	public bool sensingZombie;
 	
 	void Update(){
 		attackTimer += Time.deltaTime;
@@ -80,6 +81,11 @@ public class ZombieState : MonoBehaviour
 		return targetGrabbed && timerFromGrabUntilAttack >= timeUntilAttack;
 	}
 
+
+	public bool IsSensingZombie(){
+		return sensingZombie;
+	}
+
 	public bool CanAttack(){
 		return  isAttacking && attackTimer >= timeBetweenAttacks && targetGrabbed;
 	}
@@ -108,6 +114,7 @@ public class ZombieState : MonoBehaviour
 
 		if (humanHealth != null) {
 			humanHealth.TakeDamage(attackDamage);
+
 			isAttacking = true;
 		}
 	}
@@ -146,6 +153,10 @@ public class ZombieState : MonoBehaviour
 			targetGrabbed = false;
 			return;
 		}
+	}
+
+	public void FollowNearestZombie (){
+		GotoPosition (nearestZombie.transform.position, randomWalkSpeed);
 	}
 
 	/* ------------------------------------------*/

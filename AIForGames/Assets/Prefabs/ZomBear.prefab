@@ -243,6 +243,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &134680
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 499558}
+  - 135: {fileID: 13588610}
+  - 114: {fileID: 11484100}
+  m_Layer: 0
+  m_Name: FollowZombies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &142512
 GameObject:
   m_ObjectHideFlags: 1
@@ -650,6 +667,7 @@ Transform:
   - {fileID: 469794}
   - {fileID: 443420}
   - {fileID: 432690}
+  - {fileID: 499558}
   m_Father: {fileID: 400000}
   m_RootOrder: 4
 --- !u!4 &455408
@@ -751,6 +769,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 494762}
   m_RootOrder: 14
+--- !u!4 &499558
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134680}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 446266}
+  m_RootOrder: 5
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -828,7 +858,7 @@ AudioSource:
   Mute: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 4.6762352
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -948,9 +978,11 @@ MonoBehaviour:
   targetInRangeToGrab: 0
   targetPosition: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
+  nearestZombie: {fileID: 0}
   hearing: 0
   smelling: 0
   isAttacking: 0
+  sensingZombie: 0
 --- !u!114 &11429054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1011,7 +1043,19 @@ MonoBehaviour:
   - {fileID: 11452596}
   - {fileID: 11452422}
   - {fileID: 11429054}
+  - {fileID: 11484100}
   - {fileID: 11437996}
+--- !u!114 &11484100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b7b785dd0254b9eb3af51c7f0512a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11486094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1059,6 +1103,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &13588610
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: .800000012, z: 0}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

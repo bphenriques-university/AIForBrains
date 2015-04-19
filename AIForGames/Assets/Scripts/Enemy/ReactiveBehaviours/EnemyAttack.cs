@@ -12,13 +12,11 @@ public class EnemyAttack : ReactiveBehaviour
 
 	protected override bool IsInSituation ()
 	{
-		print ("zombieState.CanStartToAttack() = " + zombieState.CanStartToAttack ());
 		return zombieState.CanStartToAttack() && zombieState.CanAttack();
 	}
 
 	protected override void Execute ()
 	{
-		print ("ATTACKING");
 		zombieState.isAttacking = true;
 		zombieState.Attack ();
 	}
