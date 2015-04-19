@@ -156,7 +156,13 @@ public class ZombieState : MonoBehaviour
 	}
 
 	public void FollowNearestZombie (){
-		GotoPosition (nearestZombie.transform.position, randomWalkSpeed);
+		NavMeshAgent nav = nearestZombie.GetComponent<NavMeshAgent> ();
+		if (nav != null) {
+			Vector3 dest = nav.destination + Random.insideUnitSphere * 5;
+			dest.y = 0;
+			print ("GOING TO MY FELLOW ZOMBIE DESTINATION: " + dest);
+			GotoPosition (dest, randomWalkSpeed);
+		}
 	}
 
 	/* ------------------------------------------*/
