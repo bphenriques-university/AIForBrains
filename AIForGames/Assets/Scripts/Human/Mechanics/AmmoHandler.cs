@@ -4,18 +4,18 @@ using System.Collections;
 
 public class AmmoHandler : MonoBehaviour
 {
-	HumanShooting playerShotting;
+	HumanState humanState;
 
 	void Awake(){
-		playerShotting = this.transform.FindChild("GunBarrelEnd").GetComponent<HumanShooting> ();
+		humanState = transform.root.GetComponent <HumanState> ();
+
 	}
 
 	void OnCollisionEnter (Collision other){
-		
-		Ammo ammo = other.collider.GetComponent<Ammo> ();
-		
-		if (ammo != null) {
-			playerShotting.GrabAmmo(ammo.GrabAmmo ());
+
+		if (other.gameObject.tag == "Ammo") {
+			humanState.onAmmo = true;
+			humanState.ammoSeen = other.gameObject;
 		}
 	}
 }

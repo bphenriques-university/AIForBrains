@@ -31,20 +31,17 @@ public class HumanSight : MonoBehaviour {
 					{
 						humanState.foodSeen = other.gameObject;
 
-					}else{
-						return;
 					}
 
 				}else{
 
 					humanState.sawFood = true;
-					//Fixme shoul add to list
+
 					humanState.foodSeen = other.gameObject;
 				}
 			}else{
 				humanState.sawFood = false;
 			}
-			return;
 		}
 
 		if (other.gameObject.tag == "Enemy") {
@@ -54,7 +51,25 @@ public class HumanSight : MonoBehaviour {
 
 			}
 
-			return;
+
+		}
+
+		if (other.gameObject.tag == "Ammo") 
+		{
+			if(isVisible(other)){
+				if(isCloser (other.gameObject, humanState.ammoSeen))
+				{
+					humanState.ammoSeen = other.gameObject;
+					
+				}else{
+					
+					humanState.sawAmmo = true;
+			
+					humanState.ammoSeen = other.gameObject;
+				}
+			}else{
+				humanState.sawAmmo = false;
+			}
 		}
 
 

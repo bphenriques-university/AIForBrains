@@ -8,7 +8,7 @@ public class HumanState : MonoBehaviour
 	HumanShooting shooting;
 	HumanMovement movement;
 
-	public GameObject foodSeen;
+
 
 	void Awake(){
 		GameOverManager.humansAlive++;
@@ -37,6 +37,8 @@ public class HumanState : MonoBehaviour
 	public bool targetObjectInRangeToAttack;
 	public Vector3 targetPosition;
 	public GameObject targetObject;
+	public GameObject foodSeen;
+	public GameObject ammoSeen;
 
 	public bool sawFood = false;
 	public bool onFood = false;
@@ -44,7 +46,8 @@ public class HumanState : MonoBehaviour
 	public bool sawHumanInDanger = false;
 	public bool grabbed = false;
 	public bool bitten = false;
-
+	public bool sawAmmo = false;
+	public bool onAmmo = false;
 	
 	void Update(){
 		attackTimer += Time.deltaTime;
@@ -60,6 +63,11 @@ public class HumanState : MonoBehaviour
 
 	public bool IsOnFood(){
 		return onFood;
+	}
+
+	public bool IsOnAmmo ()
+	{
+		return onAmmo;
 	}
 
 	public bool IsSeeingZombie(){
@@ -80,6 +88,10 @@ public class HumanState : MonoBehaviour
 
 	public bool isMoving() {
 		return movement.isMoving ();
+	}
+
+	public bool IsSeeingAmmo(){
+		return sawAmmo;
 	}
 
 	public float HungerLevel() {
