@@ -14,7 +14,17 @@ public class HumanSight : MonoBehaviour {
 
 
 	void OnTriggerEnter (Collider other){
-		
+		/*
+		Ray shootRay;
+		RaycastHit shootHit;
+		float range = 20f;
+		int shootableMask;
+
+		shootRay.origin = transform.position;
+		shootRay.direction = transform.position - other.transform.position;
+
+		if (Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
+		}*/
 
 		if (other.gameObject.tag == "Enemy") {
 			//adicionar a uma lista de inimigos?
@@ -31,12 +41,12 @@ public class HumanSight : MonoBehaviour {
 	}
 
 	void OnTriggerExit(Collider other){
-		/*
+
 		if (other.gameObject.tag == "Food") {
 			//Fixme should verify is list empty
 			humanState.sawFood = false;
 		}
-		*/
+
 
 	
 	}

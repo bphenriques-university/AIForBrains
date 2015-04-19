@@ -19,7 +19,7 @@ public class HumanEatFood : ReactiveBehaviour
 	{
 
 		GameObject foodObject = humanState.foodSeen;
-		//Debug.Log ("On food!");
+		Debug.Log ("On food!");
 		//Due to non-deterministic environment
 		if (foodObject == null) {
 			humanState.onFood = false;
@@ -28,7 +28,7 @@ public class HumanEatFood : ReactiveBehaviour
 		}
 
 		Food food = foodObject.GetComponent<Food> ();
-		HumanHunger hunger = GetComponent<HumanHunger>();
+		HumanHunger hunger = transform.root.GetComponent<HumanHunger>();
 		hunger.addFood(food.eat());
 
 		humanState.onFood = false;
