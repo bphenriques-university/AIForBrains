@@ -114,8 +114,12 @@ public class ZombieState : MonoBehaviour
 
 		if (humanHealth != null) {
 			humanHealth.TakeDamage(attackDamage);
-
 			isAttacking = true;
+
+			if (humanHealth.isHumanDead()) {
+				Leave();
+				isAttacking = false;
+			}
 		}
 	}
 

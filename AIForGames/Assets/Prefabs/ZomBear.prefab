@@ -111,7 +111,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 456530}
   - 135: {fileID: 13525588}
-  - 54: {fileID: 5457750}
   - 114: {fileID: 11452422}
   m_Layer: 0
   m_Name: Smell
@@ -204,7 +203,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 469794}
   - 135: {fileID: 13585442}
-  - 54: {fileID: 5431558}
   - 114: {fileID: 11429054}
   m_Layer: 0
   m_Name: Hearing
@@ -313,7 +311,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424518}
-  - 54: {fileID: 5453570}
   - 114: {fileID: 11486094}
   m_Layer: 0
   m_Name: Attack
@@ -795,51 +792,6 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
-  m_CollisionDetection: 0
---- !u!54 &5431558
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130604}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 3.40282347e+38
-  m_AngularDrag: 3.40282347e+38
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &5453570
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151438}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 3.40282347e+38
-  m_AngularDrag: 3.40282347e+38
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &5457750
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111026}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 3.40282347e+38
-  m_AngularDrag: 3.40282347e+38
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!82 &8200000
 AudioSource:
