@@ -44,9 +44,9 @@ public class HumanSight : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag == "Enemy") {
-			Debug.Log ("ZOMBIE! SHIT!");
+			//Debug.Log ("ZOMBIE! SHIT!");
 			if(isVisible(other)){
-				Debug.Log ("ZOMBIE! SHIT2!");
+				//Debug.Log ("ZOMBIE! SHIT2!");
 				if(humanState.sawZombie == true && humanState.zombieSeen != null){
 
 					if(isCloser (other.gameObject, humanState.zombieSeen)){
@@ -103,10 +103,19 @@ public class HumanSight : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 
 		if (other.gameObject.tag == "Food") {
-			//Fixme should verify is list empty
 			humanState.sawFood = false;
 		}
 
+		if (other.gameObject.tag == "Enemy") {
+			humanState.sawZombie = false;
+		}
+
+		if (other.gameObject.tag == "Ammo") {
+			humanState.sawAmmo = false;
+		}
+
+		
+		
 
 	
 	}
@@ -115,9 +124,9 @@ public class HumanSight : MonoBehaviour {
 	{
 		Vector3 direction = (other.transform.position) - transform.position;
 		if (Physics.Raycast (transform.position, direction.normalized, out shootHit, range, shootableMask)) {
-			Debug.Log ("VI: Daqui: " + transform.position + "para ali: " + other.transform.position + "vendo um " + shootHit.collider.gameObject);
+			//Debug.Log ("VI: Daqui: " + transform.position + "para ali: " + other.transform.position + "vendo um " + shootHit.collider.gameObject);
 			if (shootHit.collider.gameObject.Equals (other.gameObject)) {
-				Debug.Log ("VI MESMO um " + shootHit.collider.gameObject);
+				//Debug.Log ("VI MESMO um " + shootHit.collider.gameObject);
 				return true;
 			}
 		}

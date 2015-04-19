@@ -2,8 +2,10 @@ using System;
 using UnityEngine;
 
 
+
 public class HOOMANRUUUN : ReactiveBehaviour
 {
+	public float SAFEDISTANCE = 6f;
 
 	HumanState humanState;
 	
@@ -21,9 +23,8 @@ public class HOOMANRUUUN : ReactiveBehaviour
 		GameObject THINGTHATWANTSTOEATMYBRAINS = humanState.zombieSeen;
 
 		Vector3 RUNTHISWAY = - (THINGTHATWANTSTOEATMYBRAINS.transform.position - transform.position);
-		Vector3 FLYYOUFOOL = transform.position + RUNTHISWAY;
 
-		humanState.ChangeDestination (FLYYOUFOOL);
+		humanState.ChangeDestination (RUNTHISWAY.normalized * SAFEDISTANCE);
 		humanState.Run ();
 
 	}
