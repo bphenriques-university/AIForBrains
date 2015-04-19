@@ -118,7 +118,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464630}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &432256
 Transform:
   m_ObjectHideFlags: 1
@@ -130,7 +130,7 @@ Transform:
   m_LocalScale: {x: 1.00000012, y: 1.00000024, z: 1}
   m_Children: []
   m_Father: {fileID: 464630}
-  m_RootOrder: 1
+  m_RootOrder: 4
 --- !u!4 &461598
 Transform:
   m_ObjectHideFlags: 1
@@ -154,10 +154,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 461598}
-  - {fileID: 432256}
-  - {fileID: 424710}
   - {fileID: 473284}
   - {fileID: 493772}
+  - {fileID: 424710}
+  - {fileID: 432256}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &473284
@@ -171,7 +171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464630}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!4 &493772
 Transform:
   m_ObjectHideFlags: 1
@@ -183,7 +183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464630}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!54 &5425574
 Rigidbody:
   m_ObjectHideFlags: 1

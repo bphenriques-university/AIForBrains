@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+using UnityEngine.UI;
 
 public class HumanShooting : MonoBehaviour
 {
@@ -79,6 +79,7 @@ public class HumanShooting : MonoBehaviour
 		timer = 0f;
 
 		currentAmmo--;
+		transform.root.Find ("HUD").Find ("PlayerLabel").Find ("AmmoText").GetComponent<Text> ().text = currentAmmo + " Bullets";
 
 		// Play the gun shot audioclip.
 		gunAudio.Play ();

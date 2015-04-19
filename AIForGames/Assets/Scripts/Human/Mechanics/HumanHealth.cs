@@ -47,6 +47,7 @@ public class HumanHealth : MonoBehaviour
 		//FIXME FIXME FIXME
 		if (healthSlider != null) {
 			healthSlider.value = currentHealth;
+			healthSlider.enabled = false;
 		}
 
 		if(currentHealth <= 0)

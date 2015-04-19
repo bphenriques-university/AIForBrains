@@ -8,7 +8,7 @@ public class HumanSight : MonoBehaviour {
 		EnemyHealth enemyHealth = other.GetComponent<EnemyHealth> ();
 		
 		if (enemyHealth != null) {
-			Debug.Log("INIMIGO!");
+			//Debug.Log("INIMIGO!");
 		}
 		
 	}
