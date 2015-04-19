@@ -72,6 +72,11 @@ public class HumanShooting : MonoBehaviour
 	public bool CanAttack(){
 		return currentAmmo > 0 && timer >= timeBetweenBullets;
 	}
+
+	public void GrabAmmo(int ammo){
+		currentAmmo += ammo;
+		transform.root.Find ("HUD/AmmoText").GetComponent<Text> ().text = currentAmmo + " Bullets";
+	}
 	
 	public void Shoot ()
 	{

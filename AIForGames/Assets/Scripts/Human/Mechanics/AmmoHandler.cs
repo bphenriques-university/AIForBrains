@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class AmmoHandler : MonoBehaviour
@@ -14,7 +15,7 @@ public class AmmoHandler : MonoBehaviour
 		Ammo ammo = other.collider.GetComponent<Ammo> ();
 		
 		if (ammo != null) {
-			playerShotting.currentAmmo += ammo.GrabAmmo ();
+			playerShotting.GrabAmmo(ammo.GrabAmmo ());
 		}
 	}
 }

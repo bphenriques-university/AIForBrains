@@ -47,7 +47,8 @@ public class HumanHealth : MonoBehaviour
 		if (isDead)
 			return;
 
-		playerName.color = Color.red;	
+		playerName.color = Color.red;
+
 
 		damaged = true;
 
@@ -83,13 +84,13 @@ public class HumanHealth : MonoBehaviour
 
 
 		//Disable scripts
+		agentMovement.enabled = false;
+		agentShooting.enabled = false;
+		
 		PlayerMovement playerMovement = GetComponent<PlayerMovement> ();
 		if (playerMovement != null) {
 			playerMovement.enabled = false;
 		}
-
-		agentMovement.enabled = false;
-		agentShooting.enabled = false;
 
 		transform.FindChild ("ReactiveBehaviourManager").GetComponent<ReactiveBehaviourManager> ().enabled = false;
 
