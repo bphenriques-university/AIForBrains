@@ -146,6 +146,9 @@ public class ZombieState : MonoBehaviour
 	}
 
 	public void Leave(){
+		if (targetObject == null)
+			return;
+
 		HumanMovement m = targetObject.GetComponent<HumanMovement>();
 		
 		if(m != null){
