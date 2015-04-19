@@ -11,7 +11,7 @@ public class HumanHunger : MonoBehaviour
 	public float hungerLossSpeed = 1.0f;
 	public Slider hungerSlider;
 	public Text playerName;
-
+	public Text numberFood;
 	
 	protected float hunger;
 	protected HumanState humanState;
@@ -71,6 +71,7 @@ public class HumanHunger : MonoBehaviour
 	public void AddFood(Food food)
 	{
 		foods.Add (food);
+		numberFood.text = "( " + foods.Count + " )";
 	}
 
 	public void EatFood()
