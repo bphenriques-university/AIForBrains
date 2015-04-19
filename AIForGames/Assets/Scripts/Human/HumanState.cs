@@ -7,7 +7,9 @@ public class HumanState : MonoBehaviour
 	HumanHealth health;
 	HumanShooting shooting;
 	HumanMovement movement;
-	
+
+	public GameObject foodSeen;
+
 	void Awake(){
 		targetPosition = transform.position;
 		hunger = GetComponent<HumanHunger> ();
@@ -35,6 +37,7 @@ public class HumanState : MonoBehaviour
 	public GameObject targetObject;
 
 	public bool sawFood = false;
+	public bool onFood = false;
 	public bool sawZombie = false;
 	public bool sawHumanInDanger = false;
 	public bool grabbed = false;
@@ -51,6 +54,10 @@ public class HumanState : MonoBehaviour
 	
 	public bool IsSeeingFood(){
 		return sawFood;
+	}
+
+	public bool IsOnFood(){
+		return onFood;
 	}
 
 	public bool IsSeeingZombie(){
@@ -82,7 +89,7 @@ public class HumanState : MonoBehaviour
 	}
 	
 	public bool DidArrivedAtTargetPosition(){
-		return Vector3.Distance (transform.position, targetPosition) < 1.0;
+		return Vector3.Distance (transform.position, targetPosition) < 0.1;
 	}
 
 	
@@ -132,4 +139,8 @@ public class HumanState : MonoBehaviour
 		
 		return copy.position;
 	}
+
+
+
+
 }

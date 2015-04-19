@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Human
+  - Food
   layers:
   - Default
   - TransparentFX

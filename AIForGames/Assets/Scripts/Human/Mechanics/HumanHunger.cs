@@ -12,24 +12,33 @@ public class HumanHunger : MonoBehaviour
 
 	
 	private float hunger;
+	HumanState humanState;
 
 	private GameObject player;
 	HumanHealth hoomanHealth;
 
 	void Awake ()
 	{
+		humanState = transform.root.GetComponent <HumanState> ();
 		hoomanHealth = GetComponent <HumanHealth> ();
 		hunger = startingHunger;
 	}
 
 	void OnCollisionEnter (Collision other){
-	
-		Food food = other.collider.GetComponent<Food> ();
+
+		if (other.gameObject.tag == "Food") {
+			humanState.onFood = true;
+			humanState.foodSeen = other.gameObject;
+		}
+	}
+	/*
+	 * 
+	 Food food = other.collider.GetComponent<Food> ();
 
 		if (food != null) {
 			hunger += food.eat ();
 		}
-	}
+	 */
 
 	void Update()
 	{
@@ -50,6 +59,11 @@ public class HumanHunger : MonoBehaviour
 
 	public float getHungerLevel() {
 		return hunger;
+	}
+
+	public void addFood(float foodIncrease)
+	{
+		hunger += foodIncrease;
 	}
 
 }
