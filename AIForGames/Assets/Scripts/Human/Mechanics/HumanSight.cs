@@ -3,7 +3,6 @@ using System.Collections;
 
 public class HumanSight : MonoBehaviour {
 
-	Ray shootRay;
 	RaycastHit shootHit;
 	float range = 20f;
 	int shootableMask;
@@ -45,12 +44,23 @@ public class HumanSight : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag == "Enemy") {
+			//Debug.Log ("ZOMBIE! SHIT!");
 			if(isVisible(other)){
+				//Debug.Log ("ZOMBIE! SHIT2!");
+				if(humanState.sawZombie == true && humanState.zombieSeen != null){
 
-				//TODO: Tells you to run
+					if(isCloser (other.gameObject, humanState.zombieSeen)){
+						humanState.zombieSeen = other.gameObject;
+					}
 
+				}else{
+					humanState.sawZombie = true;
+					humanState.zombieSeen = other.gameObject;
+				}
+
+			}else{
+				humanState.sawZombie = false;
 			}
-
 
 		}
 
@@ -93,19 +103,28 @@ public class HumanSight : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 
 		if (other.gameObject.tag == "Food") {
-			//Fixme should verify is list empty
 			humanState.sawFood = false;
 		}
 
+		if (other.gameObject.tag == "Enemy") {
+			humanState.sawZombie = false;
+		}
+
+		if (other.gameObject.tag == "Ammo") {
+			humanState.sawAmmo = false;
+		}
+
+		
+		
 
 	
 	}
 
 	bool isVisible (Collider other)
 	{
-		Vector3 direction = other.transform.position - transform.position;
+		Vector3 direction = (other.transform.position) - transform.position;
 		if (Physics.Raycast (transform.position, direction.normalized, out shootHit, range, shootableMask)) {
-			//Debug.Log ("VI: Daqui: " + shootRay.origin + "para ali: " + other.transform.position + "vendo um " + shootHit.collider.gameObject);
+			//Debug.Log ("VI: Daqui: " + transform.position + "para ali: " + other.transform.position + "vendo um " + shootHit.collider.gameObject);
 			if (shootHit.collider.gameObject.Equals (other.gameObject)) {
 				//Debug.Log ("VI MESMO um " + shootHit.collider.gameObject);
 				return true;

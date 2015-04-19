@@ -639,6 +639,7 @@ RectTransform:
   - {fileID: 576430212}
   - {fileID: 1228118532}
   - {fileID: 1084052412}
+  - {fileID: 1884165087}
   m_Father: {fileID: 1388563034}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -4920,19 +4921,19 @@ Prefab:
       objectReference: {fileID: 119026753}
     - target: {fileID: 22464582, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22464582, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22402696, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22402696, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
@@ -5113,6 +5114,87 @@ Transform:
   - {fileID: 1609401917}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1884165086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1884165087}
+  - 222: {fileID: 1884165090}
+  - 114: {fileID: 1884165089}
+  - 114: {fileID: 1884165088}
+  m_Layer: 5
+  m_Name: HumansScaped
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1884165087
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884165086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 163350322}
+  m_RootOrder: 5
+  m_AnchorMin: {x: .5, y: 1}
+  m_AnchorMax: {x: .5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -60}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1884165088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884165086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1884165089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884165086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 46238fb1ad7a7a84ba8954c1c860994c, type: 3}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0 REMAINING
+--- !u!222 &1884165090
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884165086}
 --- !u!1 &1891145177
 GameObject:
   m_ObjectHideFlags: 0
@@ -5576,7 +5658,6 @@ GameObject:
   - 4: {fileID: 2037724455}
   - 65: {fileID: 2037724453}
   - 114: {fileID: 2037724454}
-  - 114: {fileID: 2037724456}
   m_Layer: 0
   m_Name: EscapeExit
   m_TagString: Untagged
@@ -5610,6 +5691,7 @@ MonoBehaviour:
   timeUntilEscape: 10
   escapeObstacle: {fileID: 1027585942}
   obstacleSize: 2
+  HumansEscaped: {fileID: 1884165089}
 --- !u!4 &2037724455
 Transform:
   m_ObjectHideFlags: 0
@@ -5622,23 +5704,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
---- !u!114 &2037724456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2037724452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6343e0c34ef99964680aa0b02986d46d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 0
-  hitSound: {fileID: 0}
-  deadSound: {fileID: 0}
-  healthSlider: {fileID: 0}
-  playerName: {fileID: 0}
 --- !u!1 &2047131020
 GameObject:
   m_ObjectHideFlags: 0

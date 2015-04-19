@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ReleaseEscape : MonoBehaviour {
@@ -6,6 +7,8 @@ public class ReleaseEscape : MonoBehaviour {
 	public float timeUntilEscape = 40f;
 	public GameObject escapeObstacle;
 	public float obstacleSize = 2f;
+
+	public Text HumansEscaped;
 
 	Vector3 finalObstaclePosition;
 
@@ -20,6 +23,8 @@ public class ReleaseEscape : MonoBehaviour {
 		if (timeUntilEscape < 0) {
 			moveObstacle();
 		}
+
+		HumansEscaped.text = GameOverManager.humansAlive + " Remaining";
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -27,6 +32,7 @@ public class ReleaseEscape : MonoBehaviour {
 		GameObject go = other.gameObject;
 		if(go.tag == "Human" || go.tag == "Player")
 		{
+			GameOverManager.humansAlive--;
 			Object.Destroy(go);
 		}
 	}

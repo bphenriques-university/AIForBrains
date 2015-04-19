@@ -40,6 +40,7 @@ public class HumanState : MonoBehaviour
 	public GameObject targetObject;
 	public GameObject foodSeen;
 	public GameObject ammoSeen;
+	public GameObject zombieSeen;
 
 	public bool sawFood = false;
 	public bool onFood = false;
