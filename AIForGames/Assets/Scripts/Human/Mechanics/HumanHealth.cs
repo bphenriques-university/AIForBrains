@@ -15,6 +15,7 @@ public class HumanHealth : MonoBehaviour
 	Animator anim;                                              // Reference to the Animator component.
 	NavMeshAgent agentMovement;                              // Reference to the player's movement.
 	HumanShooting agentShooting;                              // Reference to the PlayerShooting script.
+	Collider agentCollider;
 	bool isDead = false;                                                // Whether the player is dead.
 	bool damaged;
 
@@ -27,6 +28,7 @@ public class HumanHealth : MonoBehaviour
 		anim = GetComponent <Animator> ();
 		agentMovement = GetComponent <NavMeshAgent> ();
 		agentShooting = GetComponentInChildren <HumanShooting> ();
+		agentCollider = GetComponent<CapsuleCollider> ();
 		currentHealth = startingHealth;
 	}
 	
@@ -80,7 +82,7 @@ public class HumanHealth : MonoBehaviour
 		agentShooting.DisableEffects ();
 		
 		anim.SetTrigger ("Die");
-
+		agentCollider.isTrigger = true;
 
 		//Disable script
 

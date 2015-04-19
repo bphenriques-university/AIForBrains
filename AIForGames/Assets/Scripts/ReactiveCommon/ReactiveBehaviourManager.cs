@@ -5,6 +5,7 @@ using System.Reflection;
 public class ReactiveBehaviourManager : MonoBehaviour
 {
 	public ReactiveBehaviour[] behaviours;
+	public ReactiveBehaviour lastBehaviour;
 
 	public void Update(){
 
@@ -15,6 +16,7 @@ public class ReactiveBehaviourManager : MonoBehaviour
 
 				if (r.WasTriggered()) {
 					r.Action ();
+					lastBehaviour = r;
 					break;
 				}
 			}

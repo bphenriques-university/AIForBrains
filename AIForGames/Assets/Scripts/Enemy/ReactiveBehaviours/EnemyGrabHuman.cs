@@ -14,9 +14,12 @@ public class EnemyGrabHuman : ReactiveBehaviour
 	{
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
-			zombieState.targetInRangeToGrab = true;
-			zombieState.isAttacking = true;
-			zombieState.targetObject = other.gameObject;
+			HumanHealth hp = other.gameObject.GetComponent<HumanHealth>();
+			if (!hp.isHumanDead()) {
+				zombieState.targetInRangeToGrab = true;
+				zombieState.isAttacking = true;
+				zombieState.targetObject = other.gameObject;
+			}
 		}
 	}
 	

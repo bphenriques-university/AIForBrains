@@ -34,6 +34,7 @@ public class ZombieState : MonoBehaviour
 	float attackTimer;
 	float timerFromGrabUntilAttack = 0;
 	bool willWalk = false;
+	public HumanHealth targetObjectHP;
 
 	public bool targetInRangeToGrab;
 	bool targetGrabbed;
@@ -56,6 +57,14 @@ public class ZombieState : MonoBehaviour
 	/* ------------------------------------------*/
 	/* ----------------- Sensors  ---------------*/
 	/* ------------------------------------------*/
+
+	public bool IsTargetDead(){
+		if (targetObject != null) {
+			return targetObject.GetComponent<HumanHealth> ().isHumanDead ();
+		} else {
+			return false;
+		}
+	}
 
 	public bool IsSmellingHuman(){
 		return smelling;
@@ -110,16 +119,11 @@ public class ZombieState : MonoBehaviour
 	public void Attack ()
 	{
 		attackTimer = 0;
+		
 		HumanHealth humanHealth = targetObject.GetComponent<HumanHealth> ();
-
 		if (humanHealth != null) {
 			humanHealth.TakeDamage(attackDamage);
 			isAttacking = true;
-
-			if (humanHealth.isHumanDead()) {
-				Leave();
-				isAttacking = false;
-			}
 		}
 	}
 
@@ -166,6 +170,15 @@ public class ZombieState : MonoBehaviour
 			dest.y = 0;
 			GotoPosition (dest, randomWalkSpeed);
 		}
+	}
+
+	public void UnFollowTarget (){
+		smelling = false;
+		hearing = false;
+		isAttacking = false;
+		targetInRangeToGrab = false;
+		Leave ();
+		targetObject = null;
 	}
 
 	/* ------------------------------------------*/

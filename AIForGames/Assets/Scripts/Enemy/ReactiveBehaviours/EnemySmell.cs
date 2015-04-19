@@ -27,8 +27,12 @@ public class EnemySmell : ReactiveBehaviour
 		//will change this to collider
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
-			zombieState.smelling = true;
-			zombieState.targetObject = other.gameObject;
+			HumanHealth hp = other.gameObject.GetComponent<HumanHealth>();
+			if (!hp.isHumanDead()) {
+				zombieState.smelling = true;
+				zombieState.targetObject = other.gameObject;
+				zombieState.targetObjectHP = hp;
+			}
 		}
 	}
 	
@@ -36,8 +40,12 @@ public class EnemySmell : ReactiveBehaviour
 	{
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
+
 			zombieState.smelling = false;
 			zombieState.targetPosition = other.gameObject.transform.position;
+			zombieState.targetObjectHP = null;
+		
+
 		}
 	}
 }
