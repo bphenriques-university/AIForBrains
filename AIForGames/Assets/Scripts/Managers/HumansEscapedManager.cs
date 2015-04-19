@@ -7,7 +7,7 @@ public class HumansEscapedManager : MonoBehaviour
 	
 	Animator anim;                          // Reference to the animator component.
 	float restartTimer;                     // Timer to count up to restarting the level
-	AudioSource audio;                      // Reference to the AudioSource component.
+	AudioSource audioSource;                      // Reference to the AudioSource component.
 
 	bool gameWon = false;
 	
@@ -16,7 +16,7 @@ public class HumansEscapedManager : MonoBehaviour
 	{
 		// Set up the reference.
 		anim = GetComponent <Animator> ();
-		audio = GetComponent <AudioSource> ();
+		audioSource = GetComponent <AudioSource> ();
 	}
 	
 	
@@ -27,7 +27,7 @@ public class HumansEscapedManager : MonoBehaviour
 		if (humans.Length + player.Length <= 0) {
 			if (!gameWon) {
 				anim.SetTrigger ("HumansEscaped");
-				audio.Play();
+				audioSource.Play();
 				gameWon = true;
 			}
 

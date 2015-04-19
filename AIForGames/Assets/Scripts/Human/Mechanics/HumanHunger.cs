@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class HumanHunger : MonoBehaviour
@@ -13,10 +14,13 @@ public class HumanHunger : MonoBehaviour
 
 	
 	private float hunger;
-	HumanState humanState;
+	private HumanState humanState;
 
 	private GameObject player;
-	HumanHealth hoomanHealth;
+	private HumanHealth hoomanHealth;
+
+	private List<Food> foods = new List<Food>();
+
 
 
 	void Awake ()
@@ -60,13 +64,36 @@ public class HumanHunger : MonoBehaviour
 		}
 	}
 
-	public float getHungerLevel() {
+	public float GetHungerLevel() {
 		return hunger;
 	}
 
-	public void addFood(float foodIncrease)
+	public void AddFood(Food food)
 	{
-		hunger += foodIncrease;
+		foods.Add (food);
+	}
+
+	public void EatFood()
+	{
+		if (!HasFood ())
+			return;
+
+		Food largestFood = foods[0];
+		foreach (Food food in foods) {
+			if(food.foodPoints > largestFood.foodPoints)
+				largestFood = food;
+		}
+
+		hunger += largestFood.foodPoints;
+		foods.Remove (largestFood);
+	}
+
+	public bool HasFood(){
+		return foods.Count > 0;
+	}
+
+	public int GetFoodCarried(){
+		return foods.Count;
 	}
 
 }

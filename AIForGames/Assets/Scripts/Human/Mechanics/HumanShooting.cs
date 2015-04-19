@@ -21,7 +21,6 @@ public class HumanShooting : MonoBehaviour
 	AudioSource gunAudio;                           // Reference to the audio source.
 	Light gunLight;                                 // Reference to the light component.
 	float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-	int AbleToHearLayer = 10;
 	List<EnemyHearing> enemysAbleToHear = new List<EnemyHearing> ();
 	
 	public void addEnemyAbleToHear(EnemyHearing enemyScript) {

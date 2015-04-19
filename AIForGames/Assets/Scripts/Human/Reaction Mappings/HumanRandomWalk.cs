@@ -48,7 +48,6 @@ public class HumanRandomWalk : ReactiveBehaviour
 	}
 
 	private void changeDirection() {
-		int i =0;
 		while (true) {
 			Vector3 randomDirection = Random.onUnitSphere;
 			randomDirection.y = 0;

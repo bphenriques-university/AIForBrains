@@ -1,9 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 public class HumanEatFood : ReactiveBehaviour
 {
-	
+	public readonly float minHungerToEat = 30f;
+
 	HumanState humanState;
 	
 	void Awake(){
@@ -12,27 +13,12 @@ public class HumanEatFood : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.IsOnFood ();
+		return humanState.HungerLevel() < minHungerToEat && humanState.FoodCarried () > 0;
 	}
 	
 	protected override void Execute ()
 	{
 
-		GameObject foodObject = humanState.foodSeen;
-		Debug.Log ("On food!");
-		//Due to non-deterministic environment
-		if (foodObject == null) {
-			humanState.onFood = false;
-			humanState.sawFood = false;
-			return;
-		}
-
-		Food food = foodObject.GetComponent<Food> ();
-		HumanHunger hunger = transform.root.GetComponent<HumanHunger>();
-		hunger.addFood(food.eat());
-
-		humanState.onFood = false;
-		humanState.sawFood = false;
-
+		humanState.EatFood ();
 	}
 }

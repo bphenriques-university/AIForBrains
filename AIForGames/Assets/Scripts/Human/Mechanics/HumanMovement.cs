@@ -8,7 +8,6 @@ public class HumanMovement : MonoBehaviour
 	public float walkSpeed = 2f;            // The speed that the player will move at.
 	public Text playerText;
 
-	HumanHealth humanHealth;
 	bool isGrabbed = false;
 	NavMeshAgent nav;
 	Animator anim;
@@ -18,7 +17,6 @@ public class HumanMovement : MonoBehaviour
 	{
 		nav = GetComponent<NavMeshAgent> ();
 		anim = GetComponent<Animator> ();
-		humanHealth = GetComponent<HumanHealth> ();
 	}
 
 	void Update ()

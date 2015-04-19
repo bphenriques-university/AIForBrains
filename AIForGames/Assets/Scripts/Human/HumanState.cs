@@ -32,7 +32,6 @@ public class HumanState : MonoBehaviour
 	/* ------------------------------------------*/
 	
 	float attackTimer;
-	bool willWalk = false;
 	
 	public bool targetObjectInRangeToAttack;
 	public Vector3 targetPosition;
@@ -94,8 +93,12 @@ public class HumanState : MonoBehaviour
 		return sawAmmo;
 	}
 
+	public int FoodCarried () {
+		return hunger.GetFoodCarried ();
+	}
+
 	public float HungerLevel() {
-		return hunger.getHungerLevel ();
+		return hunger.GetHungerLevel ();
 	}
 
 	public int HealthLevel() {
@@ -112,11 +115,11 @@ public class HumanState : MonoBehaviour
 	/* ------------------------------------------*/
 
 	public void EatFood() {
-
+		hunger.EatFood ();
 	}
 
-	public void CatchFood() {
-
+	public void CatchFood(Food food) {
+		hunger.AddFood (food);
 	}
 	
 	public void FireWeapon(){

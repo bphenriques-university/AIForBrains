@@ -1,33 +1,36 @@
-using System;
 using UnityEngine;
+using System;
 
 public class HumanCatchFood : ReactiveBehaviour
 {
-
+	
 	HumanState humanState;
 	
 	void Awake(){
 		humanState = transform.root.GetComponent <HumanState> ();
 	}
-
+	
 	protected override bool IsInSituation ()
 	{
-		return !humanState.IsGrabbed () && humanState.IsSeeingFood ();
+		return humanState.IsOnFood ();
 	}
-
+	
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.foodSeen;
 
-		if (humanState.foodSeen == null) {
+		GameObject foodObject = humanState.foodSeen;
+		//Due to non-deterministic environment
+		if (foodObject == null) {
+			humanState.onFood = false;
 			humanState.sawFood = false;
 			return;
 		}
 
-		Vector3 foodPosition = gameObject.transform.position;
-		humanState.ChangeDestination (foodPosition);
-		humanState.Walk ();
+		Food food = foodObject.GetComponent<Food> ();
+		humanState.CatchFood (food.catchFood ());
+
+		humanState.onFood = false;
+		humanState.sawFood = false;
+
 	}
 }
-
-
