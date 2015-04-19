@@ -20,6 +20,7 @@ public class HumanHealth : MonoBehaviour
 
 	bool wasDamaged;
 
+	Color previousColor;
 
 	void Awake ()
 	{
@@ -36,7 +37,7 @@ public class HumanHealth : MonoBehaviour
 		damaged = false;
 
 		if(wasDamaged)
-			playerName.color = Color.white;	
+			playerName.color = previousColor;	
 
 		wasDamaged = false;
 	}
@@ -47,6 +48,7 @@ public class HumanHealth : MonoBehaviour
 		if (isDead)
 			return;
 
+		previousColor = playerName.color;
 		playerName.color = Color.red;
 
 
@@ -56,11 +58,8 @@ public class HumanHealth : MonoBehaviour
 
 		hitSound.Play ();
 
-		//FIXME FIXME FIXME
-		if (healthSlider != null) {
-			healthSlider.value = currentHealth;
-			healthSlider.enabled = false;
-		}
+		healthSlider.value = currentHealth;
+		healthSlider.enabled = false;
 
 		if(currentHealth <= 0)
 		{
