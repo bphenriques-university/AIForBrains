@@ -22,8 +22,6 @@ public class HumansManager : MonoBehaviour
 			return;
 		
 		int numSpawnsPerArea = max_number_spawns / spawnAreas.Length;
-		print ("numSpawnPerArea = " + numSpawnsPerArea);
-		
 		
 		foreach (Transform t in spawnAreas) {
 			spawn (t, numSpawnsPerArea);
@@ -59,6 +57,7 @@ public class HumansManager : MonoBehaviour
 			human.GetComponent<HumanHealth>().healthSlider = sliders[0];
 			human.GetComponent<HumanHunger>().hungerSlider = sliders[1];
 
+			GameOverManager.humansAlive++;
 		}
 	}
 

@@ -18,7 +18,7 @@ public class EnemyHearing : ReactiveBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		if(other.gameObject.tag == "Human" || other.gameObject.tag == "Player")
+		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
 			PlayerShooting shoot = other.gameObject.GetComponentInChildren<PlayerShooting>();
 			shoot.addEnemyAbleToHear(this);
@@ -27,7 +27,7 @@ public class EnemyHearing : ReactiveBehaviour
 	
 	void OnTriggerExit (Collider other)
 	{
-		if(other.gameObject.tag == "Human" || other.gameObject.tag == "Player")
+		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
 			PlayerShooting shoot = other.gameObject.GetComponentInChildren<PlayerShooting>();
 			shoot.removeEnemyAbleToHear(this);

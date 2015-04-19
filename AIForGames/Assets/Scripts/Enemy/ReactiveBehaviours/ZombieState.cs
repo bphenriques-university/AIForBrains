@@ -3,14 +3,10 @@ using System.Collections;
 
 public class ZombieState : MonoBehaviour
 {
-	GameObject player;
-	PlayerHealth playerHealth;
 	NavMeshAgent nav;
 
 	void Awake(){
 		targetPosition = transform.position;
-		player = GameObject.FindGameObjectWithTag ("Player");
-		playerHealth = player.GetComponent <PlayerHealth> ();
 		nav = GetComponent <NavMeshAgent> ();
 	}
 
@@ -88,7 +84,11 @@ public class ZombieState : MonoBehaviour
 	public void Attack ()
 	{
 		attackTimer = 0;
-		playerHealth.TakeDamage (attackDamage);	
+		HumanHealth humanHealth = targetObject.GetComponent<HumanHealth> ();
+
+		if (humanHealth != null) {
+			humanHealth.TakeDamage(attackDamage);
+		}
 	}
 
 	/* ------------------------------------------*/

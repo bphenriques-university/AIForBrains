@@ -4,17 +4,15 @@ using System.Collections;
 public class EnemyAttack : ReactiveBehaviour
 {
 	ZombieState zombieState;	
-	GameObject player;
 
 	void Awake ()
 	{
 		zombieState = transform.root.GetComponent <ZombieState> ();
-		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 	
 	void OnTriggerEnter (Collider other)
 	{
-		if(other.gameObject == player)
+		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
 			zombieState.targetObjectInRangeToAttack = true;
 		}
@@ -22,7 +20,7 @@ public class EnemyAttack : ReactiveBehaviour
 
 	void OnTriggerExit (Collider other)
 	{
-		if(other.gameObject == player)
+		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
 			zombieState.targetObjectInRangeToAttack = false;
 		}

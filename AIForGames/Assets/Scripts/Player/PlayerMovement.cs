@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
 	void Awake ()
 	{
+
+		GameOverManager.humansAlive++;
+
 		// Create a layer mask for the floor layer.
 		floorMask = LayerMask.GetMask ("Floor");
 		

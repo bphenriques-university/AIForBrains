@@ -18,9 +18,8 @@ public class HumanHunger : MonoBehaviour
 
 	void Awake ()
 	{
-		// Setting up the references.
 		hoomanHealth = GetComponent <HumanHealth> ();
-		// Set the initial hunger of the player.
+
 		hunger = startingHunger;
 	}
 
@@ -29,11 +28,8 @@ public class HumanHunger : MonoBehaviour
 		Food food = other.collider.GetComponent<Food> ();
 
 		if (food != null) {
-
 			hunger += food.eat ();
-
 		}
-
 	}
 
 	void Update()
@@ -44,7 +40,6 @@ public class HumanHunger : MonoBehaviour
 			else {
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
 				hungerSlider.value = hunger;
-				//print (hunger);
 			}
 		}
 	}

@@ -5,11 +5,9 @@ using System.Collections;
 public class EnemySmell : ReactiveBehaviour
 {
 	ZombieState zombieState;
-	GameObject player;
 
 	void Awake ()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player");
 		zombieState = transform.root.GetComponent <ZombieState> ();
 	}
 
@@ -27,7 +25,7 @@ public class EnemySmell : ReactiveBehaviour
 	void OnTriggerEnter (Collider other)
 	{
 		//will change this to collider
-		if(other.gameObject == player)
+		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
 			print ("Smelled delicious human");
 			zombieState.smelling = true;
@@ -37,7 +35,7 @@ public class EnemySmell : ReactiveBehaviour
 	
 	void OnTriggerExit (Collider other)
 	{
-		if(other.gameObject == player)
+		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
 			print ("Not smelling delicious human");
 			zombieState.smelling = false;
