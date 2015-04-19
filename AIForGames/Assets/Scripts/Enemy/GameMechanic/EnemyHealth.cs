@@ -47,7 +47,11 @@ public class EnemyHealth : MonoBehaviour
 	
 	void Death ()
 	{
+
+		GameOverManager.zombiesAlive--;
+
 		GetComponent <NavMeshAgent> ().enabled = false;
+
 
 		foreach( Transform child in transform )
 		{

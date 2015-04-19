@@ -6,6 +6,8 @@ public class ZombieState : MonoBehaviour
 	NavMeshAgent nav;
 
 	void Awake(){
+		GameOverManager.zombiesAlive++;
+
 		targetPosition = transform.position;
 		nav = GetComponent <NavMeshAgent> ();
 	}
