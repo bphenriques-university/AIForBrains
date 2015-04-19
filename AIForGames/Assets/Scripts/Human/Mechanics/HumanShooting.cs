@@ -10,6 +10,7 @@ public class HumanShooting : MonoBehaviour
 	public float range = 100f;                      // The distance the gun can fire.
 	public float rangeShootingSound = 10;
 	public int currentAmmo = 10;
+	public Text ammoText;
 
 	float timer;                                    // A timer to determine when to fire.
 	Ray shootRay;                                   // A ray from the gun end forwards.
@@ -20,7 +21,6 @@ public class HumanShooting : MonoBehaviour
 	AudioSource gunAudio;                           // Reference to the audio source.
 	Light gunLight;                                 // Reference to the light component.
 	float effectsDisplayTime = 0.2f;                // The proportion of the timeBetweenBullets that the effects will display for.
-	Text ammoText;
 	int AbleToHearLayer = 10;
 	List<EnemyHearing> enemysAbleToHear = new List<EnemyHearing> ();
 	
@@ -41,14 +41,6 @@ public class HumanShooting : MonoBehaviour
 		gunLine = GetComponent <LineRenderer> ();
 		gunAudio = GetComponent<AudioSource> ();
 		gunLight = GetComponent<Light> ();
-
-		foreach (Text c in GetComponentsInChildren<Text>()) {
-			if(c.name == "AmmoText"){
-				ammoText = c;
-				break;
-			}
-		}
-
 	}
 	
 	void Update ()

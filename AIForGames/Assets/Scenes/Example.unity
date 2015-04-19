@@ -1425,64 +1425,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.76299429, y: .50775975, z: 1.17907608}
   m_Center: {x: 1.33791316, y: -.246113271, z: .354588568}
---- !u!1001 &427910098
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: .692101538
-      objectReference: {fileID: 0}
-    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.19209318e-07
-      objectReference: {fileID: 0}
-    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.06978226
-      objectReference: {fileID: 0}
-    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 22403560, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22403560, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22488294, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22488294, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &504050089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2298,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1039426171}
   m_RootOrder: 4
+--- !u!1001 &999491632
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .692101538
+      objectReference: {fileID: 0}
+    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.19209318e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.06978226
+      objectReference: {fileID: 0}
+    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426690, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 22403560, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22403560, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488294, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22488294, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 691a50102e7d62f45af3415ea1294e81, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1003959373
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,7 +3905,7 @@ MonoBehaviour:
   - {fileID: 705582648}
   - {fileID: 136773352}
   radius: 1
-  max_number_spawns: 5
+  max_number_spawns: 1
   agentNames:
   - Mr. Smith
   - Lady Gaga
@@ -5694,6 +5694,8 @@ MonoBehaviour:
   currentHealth: 0
   hitSound: {fileID: 0}
   deadSound: {fileID: 0}
+  healthSlider: {fileID: 0}
+  playerName: {fileID: 0}
 --- !u!1 &2047131020
 GameObject:
   m_ObjectHideFlags: 0
