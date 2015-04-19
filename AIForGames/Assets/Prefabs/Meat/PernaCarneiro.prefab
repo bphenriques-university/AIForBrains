@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2369454}
   - 114: {fileID: 11414278}
   - 136: {fileID: 13676958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PernaCarneiro
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .505360901, y: .579590201, z: 1.8278904}
+  m_LocalPosition: {x: .227956772, y: .579590201, z: 7.52427006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2391114}
   - 114: {fileID: 11471148}
   - 65: {fileID: 6500648}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PernaPorco
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0875474513, y: .0914613456, z: 1.94690108}
+  m_LocalPosition: {x: -9.67000008, y: .0900000036, z: 17.6900005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
