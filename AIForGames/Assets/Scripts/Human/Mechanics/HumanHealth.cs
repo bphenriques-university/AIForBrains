@@ -82,7 +82,8 @@ public class HumanHealth : MonoBehaviour
 		anim.SetTrigger ("Die");
 
 
-		//Disable scripts
+		//Disable script
+
 		agentMovement.enabled = false;
 		agentShooting.enabled = false;
 		

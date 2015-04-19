@@ -52,6 +52,8 @@ public class EnemyHealth : MonoBehaviour
 
 		GetComponent <NavMeshAgent> ().enabled = false;
 
+		GetComponent<ZombieState> ().Leave ();
+
 
 		foreach( Transform child in transform )
 		{
