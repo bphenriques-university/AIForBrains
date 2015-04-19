@@ -23,7 +23,7 @@ public class HumanCatchFood : ReactiveBehaviour
 			humanState.sawFood = false;
 			return;
 		}
-
+		//Debug.Log ("going for food!");
 		Vector3 foodPosition = gameObject.transform.position;
 		humanState.ChangeDestination (foodPosition);
 		humanState.Walk ();

@@ -22,7 +22,7 @@ public class HumanSight : MonoBehaviour {
 		}
 		
 		if (other.gameObject.tag == "Food") {
-			Debug.Log("SeeingFOOD!");
+
 			humanState.sawFood = true;
 			//Fixme shoul add to list
 			humanState.foodSeen = other.gameObject;
@@ -31,11 +31,12 @@ public class HumanSight : MonoBehaviour {
 	}
 
 	void OnTriggerExit(Collider other){
-
+		/*
 		if (other.gameObject.tag == "Food") {
 			//Fixme should verify is list empty
 			humanState.sawFood = false;
 		}
+		*/
 
 	
 	}

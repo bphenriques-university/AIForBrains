@@ -89,7 +89,7 @@ public class HumanState : MonoBehaviour
 	}
 	
 	public bool DidArrivedAtTargetPosition(){
-		return Vector3.Distance (transform.position, targetPosition) < 0.1;
+		return Vector3.Distance (transform.position, targetPosition) < 1;
 	}
 
 	

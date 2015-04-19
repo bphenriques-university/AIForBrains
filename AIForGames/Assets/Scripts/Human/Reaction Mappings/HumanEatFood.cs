@@ -19,7 +19,7 @@ public class HumanEatFood : ReactiveBehaviour
 	{
 
 		GameObject foodObject = humanState.foodSeen;
-
+		//Debug.Log ("On food!");
 		//Due to non-deterministic environment
 		if (foodObject == null) {
 			humanState.onFood = false;
