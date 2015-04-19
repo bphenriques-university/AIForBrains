@@ -11,6 +11,8 @@ public class HumanState : MonoBehaviour
 	public GameObject foodSeen;
 
 	void Awake(){
+		GameOverManager.humansAlive++;
+
 		targetPosition = transform.position;
 		hunger = GetComponent<HumanHunger> ();
 		health = GetComponent<HumanHealth> ();

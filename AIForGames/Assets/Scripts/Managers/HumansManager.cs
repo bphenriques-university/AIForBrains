@@ -44,8 +44,6 @@ public class HumansManager : MonoBehaviour
 			GameObject human = Instantiate (spawneeObject, copy.position, copy.rotation) as GameObject;
 			human.transform.Find ("HUD/PlayerName").GetComponent<Text>().text = agentNames[nameIndex];
 			nameIndex = (nameIndex + 1) % agentNames.Length;
-
-			GameOverManager.humansAlive++;
 		}
 	}
 }

@@ -19,7 +19,7 @@ public class HumanRandomWalk : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return true;
+		return !humanState.IsGrabbed();
 	}
 	
 	protected override void Execute ()

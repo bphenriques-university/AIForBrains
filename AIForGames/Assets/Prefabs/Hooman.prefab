@@ -1106,6 +1106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 6
   walkSpeed: 2
+  playerText: {fileID: 11429866}
 --- !u!114 &11463772
 MonoBehaviour:
   m_ObjectHideFlags: 1

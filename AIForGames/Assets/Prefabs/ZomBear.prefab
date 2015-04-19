@@ -296,11 +296,27 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424518}
-  - 135: {fileID: 13516660}
   - 54: {fileID: 5453570}
   - 114: {fileID: 11486094}
   m_Layer: 0
   m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &155086
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432690}
+  - 135: {fileID: 13517256}
+  - 114: {fileID: 11452596}
+  m_Layer: 0
+  m_Name: GrabHuman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,6 +599,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 494762}
   m_RootOrder: 13
+--- !u!4 &432690
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 446266}
+  m_RootOrder: 4
 --- !u!4 &433482
 Transform:
   m_ObjectHideFlags: 1
@@ -621,6 +649,7 @@ Transform:
   - {fileID: 456530}
   - {fileID: 469794}
   - {fileID: 443420}
+  - {fileID: 432690}
   m_Father: {fileID: 400000}
   m_RootOrder: 4
 --- !u!4 &455408
@@ -895,6 +924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: .5
+  timeUntilAttack: 1
   attackDamage: 10
   followNoiseSpeed: 1.5
   followHumanSpeed: 2.5
@@ -915,11 +945,12 @@ MonoBehaviour:
   - {fileID: 419000}
   - {fileID: 432620}
   - {fileID: 496656}
-  targetObjectInRangeToAttack: 0
+  targetInRangeToGrab: 0
   targetPosition: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
   hearing: 0
   smelling: 0
+  isAttacking: 0
 --- !u!114 &11429054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -953,6 +984,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973aa471f5f0b4b7c9773d274b107c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11452596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a73a35dc0a0ce4da4932feabab96b93f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11465004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -966,6 +1008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - {fileID: 11486094}
+  - {fileID: 11452596}
   - {fileID: 11452422}
   - {fileID: 11429054}
   - {fileID: 11437996}
@@ -980,12 +1023,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca62e2fd490c4c70ac146b90031a675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13516660
+--- !u!135 &13517256
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151438}
+  m_GameObject: {fileID: 155086}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

@@ -12,7 +12,7 @@ public class HumanCatchFood : ReactiveBehaviour
 
 	protected override bool IsInSituation ()
 	{
-		return humanState.IsSeeingFood ();
+		return !humanState.IsGrabbed () && humanState.IsSeeingFood ();
 	}
 
 	protected override void Execute ()

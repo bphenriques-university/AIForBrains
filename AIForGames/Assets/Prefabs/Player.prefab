@@ -814,8 +814,8 @@ MonoBehaviour:
   currentHealth: 0
   hitSound: {fileID: 8284280}
   deadSound: {fileID: 8299886}
-  healthSlider: {fileID: 0}
-  playerName: {fileID: 0}
+  healthSlider: {fileID: 11412658}
+  playerName: {fileID: 11425138}
 --- !u!114 &11425138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -998,8 +998,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHunger: 80
   hungerLossSpeed: 1
-  hungerSlider: {fileID: 0}
-  playerName: {fileID: 0}
+  hungerSlider: {fileID: 11418790}
+  playerName: {fileID: 11425138}
 --- !u!114 &11479504
 MonoBehaviour:
   m_ObjectHideFlags: 1

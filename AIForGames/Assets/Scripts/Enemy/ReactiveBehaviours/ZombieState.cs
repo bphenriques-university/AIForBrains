@@ -17,6 +17,8 @@ public class ZombieState : MonoBehaviour
 	/* ------------------------------------------*/
 
 	public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
+	public float timeUntilAttack = 1.0f;
+
 	public int attackDamage = 10;               // The amount of health taken away per attack
 	public float followNoiseSpeed = 1.5f;
 	public float followHumanSpeed = 2.5f;
@@ -30,16 +32,23 @@ public class ZombieState : MonoBehaviour
 	/* ------------------------------------------*/
 
 	float attackTimer;
+	float timerFromGrabUntilAttack = 0;
 	bool willWalk = false;
 
-	public bool targetObjectInRangeToAttack;
+	public bool targetInRangeToGrab;
+	bool targetGrabbed;
 	public Vector3 targetPosition;
 	public GameObject targetObject;
 	public bool hearing = false;
 	public bool smelling = false;
-
+	public bool isAttacking;
+	
 	void Update(){
 		attackTimer += Time.deltaTime;
+
+		//print (timerFromGrabUntilAttack);
+		if(targetGrabbed)
+			timerFromGrabUntilAttack += Time.deltaTime;
 	}
 
 	/* ------------------------------------------*/
@@ -62,8 +71,16 @@ public class ZombieState : MonoBehaviour
 		return Vector3.Distance (transform.position, targetPosition) < 1.0;
 	}
 
+	public bool CanGrab(){
+		return targetInRangeToGrab;
+	}
+
+	public bool CanStartToAttack(){
+		return targetGrabbed && timerFromGrabUntilAttack >= timeUntilAttack;
+	}
+
 	public bool CanAttack(){
-		return attackTimer >= timeBetweenAttacks && targetObjectInRangeToAttack;
+		return  isAttacking && attackTimer >= timeBetweenAttacks && targetGrabbed;
 	}
 
 	/* ------------------------------------------*/
@@ -90,6 +107,43 @@ public class ZombieState : MonoBehaviour
 
 		if (humanHealth != null) {
 			humanHealth.TakeDamage(attackDamage);
+			isAttacking = true;
+		}
+	}
+
+	public void Grab(){
+		print (targetObject.name);
+		HumanMovement m = targetObject.GetComponent<HumanMovement>();
+
+		if(m != null){
+			m.SetGrab(true);
+			targetGrabbed = true;
+			return;
+		}
+
+		PlayerMovement p = targetObject.GetComponent<PlayerMovement> ();
+		if (p != null) {
+			p.SetMove (true);
+			targetGrabbed = true;
+			return;
+		}
+
+	}
+
+	public void Leave(){
+		HumanMovement m = targetObject.GetComponent<HumanMovement>();
+		
+		if(m != null){
+			m.SetGrab(false);
+			targetGrabbed = false;
+			timerFromGrabUntilAttack = 0;
+		}
+
+		PlayerMovement p = targetObject.GetComponent<PlayerMovement> ();
+		if (p != null) {
+			p.SetMove (false);
+			targetGrabbed = false;
+			return;
 		}
 	}
 

@@ -11,6 +11,11 @@ public class PlayerMovement : MonoBehaviour
 	int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
+	bool canMove = true;
+
+	public void SetMove(bool value){
+		canMove = value;
+	}
 
 	void Awake ()
 	{
@@ -28,18 +33,20 @@ public class PlayerMovement : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		// Store the input axes.
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxisRaw ("Vertical");
+		if (canMove) {
+			// Store the input axes.
+			float h = Input.GetAxisRaw ("Horizontal");
+			float v = Input.GetAxisRaw ("Vertical");
 		
-		// Move the player around the scene.
-		Move (h, v);
+			// Move the player around the scene.
+			Move (h, v);
 		
-		// Turn the player to face the mouse cursor.
-		Turning ();
+			// Turn the player to face the mouse cursor.
+			Turning ();
 		
-		// Animate the player.
-		Animating (h, v);
+			// Animate the player.
+			Animating (h, v);
+		}
 	}
 	
 	void Move (float h, float v)
