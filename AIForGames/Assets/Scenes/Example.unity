@@ -2378,7 +2378,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464630, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11416386, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: cameraHolderTransform
@@ -2386,19 +2386,19 @@ Prefab:
       objectReference: {fileID: 119026753}
     - target: {fileID: 22464582, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22464582, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22402696, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22402696, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
@@ -3770,6 +3770,35 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1466085994}
+--- !u!1 &1484990620 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 128720, guid: 55eafd25243db43339a481c4ae8e440a, type: 2}
+  m_PrefabInternal: {fileID: 1027998028}
+--- !u!114 &1484990628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1484990620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485eb9f5fbe8f314ba2c0161f04fbf5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomPoints: []
+  targetObjectInRangeToAttack: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+  targetObject: {fileID: 0}
+  foodSeen: {fileID: 0}
+  ammoSeen: {fileID: 0}
+  sawFood: 0
+  onFood: 0
+  sawZombie: 0
+  sawHumanInDanger: 0
+  grabbed: 0
+  bitten: 0
+  sawAmmo: 0
+  onAmmo: 0
 --- !u!1 &1504906493
 GameObject:
   m_ObjectHideFlags: 0
