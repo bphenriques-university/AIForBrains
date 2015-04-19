@@ -42,6 +42,7 @@ public class ZombieState : MonoBehaviour
 	public bool hearing = false;
 	public bool smelling = false;
 	public bool isAttacking;
+
 	
 	void Update(){
 		attackTimer += Time.deltaTime;

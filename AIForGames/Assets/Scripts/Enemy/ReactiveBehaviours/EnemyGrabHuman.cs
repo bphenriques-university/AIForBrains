@@ -17,7 +17,6 @@ public class EnemyGrabHuman : ReactiveBehaviour
 			zombieState.targetInRangeToGrab = true;
 			zombieState.isAttacking = true;
 			zombieState.targetObject = other.gameObject;
-			zombieState.Grab();
 		}
 	}
 	
