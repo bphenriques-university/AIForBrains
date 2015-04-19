@@ -44,9 +44,9 @@ public class HumanSight : MonoBehaviour {
 		}
 
 		if (other.gameObject.tag == "Enemy") {
-			//Debug.Log ("ZOMBIE! SHIT!");
+			//Debug.Log ("ZOMBIE!");
 			if(isVisible(other)){
-				//Debug.Log ("ZOMBIE! SHIT2!");
+				//Debug.Log ("ZOMBIE!");
 				if(humanState.sawZombie == true && humanState.zombieSeen != null){
 
 					if(isCloser (other.gameObject, humanState.zombieSeen)){

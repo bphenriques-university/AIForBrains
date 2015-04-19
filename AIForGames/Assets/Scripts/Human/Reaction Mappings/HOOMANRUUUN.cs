@@ -5,16 +5,28 @@ using UnityEngine;
 
 public class HOOMANRUUUN : ReactiveBehaviour
 {
-	public float SAFEDISTANCE = 6f;
+	public float SAFEDISTANCE = 15f;
+	public float GOTTARUNTIME = 2f;
+	float timer;
 
 	HumanState humanState;
 	
 	void Awake(){
 		humanState = transform.root.GetComponent <HumanState> ();
+		timer = GOTTARUNTIME + 1;
 	}
 
 	protected override bool IsInSituation ()
 	{
+
+		timer += Time.deltaTime;
+		if (timer < GOTTARUNTIME) {
+			return true;
+		} else {
+			if(humanState.IsSeeingZombie())
+				timer = 0f;
+		}
+
 		return !humanState.IsGrabbed () && humanState.IsSeeingZombie ();
 	}
 
@@ -24,7 +36,7 @@ public class HOOMANRUUUN : ReactiveBehaviour
 
 		Vector3 RUNTHISWAY = - (THINGTHATWANTSTOEATMYBRAINS.transform.position - transform.position);
 
-		humanState.ChangeDestination (RUNTHISWAY.normalized * SAFEDISTANCE);
+		humanState.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
 		humanState.Run ();
 
 	}
