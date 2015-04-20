@@ -569,7 +569,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 136773351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.36999989, y: 0, z: 1.90999997}
+  m_LocalPosition: {x: -5.4000001, y: 0, z: 16.2999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1504906494}
@@ -1364,6 +1364,46 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.76299429, y: .50775975, z: 1.17907608}
   m_Center: {x: 1.33791316, y: -.246113271, z: .354588568}
+--- !u!1 &492170349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 492170350}
+  - 65: {fileID: 492170351}
+  m_Layer: 9
+  m_Name: Escape
+  m_TagString: EscapeExit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &492170350
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492170349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -.899999976}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2037724455}
+  m_RootOrder: 0
+--- !u!65 &492170351
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492170349}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &504050089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1475,7 @@ Transform:
   - {fileID: 813647618}
   - {fileID: 187877283}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &576430208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1784,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 705582647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5699997, y: 0, z: -12.6000004}
+  m_LocalPosition: {x: 16.3799992, y: 0, z: 8.17000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1504906494}
@@ -2043,8 +2083,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 827964303}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.57999992, y: 0, z: -.129999995}
+  m_LocalRotation: {x: 0, y: .866025507, z: 0, w: .499999881}
+  m_LocalPosition: {x: 1.07000005, y: 0, z: -19.7999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1504906494}
@@ -3787,7 +3827,7 @@ MonoBehaviour:
   - {fileID: 705582648}
   - {fileID: 136773352}
   radius: 1
-  max_number_spawns: 5
+  max_number_spawns: 20
   agentNames:
   - Mr. Smith
   - Lady Gaga
@@ -5258,7 +5298,7 @@ MonoBehaviour:
   - {fileID: 960905422}
   - {fileID: 1639448606}
   radius: 3
-  max_number_spawns: 20
+  max_number_spawns: 0
 --- !u!4 &1895198026
 Transform:
   m_ObjectHideFlags: 0
@@ -5658,7 +5698,7 @@ GameObject:
   - 4: {fileID: 2037724455}
   - 65: {fileID: 2037724453}
   - 114: {fileID: 2037724454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EscapeExit
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -5675,7 +5715,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.8918829, y: 3, z: 2}
+  m_Size: {x: 2.8918829, y: 3, z: 4}
   m_Center: {x: .445967615, y: 1.5, z: 2.02804804e-05}
 --- !u!114 &2037724454
 MonoBehaviour:
@@ -5699,9 +5739,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2037724452}
   m_LocalRotation: {x: 0, y: .382683456, z: 0, w: .923879504}
-  m_LocalPosition: {x: 21.8999996, y: 0, z: 15.79}
+  m_LocalPosition: {x: 21.8999996, y: -.00999999978, z: 15.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 492170350}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!1 &2047131020

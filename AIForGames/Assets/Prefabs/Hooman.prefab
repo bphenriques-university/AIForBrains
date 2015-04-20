@@ -199,6 +199,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &149672
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 457740}
+  - 114: {fileID: 11468566}
+  m_Layer: 0
+  m_Name: GoToExit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &153412
 GameObject:
   m_ObjectHideFlags: 1
@@ -527,8 +543,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168420}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.60476208, y: 1.04831679e-06, z: -5.86261177}
+  m_LocalRotation: {x: 0, y: .342020184, z: 0, w: .939692616}
+  m_LocalPosition: {x: 18.9884357, y: 1.19209318e-07, z: 11.3383455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22473060}
@@ -571,6 +587,7 @@ Transform:
   - {fileID: 466936}
   - {fileID: 423912}
   - {fileID: 407778}
+  - {fileID: 457740}
   m_Father: {fileID: 426690}
   m_RootOrder: 6
 --- !u!4 &437708
@@ -609,6 +626,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 433364}
   m_RootOrder: 0
+--- !u!4 &457740
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 433364}
+  m_RootOrder: 8
 --- !u!4 &460506
 Transform:
   m_ObjectHideFlags: 1
@@ -652,7 +681,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 23.8999996, y: 0, z: 14.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
@@ -1344,6 +1373,17 @@ MonoBehaviour:
   rangeShootingSound: 10
   currentAmmo: 10
   ammoText: {fileID: 0}
+--- !u!114 &11468566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f49c815348054b999d28589c9b00c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11469084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1421,6 +1461,7 @@ MonoBehaviour:
   foodSeen: {fileID: 0}
   ammoSeen: {fileID: 0}
   zombieSeen: {fileID: 0}
+  exitSeen: {fileID: 0}
   sawFood: 0
   onFood: 0
   sawZombie: 0
@@ -1429,6 +1470,7 @@ MonoBehaviour:
   bitten: 0
   sawAmmo: 0
   onAmmo: 0
+  sawExitDoor: 0
 --- !u!114 &11480694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1560,6 +1602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - {fileID: 11469084}
+  - {fileID: 11468566}
   - {fileID: 11498970}
   - {fileID: 11482376}
   - {fileID: 11486944}

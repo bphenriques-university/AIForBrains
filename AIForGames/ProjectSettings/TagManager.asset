@@ -8,6 +8,7 @@ TagManager:
   - Human
   - Food
   - Ammo
+  - EscapeExit
   layers:
   - Default
   - TransparentFX

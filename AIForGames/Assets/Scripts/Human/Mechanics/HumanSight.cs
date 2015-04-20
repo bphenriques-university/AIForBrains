@@ -89,9 +89,24 @@ public class HumanSight : MonoBehaviour {
 		}
 
 
-
-
-
+		if (other.gameObject.tag == "EscapeExit") {
+			if(isVisible(other)){
+				//Debug.Log("@@@@@@@@@@@@@@@ Saw ESCAPE EXIT!");
+				if(humanState.sawExitDoor == true && humanState.exitSeen != null){
+					
+					if(isCloser (other.gameObject, humanState.exitSeen))
+					{
+						humanState.exitSeen = other.gameObject;
+					}
+					
+				}else{
+					humanState.sawExitDoor = true;
+					humanState.exitSeen = other.gameObject;
+				}
+			}else{
+				humanState.sawExitDoor = false;
+			}
+		}
 	}
 
 	void OnTriggerStay(Collider other)
@@ -114,6 +129,9 @@ public class HumanSight : MonoBehaviour {
 			humanState.sawAmmo = false;
 		}
 
+		if (other.gameObject.tag == "EscapeExit") {
+			humanState.sawExitDoor = false;
+		}
 		
 		
 

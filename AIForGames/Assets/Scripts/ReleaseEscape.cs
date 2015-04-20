@@ -13,7 +13,7 @@ public class ReleaseEscape : MonoBehaviour {
 	Vector3 finalObstaclePosition;
 
 	void Start () {
-		finalObstaclePosition = escapeObstacle.transform.position + escapeObstacle.transform.right * obstacleSize;
+		finalObstaclePosition = escapeObstacle.transform.position + escapeObstacle.transform.right * obstacleSize * 2.0f;
 	}
 	
 	void Update () {

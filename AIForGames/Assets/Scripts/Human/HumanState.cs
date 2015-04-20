@@ -44,6 +44,7 @@ public class HumanState : MonoBehaviour
 	public GameObject foodSeen;
 	public GameObject ammoSeen;
 	public GameObject zombieSeen;
+	public GameObject exitSeen;
 
 	public bool sawFood = false;
 	public bool onFood = false;
@@ -53,6 +54,8 @@ public class HumanState : MonoBehaviour
 	public bool bitten = false;
 	public bool sawAmmo = false;
 	public bool onAmmo = false;
+	public bool sawExitDoor = false;
+
 	
 	void Update(){
 		attackTimer += Time.deltaTime;
@@ -105,6 +108,10 @@ public class HumanState : MonoBehaviour
 
 	public float HungerLevel() {
 		return hunger.GetHungerLevel ();
+	}
+
+	public bool IsSeeingExitRoute(){
+		return sawExitDoor;
 	}
 
 	public int HealthLevel() {
