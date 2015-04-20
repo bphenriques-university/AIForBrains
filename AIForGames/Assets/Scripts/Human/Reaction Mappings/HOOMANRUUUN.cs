@@ -13,18 +13,28 @@ public class HOOMANRUUUN : ReactiveBehaviour
 	
 	void Awake(){
 		humanState = transform.root.GetComponent <HumanState> ();
-		timer = GOTTARUNTIME + 1;
+		timer = GOTTARUNTIME + 4;
 	}
 
 	protected override bool IsInSituation ()
 	{
 
-		timer += Time.deltaTime;
+
+
+
 		if (timer < GOTTARUNTIME) {
+			timer += Time.deltaTime;
 			return true;
 		} else {
 			if(humanState.IsSeeingZombie())
 				timer = 0f;
+		}
+
+		if (humanState.IsSeeingZombie ()) {
+			EnemyHealth enemyHealth = humanState.zombieSeen.GetComponent<EnemyHealth> ();
+			if (enemyHealth.hasDied ()) {
+				return false;
+			}
 		}
 
 		return !humanState.IsGrabbed () && humanState.IsSeeingZombie ();

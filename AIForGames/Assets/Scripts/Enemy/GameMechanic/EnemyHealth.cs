@@ -68,4 +68,8 @@ public class EnemyHealth : MonoBehaviour
 		enemyAudio.clip = deathClip;
 		enemyAudio.Play ();
 	}
+
+	public bool hasDied(){
+		return isDead;
+	}
 }
