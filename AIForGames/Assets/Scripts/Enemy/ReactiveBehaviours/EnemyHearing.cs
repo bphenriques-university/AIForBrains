@@ -33,6 +33,10 @@ public class EnemyHearing : ReactiveBehaviour
 			shoot.addEnemyAbleToHear(this);
 		}
 	}
+
+	void OnTriggerStay(Collider other){
+		OnTriggerEnter (other);
+	}
 	
 	void OnTriggerExit (Collider other)
 	{

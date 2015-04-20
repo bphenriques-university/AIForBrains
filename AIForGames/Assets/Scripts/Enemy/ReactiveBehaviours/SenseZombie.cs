@@ -12,7 +12,7 @@ public class SenseZombie : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return zombieState.IsSensingZombie();
+		return zombieState.IsSensingZombie() && !zombieState.DidArrivedAtTargetPosition();
 	}
 	
 	protected override void Execute ()

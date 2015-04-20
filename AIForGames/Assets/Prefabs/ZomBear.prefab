@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b5a2708aea249b394e64071a65014d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 1
   currentHealth: 0
   sinkSpeed: 2.5
   deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}

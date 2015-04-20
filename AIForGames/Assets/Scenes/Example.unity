@@ -990,7 +990,7 @@ MonoBehaviour:
   - {fileID: 1575823251}
   - {fileID: 81085114}
   - {fileID: 403833262}
-  radius: 1
+  radius: 3
   max_number_spawns: 30
 --- !u!1 &209033642
 GameObject:
@@ -2467,7 +2467,7 @@ MonoBehaviour:
   - {fileID: 607146452}
   - {fileID: 2109206011}
   - {fileID: 850039713}
-  radius: 1
+  radius: 3
   max_number_spawns: 35
 --- !u!1 &827964303
 GameObject:

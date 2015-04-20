@@ -171,6 +171,7 @@ public class ZombieState : MonoBehaviour
 		if (nav != null) {
 			Vector3 dest = nav.destination + Random.insideUnitSphere * 5;
 			dest.y = 0;
+			targetPosition = dest;
 			GotoPosition (dest, randomWalkSpeed);
 		}
 	}
