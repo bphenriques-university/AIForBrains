@@ -2,10 +2,12 @@
 
 public class EnemyManager : MonoBehaviour
 {
-	public GameObject spawneeObject;
+	public GameObject[] spawneeObjects;
 	public Transform[] spawnAreas;
 	public float radius;
 	public int max_number_spawns;
+
+
 
 	void Start ()
 	{
@@ -24,22 +26,30 @@ public class EnemyManager : MonoBehaviour
 				newPos.y = 0;
 				copy.position = newPos;
 
-				Instantiate (spawneeObject, copy.position, copy.rotation);
+				print (spawneeObjects.Length);
+				int randomNumber = Random.Range (0, spawneeObjects.Length);
+
+				Instantiate (spawneeObjects[randomNumber], copy.position, copy.rotation);
 			}
 		}
 
 
 		int remainingSpawns = max_number_spawns - (numSpawnsPerArea * spawnAreas.Length);
-		for (int i = 0; i < remainingSpawns; i++) {
-			
-			Transform copy = spawnAreas [0];
+
+		int spawnArea = 0;
+		while (remainingSpawns > 0) {
+			remainingSpawns--;
+
+			Transform copy = spawnAreas [++spawnArea % spawnAreas.Length];
 			
 			copy.position = copy.position + Random.insideUnitSphere * radius;
 			Vector3 newPos = copy.position;
 			newPos.y = 0;
 			copy.position = newPos;
 			
-			Instantiate (spawneeObject, copy.position, copy.rotation);
+			int randomNumber = Random.Range (0, spawneeObjects.Length);
+			Instantiate (spawneeObjects[randomNumber], copy.position, copy.rotation);
+		
 		}
 	}
 }
