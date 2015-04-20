@@ -8,7 +8,8 @@ public class HumanState : MonoBehaviour
 	HumanShooting shooting;
 	HumanMovement movement;
 	HumanShooting playerShooting;
-
+	
+	int shootableMask;
 
 	void Awake(){
 		GameOverManager.humansAlive++;
@@ -20,6 +21,7 @@ public class HumanState : MonoBehaviour
 		health = GetComponent<HumanHealth> ();
 		shooting = GetComponentInChildren<HumanShooting> ();
 		movement = GetComponentInChildren<HumanMovement> ();
+		shootableMask = LayerMask.GetMask ("Shootable");
 	}
 	
 	/* ------------------------------------------*/
@@ -110,6 +112,32 @@ public class HumanState : MonoBehaviour
 	
 	public bool DidArrivedAtTargetPosition(){
 		return Vector3.Distance (transform.position, targetPosition) < 1;
+	}
+
+	public bool CanShoot() {
+		return shooting.CanAttack ();
+	}
+
+	public bool IsAimingToZombie() {
+		// TO REIMPLEMENTED IN NEAR FUTURE
+		Ray shootRay = new Ray ();
+		RaycastHit shootHit;
+		float range = 100f;
+
+		shootRay.origin = transform.position;
+		shootRay.direction = transform.forward;
+
+
+		
+		// Perform the raycast against gameobjects on the shootable layer and if it hits something...
+		if (Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
+			EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+			
+			// If the EnemyHealth component exist...
+			return enemyHealth != null;
+		} else {
+			return  false;
+		}
 	}
 
 	
