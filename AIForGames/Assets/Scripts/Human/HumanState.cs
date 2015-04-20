@@ -36,6 +36,7 @@ public class HumanState : MonoBehaviour
 	/* ------------------------------------------*/
 	
 	float attackTimer;
+	int lastSeenHealth;
 	
 	public bool targetObjectInRangeToAttack;
 	public Vector3 targetPosition;
@@ -112,6 +113,15 @@ public class HumanState : MonoBehaviour
 	
 	public bool DidArrivedAtTargetPosition(){
 		return Vector3.Distance (transform.position, targetPosition) < 1;
+	}
+
+	public bool WasAttacked(){
+		if (lastSeenHealth > health.currentHealth) {
+			lastSeenHealth = health.currentHealth;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public bool CanShoot() {
