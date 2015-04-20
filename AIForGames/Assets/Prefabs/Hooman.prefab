@@ -199,6 +199,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &153412
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 407778}
+  - 114: {fileID: 11469084}
+  m_Layer: 0
+  m_Name: Shoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &156756
 GameObject:
   m_ObjectHideFlags: 1
@@ -469,6 +485,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 426690}
   m_RootOrder: 4
+--- !u!4 &407778
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 433364}
+  m_RootOrder: 7
 --- !u!4 &422384
 Transform:
   m_ObjectHideFlags: 1
@@ -542,6 +570,7 @@ Transform:
   - {fileID: 460506}
   - {fileID: 466936}
   - {fileID: 423912}
+  - {fileID: 407778}
   m_Father: {fileID: 426690}
   m_RootOrder: 6
 --- !u!4 &437708
@@ -1315,6 +1344,17 @@ MonoBehaviour:
   rangeShootingSound: 10
   currentAmmo: 10
   ammoText: {fileID: 0}
+--- !u!114 &11469084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e57cf8d7502ca4e8aa88d0c0c4185e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11476692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1519,6 +1559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviours:
+  - {fileID: 11469084}
   - {fileID: 11498970}
   - {fileID: 11482376}
   - {fileID: 11486944}
@@ -1526,6 +1567,7 @@ MonoBehaviour:
   - {fileID: 11483318}
   - {fileID: 11406698}
   - {fileID: 11412212}
+  lastBehaviour: {fileID: 0}
 --- !u!114 &11498970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1538,6 +1580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SAFEDISTANCE: 2
+  GOTTARUNTIME: 2
 --- !u!120 &12015904
 LineRenderer:
   m_ObjectHideFlags: 1
