@@ -131,13 +131,14 @@ public class HumanState : MonoBehaviour
 		
 		// Perform the raycast against gameobjects on the shootable layer and if it hits something...
 		if (Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
-			EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
-			
-			// If the EnemyHealth component exist...
-			return enemyHealth != null;
-		} else {
-			return  false;
+			if (shootHit.collider.gameObject == zombieSeen) {
+				EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+				
+				// If the EnemyHealth component exist...
+				return enemyHealth != null;
+			}
 		}
+		return  false;
 	}
 
 	
