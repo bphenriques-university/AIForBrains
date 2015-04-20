@@ -51,7 +51,7 @@ public class HumanHunger : MonoBehaviour
 		if (!hoomanHealth.isHumanDead()){
 			if (hunger <= 0){
 				playerName.color = Color.green;	
-				//hoomanHealth.Death();
+				hoomanHealth.Death();
 			}
 			else {
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
