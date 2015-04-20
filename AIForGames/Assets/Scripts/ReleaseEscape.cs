@@ -12,12 +12,10 @@ public class ReleaseEscape : MonoBehaviour {
 
 	Vector3 finalObstaclePosition;
 
-	// Use this for initialization
 	void Start () {
 		finalObstaclePosition = escapeObstacle.transform.position + escapeObstacle.transform.right * obstacleSize;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		timeUntilEscape -= Time.deltaTime;
 		if (timeUntilEscape < 0) {
