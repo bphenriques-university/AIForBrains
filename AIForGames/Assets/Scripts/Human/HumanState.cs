@@ -8,7 +8,7 @@ public class HumanState : MonoBehaviour
 	HumanShooting shooting;
 	HumanMovement movement;
 	HumanShooting playerShooting;
-	
+	Rigidbody rigidBody;	
 	int shootableMask;
 
 	void Awake(){
@@ -22,6 +22,8 @@ public class HumanState : MonoBehaviour
 		shooting = GetComponentInChildren<HumanShooting> ();
 		movement = GetComponentInChildren<HumanMovement> ();
 		shootableMask = LayerMask.GetMask ("Shootable");
+		rigidBody = GetComponent<Rigidbody> ();
+
 	}
 	
 	/* ------------------------------------------*/
@@ -98,6 +100,11 @@ public class HumanState : MonoBehaviour
 		return movement.isMoving ();
 	}
 
+	public bool isRunning(){
+
+		return isMoving () && movement.isRunning ();
+	}
+
 	public bool IsSeeingAmmo(){
 		return sawAmmo;
 	}
@@ -135,6 +142,15 @@ public class HumanState : MonoBehaviour
 		return shooting.CanAttack ();
 	}
 
+	public float getSpeed(){
+		return movement.getSpeed ();
+	}
+
+	public float getDistanceToZombie(){
+		Vector3 distanceVector = zombieSeen.transform.position - transform.position;
+		return distanceVector.magnitude;
+	}
+
 	public bool IsAimingToZombie() {
 		// TO REIMPLEMENTED IN NEAR FUTURE
 		Ray shootRay = new Ray ();
@@ -165,6 +181,13 @@ public class HumanState : MonoBehaviour
 
 	public void EatFood() {
 		hunger.EatFood ();
+	}
+
+	public void turnTo (Vector3 zombiePosition)
+	{
+		//TODO:Turn to Zombie
+
+
 	}
 
 	public void CatchFood(Food food) {

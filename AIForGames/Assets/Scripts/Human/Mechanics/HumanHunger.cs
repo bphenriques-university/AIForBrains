@@ -54,6 +54,7 @@ public class HumanHunger : MonoBehaviour
 				hoomanHealth.Death();
 			}
 			else {
+				this.hungerLossSpeed = humanState.getSpeed() / 2;
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
 
 				//FIXME FIXME FIXME

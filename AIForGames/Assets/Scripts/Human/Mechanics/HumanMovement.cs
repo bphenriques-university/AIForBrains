@@ -63,6 +63,15 @@ public class HumanMovement : MonoBehaviour
 		return Vector3.Distance(nav.destination, transform.position) > 1.0;
 	}
 
+	public bool isRunning ()
+	{
+		return nav.speed >= runSpeed;
+	}
+
+	public float getSpeed(){
+		return runSpeed;
+	}
+
 	public void LookToDirection(Transform Target, float RotationSpeed){
 		Vector3 _direction = (Target.position - transform.position).normalized;	
 		Quaternion _lookRotation = Quaternion.LookRotation(_direction);
