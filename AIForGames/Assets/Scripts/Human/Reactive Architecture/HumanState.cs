@@ -81,7 +81,7 @@ public class HumanState : MonoBehaviour
 	}
 
 	public bool IsSeeingZombie(){
-		return sawZombie;
+		return sawZombie && zombieSeen.GetComponent<EnemyHealth> ().currentHealth > 0;
 	}
 
 	public bool IsSeeingHumanInDanger(){
@@ -151,6 +151,11 @@ public class HumanState : MonoBehaviour
 		return distanceVector.magnitude;
 	}
 
+	public Vector3 getZombieLocation(){
+		return zombieSeen.transform.position;
+	}
+
+
 	public bool IsAimingToZombie() {
 		// TO REIMPLEMENTED IN NEAR FUTURE
 		Ray shootRay = new Ray ();
@@ -183,11 +188,9 @@ public class HumanState : MonoBehaviour
 		hunger.EatFood ();
 	}
 
-	public void turnTo (Vector3 zombiePosition)
+	public void turnTo (Vector3 position)
 	{
-		//TODO:Turn to Zombie
-
-
+		movement.LookToDirection (position);
 	}
 
 	public void CatchFood(Food food) {

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HOOMANRUUUN : ReactiveBehaviour
 {
+	public float DANGERDISTANCE = 1f;
 	public float SAFEDISTANCE = 15f;
 	public float GOTTARUNTIME = 2f;
 	float timer;
@@ -16,28 +17,30 @@ public class HOOMANRUUUN : ReactiveBehaviour
 		timer = GOTTARUNTIME + 4;
 	}
 
+	void Update() {
+		timer += Time.deltaTime;
+	}
+
 	protected override bool IsInSituation ()
 	{
 
-
-
-
 		if (timer < GOTTARUNTIME) {
-			timer += Time.deltaTime;
 			return true;
 		} else {
-			if(humanState.IsSeeingZombie())
-				timer = 0f;
-		}
 
-		if (humanState.IsSeeingZombie ()) {
-			EnemyHealth enemyHealth = humanState.zombieSeen.GetComponent<EnemyHealth> ();
-			if (enemyHealth.hasDied ()) {
-				return false;
+			if (humanState.IsSeeingZombie ()) {
+				EnemyHealth enemyHealth = humanState.zombieSeen.GetComponent<EnemyHealth> ();
+				if (enemyHealth.hasDied ()) {
+					return false;
+				}
+
+				if (!humanState.IsGrabbed ()) {
+					timer = 0f;
+					return true;
+				}
 			}
 		}
-
-		return !humanState.IsGrabbed () && humanState.IsSeeingZombie ();
+		return false;
 	}
 
 	protected override void Execute ()

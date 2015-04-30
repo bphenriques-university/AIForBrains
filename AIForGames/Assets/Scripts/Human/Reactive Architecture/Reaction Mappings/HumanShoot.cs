@@ -3,7 +3,9 @@ using System;
 
 public class HumanShoot : ReactiveBehaviour
 {
-	
+
+	public float minShootingDistance = 1f;
+
 	HumanState humanState;
 	
 	void Awake(){
@@ -12,7 +14,10 @@ public class HumanShoot : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.IsAimingToZombie () && humanState.CanShoot() && humanState.IsSeeingZombie();
+		return humanState.IsAimingToZombie () && 
+				humanState.CanShoot() && 
+				humanState.IsSeeingZombie() &&
+				humanState.getDistanceToZombie() > minShootingDistance;
 	}
 	
 	protected override void Execute ()

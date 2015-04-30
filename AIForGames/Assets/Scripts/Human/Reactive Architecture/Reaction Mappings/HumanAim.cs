@@ -4,7 +4,7 @@ using UnityEngine;
 public class HumanAim : ReactiveBehaviour
 {
 	HumanState humanState;
-	public float distanceToAim = 0.79f;
+	public float distanceToAim = 1f;
 
 
 	void Awake(){
@@ -16,15 +16,17 @@ public class HumanAim : ReactiveBehaviour
 	protected override bool IsInSituation ()
 	{
 
-		return (humanState.getDistanceToZombie () > distanceToAim) && humanState.IsSeeingZombie() && humanState.CanShoot();
+		return humanState.IsSeeingZombie() && 
+				!humanState.IsAimingToZombie() && 
+				(humanState.getDistanceToZombie () > distanceToAim) &&
+				humanState.CanShoot();
 
 	}
 
 	protected override void Execute ()
 	{
-		GameObject zombie = humanState.zombieSeen;
-
-		Vector3 zombiePosition = zombie.transform.position;
+		Vector3 zombiePosition = humanState.getZombieLocation ();
+		humanState.Stop ();
 		humanState.turnTo (zombiePosition);
 
 	}

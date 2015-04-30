@@ -6,6 +6,7 @@ public class HumanMovement : MonoBehaviour
 
 	public float runSpeed = 6f;            // The speed that the player will move at.
 	public float walkSpeed = 2f;            // The speed that the player will move at.
+	public float rotationSpeed = 2f;
 	public Text playerText;
 
 	bool isGrabbed = false;
@@ -72,10 +73,10 @@ public class HumanMovement : MonoBehaviour
 		return runSpeed;
 	}
 
-	public void LookToDirection(Transform Target, float RotationSpeed){
-		Vector3 _direction = (Target.position - transform.position).normalized;	
+	public void LookToDirection(Vector3 target){
+		Vector3 _direction = (target - transform.position).normalized;	
 		Quaternion _lookRotation = Quaternion.LookRotation(_direction);
-		transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
+		transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * rotationSpeed);
 	}
 	
 }
