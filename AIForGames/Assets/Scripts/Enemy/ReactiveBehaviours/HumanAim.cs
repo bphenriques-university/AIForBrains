@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class HumanAim : ReactiveBehaviour
+public class HumanAimZombie : ReactiveBehaviour
 {
 	HumanState humanState;
 	public float distanceToAim = 0.79f;
