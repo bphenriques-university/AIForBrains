@@ -10,7 +10,7 @@ public class HumanSight : MonoBehaviour {
 	HumanState humanState;
 	
 	void Awake(){
-		shootableMask = LayerMask.GetMask ("Shootable");
+		shootableMask = LayerMask.GetMask ("Shootable") | LayerMask.GetMask ("Viewable");
 		humanState = transform.root.GetComponent <HumanState> ();
 	}
 
