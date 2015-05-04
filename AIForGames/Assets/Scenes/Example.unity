@@ -2503,7 +2503,7 @@ RectTransform:
   m_Father: {fileID: 1189933119}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: .5, y: .5}
@@ -2691,7 +2691,7 @@ RectTransform:
   m_Father: {fileID: 1469613501}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: .5, y: .5}
@@ -6073,7 +6073,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7bca9c2cd581dbb4f971ad087c21f5f9, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7bca9c2cd581dbb4f971ad087c21f5f9, type: 2}
@@ -6476,13 +6476,14 @@ GameObject:
   - 114: {fileID: 1439316578}
   - 114: {fileID: 1439316577}
   - 82: {fileID: 1439316576}
+  - 114: {fileID: 1439316586}
   m_Layer: 0
   m_Name: Hooman
   m_TagString: Human
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1439316575
 Transform:
   m_ObjectHideFlags: 0
@@ -6610,9 +6611,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1439316574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d588750de166c4b2f883299610a41b8a, type: 3}
+  m_Script: {fileID: 11500000, guid: aebaf3c13bb2b46c49ea769ffa51b9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actuator: {fileID: 0}
   randomPoints: []
   targetObjectInRangeToAttack: 0
   targetPosition: {x: 0, y: 0, z: 0}
@@ -6734,6 +6736,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1439316586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1439316574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca9f0adb71aa41f284e05d595b21014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1441434132
 GameObject:
   m_ObjectHideFlags: 0

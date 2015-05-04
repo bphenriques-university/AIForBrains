@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2369454}
   - 114: {fileID: 11414278}
   - 136: {fileID: 13676958}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: PernaCarneiro
   m_TagString: Food
   m_Icon: {fileID: 0}

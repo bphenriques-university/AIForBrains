@@ -1494,19 +1494,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 168420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 485eb9f5fbe8f314ba2c0161f04fbf5f, type: 3}
+  m_Script: {fileID: 11500000, guid: aebaf3c13bb2b46c49ea769ffa51b9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: {fileID: 0}
-  health: {fileID: 0}
-  shooting: {fileID: 0}
-  movement: {fileID: 0}
-  playerShooting: {fileID: 0}
-  rigidBody: {fileID: 0}
-  shootableMask: 0
+  actuator: {fileID: 0}
   randomPoints: []
-  attackTimer: 0
-  lastSeenHealth: 0
   targetObjectInRangeToAttack: 0
   targetPosition: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
@@ -1517,7 +1509,7 @@ MonoBehaviour:
   sawFood: 0
   onFood: 0
   sawZombie: 0
-  sawHumanInDanger: 1
+  sawHumanInDanger: 0
   grabbed: 0
   bitten: 0
   sawAmmo: 0
