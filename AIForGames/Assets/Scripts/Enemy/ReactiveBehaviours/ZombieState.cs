@@ -33,7 +33,6 @@ public class ZombieState : MonoBehaviour
 
 	float attackTimer;
 	float timerFromGrabUntilAttack = 0;
-	bool willWalk = false;
 	public HumanHealth targetObjectHP;
 
 	public bool targetInRangeToGrab;

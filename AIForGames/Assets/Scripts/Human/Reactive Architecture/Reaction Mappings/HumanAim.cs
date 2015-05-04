@@ -26,8 +26,8 @@ public class HumanAim : ReactiveBehaviour
 	protected override void Execute ()
 	{
 		Vector3 zombiePosition = humanState.getZombieLocation ();
-		humanState.Stop ();
-		humanState.turnTo (zombiePosition);
+		humanState.actuator.Stop ();
+		humanState.actuator.turnTo (zombiePosition);
 
 	}
 

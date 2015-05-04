@@ -34,6 +34,6 @@ public class BDIManager : MonoBehaviour {
 		 * 		end-while
 		 * end-while
 		 * 
-		 * /
+		 */
 	}
 }

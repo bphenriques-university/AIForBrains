@@ -27,7 +27,7 @@ public class HumanCatchFood : ReactiveBehaviour
 		}
 
 		Food food = foodObject.GetComponent<Food> ();
-		humanState.CatchFood (food.catchFood ());
+		humanState.actuator.CatchFood (food.catchFood ());
 
 		humanState.onFood = false;
 		humanState.sawFood = false;

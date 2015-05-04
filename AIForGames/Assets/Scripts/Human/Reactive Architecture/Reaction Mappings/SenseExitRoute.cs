@@ -27,8 +27,8 @@ public class SenseExitRoute : ReactiveBehaviour
 		}
 		
 		Vector3 exitPosition = gameObject.transform.position;
-		humanState.ChangeDestination (exitPosition);
-		humanState.Run ();
+		humanState.actuator.ChangeDestination (exitPosition);
+		humanState.actuator.Run ();
 	}
 
 }

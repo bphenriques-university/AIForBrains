@@ -30,18 +30,18 @@ public class HumanRandomWalk : ReactiveBehaviour
 		if (!humanState.isMoving ()) {
 
 			changeDirection();
-			humanState.Walk();
+			humanState.actuator.Walk();
 			timeSinceChange = 0f;
 			return;
 		}
 
 		int randomNum = Random.Range (0, 100);
 		if (randomNum < 70) {
-			humanState.Walk ();
+			humanState.actuator.Walk ();
 		} else if (randomNum < 99) {
 			changeDirection ();
 		} else {
-			humanState.Stop();
+			humanState.actuator.Stop();
 		}
 
 		timeSinceChange = 0f;
@@ -64,7 +64,7 @@ public class HumanRandomWalk : ReactiveBehaviour
 				continue;
 			} else {
 				randomDirection *= range;
-				humanState.ChangeDestination(humanState.transform.position + randomDirection);
+				humanState.actuator.ChangeDestination(humanState.transform.position + randomDirection);
 				return;
 			}
 		}

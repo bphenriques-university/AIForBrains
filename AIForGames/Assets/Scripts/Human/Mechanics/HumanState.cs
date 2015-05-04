@@ -1,28 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BDIState : MonoBehaviour
+public class HumanState : MonoBehaviour
 {
 	HumanHunger hunger;
 	HumanHealth health;
 	HumanShooting shooting;
 	HumanMovement movement;
-	HumanShooting playerShooting;
-	Rigidbody rigidBody;	
 	int shootableMask;
+
+	public Actuator actuator;
 
 	void Awake(){
 		GameOverManager.humansAlive++;
 		
-		Transform gunBarrelEnd = transform.root.FindChild ("GunBarrelEnd");
-		playerShooting = gunBarrelEnd.GetComponent<HumanShooting> ();
 		targetPosition = transform.position;
 		hunger = GetComponent<HumanHunger> ();
 		health = GetComponent<HumanHealth> ();
 		shooting = GetComponentInChildren<HumanShooting> ();
 		movement = GetComponentInChildren<HumanMovement> ();
 		shootableMask = LayerMask.GetMask ("Shootable");
-		rigidBody = GetComponent<Rigidbody> ();
+		actuator = GetComponent<Actuator> ();
 
 	}
 	
@@ -81,7 +79,7 @@ public class BDIState : MonoBehaviour
 	}
 
 	public bool IsSeeingZombie(){
-		return sawZombie;
+		return sawZombie && zombieSeen.GetComponent<EnemyHealth> ().currentHealth > 0;
 	}
 
 	public bool IsSeeingHumanInDanger(){
@@ -151,6 +149,11 @@ public class BDIState : MonoBehaviour
 		return distanceVector.magnitude;
 	}
 
+	public Vector3 getZombieLocation(){
+		return zombieSeen.transform.position;
+	}
+
+
 	public bool IsAimingToZombie() {
 		// TO REIMPLEMENTED IN NEAR FUTURE
 		Ray shootRay = new Ray ();
@@ -173,83 +176,4 @@ public class BDIState : MonoBehaviour
 		}
 		return  false;
 	}
-
-	
-	/* ------------------------------------------*/
-	/* ---------------- Actuators  --------------*/
-	/* ------------------------------------------*/
-
-	public void EatFood() {
-		hunger.EatFood ();
-	}
-
-	public void turnTo (Vector3 zombiePosition)
-	{
-		//TODO:Turn to Zombie
-
-
-	}
-
-	public void CatchFood(Food food) {
-		hunger.AddFood (food);
-	}
-	
-	public void FireWeapon(){
-		shooting.Shoot ();
-	}
-	
-	public void GiveFood(){
-	}
-	
-	public void Walk(){
-		movement.Walk ();
-	}
-
-	public void Run(){
-		movement.Run ();
-	}
-
-	public void grabAmmo ()
-	{
-		GameObject ammoObject = ammoSeen;
-		
-		//Due to non-deterministic environment
-		if (ammoObject == null) {
-			onAmmo = false;
-			sawAmmo = false;
-			return;
-		}
-		
-		
-		Ammo ammo = ammoObject.GetComponent<Ammo> ();
-		
-		playerShooting.GrabAmmo(ammo.GrabAmmo ());
-		
-		onAmmo = false;
-		sawAmmo = false;
-	}
-
-	public void ChangeDestination(Vector3 newDirection){
-		movement.ChangeDestination (newDirection);
-	}
-
-	public void Stop(){
-		movement.Stop ();
-	}
-
-	
-	/* ------------------------------------------*/
-	/* ---------------- Utilitary  --------------*/
-	/* ------------------------------------------*/
-	
-	private Vector3 GenerateRandomPosition(){
-		int spawnPointIndex = Random.Range (0, randomPoints.Length - 1);
-		Transform copy = randomPoints [spawnPointIndex];
-		
-		return copy.position;
-	}
-
-
-
-
 }

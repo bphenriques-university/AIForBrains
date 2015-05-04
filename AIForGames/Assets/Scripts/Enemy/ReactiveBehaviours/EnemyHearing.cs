@@ -5,7 +5,6 @@ using System.Collections;
 public class EnemyHearing : ReactiveBehaviour 
 {
 	ZombieState zombieState;
-	Transform lastHeardPosition;
 
 	void Awake(){
 		zombieState = transform.root.GetComponent <ZombieState> ();
@@ -19,7 +18,6 @@ public class EnemyHearing : ReactiveBehaviour
 		if (fromDistance.sqrMagnitude < targetDistance.sqrMagnitude) {
 
 			zombieState.hearing = true;
-			lastHeardPosition = from;
 			zombieState.targetPosition = from.position;
 		}
 

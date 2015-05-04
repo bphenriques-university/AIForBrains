@@ -18,7 +18,7 @@ public class HumanPickUpAmmo : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		humanState.grabAmmo ();
+		humanState.actuator.grabAmmo ();
 	}
 }
 

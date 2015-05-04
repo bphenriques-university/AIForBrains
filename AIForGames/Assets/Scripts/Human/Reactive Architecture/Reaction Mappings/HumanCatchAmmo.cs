@@ -24,8 +24,8 @@ public class HumanCatchAmmo : ReactiveBehaviour
 		}
 		
 		Vector3 ammoPosition = gameObject.transform.position;
-		humanState.ChangeDestination (ammoPosition);
-		humanState.Walk ();
+		humanState.actuator.ChangeDestination (ammoPosition);
+		humanState.actuator.Walk ();
 	}
 }
 

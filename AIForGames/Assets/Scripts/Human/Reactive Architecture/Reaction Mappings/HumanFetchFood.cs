@@ -25,8 +25,8 @@ public class HumanFetchFood : ReactiveBehaviour
 		}
 
 		Vector3 foodPosition = gameObject.transform.position;
-		humanState.ChangeDestination (foodPosition);
-		humanState.Walk ();
+		humanState.actuator.ChangeDestination (foodPosition);
+		humanState.actuator.Walk ();
 	}
 }
 

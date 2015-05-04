@@ -14,13 +14,8 @@ public class HumanSight : MonoBehaviour {
 		humanState = transform.root.GetComponent <HumanState> ();
 	}
 
-
-
 	void OnTriggerEnter (Collider other){
-
-
-
-		if (other.gameObject.tag == "Food") {
+			if (other.gameObject.tag == "Food") {
 
 			if(isVisible (other)){
 				//Debug.Log("Saw Food!");

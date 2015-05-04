@@ -49,8 +49,8 @@ public class HOOMANRUUUN : ReactiveBehaviour
 
 		Vector3 RUNTHISWAY = - (THINGTHATWANTSTOEATMYBRAINS.transform.position - transform.position);
 
-		humanState.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
-		humanState.Run ();
+		humanState.actuator.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
+		humanState.actuator.Run ();
 
 	}
 

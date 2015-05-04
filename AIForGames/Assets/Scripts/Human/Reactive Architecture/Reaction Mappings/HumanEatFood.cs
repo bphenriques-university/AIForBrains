@@ -19,6 +19,6 @@ public class HumanEatFood : ReactiveBehaviour
 	protected override void Execute ()
 	{
 
-		humanState.EatFood ();
+		humanState.actuator.EatFood ();
 	}
 }

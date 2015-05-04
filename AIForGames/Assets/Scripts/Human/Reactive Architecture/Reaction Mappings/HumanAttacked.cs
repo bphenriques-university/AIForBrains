@@ -17,6 +17,6 @@ public class HumanAttacked : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		humanState.Run ();
+		humanState.actuator.Run ();
 	}
 }

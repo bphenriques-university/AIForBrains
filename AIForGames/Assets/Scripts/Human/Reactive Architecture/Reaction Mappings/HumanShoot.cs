@@ -23,6 +23,6 @@ public class HumanShoot : ReactiveBehaviour
 	protected override void Execute ()
 	{
 		
-		humanState.FireWeapon ();
+		humanState.actuator.FireWeapon ();
 	}
 }
