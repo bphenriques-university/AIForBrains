@@ -76,7 +76,7 @@ public class HumanMovement : MonoBehaviour
 	public void LookToDirection(Vector3 target){
 		Vector3 _direction = (target - transform.position).normalized;	
 		Quaternion _lookRotation = Quaternion.LookRotation(_direction);
-		transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * rotationSpeed);
+		transform.rotation = Quaternion.Lerp(transform.rotation, _lookRotation, Time.deltaTime * rotationSpeed);
 	}
 	
 }

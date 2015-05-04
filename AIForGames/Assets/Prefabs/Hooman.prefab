@@ -315,6 +315,7 @@ GameObject:
   - 114: {fileID: 11459564}
   - 114: {fileID: 11440934}
   - 82: {fileID: 8203774}
+  - 114: {fileID: 11416044}
   m_Layer: 0
   m_Name: Hooman
   m_TagString: Human
@@ -513,7 +514,7 @@ Transform:
   m_GameObject: {fileID: 176044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: .200000003, z: -1.07991616e-06}
-  m_LocalScale: {x: 2.9000001, y: 1, z: 2.0999999}
+  m_LocalScale: {x: 2.9000001, y: 1, z: 3.5}
   m_Children: []
   m_Father: {fileID: 426690}
   m_RootOrder: 4
@@ -1155,6 +1156,17 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   useMainCamera: 1
   cameraToUse: {fileID: 0}
+--- !u!114 &11416044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca9f0adb71aa41f284e05d595b21014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11422372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1329,7 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ff0bdbd3cb1448eb2922bf702fb77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToAim: 1
+  distanceToAim: 3
 --- !u!114 &11450484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1454,6 +1466,8 @@ MonoBehaviour:
   hungerSlider: {fileID: 11481090}
   playerName: {fileID: 11429866}
   numberFood: {fileID: 11409984}
+  hunger: 0
+  foods: []
 --- !u!114 &11477684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1648,11 +1662,12 @@ MonoBehaviour:
   - {fileID: 11447538}
   - {fileID: 11469084}
   - {fileID: 11468566}
+  - {fileID: 11482376}
   - {fileID: 11498970}
-  - {fileID: 11483318}
-  - {fileID: 11406698}
   - {fileID: 11450484}
   - {fileID: 11486944}
+  - {fileID: 11483318}
+  - {fileID: 11406698}
   - {fileID: 11412212}
   lastBehaviour: {fileID: 0}
 --- !u!114 &11498970

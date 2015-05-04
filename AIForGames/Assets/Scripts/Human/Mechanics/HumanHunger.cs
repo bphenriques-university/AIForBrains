@@ -13,13 +13,13 @@ public class HumanHunger : MonoBehaviour
 	public Text playerName;
 	public Text numberFood;
 	
-	protected float hunger;
+	public float hunger;
 	protected HumanState humanState;
 
 	protected GameObject player;
 	protected HumanHealth hoomanHealth;
 
-	protected List<Food> foods = new List<Food>();
+	public List<Food> foods = new List<Food>();
 
 
 

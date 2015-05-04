@@ -67,6 +67,7 @@ public class EnemyHealth : MonoBehaviour
 		
 		enemyAudio.clip = deathClip;
 		enemyAudio.Play ();
+		gameObject.layer = 0;
 	}
 
 	public bool hasDied(){
