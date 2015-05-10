@@ -407,6 +407,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &179934
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 413058}
+  - 114: {fileID: 11409200}
+  m_Layer: 0
+  m_Name: IsGrabbedCryForHelp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &181010
 GameObject:
   m_ObjectHideFlags: 1
@@ -547,7 +563,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 7
+  m_RootOrder: 2
+--- !u!4 &413058
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 433364}
+  m_RootOrder: 0
 --- !u!4 &422384
 Transform:
   m_ObjectHideFlags: 1
@@ -571,7 +599,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 6
+  m_RootOrder: 10
 --- !u!4 &426690
 Transform:
   m_ObjectHideFlags: 1
@@ -627,16 +655,17 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 456958}
-  - {fileID: 498280}
-  - {fileID: 437708}
-  - {fileID: 499810}
-  - {fileID: 460506}
-  - {fileID: 466936}
-  - {fileID: 423912}
+  - {fileID: 413058}
+  - {fileID: 454508}
   - {fileID: 407778}
   - {fileID: 457740}
-  - {fileID: 454508}
+  - {fileID: 437708}
+  - {fileID: 456958}
+  - {fileID: 499810}
+  - {fileID: 460506}
+  - {fileID: 498280}
+  - {fileID: 466936}
+  - {fileID: 423912}
   m_Father: {fileID: 426690}
   m_RootOrder: 7
 --- !u!4 &437708
@@ -650,7 +679,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!4 &450090
 Transform:
   m_ObjectHideFlags: 1
@@ -674,7 +703,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 9
+  m_RootOrder: 1
 --- !u!4 &456958
 Transform:
   m_ObjectHideFlags: 1
@@ -686,7 +715,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 0
+  m_RootOrder: 5
 --- !u!4 &457740
 Transform:
   m_ObjectHideFlags: 1
@@ -698,7 +727,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 8
+  m_RootOrder: 3
 --- !u!4 &460506
 Transform:
   m_ObjectHideFlags: 1
@@ -710,7 +739,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 4
+  m_RootOrder: 7
 --- !u!4 &466936
 Transform:
   m_ObjectHideFlags: 1
@@ -722,7 +751,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 5
+  m_RootOrder: 9
 --- !u!4 &484732
 Transform:
   m_ObjectHideFlags: 1
@@ -758,7 +787,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 1
+  m_RootOrder: 8
 --- !u!4 &499810
 Transform:
   m_ObjectHideFlags: 1
@@ -770,7 +799,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 433364}
-  m_RootOrder: 3
+  m_RootOrder: 6
 --- !u!54 &5415058
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1145,6 +1174,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a640828b6aae34689c87bad7ff4ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11409200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bd2e6e51b4e4d6b97bdef34aa64f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11409984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1378,7 +1418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   hitSound: {fileID: 8252216}
   deadSound: {fileID: 8230090}
   healthSlider: {fileID: 11430942}
@@ -1566,6 +1606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actuator: {fileID: 0}
   randomPoints: []
+  closeFriends: []
   targetObjectInRangeToAttack: 0
   targetPosition: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
@@ -1577,7 +1618,6 @@ MonoBehaviour:
   onFood: 0
   sawZombie: 0
   sawHumanInDanger: 0
-  grabbed: 0
   bitten: 0
   sawAmmo: 0
   onAmmo: 0
@@ -1712,6 +1752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviours:
+  - {fileID: 11409200}
   - {fileID: 11447538}
   - {fileID: 11469084}
   - {fileID: 11468566}

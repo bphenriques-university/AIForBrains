@@ -30,7 +30,7 @@ public class HumanState : MonoBehaviour
 	/* ------------------------------------------*/
 	
 	public Transform[] randomPoints;
-	
+	public GameObject[] closeFriends;
 	
 	/* ------------------------------------------*/
 	/* ----------       STATE        ------------*/
