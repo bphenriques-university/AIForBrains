@@ -28,7 +28,6 @@ public class HumanAim : ReactiveBehaviour
 		Vector3 zombiePosition = humanState.getZombieLocation ();
 		humanState.actuator.Stop ();
 		humanState.actuator.turnTo (zombiePosition);
-
 	}
 
 }

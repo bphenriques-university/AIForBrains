@@ -264,6 +264,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &166036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432964}
+  - 135: {fileID: 13507182}
+  - 114: {fileID: 11414606}
+  m_Layer: 0
+  m_Name: Speak
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &167152
 GameObject:
   m_ObjectHideFlags: 1
@@ -316,6 +333,7 @@ GameObject:
   - 114: {fileID: 11440934}
   - 82: {fileID: 8203774}
   - 114: {fileID: 11416044}
+  - 114: {fileID: 11406008}
   m_Layer: 0
   m_Name: Hooman
   m_TagString: Human
@@ -541,7 +559,7 @@ Transform:
   m_LocalScale: {x: 1.00000012, y: 1.00000024, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &423912
 Transform:
   m_ObjectHideFlags: 1
@@ -565,10 +583,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22473060}
+  - {fileID: 432964}
   - {fileID: 484732}
   - {fileID: 422384}
-  - {fileID: 498110}
   - {fileID: 401402}
+  - {fileID: 498110}
   - {fileID: 427200}
   - {fileID: 433364}
   - {fileID: 450090}
@@ -585,7 +604,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 5
+  m_RootOrder: 6
+--- !u!4 &432964
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 426690}
+  m_RootOrder: 1
 --- !u!4 &433364
 Transform:
   m_ObjectHideFlags: 1
@@ -607,7 +638,7 @@ Transform:
   - {fileID: 457740}
   - {fileID: 454508}
   m_Father: {fileID: 426690}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!4 &437708
 Transform:
   m_ObjectHideFlags: 1
@@ -631,7 +662,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!4 &454508
 Transform:
   m_ObjectHideFlags: 1
@@ -703,7 +734,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &498110
 Transform:
   m_ObjectHideFlags: 1
@@ -715,7 +746,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!4 &498280
 Transform:
   m_ObjectHideFlags: 1
@@ -1092,6 +1123,17 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11406008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf8b5fc3dbbc4136a5c241fd3ac43eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11406698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1156,6 +1198,17 @@ MonoBehaviour:
   offset: {x: 0, y: 1, z: 0}
   useMainCamera: 1
   cameraToUse: {fileID: 0}
+--- !u!114 &11414606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbaadaa4c73cf4f52bf373c7370a4176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11416044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1721,6 +1774,18 @@ LineRenderer:
       serializedVersion: 2
       rgba: 4294967295
   m_UseWorldSpace: 1
+--- !u!135 &13507182
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13671650
 CapsuleCollider:
   m_ObjectHideFlags: 1
