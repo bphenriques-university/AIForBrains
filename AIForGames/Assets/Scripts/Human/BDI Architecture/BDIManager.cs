@@ -7,7 +7,15 @@ public class BDIManager : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
+	enum PossibleActions{
+		Aim,
+		Attack,
+		GoToExit
+		//... to intention is to have an array of these
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 		/*
@@ -35,5 +43,13 @@ public class BDIManager : MonoBehaviour {
 		 * end-while
 		 * 
 		 */
+
+
+		//---- ALREADY DONE in previous updates -----
+		//get next percept p
+		//Update current beliefs
+		//---------------------------------------
+
+
 	}
 }
