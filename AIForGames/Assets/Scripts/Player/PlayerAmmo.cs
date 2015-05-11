@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class PlayerAmmo : AmmoHandler {
+public class PlayerAmmo : HumanAmmo {
 
 
 	protected HumanShooting shooter;
