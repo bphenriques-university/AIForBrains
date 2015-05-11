@@ -34,8 +34,7 @@ public class BDIManager : MonoBehaviour {
 
 	HumanState humanState;
 	IList<PlanComponent> currentPlan = new List<PlanComponent> ();
-	Desire desire = Desire.Survive;
-	Intention currentIntention = new GoToExitIntention ();
+	Intention currentIntention;
 	bool justPlanned = false;
 
 	void Start () {
@@ -60,8 +59,8 @@ public class BDIManager : MonoBehaviour {
 		currentPlan.Clear ();
 
 		justPlanned = true;
-
-		currentPlan.Add (new RunAwayPC ());
+		Debug.Log ("GENERATING PLAN");
+		//currentPlan.Add (RunAwayPC.GetPlanComponent ());
 	}
 
 	//sound(plan, I, B)
@@ -71,18 +70,18 @@ public class BDIManager : MonoBehaviour {
 
 	//succeded(I, B)
 	bool PlanWasASuccess(){
-		return false;
+		return currentIntention.DidSucceded ();
 	}
 
 	//impossible(I, B)
 	bool PlanIsImpossible(){
-		return false;
+		return currentIntention.IsImpossible();
 	}
 
 	//reconsider (I, B)
 	bool ReconsiderPlan(){
 		//if contains grab, the only plan can only 
-		return true;
+		return false;
 	}
 
 
@@ -90,31 +89,39 @@ public class BDIManager : MonoBehaviour {
 	//I = filter (B, D, I)
 	void ReconsiderIntention(){
 		IList<Desire> desires = new List<Desire> ();
-		currentIntention = new GoToExitIntention ();
+		desires.Add(Desire.GoToExit);
+
+		//currentIntention = GoToExitIntention.GetIntentionComponent ();
 	}
 
 	void Update () {
 		//while believes it is possible and still hasn't accomplished the goal
-		if (! (currentPlan.Count == 0 || PlanWasASuccess () || PlanIsImpossible ())) {
-
-			//runned after started the previous plan
-			if(!justPlanned){
-				if(ReconsiderPlan()){
-					ReconsiderIntention();
+		if (currentPlan.Count > 0) {
+			if (! (PlanWasASuccess () || PlanIsImpossible ())) {
+				
+				//runned after started the previous plan
+				if(!justPlanned){
+					Debug.Log ("Reconsider?");
+					if(ReconsiderPlan()){
+						Debug.Log ("Reconsider? Yes!");
+						ReconsiderIntention();
+					}
+					// if not sound (pi, I , B) then generate new plan
+					Debug.Log ("PlanMakesSense?");
+					if(! PlanMakesSense()){
+						Debug.Log ("PlanMakesSense? No!");
+						GeneratePlan();
+					}
 				}
-				// if not sound (pi, I , B) then generate new plan
-				if(! PlanMakesSense()){
-					GeneratePlan();
-				}
+				
+				
+				PlanComponent action = currentPlan[0];
+				currentPlan.RemoveAt(0);
+				action.ExecuteAction();
+				justPlanned = false;
+				
+				return;
 			}
-
-
-			PlanComponent action = currentPlan[0];
-			currentPlan.RemoveAt(0);
-			action.ExecuteAction();
-			justPlanned = false;
-
-			return;
 		}
 
 		ReconsiderIntention ();

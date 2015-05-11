@@ -29,4 +29,8 @@ public abstract class Intention : MonoBehaviour
 	}
 
 	public abstract bool DidSucceded ();
+
+	public abstract bool IsImpossible();
+
+
 }

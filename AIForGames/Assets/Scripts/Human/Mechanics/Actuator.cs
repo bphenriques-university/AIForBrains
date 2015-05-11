@@ -51,7 +51,13 @@ public class Actuator : MonoBehaviour
 	public void Run(){
 		movement.Run ();
 	}
-	
+
+	public void GoToExitRoute(){
+		Debug.Log ("Going to exit");
+		ChangeDestination (humanState.ExitRoute.transform.position);
+		movement.Run ();
+	}
+
 	public void grabAmmo ()
 	{
 		GameObject ammoObject = humanState.ammoSeen;

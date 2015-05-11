@@ -10,6 +10,8 @@ public class HumanState : MonoBehaviour
 	HumanSpeak speak;
 	int shootableMask;
 
+	public GameObject ExitRoute;
+
 	public Actuator actuator;
 
 	void Awake(){

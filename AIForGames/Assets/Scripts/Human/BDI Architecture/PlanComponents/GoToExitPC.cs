@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class RunAwayPC : PlanComponent
+public class GoToExitPC : PlanComponent
 {
+
 	public override void ExecuteAction ()
 	{
-		Debug.Log ("RUNNING");
+		Debug.Log ("RUNNING TO EXIT");
 		actuator.Run ();
 		//empty for now
 	}	
