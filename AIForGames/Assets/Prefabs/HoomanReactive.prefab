@@ -335,7 +335,7 @@ GameObject:
   - 114: {fileID: 11416044}
   - 114: {fileID: 11406008}
   m_Layer: 0
-  m_Name: Hooman
+  m_Name: HoomanReactive
   m_TagString: Human
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1604,6 +1604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aebaf3c13bb2b46c49ea769ffa51b9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExitRoute: {fileID: 0}
   actuator: {fileID: 0}
   randomPoints: []
   closeFriends: []
