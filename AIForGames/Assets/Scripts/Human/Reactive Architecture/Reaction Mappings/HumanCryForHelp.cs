@@ -5,6 +5,7 @@ public class HumanCryForHelp : ReactiveBehaviour
 {
 	HumanState humanState;
 
+
 	
 	void Awake(){
 		humanState = transform.root.GetComponent <HumanState> ();
@@ -19,8 +20,8 @@ public class HumanCryForHelp : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		Debug.Log ("PLEASE HELP HELP HELP HEP");
-		humanState.SendCryForHelp ();	
+		//Debug.Log ("PLEASE HELP HELP HELP HEP");
+		humanState.actuator.SendCryForHelp ();	
 	}
 	
 }

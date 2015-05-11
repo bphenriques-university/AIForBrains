@@ -7,7 +7,6 @@ public class HumanState : MonoBehaviour
 	HumanHealth health;
 	HumanShooting shooting;
 	HumanMovement movement;
-	HumanSpeak speak;
 	int shootableMask;
 
 	public GameObject ExitRoute;
@@ -24,7 +23,7 @@ public class HumanState : MonoBehaviour
 		movement = GetComponentInChildren<HumanMovement> ();
 		shootableMask = LayerMask.GetMask ("Shootable");
 		actuator = GetComponent<Actuator> ();
-		speak = transform.FindChild ("Speak").GetComponent<HumanSpeak> ();
+
 	}
 	
 	/* ------------------------------------------*/
@@ -153,10 +152,6 @@ public class HumanState : MonoBehaviour
 
 	public Vector3 getZombieLocation(){
 		return zombieSeen.transform.position;
-	}
-
-	public void SendCryForHelp(){
-		speak.SendMessageToHumansNearby (HumanSpeak.Message.IAmGrabbed);
 	}
 
 

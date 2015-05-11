@@ -28,7 +28,7 @@ public abstract class Intention : MonoBehaviour
 		humanState = this.transform.root.GetComponent<HumanState> ();
 	}
 
-	public abstract bool DidSucceded ();
+	public abstract bool Succeeded ();
 
 	public abstract bool IsImpossible();
 

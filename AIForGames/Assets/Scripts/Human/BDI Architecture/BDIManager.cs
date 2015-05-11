@@ -32,15 +32,24 @@ using UnityEngine.UI;
 
 public class BDIManager : MonoBehaviour {
 
-	HumanState humanState;
+	HumanState currentBeliefs;
 	IList<PlanComponent> currentPlan = new List<PlanComponent> ();
-	Intention currentIntention;
-	bool justPlanned = false;
+	IList<Desire> currentDesires;
+	IList<Intention> currentIntentions;
+	//bool justPlanned = false;
 
 	void Start () {
-		humanState = this.transform.root.GetComponent<HumanState>();
-		if (humanState == null) {
-			Debug.Log("SOME SHIT HAPPENED THAT WASN'T SUPPOSED TOO");
+		currentBeliefs = this.transform.root.GetComponent<HumanState>();
+		if (currentBeliefs == null) {
+			Debug.Log("SOME SHIT HAPPENED THAT WASN'T SUPPOSED TO");
+
+			//starting BDI
+			currentDesires = Options(currentBeliefs);
+			currentIntentions = Filter(currentBeliefs, currentDesires);
+			currentPlan = GeneratePlan(currentIntentions);
+
+
+
 		}
 	}
 
@@ -48,83 +57,153 @@ public class BDIManager : MonoBehaviour {
 	//Beliefs are througout the humanStatae when perceiveing the environment
 	enum Desire{
 		GoToExit,
-		Survive,
+		RunFromZombie,
 		HelpFriend,
 		GetFood,
 		GetAmmo
 	}
 
 	//pi = plan(B,I)
-	void GeneratePlan(){
+	IList<PlanComponent> GeneratePlan(IList<PlanComponent> plan, IList<Intention> intentions){
 		currentPlan.Clear ();
 
-		justPlanned = true;
+		IList<PlanComponent> newPlan = new List<PlanComponent> ();
+
+		//TODO: Dont be a foo, call Xu
+
 		Debug.Log ("GENERATING PLAN");
+		//justPlanned = true;
 		//currentPlan.Add (RunAwayPC.GetPlanComponent ());
+		return newPlan;
+	}
+
+	IList<PlanComponent> GeneratePlan(IList<Intention> intentions){
+		currentPlan.Clear ();
+		
+		IList<PlanComponent> newPlan = new List<PlanComponent> ();
+		
+		//TODO: Dont be a foo, call Xu
+		
+		Debug.Log ("GENERATING PLAN");
+		//justPlanned = true;
+		//currentPlan.Add (RunAwayPC.GetPlanComponent ());
+		return newPlan;
 	}
 
 	//sound(plan, I, B)
-	bool PlanMakesSense(){
+	bool PlanMakesSense(IList<PlanComponent> plan, HumanState beliefs, IList<Intention> intentions){
 		return true;
 	}
 
 	//succeded(I, B)
-	bool PlanWasASuccess(){
-		return currentIntention.DidSucceded ();
+	bool PlanWasASuccess(HumanState beliefs, IList<Intention> intentions){
+
+		bool result = true;
+
+		//TODO: Rough Implementation, not correct
+		foreach (Intention intention in intentions) {
+			result = result && intention.Succeeded();
+		}
+		
+		return result;
 	}
 
 	//impossible(I, B)
-	bool PlanIsImpossible(){
-		return currentIntention.IsImpossible();
+	bool PlanIsImpossible(IList<Intention> intentions, IList<PlanComponent> plan){
+
+		//TODO: Nao devia ter nada a ver com a intençao, iterar plano e ver se e possivel
+
+		bool result = false;
+
+
+		foreach(Intention intention in intentions){
+
+			result = result || intention.IsImpossible();
+
+			if(result == true)
+				return result;
+
+		}
+
+		return result;
 	}
 
 	//reconsider (I, B)
-	bool ReconsiderPlan(){
+	bool ShouldReconsiderPlan(IList<Intention> intentions, HumanState beliefs){
 		//if contains grab, the only plan can only 
 		return false;
 	}
 
 
-	//D = options (B, I)
-	//I = filter (B, D, I)
-	void ReconsiderIntention(){
-		IList<Desire> desires = new List<Desire> ();
-		desires.Add(Desire.GoToExit);
 
-		//currentIntention = GoToExitIntention.GetIntentionComponent ();
+	//D = options (B, I)
+	IList<Desire> Options(HumanState beliefs, IList<Intention> intentions){
+		IList<Desire> desires = new List<Desire> ();
+
+		//TODO: TIAGO SANTOS TRABALHA MANDRIAO, by: Tiago Santos
+		return desires;	
 	}
+
+	
+	IList<Desire> Options(HumanState beliefs){
+		IList<Desire> desires = new List<Desire> ();
+		
+		//TODO: TIAGO SANTOS TRABALHA MANDRIAO, by: Tiago Santos
+		return desires;	
+	}
+
+	//I = filter (B, D, I)
+	IList<Intention> Filter(HumanState beliefs, IList<Desire> desires, IList<Intention> currentIntentions){
+		IList<Intention> intentions = new List<Intention> ();
+		//TODO: TIAGO SANTOS TRABALHA MANDRIAO, by: Tiago Santos
+		return intentions;
+	}
+
+	IList<Intention> Filter(HumanState beliefs, IList<Desire> desires){
+		IList<Intention> intentions = new List<Intention> ();
+		//TODO: TIAGO SANTOS TRABALHA MANDRIAO, by: Tiago Santos
+		return intentions;
+	}
+
+
+
 
 	void Update () {
 		//while believes it is possible and still hasn't accomplished the goal
+
+
 		if (currentPlan.Count > 0) {
-			if (! (PlanWasASuccess () || PlanIsImpossible ())) {
+			if (! (PlanWasASuccess(currentBeliefs, currentIntentions) || PlanIsImpossible(currentIntentions, currentPlan))) {
 				
 				//runned after started the previous plan
-				if(!justPlanned){
+				//if(!justPlanned){
 					Debug.Log ("Reconsider?");
-					if(ReconsiderPlan()){
+					if(ShouldReconsiderPlan(currentIntentions, currentBeliefs)){
+
 						Debug.Log ("Reconsider? Yes!");
-						ReconsiderIntention();
+						currentDesires = Options(currentBeliefs, currentIntentions);
+						currentIntentions = Filter(currentBeliefs, currentDesires, currentIntentions);
+						
 					}
 					// if not sound (pi, I , B) then generate new plan
 					Debug.Log ("PlanMakesSense?");
-					if(! PlanMakesSense()){
+					if(PlanMakesSense(currentPlan, currentBeliefs, currentIntentions) == false){
 						Debug.Log ("PlanMakesSense? No!");
-						GeneratePlan();
+						//justPlanned = 
+							currentPlan = GeneratePlan(currentPlan, currentIntentions);
 					}
-				}
+				//}
 				
 				
 				PlanComponent action = currentPlan[0];
 				currentPlan.RemoveAt(0);
 				action.ExecuteAction();
-				justPlanned = false;
+				//justPlanned = false;
 				
 				return;
 			}
 		}
 
-		ReconsiderIntention ();
-		GeneratePlan ();
+		
 	}
 }

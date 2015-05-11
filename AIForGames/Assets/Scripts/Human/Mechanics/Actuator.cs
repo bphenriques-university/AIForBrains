@@ -8,6 +8,7 @@ public class Actuator : MonoBehaviour
 	HumanShooting shooting;
 	HumanMovement movement;
 	HumanShooting playerShooting;
+	HumanSpeak speak;
 
 	void Awake(){
 		GameOverManager.humansAlive++;
@@ -17,6 +18,8 @@ public class Actuator : MonoBehaviour
 		hunger = GetComponent<HumanHunger> ();
 		shooting = GetComponentInChildren<HumanShooting> ();
 		movement = GetComponentInChildren<HumanMovement> ();
+		speak = GetComponentInChildren<HumanSpeak> ();
+
 		humanState = GetComponent<HumanState> ();
 	}		
 
@@ -84,6 +87,10 @@ public class Actuator : MonoBehaviour
 
 	public void Stop(){
 		movement.Stop ();
+	}
+
+	public void SendCryForHelp(){
+		speak.SendMessageToHumansNearby (HumanSpeak.Message.IAmGrabbed);
 	}
 }
 

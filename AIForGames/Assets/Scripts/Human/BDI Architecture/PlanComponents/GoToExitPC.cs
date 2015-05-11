@@ -7,7 +7,7 @@ public class GoToExitPC : PlanComponent
 	public override void ExecuteAction ()
 	{
 		Debug.Log ("RUNNING TO EXIT");
-		actuator.Run ();
+		humanState.actuator.Run ();
 		//empty for now
 	}	
 }
