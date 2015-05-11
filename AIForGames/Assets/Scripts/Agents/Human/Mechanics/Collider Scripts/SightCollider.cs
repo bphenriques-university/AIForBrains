@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HumanSight : MonoBehaviour {
+public class SightCollider : MonoBehaviour {
 
 	RaycastHit shootHit;
 	float range = 20f;

@@ -64,7 +64,7 @@ GameObject:
   - 4: {fileID: 466936}
   - 114: {fileID: 11406698}
   m_Layer: 0
-  m_Name: CatchAmmo
+  m_Name: FetchAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -333,7 +333,9 @@ GameObject:
   - 114: {fileID: 11440934}
   - 82: {fileID: 8203774}
   - 114: {fileID: 11416044}
-  - 114: {fileID: 11406008}
+  - 114: {fileID: 11456672}
+  - 114: {fileID: 11419494}
+  - 114: {fileID: 11469616}
   m_Layer: 0
   m_Name: HoomanReactive
   m_TagString: Human
@@ -401,7 +403,7 @@ GameObject:
   - 64: {fileID: 6400282}
   - 114: {fileID: 11477684}
   m_Layer: 0
-  m_Name: sightCollider
+  m_Name: SightCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,7 +553,7 @@ Transform:
   m_LocalScale: {x: 2.9000001, y: 1, z: 3.5}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!4 &407778
 Transform:
   m_ObjectHideFlags: 1
@@ -587,7 +589,7 @@ Transform:
   m_LocalScale: {x: 1.00000012, y: 1.00000024, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &423912
 Transform:
   m_ObjectHideFlags: 1
@@ -611,14 +613,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22473060}
-  - {fileID: 432964}
   - {fileID: 484732}
   - {fileID: 422384}
-  - {fileID: 401402}
   - {fileID: 498110}
   - {fileID: 427200}
-  - {fileID: 433364}
   - {fileID: 450090}
+  - {fileID: 401402}
+  - {fileID: 432964}
+  - {fileID: 433364}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &427200
@@ -632,7 +634,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!4 &432964
 Transform:
   m_ObjectHideFlags: 1
@@ -644,7 +646,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 1
+  m_RootOrder: 7
 --- !u!4 &433364
 Transform:
   m_ObjectHideFlags: 1
@@ -667,7 +669,7 @@ Transform:
   - {fileID: 466936}
   - {fileID: 423912}
   m_Father: {fileID: 426690}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!4 &437708
 Transform:
   m_ObjectHideFlags: 1
@@ -691,7 +693,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 8
+  m_RootOrder: 5
 --- !u!4 &454508
 Transform:
   m_ObjectHideFlags: 1
@@ -763,7 +765,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &498110
 Transform:
   m_ObjectHideFlags: 1
@@ -775,7 +777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 426690}
-  m_RootOrder: 5
+  m_RootOrder: 3
 --- !u!4 &498280
 Transform:
   m_ObjectHideFlags: 1
@@ -1152,17 +1154,6 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11406008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 168420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf8b5fc3dbbc4136a5c241fd3ac43eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11406698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1171,7 +1162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 125932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a640828b6aae34689c87bad7ff4ea7, type: 3}
+  m_Script: {fileID: 11500000, guid: 294872417031c3c4e9b7fcd979a76cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11409200
@@ -1182,7 +1173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 179934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bd2e6e51b4e4d6b97bdef34aa64f4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f3cdabeee57874458a45149af8b5123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11409984
@@ -1219,7 +1210,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 174698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c286f940e723114986a2e9bc7ca543e, type: 3}
+  m_Script: {fileID: 11500000, guid: bdd57dbbd1ab98849a66ce9a9e4a836a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenChanges: 1.5
@@ -1246,7 +1237,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 166036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbaadaa4c73cf4f52bf373c7370a4176, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d5a8dd888393564b9f1f2ec5a963b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11416044
@@ -1257,7 +1248,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 168420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca9f0adb71aa41f284e05d595b21014, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ddfe35aa79da0f4f85ec964b3853238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 6
+  walkSpeed: 2
+  rotationSpeed: 2
+  playerText: {fileID: 0}
+--- !u!114 &11419494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed840947ef2a2c4cbe75e68cf370f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11422372
@@ -1403,9 +1409,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 168420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0159fb0f03c4498885c4a9741e4157d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fe351ff35c3a33459632379ef8d8cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHunger: 80
+  hungerLossSpeed: 1
+  hungerSlider: {fileID: 0}
+  playerName: {fileID: 0}
+  numberFood: {fileID: 0}
+  hunger: 0
+  foods: []
 --- !u!114 &11443052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1414,15 +1427,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 168420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6343e0c34ef99964680aa0b02986d46d, type: 3}
+  m_Script: {fileID: 11500000, guid: e07e6e52f770de24ba08e647c5a31a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 100
-  hitSound: {fileID: 8252216}
-  deadSound: {fileID: 8230090}
-  healthSlider: {fileID: 11430942}
-  playerName: {fileID: 11429866}
+  ExitRoute: {fileID: 0}
+  actuator: {fileID: 0}
+  randomPoints: []
+  closeFriends: []
+  targetObjectInRangeToAttack: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+  targetObject: {fileID: 0}
+  foodSeen: {fileID: 0}
+  ammoSeen: {fileID: 0}
+  zombieSeen: {fileID: 0}
+  exitSeen: {fileID: 0}
+  sawFood: 0
+  onFood: 0
+  sawZombie: 0
+  sawHumanInDanger: 0
+  bitten: 0
+  sawAmmo: 0
+  onAmmo: 0
+  sawExitDoor: 0
 --- !u!114 &11447538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1431,7 +1457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 159520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ff0bdbd3cb1448eb2922bf702fb77d, type: 3}
+  m_Script: {fileID: 11500000, guid: e8be40f051140764eb58a42a2b75531e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToAim: 3
@@ -1443,7 +1469,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 143292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b252b8616263234bb92ddd4843f3fa1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dc9a76057e46984f8da839e2a1ac823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11455862
@@ -1467,6 +1493,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11456672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3b7474c80365949a48b5037e24730c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11459564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1475,13 +1512,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 168420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9efe815662acbb40832efa68aaa4829, type: 3}
+  m_Script: {fileID: 11500000, guid: a5c998435703d9b41b59aa049744090b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 6
-  walkSpeed: 2
-  rotationSpeed: 2
-  playerText: {fileID: 11429866}
 --- !u!114 &11463772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1511,7 +1544,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 105530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1099a3bbf047874bbf7b872c5dfd8e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 436bc56ac79deee499afa8f0e68d7883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damagePerShot: 20
@@ -1528,7 +1561,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 149672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f49c815348054b999d28589c9b00c77, type: 3}
+  m_Script: {fileID: 11500000, guid: a1ba89e5a63937c42b4b237d21bdd347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11469084
@@ -1539,10 +1572,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 153412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98e57cf8d7502ca4e8aa88d0c0c4185e, type: 3}
+  m_Script: {fileID: 11500000, guid: 71f364ce737bae44cac2e0ac95dc2fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minShootingDistance: 1
+--- !u!114 &11469616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fba5e3e8bd054c4abbdb6d0f6099f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11476692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1551,16 +1595,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 168420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440f83722ecd6784da9a887f944b7f08, type: 3}
+  m_Script: {fileID: 11500000, guid: c5292f12df7e7d247a36fe5c62968fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHunger: 80
-  hungerLossSpeed: 1
-  hungerSlider: {fileID: 11481090}
+  startingHealth: 100
+  currentHealth: 0
+  hitSound: {fileID: 0}
+  deadSound: {fileID: 0}
+  healthSlider: {fileID: 0}
   playerName: {fileID: 11429866}
-  numberFood: {fileID: 11409984}
-  hunger: 0
-  foods: []
 --- !u!114 &11477684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1569,7 +1612,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 176044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b794c30b220f394c90d97d0720928ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 1922ad67060fa4d4c83c1f6d3704e4b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11478406
@@ -1601,28 +1644,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 168420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aebaf3c13bb2b46c49ea769ffa51b9aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e2a127241238b943998037d8ec30b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExitRoute: {fileID: 0}
-  actuator: {fileID: 0}
-  randomPoints: []
-  closeFriends: []
-  targetObjectInRangeToAttack: 0
-  targetPosition: {x: 0, y: 0, z: 0}
-  targetObject: {fileID: 0}
-  foodSeen: {fileID: 0}
-  ammoSeen: {fileID: 0}
-  zombieSeen: {fileID: 0}
-  exitSeen: {fileID: 0}
-  sawFood: 0
-  onFood: 0
-  sawZombie: 0
-  sawHumanInDanger: 0
-  bitten: 0
-  sawAmmo: 0
-  onAmmo: 0
-  sawExitDoor: 0
 --- !u!114 &11480694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1695,7 +1719,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 133698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d48cf774ecf187499328e4cc7f7e8c1, type: 3}
+  m_Script: {fileID: 11500000, guid: bd71e9fa10d634b409b055c5aebd2af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11483318
@@ -1706,7 +1730,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 128424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd75820f5f58c64a9ed6bf95efd76f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 48ae2569ad2e3904fa649f575f58e29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11486944
@@ -1717,7 +1741,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 116094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be5ed958f3647b143b0d58b215ac60e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ae3aa723e7af3d4094e8cd7b0e5b4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11492430
@@ -1753,12 +1777,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviours:
-  - {fileID: 11409200}
-  - {fileID: 11447538}
   - {fileID: 11469084}
-  - {fileID: 11468566}
+  - {fileID: 11447538}
   - {fileID: 11482376}
+  - {fileID: 11468566}
   - {fileID: 11498970}
+  - {fileID: 11409200}
   - {fileID: 11450484}
   - {fileID: 11486944}
   - {fileID: 11483318}
@@ -1773,7 +1797,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 195288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d823836b971bc1e41b8b58acc12da017, type: 3}
+  m_Script: {fileID: 11500000, guid: e80faadc9e24dc7429a6db8ab3e6f3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DANGERDISTANCE: 1

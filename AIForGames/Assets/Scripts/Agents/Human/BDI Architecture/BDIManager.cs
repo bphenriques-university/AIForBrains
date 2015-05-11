@@ -53,6 +53,45 @@ public class BDIManager : MonoBehaviour {
 		}
 	}
 
+	void Update () {
+		//while believes it is possible and still hasn't accomplished the goal
+		
+		
+		if (currentPlan.Count > 0) {
+			if (! (PlanWasASuccess(currentBeliefs, currentIntentions) || PlanIsImpossible(currentIntentions, currentPlan))) {
+				
+				//runned after started the previous plan
+				//if(!justPlanned){
+				Debug.Log ("Reconsider?");
+				if(ShouldReconsiderPlan(currentIntentions, currentBeliefs)){
+					
+					Debug.Log ("Reconsider? Yes!");
+					currentDesires = Options(currentBeliefs, currentIntentions);
+					currentIntentions = Filter(currentBeliefs, currentDesires, currentIntentions);
+					
+				}
+				// if not sound (pi, I , B) then generate new plan
+				Debug.Log ("PlanMakesSense?");
+				if(PlanMakesSense(currentPlan, currentBeliefs, currentIntentions) == false){
+					Debug.Log ("PlanMakesSense? No!");
+					//justPlanned = 
+					currentPlan = GeneratePlan(currentPlan, currentIntentions);
+				}
+				//}
+				
+				
+				PlanComponent action = currentPlan[0];
+				currentPlan.RemoveAt(0);
+				action.ExecuteAction();
+				//justPlanned = false;
+				
+				return;
+			}
+		}
+		
+		
+	}
+
 
 	//Beliefs are througout the humanStatae when perceiveing the environment
 	enum Desire{
@@ -168,42 +207,5 @@ public class BDIManager : MonoBehaviour {
 
 
 
-	void Update () {
-		//while believes it is possible and still hasn't accomplished the goal
 
-
-		if (currentPlan.Count > 0) {
-			if (! (PlanWasASuccess(currentBeliefs, currentIntentions) || PlanIsImpossible(currentIntentions, currentPlan))) {
-				
-				//runned after started the previous plan
-				//if(!justPlanned){
-					Debug.Log ("Reconsider?");
-					if(ShouldReconsiderPlan(currentIntentions, currentBeliefs)){
-
-						Debug.Log ("Reconsider? Yes!");
-						currentDesires = Options(currentBeliefs, currentIntentions);
-						currentIntentions = Filter(currentBeliefs, currentDesires, currentIntentions);
-						
-					}
-					// if not sound (pi, I , B) then generate new plan
-					Debug.Log ("PlanMakesSense?");
-					if(PlanMakesSense(currentPlan, currentBeliefs, currentIntentions) == false){
-						Debug.Log ("PlanMakesSense? No!");
-						//justPlanned = 
-							currentPlan = GeneratePlan(currentPlan, currentIntentions);
-					}
-				//}
-				
-				
-				PlanComponent action = currentPlan[0];
-				currentPlan.RemoveAt(0);
-				action.ExecuteAction();
-				//justPlanned = false;
-				
-				return;
-			}
-		}
-
-		
-	}
 }
