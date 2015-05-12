@@ -32,21 +32,23 @@ using UnityEngine.UI;
 
 public class BDIManager : MonoBehaviour {
 
-	HumanState currentBeliefs;
+	HumanState humanState;
 	IList<PlanComponent> currentPlan = new List<PlanComponent> ();
 	IList<Desire> currentDesires;
 	IList<Intention> currentIntentions;
 	//bool justPlanned = false;
 
+    private Planner planner;
+
 	void Start () {
-		currentBeliefs = this.transform.root.GetComponent<HumanState>();
-		if (currentBeliefs == null) {
+		humanState = this.transform.root.GetComponent<HumanState>();
+		if (humanState == null) {
 			Debug.Log("SOME SHIT HAPPENED THAT WASN'T SUPPOSED TO");
 
 			//starting BDI
-			currentDesires = Options(currentBeliefs);
-			currentIntentions = Filter(currentBeliefs, currentDesires);
-			currentPlan = GeneratePlan(currentIntentions);
+			currentDesires = Options(humanState);
+			currentIntentions = Filter(humanState, currentDesires);
+            currentPlan = planner.GeneratePlan(currentIntentions);
 
 
 
@@ -58,24 +60,24 @@ public class BDIManager : MonoBehaviour {
 		
 		
 		if (currentPlan.Count > 0) {
-			if (! (PlanWasASuccess(currentBeliefs, currentIntentions) || PlanIsImpossible(currentIntentions, currentPlan))) {
+			if (! (PlanWasASuccess(humanState, currentIntentions) || PlanIsImpossible(currentIntentions, currentPlan))) {
 				
 				//runned after started the previous plan
 				//if(!justPlanned){
 				Debug.Log ("Reconsider?");
-				if(ShouldReconsiderPlan(currentIntentions, currentBeliefs)){
+				if(ShouldReconsiderPlan(currentIntentions, humanState)){
 					
 					Debug.Log ("Reconsider? Yes!");
-					currentDesires = Options(currentBeliefs, currentIntentions);
-					currentIntentions = Filter(currentBeliefs, currentDesires, currentIntentions);
+					currentDesires = Options(humanState, currentIntentions);
+					currentIntentions = Filter(humanState, currentDesires, currentIntentions);
 					
 				}
 				// if not sound (pi, I , B) then generate new plan
 				Debug.Log ("PlanMakesSense?");
-				if(PlanMakesSense(currentPlan, currentBeliefs, currentIntentions) == false){
+				if(PlanMakesSense(currentPlan, humanState, currentIntentions) == false){
 					Debug.Log ("PlanMakesSense? No!");
 					//justPlanned = 
-					currentPlan = GeneratePlan(currentPlan, currentIntentions);
+					currentPlan = planner.GeneratePlan(currentIntentions);
 				}
 				//}
 				
@@ -103,31 +105,7 @@ public class BDIManager : MonoBehaviour {
 	}
 
 	//pi = plan(B,I)
-	IList<PlanComponent> GeneratePlan(IList<PlanComponent> plan, IList<Intention> intentions){
-		currentPlan.Clear ();
-
-		IList<PlanComponent> newPlan = new List<PlanComponent> ();
-
-		//TODO: Dont be a foo, call Xu
-
-		Debug.Log ("GENERATING PLAN");
-		//justPlanned = true;
-		//currentPlan.Add (RunAwayPC.GetPlanComponent ());
-		return newPlan;
-	}
-
-	IList<PlanComponent> GeneratePlan(IList<Intention> intentions){
-		currentPlan.Clear ();
-		
-		IList<PlanComponent> newPlan = new List<PlanComponent> ();
-		
-		//TODO: Dont be a foo, call Xu
-		
-		Debug.Log ("GENERATING PLAN");
-		//justPlanned = true;
-		//currentPlan.Add (RunAwayPC.GetPlanComponent ());
-		return newPlan;
-	}
+	
 
 	//sound(plan, I, B)
 	bool PlanMakesSense(IList<PlanComponent> plan, HumanState beliefs, IList<Intention> intentions){

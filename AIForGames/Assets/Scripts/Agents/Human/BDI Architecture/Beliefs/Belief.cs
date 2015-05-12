@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public abstract class Belief
 {
 
-	private bool isInBelief = false;
+	protected bool isInBelief = true;
 
 
     public abstract void ReviewBelief(BeliefsManager beliefs, HumanState humanState);

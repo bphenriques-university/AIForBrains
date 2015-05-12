@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class HumanState : MonoBehaviour
 {
@@ -116,6 +116,16 @@ public class HumanState : MonoBehaviour
 		return hunger.GetHungerLevel ();
 	}
 
+    public float AmmoLevel()
+    {
+        return shooting.currentAmmo;
+    }
+
+    public IList<Food> FoodsCarried()
+    {
+        return hunger.foods;
+    }
+
 	public bool IsSeeingExitRoute(){
 		return sawExitDoor;
 	}
@@ -177,4 +187,9 @@ public class HumanState : MonoBehaviour
 		}
 		return  false;
 	}
+
+    public Transform CurrentPosition()
+    {
+        return transform.root;
+    }
 }

@@ -7,24 +7,54 @@ public class BeliefsManager : MonoBehaviour
 {
 
     /* List of possible beliefs */
-    private FoodLevelBelief foodLevelBelief = new FoodLevelBelief();
+    private HungerBelief foodLevelBelief = new HungerBelief();
+    private InventoryBelief inventoryBelief = new InventoryBelief();
+    private VitalsBelief healthLevelBelief = new VitalsBelief();
+    private SightBelief sightBelief = new SightBelief();
+    private NavigationBelief navigationBelief = new NavigationBelief();
+
+    private Belief[] beliefs;
 
 
 
     public void Start()
     {
+        beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, sightBelief, navigationBelief };
     }
 
 
-	public IList<Belief> BeliefReviewFunction(IList<Belief> beliefs) 
+	public BeliefsManager BeliefReviewFunction(HumanState humanState) 
 	{
-		//TODO
-		return null;
+        foreach (Belief belief in beliefs)
+        {
+            belief.ReviewBelief(this, humanState);
+        }
+        return this;
 	}
 
-    public FoodLevelBelief GetFoodLevelBelief()
+    public HungerBelief GetFoodLevelBelief()
     {
         return foodLevelBelief;
+    }
+
+    public InventoryBelief GetInventoryBelief()
+    {
+        return inventoryBelief;
+    }
+
+    public VitalsBelief GetHealthLevelBelief()
+    {
+        return healthLevelBelief;
+    }
+
+    public SightBelief GetSightBelief()
+    {
+        return sightBelief;
+    }
+
+    public NavigationBelief GetNavigationBelief()
+    {
+        return navigationBelief;
     }
 }
 

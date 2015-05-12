@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 
@@ -20,17 +21,35 @@ using System.Collections;
 } */
 
 
-public abstract class Intention : MonoBehaviour
-{
-	public HumanState humanState;
+public abstract class Intention {
 
-	void Start(){
-		humanState = this.transform.root.GetComponent<HumanState> ();
-	}
+    protected float intentValue = 0f;
+    protected float desiredIntentValue = 0f;
+    protected int desiredIntentionNumber = 1;
 
 	public abstract bool Succeeded ();
-
 	public abstract bool IsImpossible();
 
+    public Intention(float desiredIntentValue)
+    {
+        this.desiredIntentValue = desiredIntentValue;
+    }
 
+    public float IntentValue()
+    {
+        return intentValue + desiredIntentValue;
+    }
+
+    public void IncreaseIntentionNumber(float intentionValue)
+    {
+        desiredIntentionNumber++;
+        desiredIntentValue += desiredIntentValue / desiredIntentionNumber;
+    }
+
+    /**
+     *  Evaluate
+     *  Returns a boolean stating if the intent is still possible and
+     *  calculates intentValue.
+     **/
+    public abstract bool Evaluate(BeliefsManager beliefs, IList<Intention> previousIntentions);
 }
