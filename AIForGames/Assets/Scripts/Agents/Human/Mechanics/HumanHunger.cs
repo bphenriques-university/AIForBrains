@@ -83,6 +83,13 @@ public class HumanHunger : MonoBehaviour
 		return foods.Count;
 	}
 
+
+    public void EatFood(Food foodToBeEaten)
+    {
+        hunger += foodToBeEaten.foodPoints;
+        foods.Remove(foodToBeEaten);
+        numberFood.text = "( " + foods.Count + " )";
+    }
 }
 
 

@@ -52,4 +52,11 @@ public abstract class Intention {
      *  calculates intentValue.
      **/
     public abstract bool Evaluate(BeliefsManager beliefs, IList<Intention> previousIntentions);
+
+
+    /**
+     *  GivePlanComponents
+     *  Gives plan components required to perform intention.
+     **/
+    public abstract IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs);
 }

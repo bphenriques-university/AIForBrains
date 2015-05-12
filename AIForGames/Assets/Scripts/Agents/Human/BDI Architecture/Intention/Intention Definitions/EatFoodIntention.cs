@@ -14,12 +14,12 @@ public class EatFoodIntention : Intention
  
     public override bool Succeeded()
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 
     public override bool IsImpossible()
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 
     public override bool Evaluate(BeliefsManager beliefs, IList<Intention> previousIntentions)
@@ -27,12 +27,39 @@ public class EatFoodIntention : Intention
         if (beliefs.GetInventoryBelief().Foods().Contains(foodToBeEaten)) {
             intentValue = 50;
         } else {
-            Vector3 currentPosition = beliefs.GetNavigationBelief().CurrentPosition().position;
-            Vector3 foodPosition = foodToBeEaten.transform.position;
-            intentValue = 50 / ((currentPosition - foodPosition).magnitude);
+            if (beliefs.GetSightBelief().SawFood())
+            {
+                Vector3 currentPosition = beliefs.GetNavigationBelief().CurrentPosition().position;
+                Vector3 foodPosition = foodToBeEaten.transform.position;
+                intentValue = 50 / ((currentPosition - foodPosition).magnitude);
+            }
+            else
+            {
+                return false;
+            }
         }
         
         
         return true;
+    }
+
+    public override IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs)
+    {
+        IList<PlanComponent> plan = new List<PlanComponent> ();
+        if (beliefs.GetInventoryBelief().Foods().Contains(foodToBeEaten))
+        {
+            plan.Add(new EatFoodPlanComponent(humanState, foodToBeEaten));
+        }
+        else
+        {
+            if (beliefs.GetSightBelief().SawFood())
+            {
+                plan.Add(new GoToPlanComponent(humanState, foodToBeEaten.transform));
+                plan.Add(new CatchFoodPlanComponent(humanState, foodToBeEaten));
+                plan.Add(new EatFoodPlanComponent(humanState, foodToBeEaten));
+            }
+        }
+
+        return plan;
     }
 }

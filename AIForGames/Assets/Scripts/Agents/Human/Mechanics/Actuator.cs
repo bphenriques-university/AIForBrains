@@ -30,6 +30,11 @@ public class Actuator : MonoBehaviour
 	public void EatFood() {
 		hunger.EatFood ();
 	}
+
+    public void EatFood(Food foodToBeEaten)
+    {
+        hunger.EatFood(foodToBeEaten);
+    }
 	
 	public void turnTo (Vector3 position)
 	{

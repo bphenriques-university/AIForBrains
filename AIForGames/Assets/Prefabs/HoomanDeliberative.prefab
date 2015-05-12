@@ -186,6 +186,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &148754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 415428}
+  - 114: {fileID: 11401056}
+  m_Layer: 0
+  m_Name: BDI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &151832
 GameObject:
   m_ObjectHideFlags: 1
@@ -244,7 +260,6 @@ GameObject:
   - 95: {fileID: 9582838}
   - 54: {fileID: 5471088}
   - 136: {fileID: 13683740}
-  - 114: {fileID: 11495194}
   - 114: {fileID: 11475956}
   - 195: {fileID: 19561608}
   - 114: {fileID: 11442806}
@@ -253,6 +268,9 @@ GameObject:
   - 82: {fileID: 8256434}
   - 114: {fileID: 11429910}
   - 114: {fileID: 11458340}
+  - 114: {fileID: 11442344}
+  - 114: {fileID: 11453396}
+  - 114: {fileID: 11460838}
   m_Layer: 0
   m_Name: HoomanDeliberative
   m_TagString: Human
@@ -348,6 +366,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &415428
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 447588}
+  m_RootOrder: 8
 --- !u!4 &425982
 Transform:
   m_ObjectHideFlags: 1
@@ -391,7 +421,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22448924}
@@ -402,6 +432,7 @@ Transform:
   - {fileID: 477100}
   - {fileID: 494740}
   - {fileID: 440496}
+  - {fileID: 415428}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &476610
@@ -804,6 +835,17 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11401056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b18e3af934f6d4cba545932a2a2ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11428878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -826,9 +868,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 179542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca9f0adb71aa41f284e05d595b21014, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fe351ff35c3a33459632379ef8d8cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHunger: 80
+  hungerLossSpeed: 1
+  hungerSlider: {fileID: 11443002}
+  playerName: {fileID: 11463750}
+  numberFood: {fileID: 11435004}
+  hunger: 0
+  foods: []
 --- !u!114 &11430664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,13 +907,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 179542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9efe815662acbb40832efa68aaa4829, type: 3}
+  m_Script: {fileID: 11500000, guid: c5292f12df7e7d247a36fe5c62968fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 6
-  walkSpeed: 2
-  rotationSpeed: 2
-  playerText: {fileID: 11463750}
+  startingHealth: 100
+  currentHealth: 0
+  hitSound: {fileID: 8294568}
+  deadSound: {fileID: 8250386}
+  healthSlider: {fileID: 11484102}
+  playerName: {fileID: 11463750}
 --- !u!114 &11434132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -926,6 +977,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11442344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3b7474c80365949a48b5037e24730c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11442806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -934,28 +996,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 179542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aebaf3c13bb2b46c49ea769ffa51b9aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e2a127241238b943998037d8ec30b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExitRoute: {fileID: 0}
-  actuator: {fileID: 0}
-  randomPoints: []
-  closeFriends: []
-  targetObjectInRangeToAttack: 0
-  targetPosition: {x: 0, y: 0, z: 0}
-  targetObject: {fileID: 0}
-  foodSeen: {fileID: 0}
-  ammoSeen: {fileID: 0}
-  zombieSeen: {fileID: 0}
-  exitSeen: {fileID: 0}
-  sawFood: 0
-  onFood: 0
-  sawZombie: 0
-  sawHumanInDanger: 0
-  bitten: 0
-  sawAmmo: 0
-  onAmmo: 0
-  sawExitDoor: 0
 --- !u!114 &11443002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1012,7 +1055,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 103148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b794c30b220f394c90d97d0720928ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 1922ad67060fa4d4c83c1f6d3704e4b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11448898
@@ -1023,7 +1066,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 103930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbaadaa4c73cf4f52bf373c7370a4176, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d5a8dd888393564b9f1f2ec5a963b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11453396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed840947ef2a2c4cbe75e68cf370f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11453972
@@ -1034,7 +1088,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 185938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1099a3bbf047874bbf7b872c5dfd8e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 436bc56ac79deee499afa8f0e68d7883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damagePerShot: 20
@@ -1051,7 +1105,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 179542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf8b5fc3dbbc4136a5c241fd3ac43eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ddfe35aa79da0f4f85ec964b3853238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 6
+  walkSpeed: 2
+  rotationSpeed: 2
+  playerText: {fileID: 0}
+--- !u!114 &11460838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fba5e3e8bd054c4abbdb6d0f6099f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11463750
@@ -1088,7 +1157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 179542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0159fb0f03c4498885c4a9741e4157d, type: 3}
+  m_Script: {fileID: 11500000, guid: a5c998435703d9b41b59aa049744090b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11475956
@@ -1099,16 +1168,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 179542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 440f83722ecd6784da9a887f944b7f08, type: 3}
+  m_Script: {fileID: 11500000, guid: e07e6e52f770de24ba08e647c5a31a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHunger: 80
-  hungerLossSpeed: 1
-  hungerSlider: {fileID: 11443002}
-  playerName: {fileID: 11463750}
-  numberFood: {fileID: 11435004}
-  hunger: 0
-  foods: []
+  ExitRoute: {fileID: 0}
+  actuator: {fileID: 0}
+  randomPoints: []
+  closeFriends: []
+  targetObjectInRangeToAttack: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+  targetObject: {fileID: 0}
+  foodSeen: {fileID: 0}
+  ammoSeen: {fileID: 0}
+  zombieSeen: {fileID: 0}
+  exitSeen: {fileID: 0}
+  sawFood: 0
+  onFood: 0
+  sawZombie: 0
+  sawHumanInDanger: 0
+  bitten: 0
+  sawAmmo: 0
+  onAmmo: 0
+  sawExitDoor: 0
 --- !u!114 &11480832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1246,23 +1327,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11495194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6343e0c34ef99964680aa0b02986d46d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 100
-  hitSound: {fileID: 8294568}
-  deadSound: {fileID: 8250386}
-  healthSlider: {fileID: 11484102}
-  playerName: {fileID: 11463750}
 --- !u!114 &11496764
 MonoBehaviour:
   m_ObjectHideFlags: 1

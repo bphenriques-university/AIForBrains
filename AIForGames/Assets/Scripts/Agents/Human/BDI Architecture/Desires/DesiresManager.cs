@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class DesiresManager : MonoBehaviour {
+public class DesiresManager{
+
+    private AcquireFoodDesire catchFoodDesire = new AcquireFoodDesire();
+    private EatFoodDesire eatFoodDesire = new EatFoodDesire();
 
     private Desire[] desires;
 
 
-    public void Start()
+    public DesiresManager()
     {
-        desires = new Desire[] {  };
+        desires = new Desire[] { eatFoodDesire };
     }
 
 

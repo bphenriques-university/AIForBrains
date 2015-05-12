@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GoToExitIntention : Intention
 {
@@ -23,6 +24,11 @@ public class GoToExitIntention : Intention
 	}
 
     public override bool Evaluate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs)
     {
         throw new System.NotImplementedException();
     }

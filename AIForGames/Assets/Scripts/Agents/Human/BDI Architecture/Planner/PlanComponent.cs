@@ -1,14 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class PlanComponent : MonoBehaviour
+public abstract class PlanComponent
 {
 	public HumanState humanState;
 
-	void Start(){
-		humanState = this.transform.root.GetComponent<HumanState> ();
+    public PlanComponent(HumanState humanstate)
+    {
+        this.humanState = humanstate;
 	}
 
-	public abstract void ExecuteAction ();
+    /**
+     * TryExecuteAction
+     * Executes action and returns true if action finished, false otherwise.
+     **/
+	public abstract bool TryExecuteAction ();
+
 }
 

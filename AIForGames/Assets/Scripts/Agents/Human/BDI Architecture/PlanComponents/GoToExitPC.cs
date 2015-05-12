@@ -4,11 +4,15 @@ using System.Collections;
 public class GoToExitPC : PlanComponent
 {
 
-	public override void ExecuteAction ()
+    public GoToExitPC(HumanState humanState)
+        : base(humanState)
+    { }
+
+	public override bool TryExecuteAction ()
 	{
 		Debug.Log ("RUNNING TO EXIT");
 		humanState.actuator.Run ();
-		//empty for now
+        return true;//empty for now
 	}	
 }
 

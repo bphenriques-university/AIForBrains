@@ -192,4 +192,16 @@ public class HumanState : MonoBehaviour
     {
         return transform.root;
     }
+
+    public Food FoodSeen()
+    {
+        if (foodSeen)
+        {
+            return foodSeen.GetComponent<Food>();
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

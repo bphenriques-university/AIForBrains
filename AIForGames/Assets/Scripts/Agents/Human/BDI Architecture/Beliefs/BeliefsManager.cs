@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class BeliefsManager : MonoBehaviour 
+public class BeliefsManager
 {
 
     /* List of possible beliefs */
@@ -17,7 +17,7 @@ public class BeliefsManager : MonoBehaviour
 
 
 
-    public void Start()
+    public BeliefsManager()
     {
         beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, sightBelief, navigationBelief };
     }

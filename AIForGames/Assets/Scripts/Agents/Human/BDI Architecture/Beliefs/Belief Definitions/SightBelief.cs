@@ -10,7 +10,10 @@ public class SightBelief : Belief
 
     public override void ReviewBelief(BeliefsManager beliefs, HumanState humanState)
     {
-        throw new System.NotImplementedException();
+        foodSeen = humanState.FoodSeen();
+        ammoSeen = humanState.ammoSeen;
+        zombieSeen = humanState.zombieSeen;
+        exitSeen = humanState.exitSeen;
     }
 
     public bool SawFood()
