@@ -4,13 +4,14 @@ using System.Collections.Generic;
 public abstract class Belief
 {
 
-	private bool isInBelief;
-	private Object beliefValue;
+	private bool isInBelief = false;
 
-	public abstract bool EvaluateBelief (IList<Belief> beliefs, HumanState humanState);
 
-	public Object GetBeliefValue () {
-		return beliefValue;
-	}
+    public abstract void ReviewBelief(BeliefsManager beliefs, HumanState humanState);
+
+    public bool IsInBelief()
+    {
+        return isInBelief;
+    }
 }
 
