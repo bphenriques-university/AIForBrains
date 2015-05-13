@@ -7,6 +7,7 @@ public class SightBelief : Belief
     private Ammo ammoSeen = null;
     private GameObject zombieSeen = null;
     private GameObject exitSeen = null;
+	private HumanState humanState = null;
 
     public override void ReviewBelief(BeliefsManager beliefs, HumanState humanState)
     {
@@ -14,7 +15,12 @@ public class SightBelief : Belief
         ammoSeen = humanState.ammoSeen;
         zombieSeen = humanState.zombieSeen;
         exitSeen = humanState.exitSeen;
+		this.humanState = humanState;
     }
+
+	public float DistanceToZombie(){
+		return Vector3.Distance (humanState.transform.position, zombieSeen.gameObject.transform.position);
+	}
 
     public bool SawFood()
     {
