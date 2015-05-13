@@ -15,12 +15,13 @@ public class DesiresManager{
 
     public DesiresManager()
     {
-		desires = new Desire[] { getAwayFromZombie /* gatherAmmoDesire, eatFoodDesire, escapeDesire */};
+		desires = new Desire[] { getAwayFromZombie, gatherAmmoDesire, eatFoodDesire, escapeDesire };
     }
 
 
     public IList<Desire> Options(BeliefsManager beliefs, IList<Intention> intentions)
     {
+        Debug.Log("Running Options.");
         IList<Desire> desired = new List<Desire>();
         foreach (Desire desire in desires)
         {

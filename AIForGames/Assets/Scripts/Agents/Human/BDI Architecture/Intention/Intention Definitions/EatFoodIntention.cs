@@ -55,7 +55,7 @@ public class EatFoodIntention : Intention
         {
             if (beliefs.GetSightBelief().SawFood())
             {
-                plan.Add(new GoToPlanComponent(humanState, foodToBeEaten.transform.position));
+                plan.Add(new WalkToPlanComponent(humanState, foodToBeEaten.transform.position));
                 plan.Add(new CatchFoodPlanComponent(humanState, foodToBeEaten));
                 plan.Add(new EatFoodPlanComponent(humanState, foodToBeEaten));
             }

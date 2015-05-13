@@ -35,7 +35,7 @@ public class GetAwayFromZombieIntention : Intention
 			desiredDestinationPos = beliefs.GetNavigationBelief().CurrentPosition().position - zombie.transform.position;
 			desiredDestinationPos.Normalize();
 			desiredDestinationPos = desiredDestinationPos * 3.5f;
-			plan.Add(new GoToPlanComponent(humanState, desiredDestinationPos));
+			plan.Add(new RunToPlanComponent(humanState, desiredDestinationPos));
 		}
 		
 		return plan;

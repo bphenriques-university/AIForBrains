@@ -9,12 +9,12 @@ public class GetAwayFromZombieDesire  : Desire
 	public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
 	{
 
-		if (beliefs.GetSightBelief ().SawZombie ()) {
-			desireLevel = (beliefs.GetSightBelief ().DistanceToZombie () - safeDistanceToZombie) * 100;
-			return;
-		} 
-
-		desireLevel = 0;
+        if (beliefs.GetSightBelief().SawZombie())
+        {
+            desireLevel = (12 / beliefs.GetSightBelief().DistanceToZombie()) * 10;
+        }
+        else
+            desireLevel = 0;
 
 	}
 	

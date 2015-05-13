@@ -7,6 +7,7 @@ public class IntentionsManager
 
     public IList<Intention> Filter(BeliefsManager beliefs, IList<Desire> desires, IList<Intention> previousIntentions)
     {
+        Debug.Log("Running Filter");
         IList<Intention> desiredIntentions = new List<Intention>();
         foreach (Desire desire in desires)
         {
