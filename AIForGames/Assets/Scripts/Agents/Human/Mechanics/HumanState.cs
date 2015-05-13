@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class HumanState : MonoBehaviour
@@ -47,7 +47,7 @@ public class HumanState : MonoBehaviour
 	public Vector3 targetPosition;
 	public GameObject targetObject;
 	public GameObject foodSeen;
-	public GameObject ammoSeen;
+	public Ammo ammoSeen;
 	public GameObject zombieSeen;
 	public GameObject exitSeen;
 
@@ -216,9 +216,10 @@ public class HumanState : MonoBehaviour
 	public float getHumanTime(){
 		return humanTimer;
 	}
-
+	
 	public IList<HumanState> getFriendship()
 	{
  	throw new System.NotImplementedException();
 	}
+
 }

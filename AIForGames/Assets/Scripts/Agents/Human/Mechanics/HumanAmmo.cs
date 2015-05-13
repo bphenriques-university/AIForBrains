@@ -18,13 +18,13 @@ public class HumanAmmo : MonoBehaviour
 
 		if (other.gameObject.tag == "Ammo") {
 			humanState.onAmmo = true;
-			humanState.ammoSeen = other.gameObject;
+			humanState.ammoSeen = other.gameObject.GetComponent<Ammo>();
 		}
 	}
 
 	public void GrabAmmo ()
 	{
-		GameObject ammoObject = humanState.ammoSeen;
+		GameObject ammoObject = humanState.ammoSeen.gameObject;
 		
 		//Due to non-deterministic environment
 		if (ammoObject == null) {

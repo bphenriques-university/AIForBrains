@@ -1,16 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GatherAmmunitionDesire : Desire
 {
+	private float minimumDesiredAmmoLevel = 10.0f;
 
     public override void Deliberate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {
-        throw new System.NotImplementedException();
+		desireLevel = 100/(minimumDesiredAmmoLevel * (1.0f + beliefs.GetInventoryBelief ().AmmoLevel()));
     }
 
     public override System.Collections.Generic.IList<Intention> GenerateIntentions(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {
-        throw new System.NotImplementedException();
+		IList<Intention> desiredIntentions = new List<Intention>();
+				
+		desiredIntentions.Add (new GatherAmmunitionIntention(desireLevel, beliefs.GetSightBelief().GetAmmoSeen()));
+		
+		return desiredIntentions;
+
     }
 }

@@ -3,33 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-/*
-		 * while true
-		 * 		get next percept p
-		 * 		B = Brf (B, p)
-		 * 		D = Options (B, I)
-		 * 		I = filter (B, D, I)
-		 * 		pi = plan(B,I)
-		 * 		while not (empty(pi) or succeded(I, B) or impossible(I, B))
-		 * 			action = head(pi)
-		 * 			execute(action)
-		 * 			pi = tail(pi)
-		 * 			get next percept p
-		 * 			B = Brf(B, p)
-		 * 			if reconsider (I, B) then
-		 * 				D = options (B, I)
-		 * 				I = filter (B, D, I)
-		 * 			end-if
-		 * 
-		 * 			if not sound (pi, I, B) then
-		 * 				pi = plan (B, I)
-		 * 			end-if
-		 * 		end-while
-		 * end-while
-		 * 
-		 */
-
-
 public class BDIManager : MonoBehaviour {
 
 	private HumanState humanState;
@@ -61,9 +34,6 @@ public class BDIManager : MonoBehaviour {
 		currentDesires = desires.Options(beliefs, new List<Intention> ());
         currentIntentions = intentions.Filter(beliefs, currentDesires, new List<Intention>());
         currentPlan = planner.GeneratePlan(beliefs, currentIntentions);
-
-
-
 		
 	}
 
@@ -94,14 +64,8 @@ public class BDIManager : MonoBehaviour {
 			Debug.Log ("PlanMakesSense?");
 			if(currentPlan.MakesSense(humanState, currentIntentions) == false){
 				Debug.Log ("PlanMakesSense? No!");
-				//justPlanned = 
 				currentPlan = planner.GeneratePlan(beliefs, currentIntentions);
 			}
-			//}
-				
-				
-			
-			//justPlanned = false;
 
 
         }
@@ -156,25 +120,5 @@ public class BDIManager : MonoBehaviour {
         //if contains grab, the only plan can only 
         return false;
     }
-
-
-	//Beliefs are througout the humanStatae when perceiveing the environment
-	/*enum Desire{
-		GoToExit,
-		RunFromZombie,
-		HelpFriend,
-		GetFood,
-		GetAmmo
-	}
-    */
-	//pi = plan(B,I)
-	
-
-	//sound(plan, I, B)
-	
-
-	//impossible(I, B)
-	
-
 
 }

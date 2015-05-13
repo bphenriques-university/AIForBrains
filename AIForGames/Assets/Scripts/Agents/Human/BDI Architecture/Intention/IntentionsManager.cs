@@ -24,20 +24,20 @@ public class IntentionsManager
             }
         }
 
-        //foreach (Intention desiredIntention in desiredIntentions)
-        //{
-        //    if (desiredIntention.Evaluate(beliefs, previousIntentions) == false)
-        //    {
-        //        desiredIntentions.Remove(desiredIntention);
-        //    }
-        //}
+        foreach (Intention desiredIntention in desiredIntentions)
+        {
+            if (desiredIntention.Evaluate(beliefs, previousIntentions) == false)
+            {
+                desiredIntentions.Remove(desiredIntention);
+            }
+        }
 
         //For now let's just return the top intention...
-        desiredIntentions = getTopIntention(desiredIntentions);
+        desiredIntentions = getMostDesiredIntention(desiredIntentions);
         return desiredIntentions;
     }
 
-    private IList<Intention> getTopIntention(IList<Intention> desiredIntentions)
+    private IList<Intention> getMostDesiredIntention(IList<Intention> desiredIntentions)
     {
 
 
