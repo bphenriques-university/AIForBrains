@@ -48,6 +48,6 @@ public class GetAwayFromZombieIntention : Intention
 	
 	public override bool IsImpossible(BeliefsManager beliefs)
 	{
-		return beliefs.GetHealthLevelBelief ().IsGrabbed ();
+		return beliefs.GetVitalsBelief ().IsGrabbed ();
 	}
 }
