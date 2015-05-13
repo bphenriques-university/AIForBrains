@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CatchFoodIntention : Intention
 {
-
+    public CatchFoodIntention(float desiredIntentionValue)
+        : base(desiredIntentionValue)
+    {}
 
     public override bool Evaluate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {
