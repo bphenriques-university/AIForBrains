@@ -5,10 +5,11 @@ using System.Collections.Generic;
 public class GoToExitIntention : Intention
 {
 
-    public GoToExitIntention (float desiredIntention) : base (desiredIntention) {}
+    private GameObject exit;
 
-	public void Awake(){
-	}
+    public GoToExitIntention (GameObject exit, float desiredIntention) : base (desiredIntention) {
+        this.exit = exit;
+    }
 
     public override bool Succeeded(BeliefsManager beliefs)
     {
@@ -25,9 +26,10 @@ public class GoToExitIntention : Intention
 		
 	}
 
-    public override bool Evaluate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+    public override bool Evaluate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
-        throw new System.NotImplementedException();
+        intentValue = 50f;
+        return beliefs.GetSightBelief().SawExit();
     }
 
     public override IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs)

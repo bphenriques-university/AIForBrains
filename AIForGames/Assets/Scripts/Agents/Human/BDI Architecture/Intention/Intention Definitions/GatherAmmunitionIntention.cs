@@ -30,7 +30,7 @@ public class GatherAmmunitionIntention : Intention
 		IList<PlanComponent> plan = new List<PlanComponent> ();
 		if (beliefs.GetSightBelief().SawAmmo() && !desiredAmmo.wasPickedUp)
 		{
-			plan.Add(new GoToPlanComponent(humanState, desiredAmmo.transform));
+			plan.Add(new GoToPlanComponent(humanState, desiredAmmo.transform.position));
 			plan.Add(new CatchAmmoPlanComponent(humanState, desiredAmmo));
 		}
 

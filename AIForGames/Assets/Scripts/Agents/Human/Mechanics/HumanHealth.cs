@@ -93,7 +93,7 @@ public class HumanHealth : MonoBehaviour
 			playerMovement.enabled = false;
 		}
 
-		transform.FindChild ("ReactiveBehaviourManager").GetComponent<ReactiveBehaviourManager> ().enabled = false;
+		transform.FindChild ("AI").gameObject.SetActive(false);
 
 		enabled = false;
 	}

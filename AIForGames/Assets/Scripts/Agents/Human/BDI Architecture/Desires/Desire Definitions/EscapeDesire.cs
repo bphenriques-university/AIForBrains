@@ -24,6 +24,7 @@ public class EscapeDesire : Desire
         IList<Intention> desiredIntentions = new List<Intention>();
         if (beliefs.GetSightBelief().SawExit())
         {
+            desiredIntentions.Add(new GoToExitIntention(beliefs.GetSightBelief().GetExitSeen(), desireLevel));
         }
         else
         {

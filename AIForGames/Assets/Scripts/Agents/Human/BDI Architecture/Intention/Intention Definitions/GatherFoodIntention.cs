@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CatchFoodIntention : Intention
+public class GatherFoodIntention : Intention
 {
-    public CatchFoodIntention(float desiredIntentionValue)
+    public GatherFoodIntention(float desiredIntentionValue)
         : base(desiredIntentionValue)
     {}
 

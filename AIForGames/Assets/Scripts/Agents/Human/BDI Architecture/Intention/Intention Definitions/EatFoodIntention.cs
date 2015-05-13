@@ -19,7 +19,8 @@ public class EatFoodIntention : Intention
 
     public override bool IsImpossible(BeliefsManager beliefs)
     {
-        return foodToBeEaten.Eaten();
+        return foodToBeEaten.Eaten() || 
+            (foodToBeEaten.Catched() && !beliefs.GetInventoryBelief().Foods().Contains(foodToBeEaten));
     }
 
     public override bool Evaluate(BeliefsManager beliefs, IList<Intention> previousIntentions)
@@ -54,7 +55,7 @@ public class EatFoodIntention : Intention
         {
             if (beliefs.GetSightBelief().SawFood())
             {
-                plan.Add(new GoToPlanComponent(humanState, foodToBeEaten.transform));
+                plan.Add(new GoToPlanComponent(humanState, foodToBeEaten.transform.position));
                 plan.Add(new CatchFoodPlanComponent(humanState, foodToBeEaten));
                 plan.Add(new EatFoodPlanComponent(humanState, foodToBeEaten));
             }
