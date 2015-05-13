@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class HumanState : MonoBehaviour
@@ -51,6 +51,9 @@ public class HumanState : MonoBehaviour
 	public GameObject zombieSeen;
 	public GameObject exitSeen;
 
+
+	public float humanTimer = 0f;
+
 	public bool sawFood = false;
 	public bool onFood = false;
 	public bool sawZombie = false;
@@ -62,8 +65,10 @@ public class HumanState : MonoBehaviour
 
 	
 	void Update(){
+		humanTimer += Time.deltaTime;
 		attackTimer += Time.deltaTime;
 	}
+
 	
 	/* ------------------------------------------*/
 	/* ----------------- Sensors  ---------------*/
@@ -208,8 +213,13 @@ public class HumanState : MonoBehaviour
         }
     }
 
+	public float getHumanTime(){
+		return humanTimer;
+	}
+	
 	public IList<HumanState> getFriendship()
 	{
  	throw new System.NotImplementedException();
 	}
+
 }
