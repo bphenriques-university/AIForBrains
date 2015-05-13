@@ -32,7 +32,7 @@ public class HumanState : MonoBehaviour
 		movement = GetComponentInChildren<HumanMovement> ();
 		shootableMask = LayerMask.GetMask ("Shootable");
 		actuator = GetComponent<Actuator> ();
-		sightCollider = GetComponent<"sightCollider"> ();
+		sightCollider = GetComponentInChildren<MeshCollider> ();
 
 	}
 	
@@ -150,41 +150,42 @@ public class HumanState : MonoBehaviour
 		GameObject gObject;
 
 
-		foreach(MemoryEntry memory in FoodMemory){
-			if(bounds.Contains(memory.getLastKnownPosition())){
-				gObject = memory.getGameObject();
-				if(gObject.transform.position != memory.getLastKnownPosition){
-					FoodMemory.Remove(gObject.GetInstanceID);
-				}
-			}
-		}
+        // TODO - Tiago - Fix this shit
+        //foreach(MemoryEntry memory in FoodMemory){
+        //    if(bounds.Contains(memory.getLastKnownPosition())){
+        //        gObject = memory.getGameObject();
+        //        if(gObject.transform.position != memory.getLastKnownPosition){
+        //            FoodMemory.Remove(gObject.GetInstanceID);
+        //        }
+        //    }
+        //}
 
-		foreach(MemoryEntry memory in ZombieMemory){
-			if(bounds.Contains(memory.getLastKnownPosition())){
-				gObject = memory.getGameObject();
-				if(gObject.transform.position != memory.getLastKnownPosition){
-					ZombieMemory.Remove(gObject.GetInstanceID);
-				}
-			}
-		}
+        //foreach(MemoryEntry memory in ZombieMemory){
+        //    if(bounds.Contains(memory.getLastKnownPosition())){
+        //        gObject = memory.getGameObject();
+        //        if(gObject.transform.position != memory.getLastKnownPosition){
+        //            ZombieMemory.Remove(gObject.GetInstanceID);
+        //        }
+        //    }
+        //}
 
-		foreach(MemoryEntry memory in HumanMemory){
-			if(bounds.Contains(memory.getLastKnownPosition())){
-				gObject = memory.getGameObject();
-				if(gObject.transform.position != memory.getLastKnownPosition){
-					HumanMemory.Remove(gObject.GetInstanceID);
-				}
-			}
-		}
+        //foreach(MemoryEntry memory in HumanMemory){
+        //    if(bounds.Contains(memory.getLastKnownPosition())){
+        //        gObject = memory.getGameObject();
+        //        if(gObject.transform.position != memory.getLastKnownPosition){
+        //            HumanMemory.Remove(gObject.GetInstanceID);
+        //        }
+        //    }
+        //}
 
-		foreach(MemoryEntry memory in AmmoMemory){
-			if(bounds.Contains(memory.getLastKnownPosition())){
-				gObject = memory.getGameObject();
-				if(gObject.transform.position != memory.getLastKnownPosition){
-					AmmoMemory.Remove(gObject.GetInstanceID);
-				}
-			}
-		}
+        //foreach(MemoryEntry memory in AmmoMemory){
+        //    if(bounds.Contains(memory.getLastKnownPosition())){
+        //        gObject = memory.getGameObject();
+        //        if(gObject.transform.position != memory.getLastKnownPosition){
+        //            AmmoMemory.Remove(gObject.GetInstanceID);
+        //        }
+        //    }
+        //}
 	}
 
 	/* ------------------------------------------*/
