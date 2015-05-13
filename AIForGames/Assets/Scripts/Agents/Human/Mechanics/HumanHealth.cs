@@ -19,8 +19,6 @@ public class HumanHealth : MonoBehaviour
 	bool isDead = false;                                                // Whether the player is dead.
 	bool damaged;
 
-	bool wasDamaged;
-
 	Color previousColor;
 
 	void Awake ()
@@ -35,16 +33,17 @@ public class HumanHealth : MonoBehaviour
 	
 	void Update ()
 	{
-		wasDamaged = damaged;
-		damaged = false;
-
-		if(wasDamaged)
+		
+		if(damaged)
 			playerName.color = previousColor;	
 
-		wasDamaged = false;
+		damaged = false;
 	}
 	
-	
+	public bool IsBeingAttacked(){
+		return damaged;
+	}
+
 	public void TakeDamage (int amount)
 	{
 		if (isDead)
