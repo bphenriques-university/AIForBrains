@@ -34,7 +34,9 @@ public class GoToExitIntention : Intention
 
     public override IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs)
     {
-        throw new System.NotImplementedException();
+        IList<PlanComponent> plan = new List<PlanComponent>();
+        plan.Add(new GoToPlanComponent(humanState, beliefs.GetSightBelief().GetExitSeen().transform.position));
+        return plan;
     }
 }
 

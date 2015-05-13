@@ -50,19 +50,14 @@ public class BDIManager : MonoBehaviour {
 
             beliefs.BeliefReviewFunction(humanState);
 
-			//runned after started the previous plan
-			//if(!justPlanned){
-			Debug.Log ("Reconsider?");
-			if(ShouldReconsiderPlan(currentIntentions, humanState)){
-					
+            if (ShouldReconsiderIntention(currentIntentions, beliefs))
+            {
 				Debug.Log ("Reconsider? Yes!");
                 currentDesires = desires.Options(beliefs, currentIntentions);
 				currentIntentions = intentions.Filter(beliefs, currentDesires, currentIntentions);
-					
 			}
-			// if not sound (pi, I , B) then generate new plan
-			Debug.Log ("PlanMakesSense?");
-			if(currentPlan.MakesSense(humanState, currentIntentions) == false){
+
+			if (!currentPlan.MakesSense(humanState, currentIntentions)){
 				Debug.Log ("PlanMakesSense? No!");
 				currentPlan = planner.GeneratePlan(beliefs, currentIntentions);
 			}
@@ -85,7 +80,6 @@ public class BDIManager : MonoBehaviour {
 
         bool result = true;
 
-        //TODO: Rough Implementation, not correct
         foreach (Intention intention in intentions)
         {
             result = result && intention.Succeeded(beliefs);
@@ -96,8 +90,6 @@ public class BDIManager : MonoBehaviour {
 
     bool IsImpossible(IList<Intention> intentions, BeliefsManager beliefs)
     {
-
-        //TODO: Nao devia ter nada a ver com a intençao, iterar plano e ver se e possivel
 
         bool result = false;
 
@@ -115,10 +107,22 @@ public class BDIManager : MonoBehaviour {
         return result;
     }
 
-    bool ShouldReconsiderPlan(IList<Intention> intentions, HumanState beliefs)
+    bool ShouldReconsiderIntention(IList<Intention> intentions, BeliefsManager beliefs)
     {
-        //if contains grab, the only plan can only 
-        return false;
+        float oldIntentionValue = 0f;
+        float newIntentionValue = 0f;
+        foreach (Intention intention in intentions)
+        {
+            oldIntentionValue += intention.IntentValue();
+            if (!intention.Evaluate(beliefs, intentions))
+                return true;        
+            newIntentionValue += intention.IntentValue();
+        }
+
+        if (oldIntentionValue < newIntentionValue)
+            return true;
+        else
+            return false;
     }
 
 }
