@@ -208,9 +208,8 @@ public class HumanState : MonoBehaviour
         }
     }
 
-    public HumanState
-
-public IList<HumanState> getFriendship()
-{
+	public IList<HumanState> getFriendship()
+	{
  	throw new System.NotImplementedException();
-}}
+	}
+}
