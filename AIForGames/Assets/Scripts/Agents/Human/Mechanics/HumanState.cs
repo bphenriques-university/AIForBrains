@@ -16,7 +16,12 @@ public class HumanState : MonoBehaviour
 
 	void Awake(){
 		GameOverManager.humansAlive++;
-		
+
+		FoodMemory = new Dictionary<int, MemoryEntry> ();
+		ZombieMemory = new Dictionary<int, MemoryEntry> ();
+		HumanMemory = new Dictionary<int, MemoryEntry> ();
+		AmmoMemory = new Dictionary<int, MemoryEntry> ();
+
 		targetPosition = transform.position;
 
         speech = GetComponent<HumanSpeak>();
@@ -39,7 +44,7 @@ public class HumanState : MonoBehaviour
 	/* ------------------------------------------*/
 	/* ----------       STATE        ------------*/
 	/* ------------------------------------------*/
-	
+
 	float attackTimer;
 	int lastSeenHealth;
 	
@@ -50,6 +55,7 @@ public class HumanState : MonoBehaviour
 	public Ammo ammoSeen;
 	public GameObject zombieSeen;
 	public GameObject exitSeen;
+
 
 
 	public float humanTimer = 0f;
@@ -69,7 +75,49 @@ public class HumanState : MonoBehaviour
 		attackTimer += Time.deltaTime;
 	}
 
+	/* ------------------------------------------*/
+	/* ----------       MEMORY       ------------*/
+	/* ------------------------------------------*/
+	public struct MemoryEntry{
+		private GameObject gObject;
+		private Vector3 position;
+		
+		public MemoryEntry(GameObject memory, Vector3 position){
+			this.gObject = memory;
+			this.position = position;
+		}
+		
+		public GameObject getMemory(){
+			return gObject;
+		}
+		
+		public Vector3 getLastKnownPosition(){
+			return position;
+		}
+	}
 	
+	public Dictionary<int, MemoryEntry> FoodMemory;
+	public Dictionary<int,MemoryEntry> AmmoMemory;
+	public Dictionary<int,MemoryEntry> HumanMemory;
+	public Dictionary<int,MemoryEntry> ZombieMemory;
+
+	public void rememberFood(GameObject food){
+
+		FoodMemory.Add (food.GetInstanceID(), new MemoryEntry (food ,food.transform.position));
+	}
+
+	public void rememberHuman(GameObject human){
+		HumanMemory.Add (human.GetInstanceID(), new MemoryEntry (human ,human.transform.position));
+	}
+
+	public void rememberZombie(GameObject zombie){
+		ZombieMemory.Add (zombie.GetInstanceID(), new MemoryEntry (zombie ,zombie.transform.position));
+	}
+
+	public void rememberAmmo(GameObject ammo){
+		AmmoMemory.Add (ammo.GetInstanceID(), new MemoryEntry (ammo ,ammo.transform.position));
+	}
+
 	/* ------------------------------------------*/
 	/* ----------------- Sensors  ---------------*/
 	/* ------------------------------------------*/
