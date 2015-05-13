@@ -13,6 +13,7 @@ public class Plan
 
     public bool MakesSense(HumanState beliefs, IList<Intention> intentions)
     {
+        //TODO
         return true;
     }
 

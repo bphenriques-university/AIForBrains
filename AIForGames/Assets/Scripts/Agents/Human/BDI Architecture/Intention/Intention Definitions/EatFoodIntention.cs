@@ -11,14 +11,16 @@ public class EatFoodIntention : Intention
     {
         this.foodToBeEaten = foodToBeEaten;
     }
- 
-    public override bool Succeeded()
+
+    public override bool Succeeded(BeliefsManager beliefs)
     {
+        //TODO
         return false;
     }
 
-    public override bool IsImpossible()
+    public override bool IsImpossible(BeliefsManager beliefs)
     {
+        //TODO
         return false;
     }
 

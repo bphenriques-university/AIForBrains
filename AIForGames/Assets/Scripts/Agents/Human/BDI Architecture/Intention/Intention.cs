@@ -27,8 +27,7 @@ public abstract class Intention {
     protected float desiredIntentValue = 0f;
     protected int desiredIntentionNumber = 1;
 
-	public abstract bool Succeeded ();
-	public abstract bool IsImpossible();
+
 
     public Intention(float desiredIntentValue)
     {
@@ -59,4 +58,7 @@ public abstract class Intention {
      *  Gives plan components required to perform intention.
      **/
     public abstract IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs);
+
+    public abstract bool Succeeded(BeliefsManager beliefs);
+    public abstract bool IsImpossible(BeliefsManager beliefs);
 }

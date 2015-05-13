@@ -17,8 +17,8 @@ public class EatFoodDesire : Desire
         IList<Food> carriedFoods = beliefs.GetInventoryBelief().Foods();
         if (carriedFoods.Count > 0)
         {
-            EatFoodIntention desire = new EatFoodIntention(carriedFoods[0], desireLevel);
-            desiredIntentions.Add(desire);
+            EatFoodIntention intention = new EatFoodIntention(carriedFoods[0], desireLevel);
+            desiredIntentions.Add(intention);
         }
         else {
             if (beliefs.GetSightBelief().SawFood())

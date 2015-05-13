@@ -42,7 +42,7 @@ public class Actuator : MonoBehaviour
 	}
 	
 	public void CatchFood(Food food) {
-		hunger.AddFood (food);
+		hunger.AddFood (food.catchFood());
 	}
 	
 	public void FireWeapon(){

@@ -7,6 +7,7 @@ public class HumanState : MonoBehaviour
 	HumanHealth health;
 	HumanShooting shooting;
 	HumanMovement movement;
+    HumanSpeak speech;
 	int shootableMask;
 
 	public GameObject ExitRoute;
@@ -17,6 +18,8 @@ public class HumanState : MonoBehaviour
 		GameOverManager.humansAlive++;
 		
 		targetPosition = transform.position;
+
+        speech = GetComponent<HumanSpeak>();
 		hunger = GetComponent<HumanHunger> ();
 		health = GetComponent<HumanHealth> ();
 		shooting = GetComponentInChildren<HumanShooting> ();
@@ -204,4 +207,10 @@ public class HumanState : MonoBehaviour
             return null;
         }
     }
-}
+
+    public HumanState
+
+public IList<HumanState> getFriendship()
+{
+ 	throw new System.NotImplementedException();
+}}

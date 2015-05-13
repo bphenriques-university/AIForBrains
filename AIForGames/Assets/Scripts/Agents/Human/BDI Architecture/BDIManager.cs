@@ -70,7 +70,7 @@ public class BDIManager : MonoBehaviour {
 	void Update () {
 
 		if (currentPlan.Count() > 0 &&
-                ! (PlanWasASuccess(humanState, currentIntentions) || PlanIsImpossible(currentIntentions, currentPlan))) {
+                ! (WasASuccess(currentIntentions, beliefs) || IsImpossible(currentIntentions, beliefs))) {
 
 
             PlanComponent action = currentPlan.Head();
@@ -116,7 +116,7 @@ public class BDIManager : MonoBehaviour {
 		
 	}
 
-    public bool PlanWasASuccess(HumanState beliefs, IList<Intention> intentions)
+    public bool WasASuccess(IList<Intention> intentions, BeliefsManager beliefs)
     {
 
         bool result = true;
@@ -124,13 +124,13 @@ public class BDIManager : MonoBehaviour {
         //TODO: Rough Implementation, not correct
         foreach (Intention intention in intentions)
         {
-            result = result && intention.Succeeded();
+            result = result && intention.Succeeded(beliefs);
         }
 
         return result;
     }
 
-    bool PlanIsImpossible(IList<Intention> intentions, Plan plan)
+    bool IsImpossible(IList<Intention> intentions, BeliefsManager beliefs)
     {
 
         //TODO: Nao devia ter nada a ver com a intençao, iterar plano e ver se e possivel
@@ -141,7 +141,7 @@ public class BDIManager : MonoBehaviour {
         foreach (Intention intention in intentions)
         {
 
-            result = result || intention.IsImpossible();
+            result = result || intention.IsImpossible(beliefs);
 
             if (result == true)
                 return result;

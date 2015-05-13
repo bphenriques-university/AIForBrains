@@ -10,13 +10,15 @@ public class GoToExitIntention : Intention
 	public void Awake(){
 	}
 
-	public override bool Succeeded (){
+    public override bool Succeeded(BeliefsManager beliefs)
+    {
 		
 		//Always returns false because when the human reaches the exit, the human is destroyed
 		return false;
 	}
 
-	public override bool IsImpossible(){
+    public override bool IsImpossible(BeliefsManager beliefs)
+    {
 
         //TODO
         return false;
