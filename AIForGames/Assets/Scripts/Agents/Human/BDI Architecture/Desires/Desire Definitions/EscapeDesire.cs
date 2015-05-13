@@ -1,16 +1,31 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class EscapeDesire : Desire
 {
 
-    public override void Deliberate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+    private const float BASE_DESIRE_LEVEL = 50f;
+    private const float SAW_EXIT_DESIRE_LEVEL = 120f;
+
+
+    public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
-        throw new System.NotImplementedException();
+        if (beliefs.GetSightBelief().SawExit()) {
+            desireLevel = SAW_EXIT_DESIRE_LEVEL;
+        }
+        else
+        {
+            desireLevel = BASE_DESIRE_LEVEL;
+        }
     }
 
-    public override System.Collections.Generic.IList<Intention> GenerateIntentions(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+    public override IList<Intention> GenerateIntentions(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
-        throw new System.NotImplementedException();
+        IList<Intention> desiredIntentions = new List<Intention>();
+        //if (beliefs.GetSightBelief().SawExit()) {
+        //    desiredIntentions.Add()
+
+        return desiredIntentions;
+        
     }
 }

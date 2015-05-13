@@ -14,14 +14,12 @@ public class EatFoodIntention : Intention
 
     public override bool Succeeded(BeliefsManager beliefs)
     {
-        //TODO
-        return false;
+        return foodToBeEaten.Eaten();
     }
 
     public override bool IsImpossible(BeliefsManager beliefs)
     {
-        //TODO
-        return false;
+        return foodToBeEaten.Eaten();
     }
 
     public override bool Evaluate(BeliefsManager beliefs, IList<Intention> previousIntentions)

@@ -86,7 +86,7 @@ public class HumanHunger : MonoBehaviour
 
     public void EatFood(Food foodToBeEaten)
     {
-        hunger += foodToBeEaten.foodPoints;
+        hunger += foodToBeEaten.Eat();
         foods.Remove(foodToBeEaten);
         numberFood.text = "( " + foods.Count + " )";
     }
