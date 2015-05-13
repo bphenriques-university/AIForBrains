@@ -9,37 +9,53 @@ public class SightBelief : Belief
     private GameObject exitSeen = null;
 	private HumanState humanState = null;
 
+    private bool sawFood = false;
+    private bool sawAmmo = false;
+    private bool sawZombie = false;
+    private bool sawExit = false;
+    private bool sawHuman = false;
+
+
+    private Vector3 currentPosition;
+
     public override void ReviewBelief(BeliefsManager beliefs, HumanState humanState)
     {
         foodSeen = humanState.FoodSeen();
         ammoSeen = humanState.ammoSeen;
         zombieSeen = humanState.zombieSeen;
         exitSeen = humanState.exitSeen;
-		this.humanState = humanState;
+
+        sawFood = humanState.sawFood;
+        sawAmmo = humanState.sawAmmo;
+        sawZombie = humanState.sawZombie;
+        sawExit = humanState.sawExitDoor;
+        sawHuman = humanState.sawHumanInDanger;
+
+        currentPosition = humanState.CurrentPosition().position;
     }
 
 	public float DistanceToZombie(){
-		return Vector3.Distance (humanState.transform.position, zombieSeen.gameObject.transform.position);
+        return Vector3.Distance(currentPosition, zombieSeen.gameObject.transform.position);
 	}
 
     public bool SawFood()
     {
-        return foodSeen != null;
+        return sawFood;
     }
 
     public bool SawAmmo()
     {
-        return ammoSeen != null;
+        return sawAmmo;
     }
 
     public bool SawZombie()
     {
-        return zombieSeen != null;
+        return sawZombie;
     }
 
     public bool SawExit()
     {
-        return exitSeen != null;
+        return sawExit;
     }
 
     public Food GetFoodSeen()

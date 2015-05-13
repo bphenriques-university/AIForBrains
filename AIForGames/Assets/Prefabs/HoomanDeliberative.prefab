@@ -1139,7 +1139,7 @@ MonoBehaviour:
   runSpeed: 6
   walkSpeed: 2
   rotationSpeed: 2
-  playerText: {fileID: 0}
+  playerText: {fileID: 11463750}
 --- !u!114 &11460838
 MonoBehaviour:
   m_ObjectHideFlags: 1

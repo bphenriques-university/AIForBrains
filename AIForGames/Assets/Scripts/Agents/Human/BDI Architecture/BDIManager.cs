@@ -44,9 +44,8 @@ public class BDIManager : MonoBehaviour {
 
 
             PlanComponent action = currentPlan.Head();
-            if (!action.TryExecuteAction())
-                return;
-            currentPlan.Pop();
+            if (action.TryExecuteAction())
+                currentPlan.Pop();
 
             beliefs.BeliefReviewFunction(humanState);
 

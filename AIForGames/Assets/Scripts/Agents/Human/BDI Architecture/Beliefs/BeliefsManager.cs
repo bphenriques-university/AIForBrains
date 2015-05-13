@@ -32,7 +32,7 @@ public class BeliefsManager
         return this;
 	}
 
-    public HungerBelief GetFoodLevelBelief()
+    public HungerBelief GetHungerBelief()
     {
         return foodLevelBelief;
     }
@@ -42,7 +42,7 @@ public class BeliefsManager
         return inventoryBelief;
     }
 
-    public VitalsBelief GetHealthLevelBelief()
+    public VitalsBelief GetVitalsBelief()
     {
         return healthLevelBelief;
     }
