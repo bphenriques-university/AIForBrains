@@ -39,7 +39,7 @@ public class GatherAmmunitionIntention : Intention
 	
 	public override bool Succeeded(BeliefsManager beliefs)
 	{
-		return desiredAmmo.WasPickedUp ();;
+		return desiredAmmo.WasPickedUp ();
 	}
 	
 	public override bool IsImpossible(BeliefsManager beliefs)

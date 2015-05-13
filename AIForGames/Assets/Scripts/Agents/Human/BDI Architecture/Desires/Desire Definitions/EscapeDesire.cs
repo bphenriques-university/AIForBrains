@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class EscapeDesire : Desire
 {
 
-    private const float BASE_DESIRE_LEVEL = 50f;
+    private const float BASE_DESIRE_LEVEL = 0f;
     private const float SAW_EXIT_DESIRE_LEVEL = 120f;
 
 
@@ -22,8 +22,13 @@ public class EscapeDesire : Desire
     public override IList<Intention> GenerateIntentions(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
         IList<Intention> desiredIntentions = new List<Intention>();
-        //if (beliefs.GetSightBelief().SawExit()) {
-        //    desiredIntentions.Add()
+        if (beliefs.GetSightBelief().SawExit())
+        {
+        }
+        else
+        {
+            desiredIntentions.Add(new SearchForExitIntention(desireLevel));
+        }
 
         return desiredIntentions;
         

@@ -5,19 +5,10 @@ public class RandomWalkPlanComponent : PlanComponent
 {
 
     private const float WALK_RANGE = 2f;
+    private Vector3 newDirection;
 
-    public RandomWalkPlanComponent(HumanState humanState) : base(humanState) { }
+    public RandomWalkPlanComponent(HumanState humanState) : base(humanState) {
 
-    public override bool TryExecuteAction()
-    {
-        humanState.actuator.Walk();
-        changeDirection();
-
-        return true;
-    }
-
-    private void changeDirection()
-    {
         while (true)
         {
             Vector3 randomDirection = Random.onUnitSphere;
@@ -38,9 +29,23 @@ public class RandomWalkPlanComponent : PlanComponent
             else
             {
                 randomDirection *= WALK_RANGE;
-                humanState.actuator.ChangeDestination(humanState.transform.position + randomDirection);
+                newDirection = humanState.transform.position + randomDirection;
                 return;
             }
         }
     }
+
+    public override bool TryExecuteAction()
+    {
+        int randomNum = Random.Range (0, 100);
+		if (randomNum < 70)
+            humanState.actuator.ChangeDestination(newDirection);
+        humanState.actuator.Walk();
+
+        if ((humanState.CurrentPosition().position - newDirection).magnitude < 0.5f)
+            return true;
+        else
+            return false;
+    }
+
 }

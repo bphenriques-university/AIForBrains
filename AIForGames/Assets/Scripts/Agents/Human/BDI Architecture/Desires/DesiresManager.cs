@@ -15,7 +15,7 @@ public class DesiresManager{
 
     public DesiresManager()
     {
-		desires = new Desire[] { gatherAmmoDesire, eatFoodDesire };
+        desires = new Desire[] { gatherAmmoDesire, eatFoodDesire, escapeDesire };
     }
 
 

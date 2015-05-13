@@ -12,24 +12,21 @@ public class IntentionsManager
         {
            
             IList<Intention> intentions = desire.GenerateIntentions(beliefs, previousIntentions);
-            foreach (Intention intention in intentions)
-            {
-                Debug.Log("Adding intention " + intention);
-            }
             addIntentions(desiredIntentions, intentions);
-
-            foreach (Intention intention in desiredIntentions)
-            {
-                Debug.Log("Added intention " + intention);
-            }
         }
 
+        List<Intention> intentionsToDelete = new List<Intention>();
         foreach (Intention desiredIntention in desiredIntentions)
         {
             if (desiredIntention.Evaluate(beliefs, previousIntentions) == false)
             {
-                desiredIntentions.Remove(desiredIntention);
+                intentionsToDelete.Add(desiredIntention);
             }
+        }
+
+        foreach (Intention intention in intentionsToDelete)
+        {
+            desiredIntentions.Remove(intention);
         }
 
         //For now let's just return the top intention...
@@ -50,6 +47,7 @@ public class IntentionsManager
 
         foreach (Intention intention in desiredIntentions)
         {
+            Debug.Log("Intention " + intention.GetType() + " valued " + intention.IntentValue());
             if (intention.IntentValue() > topIntention.IntentValue())
                 topIntention = intention;
         }

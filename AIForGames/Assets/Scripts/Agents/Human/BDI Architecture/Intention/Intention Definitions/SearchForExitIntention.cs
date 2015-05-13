@@ -10,23 +10,24 @@ public class SearchForExitIntention : Intention
     public override bool Evaluate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
         intentValue = 0f;
-        return true;
+        return !beliefs.GetSightBelief().SawExit();
     }
 
     public override IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs)
     {
         IList<PlanComponent> plan = new List<PlanComponent> ();
+        plan.Add(new RandomWalkPlanComponent(humanState));
         return plan;
 
     }
 
     public override bool Succeeded(BeliefsManager beliefs)
     {
-        throw new System.NotImplementedException();
+        return beliefs.GetSightBelief().SawExit();
     }
 
     public override bool IsImpossible(BeliefsManager beliefs)
     {
-        throw new System.NotImplementedException();
+        return beliefs.GetSightBelief().SawExit();
     }
 }
