@@ -66,9 +66,9 @@ public class SightCollider : MonoBehaviour {
 				//Debug.Log("Saw Ammo!");
 				if(humanState.sawAmmo == true && humanState.ammoSeen != null){
 
-					if(isCloser (other.gameObject, humanState.ammoSeen))
+					if(isCloser (other.gameObject, humanState.ammoSeen.gameObject))
 					{
-						humanState.ammoSeen = other.gameObject;
+						humanState.ammoSeen = other.gameObject.GetComponent<Ammo>();
 					
 					}
 
@@ -76,7 +76,7 @@ public class SightCollider : MonoBehaviour {
 					
 					humanState.sawAmmo = true;
 			
-					humanState.ammoSeen = other.gameObject;
+					humanState.ammoSeen = other.gameObject.GetComponent<Ammo>();
 				}
 			}else{
 				humanState.sawAmmo = false;

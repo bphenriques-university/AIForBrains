@@ -47,7 +47,7 @@ public class HumanState : MonoBehaviour
 	public Vector3 targetPosition;
 	public GameObject targetObject;
 	public GameObject foodSeen;
-	public GameObject ammoSeen;
+	public Ammo ammoSeen;
 	public GameObject zombieSeen;
 	public GameObject exitSeen;
 

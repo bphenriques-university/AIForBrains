@@ -16,7 +16,7 @@ public class HumanCatchAmmo : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.ammoSeen;
+		GameObject gameObject = humanState.ammoSeen.gameObject;
 		
 		if (humanState.ammoSeen == null) {
 			humanState.sawAmmo = false;
