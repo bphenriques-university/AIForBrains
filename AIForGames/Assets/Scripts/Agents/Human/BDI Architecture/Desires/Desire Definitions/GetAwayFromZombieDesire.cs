@@ -9,17 +9,21 @@ public class GetAwayFromZombieDesire  : Desire
 	public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
 	{
 
-		if(!beliefs.GetSightBelief().SawZombie()){
-			desireLevel = 0;
-		}
-		desireLevel = (beliefs.GetSightBelief ().DistanceToZombie () - safeDistanceToZombie) * 100;
+		if (beliefs.GetSightBelief ().SawZombie ()) {
+			desireLevel = (beliefs.GetSightBelief ().DistanceToZombie () - safeDistanceToZombie) * 100;
+			return;
+		} 
+
+		desireLevel = 0;
+
 	}
 	
 	public override IList<Intention> GenerateIntentions(BeliefsManager beliefs, IList<Intention> previousIntentions)
 	{
 		IList<Intention> desiredIntentions = new List<Intention>();
-		
-		desiredIntentions.Add (new GetAwayFromZombieIntention(desireLevel, beliefs.GetSightBelief().GetZombieSeen()));
+
+		if(beliefs.GetSightBelief().SawZombie())
+			desiredIntentions.Add (new GetAwayFromZombieIntention(desireLevel, beliefs.GetSightBelief().GetZombieSeen()));
 		
 		return desiredIntentions;
 	}

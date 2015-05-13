@@ -33,6 +33,8 @@ public class GetAwayFromZombieIntention : Intention
 		if (beliefs.GetSightBelief().SawZombie())
 		{
 			desiredDestinationPos = beliefs.GetNavigationBelief().CurrentPosition().position - zombie.transform.position;
+			desiredDestinationPos.Normalize();
+			desiredDestinationPos = desiredDestinationPos * 3.5f;
 			plan.Add(new GoToPlanComponent(humanState, desiredDestinationPos));
 		}
 		
@@ -41,7 +43,7 @@ public class GetAwayFromZombieIntention : Intention
 	
 	public override bool Succeeded(BeliefsManager beliefs)
 	{
-		return Vector3.Distance(beliefs.GetNavigationBelief ().CurrentPosition (), zombie.transform.position) > GetAwayFromZombieDesire.safeDistanceToZombie;
+		return Vector3.Distance(beliefs.GetNavigationBelief ().CurrentPosition ().position, zombie.transform.position) > GetAwayFromZombieDesire.safeDistanceToZombie;
 	}
 	
 	public override bool IsImpossible(BeliefsManager beliefs)

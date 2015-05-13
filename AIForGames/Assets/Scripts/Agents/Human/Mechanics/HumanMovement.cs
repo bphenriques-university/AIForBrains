@@ -28,7 +28,8 @@ public class HumanMovement : MonoBehaviour
 	public void SetGrab(bool value){
 		isGrabbed = value;
 
-		if (playerText.color == Color.red) {
+
+		if (playerText != null && playerText.color == Color.red) {
 			return;
 		}
 
