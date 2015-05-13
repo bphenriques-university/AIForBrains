@@ -94,6 +94,10 @@ public class HumanState : MonoBehaviour
 		public Vector3 getLastKnownPosition(){
 			return position;
 		}
+
+		public void updatePosition(Vector3 position){
+			this.position = position;
+		}
 	}
 	
 	public Dictionary<int, MemoryEntry> FoodMemory;
@@ -102,20 +106,39 @@ public class HumanState : MonoBehaviour
 	public Dictionary<int,MemoryEntry> ZombieMemory;
 
 	public void rememberFood(GameObject food){
+		MemoryEntry entry;
 
-		FoodMemory.Add (food.GetInstanceID(), new MemoryEntry (food ,food.transform.position));
+		if(FoodMemory.TryGetValue(food.GetInstanceID(), out entry))
+		   entry.updatePosition(food.transform.position);
+		else
+		   FoodMemory.Add(food.GetInstanceID(), new MemoryEntry (food ,food.transform.position));
 	}
 
 	public void rememberHuman(GameObject human){
-		HumanMemory.Add (human.GetInstanceID(), new MemoryEntry (human ,human.transform.position));
+		MemoryEntry entry;
+		
+		if(HumanMemory.TryGetValue(human.GetInstanceID(), out entry))
+			entry.updatePosition(human.transform.position);
+		else
+			HumanMemory.Add(human.GetInstanceID(), new MemoryEntry (human, human.transform.position));
 	}
 
 	public void rememberZombie(GameObject zombie){
-		ZombieMemory.Add (zombie.GetInstanceID(), new MemoryEntry (zombie ,zombie.transform.position));
+		MemoryEntry entry;
+		
+		if(ZombieMemory.TryGetValue(zombie.GetInstanceID(), out entry))
+			entry.updatePosition(zombie.transform.position);
+		else
+			ZombieMemory.Add(zombie.GetInstanceID(), new MemoryEntry (zombie ,zombie.transform.position));
 	}
 
 	public void rememberAmmo(GameObject ammo){
-		AmmoMemory.Add (ammo.GetInstanceID(), new MemoryEntry (ammo ,ammo.transform.position));
+		MemoryEntry entry;
+		
+		if(AmmoMemory.TryGetValue(ammo.GetInstanceID(), out entry))
+			entry.updatePosition(ammo.transform.position);
+		else
+			AmmoMemory.Add(ammo.GetInstanceID(), new MemoryEntry (ammo ,ammo.transform.position));
 	}
 
 	/* ------------------------------------------*/
