@@ -42,7 +42,8 @@ public class HumanSpeak : MonoBehaviour
 
 	public void SendMessageToHumansNearby(Message m){
 		foreach (KeyValuePair<int, HumanHear> pair in humansInRange) {
-			pair.Value.HearMessage(myId, m);
+			//supposed to send a human game object
+			pair.Value.HearMessage(this.transform.root.gameObject, m);
 		}
 	}
 

@@ -33,6 +33,9 @@ public class SightCollider : MonoBehaviour {
 
 					humanState.foodSeen = other.gameObject;
 				}
+
+				humanState.rememberFood(other.gameObject);
+
 			}else{
 				humanState.sawFood = false;
 			}
@@ -53,9 +56,40 @@ public class SightCollider : MonoBehaviour {
 					humanState.zombieSeen = other.gameObject;
 				}
 
+				humanState.rememberZombie(other.gameObject);
+
 			}else{
 				humanState.sawZombie = false;
 			}
+
+
+			//HUMAN
+			if (other.gameObject.tag == "Human") {
+				
+				if(isVisible (other)){
+					//Debug.Log("Saw Human!");
+					if(humanState.sawHumanInDanger == true && humanState.lastHumanSeen != null){
+						
+						if(isCloser (other.gameObject, humanState.lastHumanSeen))
+						{
+							humanState.lastHumanSeen = other.gameObject;
+							
+						}
+
+					}else{
+						
+						humanState.sawHumanInDanger = true;
+						
+						humanState.lastHumanSeen = other.gameObject;
+					}
+
+					humanState.rememberHuman(other.gameObject);
+
+				}else{
+					humanState.sawHumanInDanger = false;
+				}
+			}
+
 
 		}
 
@@ -78,6 +112,8 @@ public class SightCollider : MonoBehaviour {
 			
 					humanState.ammoSeen = other.gameObject.GetComponent<Ammo>();
 				}
+
+				humanState.rememberAmmo(other.gameObject);
 			}else{
 				humanState.sawAmmo = false;
 			}

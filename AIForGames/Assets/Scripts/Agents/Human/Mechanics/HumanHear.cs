@@ -8,7 +8,7 @@ public class HumanHear : MonoBehaviour
 	HumanState humanState;
 
 	public struct MessageLogEntry{
-		int humanID;
+		GameObject human;
 		float timeHeard;
 		HumanSpeak.Message message;
 
@@ -20,12 +20,12 @@ public class HumanHear : MonoBehaviour
 			return timeHeard;
 		}
 
-		public int getHumanID(){
-			return humanID;
+		public GameObject getHuman(){
+			return human;
 		}
 
-		public MessageLogEntry(int humanID, float timeHeard, HumanSpeak.Message message){
-			this.humanID = humanID;
+		public MessageLogEntry(GameObject human, float timeHeard, HumanSpeak.Message message){
+			this.human = human;
 			this.timeHeard = timeHeard;
 			this.message = message;
 		}
@@ -40,10 +40,10 @@ public class HumanHear : MonoBehaviour
 	}
 
 
-	public void HearMessage(int fromId, HumanSpeak.Message m){
-		Debug.Log ("HEARD FROM " + fromId + " " + m.ToString ());
-		 
-		MessageLog.Add (new MessageLogEntry (fromId, humanState.getHumanTime(), m));
+	public void HearMessage(GameObject human, HumanSpeak.Message m){
+		Debug.Log ("HEARD FROM " + human + " " + m.ToString ());
+		humanState.rememberHuman (human);
+		MessageLog.Add (new MessageLogEntry (human, humanState.getHumanTime(), m));
 
 	}
 

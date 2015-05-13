@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class HumanState : MonoBehaviour
 {
 	Collider sightCollider;
+
 	HumanHunger hunger;
 	HumanHealth health;
 	HumanShooting shooting;
@@ -52,12 +53,13 @@ public class HumanState : MonoBehaviour
 	
 	public bool targetObjectInRangeToAttack;
 	public Vector3 targetPosition;
-	public GameObject targetObject;
-	public GameObject foodSeen;
-	public Ammo ammoSeen;
-	public GameObject zombieSeen;
-	public GameObject exitSeen;
+	public GameObject targetObject = null;
+	public GameObject foodSeen = null;
+	public Ammo ammoSeen = null;
+	public GameObject zombieSeen = null;
+	public GameObject exitSeen = null;
 
+	public GameObject lastHumanSeen = null;
 
 
 	public float humanTimer = 0f;
@@ -75,7 +77,7 @@ public class HumanState : MonoBehaviour
 	void Update(){
 		humanTimer += Time.deltaTime;
 		attackTimer += Time.deltaTime;
-		//cleanWrongMemories ();
+		cleanWrongMemories ();
 
 	}
 
@@ -145,47 +147,69 @@ public class HumanState : MonoBehaviour
 			AmmoMemory.Add(ammo.GetInstanceID(), new MemoryEntry (ammo ,ammo.transform.position));
 	}
 
+	public Dictionary<int, MemoryEntry> getFoodMemory(){
+
+		return FoodMemory;
+	
+	}
+
+	public Dictionary<int, MemoryEntry> getAmmoMemory(){
+		
+		return AmmoMemory;
+		
+	}
+	public Dictionary<int, MemoryEntry> getZombieMemory(){
+		
+		return ZombieMemory;
+		
+	}
+
+	public Dictionary<int, MemoryEntry> geHumanMemory(){
+		
+		return HumanMemory;
+		
+	}
+
 	public void cleanWrongMemories(){
 		Bounds bounds = sightCollider.bounds;
 		GameObject gObject;
 
 
-        // TODO - Tiago - Fix this shit
-        //foreach(MemoryEntry memory in FoodMemory){
-        //    if(bounds.Contains(memory.getLastKnownPosition())){
-        //        gObject = memory.getGameObject();
-        //        if(gObject.transform.position != memory.getLastKnownPosition){
-        //            FoodMemory.Remove(gObject.GetInstanceID);
-        //        }
-        //    }
-        //}
+        foreach(MemoryEntry memory in FoodMemory.Values){
+            if(bounds.Contains(memory.getLastKnownPosition())){
+                gObject = memory.getGameObject();
+                if( gObject.transform.position.Equals(memory.getLastKnownPosition()) == false){
+                    FoodMemory.Remove(gObject.GetInstanceID());
+                }
+            }
+        }
 
-        //foreach(MemoryEntry memory in ZombieMemory){
-        //    if(bounds.Contains(memory.getLastKnownPosition())){
-        //        gObject = memory.getGameObject();
-        //        if(gObject.transform.position != memory.getLastKnownPosition){
-        //            ZombieMemory.Remove(gObject.GetInstanceID);
-        //        }
-        //    }
-        //}
+        foreach(MemoryEntry memory in ZombieMemory.Values){
+            if(bounds.Contains(memory.getLastKnownPosition())){
+                gObject = memory.getGameObject();
+				if( gObject.transform.position.Equals(memory.getLastKnownPosition()) == false){
+					ZombieMemory.Remove(gObject.GetInstanceID());
+                }
+            }
+        }
 
-        //foreach(MemoryEntry memory in HumanMemory){
-        //    if(bounds.Contains(memory.getLastKnownPosition())){
-        //        gObject = memory.getGameObject();
-        //        if(gObject.transform.position != memory.getLastKnownPosition){
-        //            HumanMemory.Remove(gObject.GetInstanceID);
-        //        }
-        //    }
-        //}
+        foreach(MemoryEntry memory in HumanMemory.Values){
+            if(bounds.Contains(memory.getLastKnownPosition())){
+                gObject = memory.getGameObject();
+				if( gObject.transform.position.Equals(memory.getLastKnownPosition()) == false){
+					HumanMemory.Remove(gObject.GetInstanceID());
+                }
+            }
+        }
 
-        //foreach(MemoryEntry memory in AmmoMemory){
-        //    if(bounds.Contains(memory.getLastKnownPosition())){
-        //        gObject = memory.getGameObject();
-        //        if(gObject.transform.position != memory.getLastKnownPosition){
-        //            AmmoMemory.Remove(gObject.GetInstanceID);
-        //        }
-        //    }
-        //}
+        foreach(MemoryEntry memory in AmmoMemory.Values){
+            if(bounds.Contains(memory.getLastKnownPosition())){
+                gObject = memory.getGameObject();
+				if( gObject.transform.position.Equals(memory.getLastKnownPosition()) == false){
+					AmmoMemory.Remove(gObject.GetInstanceID());
+                }
+            }
+        }
 	}
 
 	/* ------------------------------------------*/
