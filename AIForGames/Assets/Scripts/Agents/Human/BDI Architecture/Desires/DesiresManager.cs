@@ -7,13 +7,13 @@ public class DesiresManager{
 
     private GatherFoodDesire catchFoodDesire = new GatherFoodDesire();
     private EatFoodDesire eatFoodDesire = new EatFoodDesire();
-
+	private GatherAmmunitionDesire gatherAmmoDesire = new GatherAmmunitionDesire ();
     private Desire[] desires;
 
 
     public DesiresManager()
     {
-        desires = new Desire[] { eatFoodDesire };
+		desires = new Desire[] { gatherAmmoDesire, eatFoodDesire };
     }
 
 

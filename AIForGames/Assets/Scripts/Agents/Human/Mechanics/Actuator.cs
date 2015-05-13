@@ -63,7 +63,7 @@ public class Actuator : MonoBehaviour
 
 	public void GrabAmmo ()
 	{
-		GameObject ammoObject = humanState.ammoSeen;
+		GameObject ammoObject = humanState.ammoSeen.gameObject;
 		
 		//Due to non-deterministic environment
 		if (ammoObject == null) {

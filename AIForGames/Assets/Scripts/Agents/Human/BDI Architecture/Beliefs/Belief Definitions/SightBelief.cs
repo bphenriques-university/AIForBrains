@@ -4,7 +4,7 @@ using System.Collections;
 public class SightBelief : Belief
 {
     private Food foodSeen = null;
-    private GameObject ammoSeen = null;
+    private Ammo ammoSeen = null;
     private GameObject zombieSeen = null;
     private GameObject exitSeen = null;
 
@@ -41,7 +41,7 @@ public class SightBelief : Belief
         return foodSeen;
     }
 
-    public GameObject GetAmmoSeen()
+    public Ammo GetAmmoSeen()
     {
         return ammoSeen;
     }
