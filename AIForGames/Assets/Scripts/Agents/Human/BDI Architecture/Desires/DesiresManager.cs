@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class DesiresManager{
 
-    private AcquireFoodDesire catchFoodDesire = new AcquireFoodDesire();
+    private GatherFoodDesire catchFoodDesire = new GatherFoodDesire();
     private EatFoodDesire eatFoodDesire = new EatFoodDesire();
 
     private Desire[] desires;

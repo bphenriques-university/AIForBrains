@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AcquireFoodDesire : Desire
+public class GatherFoodDesire : Desire
 {
 
 
