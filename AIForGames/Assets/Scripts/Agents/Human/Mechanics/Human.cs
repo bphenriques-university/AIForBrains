@@ -125,7 +125,7 @@ public class Human : MonoBehaviour
 		return hunger.GetHungerLevel ();
 	}
 
-    public float AmmoLevel()
+    public int AmmoLevel()
     {
         return shooting.currentAmmo;
     }

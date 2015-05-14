@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class InventoryBelief : Belief
 {
 
-    private float ammoLevel;
+    private int ammoLevel;
     private IList<Food> foods;
 
     public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
@@ -15,7 +15,7 @@ public class InventoryBelief : Belief
         CleanEatenFoods();
     }
 
-    public float AmmoLevel()
+    public int AmmoLevel()
     {
         return ammoLevel;
     }

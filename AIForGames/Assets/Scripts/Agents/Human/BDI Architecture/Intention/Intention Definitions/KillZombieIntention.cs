@@ -3,11 +3,12 @@ using System.Collections;
 
 public class KillZombieIntention : Intention
 {
-
+	GameObject zombie;
 
 	public KillZombieIntention(GameObject zombie, float desiredIntention) : base (desiredIntention){
 		
-		throw new System.NotImplementedException ();
+		this.zombie = zombie;
+
 	}
 
 	public override bool Evaluate (BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
@@ -24,7 +25,14 @@ public class KillZombieIntention : Intention
 	}
 	public override bool IsImpossible (BeliefsManager beliefs)
 	{
-		throw new System.NotImplementedException ();
+		EnemyHealth eHealth = zombie.GetComponent<EnemyHealth>();
+		int nbullets = beliefs.GetInventoryBelief ().AmmoLevel ();
+
+		if (nbullets <= 0 || eHealth.hasDied()) {
+			return true;
+		}
+
+		return false;
 	}
 
 
