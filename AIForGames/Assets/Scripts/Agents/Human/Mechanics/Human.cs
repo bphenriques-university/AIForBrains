@@ -77,7 +77,6 @@ public class Human : MonoBehaviour
 
 	public float humanTimer = 0f;
 
-	public bool bitten = false;
 
 	
 	void Update(){
@@ -100,40 +99,14 @@ public class Human : MonoBehaviour
 		return movement.isBeingGrabbed();
 	}
 	
-	public bool IsBitten() {
-		return bitten;
-	}
 
-	public bool isMoving() {
-		return movement.isMoving ();
-	}
-
-	public bool isRunning(){
-
-		return isMoving () && movement.isRunning ();
-	}
-
-	public bool IsSeeingAmmo(){
-		return sight.AmmoSeen.Count > 0;
-	}
-
-	public int FoodCarried () {
-		return hunger.GetFoodCarried ();
-	}
 
 	public float HungerLevel() {
 		return hunger.GetHungerLevel ();
 	}
 
-    public float AmmoLevel()
-    {
-        return shooting.currentAmmo;
-    }
+    
 
-    public IList<Food> FoodsCarried()
-    {
-        return hunger.foods;
-    }
 
 	public bool IsSeeingExitRoute(){
 		return sight.ExitSeen;

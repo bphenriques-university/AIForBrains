@@ -27,7 +27,7 @@ public class HumanRandomWalk : ReactiveBehaviour
 		if (timeSinceChange < timeBetweenChanges)
 			return;
 
-		if (!humanState.isMoving ()) {
+		if (!humanState.Sensors.IsMoving ()) {
 
 			changeDirection();
 			humanState.Actuators.Walk();

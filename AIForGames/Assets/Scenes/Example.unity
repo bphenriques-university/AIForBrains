@@ -8005,11 +8005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44539e5045635074c8825efdbc7f1b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SawFood: 0
-  SawZombie: 0
-  SawHumanInDanger: 0
-  SawAmmo: 0
-  SawExitDoor: 0
   ExitSeen: {fileID: 0}
 --- !u!114 &1187004361
 MonoBehaviour:
@@ -8509,7 +8504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed840947ef2a2c4cbe75e68cf370f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodColided: {fileID: 0}
 --- !u!114 &1265233848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8522,6 +8516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3b7474c80365949a48b5037e24730c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoColided: {fileID: 0}
+  foodColided: {fileID: 0}
 --- !u!114 &1265233849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8645,9 +8641,6 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
   humanTimer: 0
-  onFood: 0
-  bitten: 0
-  onAmmo: 0
 --- !u!136 &1265233857
 CapsuleCollider:
   m_ObjectHideFlags: 0

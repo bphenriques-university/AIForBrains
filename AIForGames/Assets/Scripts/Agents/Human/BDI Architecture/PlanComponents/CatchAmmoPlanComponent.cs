@@ -15,11 +15,11 @@ public class CatchAmmoPlanComponent : PlanComponent
 	
 	public override bool TryExecuteAction()
 	{
-		float lastAmmoLevel = humanState.AmmoLevel();
+		float lastAmmoLevel = humanState.Sensors.AmmoLevel();
 
         humanState.Actuators.GrabAmmo(ammoToBeCaught);
 
-		return lastAmmoLevel < humanState.AmmoLevel();	
+        return lastAmmoLevel < humanState.Sensors.AmmoLevel();	
 	}
 }
 

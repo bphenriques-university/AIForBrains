@@ -16,6 +16,6 @@ public class CatchFoodPlanComponent : PlanComponent
     public override bool TryExecuteAction()
     {
         humanState.Actuators.CatchFood(foodToBeCaught);
-        return humanState.FoodsCarried().Contains(foodToBeCaught);
+        return humanState.Sensors.FoodsCarried().Contains(foodToBeCaught);
     }
 }
