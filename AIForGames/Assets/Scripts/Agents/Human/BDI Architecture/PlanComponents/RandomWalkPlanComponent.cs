@@ -9,7 +9,7 @@ public class RandomWalkPlanComponent : PlanComponent
     private const float KEEP_DIRECTION_CHANCE = 70f;
     private Vector3 newDirection;
 
-    public RandomWalkPlanComponent(Human humanState) : base(humanState) {
+    public RandomWalkPlanComponent(Human human) : base(human) {
 
         
         while (true)
@@ -18,7 +18,7 @@ public class RandomWalkPlanComponent : PlanComponent
             int randomNum = Random.Range(0, 100);
             if (randomNum < KEEP_DIRECTION_CHANCE)
             {
-                Transform currentPosition = humanState.CurrentPosition();
+                Transform currentPosition = human.Sensors.CurrentPosition();
                 direction = currentPosition.forward;
             }
             else
@@ -31,7 +31,7 @@ public class RandomWalkPlanComponent : PlanComponent
 
             direction.Normalize();
             direction *= WALK_RANGE;
-            newDirection = humanState.transform.position + direction;
+            newDirection = human.transform.position + direction;
 
             if (NavMesh.FindClosestEdge(newDirection, out navHit, NavMesh.AllAreas))
             {
@@ -50,10 +50,10 @@ public class RandomWalkPlanComponent : PlanComponent
     public override bool TryExecuteAction()
     {
         
-        humanState.Actuators.ChangeDestination(newDirection);
-        humanState.Actuators.Walk();
+        human.Actuators.ChangeDestination(newDirection);
+        human.Actuators.Walk();
 
-        if ((humanState.CurrentPosition().position - newDirection).magnitude < MIN_STOPPING_DISTANCE)
+        if ((human.Sensors.CurrentPosition().position - newDirection).magnitude < MIN_STOPPING_DISTANCE)
             return true;
         else
             return false;

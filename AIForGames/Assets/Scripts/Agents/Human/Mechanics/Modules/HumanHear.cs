@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class HumanHear : MonoBehaviour
 {
 	IList<MessageLogEntry> MessageLog;
-	Human humanState;
+	Human human;
 
 	public struct MessageLogEntry{
 		GameObject human;
@@ -35,15 +35,15 @@ public class HumanHear : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 		MessageLog = new List<MessageLogEntry> ();
 	}
 
 
 	public void HearMessage(GameObject human, HumanSpeak.Message m){
-		Debug.Log ("HEARD FROM " + human + " " + m.ToString ());
-        humanState.memory.RememberHuman(human);
-		MessageLog.Add (new MessageLogEntry (human, humanState.getHumanTime(), m));
+        //Debug.Log ("HEARD FROM " + human + " " + m.ToString ());
+        //human.memory.RememberHuman(human);
+        //MessageLog.Add (new MessageLogEntry (human, human.Sensors.GetHumanTime(), m));
 
 	}
 

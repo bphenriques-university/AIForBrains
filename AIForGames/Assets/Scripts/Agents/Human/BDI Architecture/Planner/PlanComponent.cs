@@ -3,11 +3,11 @@ using System.Collections;
 
 public abstract class PlanComponent
 {
-	public Human humanState;
+	public Human human;
 
-    public PlanComponent(Human humanstate)
+    public PlanComponent(Human human)
     {
-        this.humanState = humanstate;
+        this.human = human;
 	}
 
     /**

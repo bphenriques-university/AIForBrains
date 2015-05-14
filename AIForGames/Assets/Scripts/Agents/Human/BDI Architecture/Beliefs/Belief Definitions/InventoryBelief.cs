@@ -8,10 +8,10 @@ public class InventoryBelief : Belief
     private int ammoLevel;
     private IList<Food> foods;
 
-    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-        this.ammoLevel = humanState.Sensors.AmmoLevel();
-        this.foods = humanState.Sensors.FoodsCarried();
+        this.ammoLevel = human.Sensors.AmmoLevel();
+        this.foods = human.Sensors.FoodsCarried();
         CleanEatenFoods();
     }
 

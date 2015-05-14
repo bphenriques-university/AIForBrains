@@ -3,13 +3,16 @@ using System.Collections.Generic;
 
 public partial class Sensors : MonoBehaviour
 {
-    HumanHunger hunger;
-    HumanHealth health;
-    HumanShooting shooting;
-    HumanMovement movement;
-    HumanSpeak speech;
-    HumanSight sight;
-    HumanTouch touch;
+    private HumanHunger hunger;
+    private HumanHealth health;
+    private HumanShooting shooting;
+    private HumanMovement movement;
+    private HumanSpeak speech;
+    private HumanSight sight;
+    private HumanTouch touch;
+
+    private int lastSeenHealth;
+    private int shootableMask;
 
     void Awake()
     {
@@ -20,6 +23,9 @@ public partial class Sensors : MonoBehaviour
         speech = GetComponentInChildren<HumanSpeak>();
         sight = GetComponentInChildren<HumanSight>();
         touch = GetComponentInChildren<HumanTouch>();
+
+        lastSeenHealth = health.startingHealth;
+        shootableMask = LayerMask.GetMask("Shootable");
     }
 
 

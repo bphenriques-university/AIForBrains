@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class HumanAim : ReactiveBehaviour
 {
-	Human humanState;
+	Human human;
 	public float distanceToAim = 1f;
 
 
 	void Awake(){
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 	}	
 
 
@@ -16,18 +16,18 @@ public class HumanAim : ReactiveBehaviour
 	protected override bool IsInSituation ()
 	{
 
-		return humanState.Sensors.SawZombies() && 
-				!humanState.IsAimingToZombie(humanState.Sensors.GetClosestZombie()) && 
-				(humanState.getDistanceToObject (humanState.Sensors.GetClosestZombie()) > distanceToAim) &&
-				humanState.CanShoot();
+		return human.Sensors.SawZombies() && 
+				!human.Sensors.IsAimingToZombie(human.Sensors.GetClosestZombie()) && 
+				(human.Sensors.GetDistanceToObject (human.Sensors.GetClosestZombie()) > distanceToAim) &&
+				human.Sensors.CanShoot();
 
 	}
 
 	protected override void Execute ()
 	{
-		Vector3 zombiePosition = humanState.Sensors.GetClosestZombie().transform.position;
-		humanState.Actuators.Stop ();
-		humanState.Actuators.turnTo (zombiePosition);
+		Vector3 zombiePosition = human.Sensors.GetClosestZombie().transform.position;
+		human.Actuators.Stop ();
+		human.Actuators.turnTo (zombiePosition);
 	}
 
 }

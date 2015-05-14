@@ -4,20 +4,20 @@ using UnityEngine;
 public class HumanFetchFood : ReactiveBehaviour
 {
 
-	Human humanState;
+	Human human;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 	}
 
 	protected override bool IsInSituation ()
 	{
-		return !humanState.IsGrabbed () && humanState.Sensors.SawFood ();
+		return !human.Sensors.IsGrabbed () && human.Sensors.SawFood ();
 	}
 
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.Sensors.GetClosestFoodSeen();
+		GameObject gameObject = human.Sensors.GetClosestFoodSeen();
 
         if (gameObject == null)
         {
@@ -25,8 +25,8 @@ public class HumanFetchFood : ReactiveBehaviour
 		}
 
 		Vector3 foodPosition = gameObject.transform.position;
-		humanState.Actuators.ChangeDestination (foodPosition);
-		humanState.Actuators.Walk ();
+		human.Actuators.ChangeDestination (foodPosition);
+		human.Actuators.Walk ();
 	}
 }
 

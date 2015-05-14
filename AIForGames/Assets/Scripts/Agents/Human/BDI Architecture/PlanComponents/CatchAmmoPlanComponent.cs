@@ -6,8 +6,8 @@ public class CatchAmmoPlanComponent : PlanComponent
 	
 	private Ammo ammoToBeCaught;
 	
-	public CatchAmmoPlanComponent(Human humanState, Ammo desiredAmmo)
-		: base(humanState)
+	public CatchAmmoPlanComponent(Human human, Ammo desiredAmmo)
+		: base(human)
 	{
 		this.ammoToBeCaught = desiredAmmo;
 	}
@@ -15,11 +15,11 @@ public class CatchAmmoPlanComponent : PlanComponent
 	
 	public override bool TryExecuteAction()
 	{
-		float lastAmmoLevel = humanState.Sensors.AmmoLevel();
+		float lastAmmoLevel = human.Sensors.AmmoLevel();
 
-        humanState.Actuators.GrabAmmo(ammoToBeCaught);
+        human.Actuators.GrabAmmo(ammoToBeCaught);
 
-        return lastAmmoLevel < humanState.Sensors.AmmoLevel();	
+        return lastAmmoLevel < human.Sensors.AmmoLevel();	
 	}
 }
 

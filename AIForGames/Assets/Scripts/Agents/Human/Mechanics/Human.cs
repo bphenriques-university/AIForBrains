@@ -13,8 +13,6 @@ public class Human : MonoBehaviour
     HumanSight sight;
     HumanTouch touch;
 
-
-
     SightCollider sightColliderScript;     
     TouchCollider touchColliderScript;
 
@@ -87,105 +85,10 @@ public class Human : MonoBehaviour
         sight.ProcessSight(sightColliderScript.SeenGameObjects);
         touch.ProcessTouch(touchColliderScript);
 	}
-
 	
 
-	/* ------------------------------------------*/
-	/* ----------------- Sensors  ---------------*/
-	/* ------------------------------------------*/
-	
-
-	public bool IsGrabbed(){
-		return movement.isBeingGrabbed();
-	}
-	
-
-
-	public float HungerLevel() {
-		return hunger.GetHungerLevel ();
-	}
-
-	public int AmmoLevel()
-	{
-		return shooting.currentAmmo;
-	}
-	public bool IsSeeingExitRoute(){
-		return sight.ExitSeen;
-	}
-
-	public int HealthLevel() {
-		return health.getHealthLevel ();
-	}
-
-	public int MaxHealthLevel ()
-	{
-		return health.getMaxHealthLevel ();
-	}
-
-	public bool DidArrivedAtTargetPosition(){
-		return Vector3.Distance (transform.position, targetPosition) < 1;
-	}
-
-	public bool WasAttacked(){
-		if (lastSeenHealth > health.currentHealth) {
-			lastSeenHealth = health.currentHealth;
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public bool CanShoot() {
-		return shooting.CanAttack ();
-	}
-
-	public float getSpeed(){
-		return movement.getSpeed ();
-	}
-
-
-
-	public bool IsAimingToZombie(GameObject zombieSeen) {
-		// TO REIMPLEMENTED IN NEAR FUTURE
-		Ray shootRay = new Ray ();
-		RaycastHit shootHit;
-		float range = 100f;
-
-		shootRay.origin = transform.position;
-		shootRay.direction = transform.forward;
-
-
-		
-		// Perform the raycast against gameobjects on the shootable layer and if it hits something...
-		if (Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
-			if (shootHit.collider.gameObject == zombieSeen) {
-				EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
-				
-				// If the EnemyHealth component exist...
-				return enemyHealth != null;
-			}
-		}
-		return  false;
-	}
-
-    public Transform CurrentPosition()
-    {
-        return transform.root;
-    }
-
-
-	public float getHumanTime(){
+	public float GetHumanTime(){
 		return humanTimer;
 	}
-	
-	public IList<Human> getFriendship()
-	{
- 	throw new System.NotImplementedException();
-	}
-
-
-    public float getDistanceToObject(GameObject gameObject)
-    {
-        return (transform.position - gameObject.transform.position).magnitude;
-    }
+   
 }

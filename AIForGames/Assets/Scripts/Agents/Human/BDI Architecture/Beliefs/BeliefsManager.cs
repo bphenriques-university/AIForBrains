@@ -23,11 +23,11 @@ public class BeliefsManager
     }
 
 
-	public BeliefsManager BeliefReviewFunction(Human humanState) 
+	public BeliefsManager BeliefReviewFunction(Human human) 
 	{
         foreach (Belief belief in beliefs)
         {
-            belief.ReviewBelief(this, humanState);
+            belief.ReviewBelief(this, human);
         }
         return this;
 	}

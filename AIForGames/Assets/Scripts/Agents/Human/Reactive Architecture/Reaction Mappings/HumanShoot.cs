@@ -6,23 +6,23 @@ public class HumanShoot : ReactiveBehaviour
 
 	public float minShootingDistance = 1f;
 
-	Human humanState;
+	Human human;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 	}
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.IsAimingToZombie (humanState.Sensors.GetClosestZombie()) && 
-				humanState.CanShoot() && 
-				humanState.Sensors.SawZombies() &&
-                humanState.getDistanceToObject(humanState.Sensors.GetClosestZombie()) > minShootingDistance;
+		return human.Sensors.IsAimingToZombie (human.Sensors.GetClosestZombie()) && 
+				human.Sensors.CanShoot() && 
+				human.Sensors.SawZombies() &&
+                human.Sensors.GetDistanceToObject(human.Sensors.GetClosestZombie()) > minShootingDistance;
 	}
 	
 	protected override void Execute ()
 	{
 		
-		humanState.Actuators.FireWeapon ();
+		human.Actuators.FireWeapon ();
 	}
 }

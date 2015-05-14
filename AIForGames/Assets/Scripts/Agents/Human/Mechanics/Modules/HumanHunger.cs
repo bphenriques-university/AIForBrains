@@ -14,7 +14,7 @@ public class HumanHunger : MonoBehaviour
 	public Text numberFood;
 	
 	public float hunger;
-	protected Human humanState;
+	protected Human human;
 
 	protected GameObject player;
 	protected HumanHealth hoomanHealth;
@@ -25,7 +25,7 @@ public class HumanHunger : MonoBehaviour
 
 	void Awake ()
 	{
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 		hoomanHealth = GetComponent <HumanHealth> ();
 		hunger = startingHunger;
 	}
@@ -39,7 +39,7 @@ public class HumanHunger : MonoBehaviour
 				hoomanHealth.Death();
 			}
 			else {
-				this.hungerLossSpeed = humanState.getSpeed() / 2;
+				this.hungerLossSpeed = human.Sensors.GetSpeed() / 2;
 				this.hunger -= hungerLossSpeed * Time.deltaTime;
 
 				//FIXME FIXME FIXME

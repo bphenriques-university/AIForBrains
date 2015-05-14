@@ -4,27 +4,27 @@ using System;
 public class HumanCatchFood : ReactiveBehaviour
 {
 	
-	Human humanState;
+	Human human;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 	}
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.Sensors.IsTouchingFood ();
+		return human.Sensors.IsTouchingFood ();
 	}
 	
 	protected override void Execute ()
 	{
 
-		GameObject foodObject = humanState.Sensors.GetTouchingFood();
+		GameObject foodObject = human.Sensors.GetTouchingFood();
 		//Due to non-deterministic environment
 		if (foodObject == null) {
 			return;
 		}
 
 		Food food = foodObject.GetComponent<Food> ();
-		humanState.Actuators.CatchFood (food.catchFood ());
+		human.Actuators.CatchFood (food.catchFood ());
 	}
 }

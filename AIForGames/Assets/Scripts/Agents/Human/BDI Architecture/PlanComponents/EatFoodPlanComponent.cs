@@ -5,15 +5,15 @@ public class EatFoodPlanComponent : PlanComponent
 {
     private Food foodToBeEaten;
 
-    public EatFoodPlanComponent(Human humanState, Food foodToBeEaten) : base(humanState)
+    public EatFoodPlanComponent(Human human, Food foodToBeEaten) : base(human)
     {
         this.foodToBeEaten = foodToBeEaten;
     }
 
     public override bool TryExecuteAction()
     {
-        float oldFoodLevel = humanState.HungerLevel();
-        humanState.Actuators.EatFood(foodToBeEaten);
-        return humanState.HungerLevel() > oldFoodLevel;
+        float oldFoodLevel = human.Sensors.HungerLevel();
+        human.Actuators.EatFood(foodToBeEaten);
+        return human.Sensors.HungerLevel() > oldFoodLevel;
     }
 }

@@ -10,10 +10,10 @@ public class HOOMANRUUUN : ReactiveBehaviour
 	public float GOTTARUNTIME = 2f;
 	float timer;
 
-	Human humanState;
+	Human human;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 		timer = GOTTARUNTIME + 4;
 	}
 
@@ -28,13 +28,13 @@ public class HOOMANRUUUN : ReactiveBehaviour
 			return true;
 		} else {
 
-			if (humanState.Sensors.SawZombies()) {
-				EnemyHealth enemyHealth = humanState.Sensors.GetClosestZombie().GetComponent<EnemyHealth> ();
+			if (human.Sensors.SawZombies()) {
+				EnemyHealth enemyHealth = human.Sensors.GetClosestZombie().GetComponent<EnemyHealth> ();
 				if (enemyHealth.hasDied ()) {
 					return false;
 				}
 
-				if (!humanState.IsGrabbed ()) {
+				if (!human.Sensors.IsGrabbed ()) {
 					timer = 0f;
 					return true;
 				}
@@ -45,12 +45,12 @@ public class HOOMANRUUUN : ReactiveBehaviour
 
 	protected override void Execute ()
 	{
-		GameObject THINGTHATWANTSTOEATMYBRAINS = humanState.Sensors.GetClosestZombie();
+		GameObject THINGTHATWANTSTOEATMYBRAINS = human.Sensors.GetClosestZombie();
 
 		Vector3 RUNTHISWAY = - (THINGTHATWANTSTOEATMYBRAINS.transform.position - transform.position);
 
-		humanState.Actuators.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
-		humanState.Actuators.Run ();
+		human.Actuators.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
+		human.Actuators.Run ();
 
 	}
 

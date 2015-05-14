@@ -4,22 +4,22 @@ using System.Collections;
 
 public class SenseExitRoute : ReactiveBehaviour
 {
-	Human humanState;
+	Human human;
 	
 	void Awake ()
 	{
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 	}
 	
 	
 	protected override bool IsInSituation ()
 	{
-		return !humanState.IsGrabbed () && humanState.IsSeeingExitRoute();
+		return !human.Sensors.IsGrabbed () && human.Sensors.SawExit();
 	}
 	
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.Sensors.ExitSeen();
+		GameObject gameObject = human.Sensors.ExitSeen();
 
         if (gameObject == null)
         {
@@ -27,8 +27,8 @@ public class SenseExitRoute : ReactiveBehaviour
 		}
 		
 		Vector3 exitPosition = gameObject.transform.position;
-		humanState.Actuators.ChangeDestination (exitPosition);
-		humanState.Actuators.Run ();
+		human.Actuators.ChangeDestination (exitPosition);
+		human.Actuators.Run ();
 	}
 
 }

@@ -16,7 +16,7 @@ public class SocialBelief : Belief
 		}
 
 		public Acquaintance(Human human, int friendshipValue): 
-			this(human.name, friendshipValue, human.CurrentPosition().position){}
+			this(human.name, friendshipValue, human.Sensors.CurrentPosition().position){}
 
 
 		public int addToFriendship(int value){
@@ -72,7 +72,7 @@ public class SocialBelief : Belief
 	}
 
 
-    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
         //TODO:Actualizar Amizades 
 

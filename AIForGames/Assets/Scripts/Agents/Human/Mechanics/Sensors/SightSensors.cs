@@ -14,7 +14,8 @@ public partial class Sensors : MonoBehaviour
 
         foreach (GameObject foodObject in sight.FoodsSeen)
         {
-            foods.Add(foodObject.GetComponent<Food>());
+            if (foodObject != null)
+                foods.Add(foodObject.GetComponent<Food>());
         }
         return foods;
     }
@@ -148,5 +149,35 @@ public partial class Sensors : MonoBehaviour
         return sight.ExitSeen;
     }
 
+
+    public bool IsAimingToZombie(GameObject zombieSeen)
+    {
+        Ray shootRay = new Ray();
+        RaycastHit shootHit;
+        float range = 100f;
+
+        shootRay.origin = transform.position;
+        shootRay.direction = transform.forward;
+
+
+
+        // Perform the raycast against gameobjects on the shootable layer and if it hits something...
+        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
+        {
+            if (shootHit.collider.gameObject == zombieSeen)
+            {
+                EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
+
+                // If the EnemyHealth component exist...
+                return enemyHealth != null;
+            }
+        }
+        return false;
+    }
+
+    public float GetDistanceToObject(GameObject gameObject)
+    {
+        return (transform.position - gameObject.transform.position).magnitude;
+    }
 
 }

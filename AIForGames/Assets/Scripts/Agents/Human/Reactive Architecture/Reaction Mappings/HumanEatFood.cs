@@ -5,20 +5,20 @@ public class HumanEatFood : ReactiveBehaviour
 {
 	public readonly float minHungerToEat = 30f;
 
-	Human humanState;
+	Human human;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 	}
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.HungerLevel() < minHungerToEat && humanState.Sensors.FoodCarried () > 0;
+		return human.Sensors.HungerLevel() < minHungerToEat && human.Sensors.FoodCarried () > 0;
 	}
 	
 	protected override void Execute ()
 	{
 
-		humanState.Actuators.EatFood ();
+		human.Actuators.EatFood ();
 	}
 }

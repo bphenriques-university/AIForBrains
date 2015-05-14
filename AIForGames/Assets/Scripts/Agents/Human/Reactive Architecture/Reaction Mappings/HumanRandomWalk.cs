@@ -6,11 +6,11 @@ public class HumanRandomWalk : ReactiveBehaviour
 	public float timeBetweenChanges = 1.5f;
 	public float range = 6f;
 
-	Human humanState;
+	Human human;
 	float timeSinceChange;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 	}
 
 	void Update() {
@@ -19,7 +19,7 @@ public class HumanRandomWalk : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return !humanState.IsGrabbed();
+		return !human.Sensors.IsGrabbed();
 	}
 	
 	protected override void Execute ()
@@ -27,21 +27,21 @@ public class HumanRandomWalk : ReactiveBehaviour
 		if (timeSinceChange < timeBetweenChanges)
 			return;
 
-		if (!humanState.Sensors.IsMoving ()) {
+		if (!human.Sensors.IsMoving ()) {
 
 			changeDirection();
-			humanState.Actuators.Walk();
+			human.Actuators.Walk();
 			timeSinceChange = 0f;
 			return;
 		}
 
 		int randomNum = Random.Range (0, 100);
 		if (randomNum < 70) {
-			humanState.Actuators.Walk ();
+			human.Actuators.Walk ();
 		} else if (randomNum < 99) {
 			changeDirection ();
 		} else {
-			humanState.Actuators.Stop();
+			human.Actuators.Stop();
 		}
 
 		timeSinceChange = 0f;
@@ -56,7 +56,7 @@ public class HumanRandomWalk : ReactiveBehaviour
 			Ray shootRay = new Ray();
 			RaycastHit shootHit;
 
-			shootRay.origin = humanState.transform.position;
+			shootRay.origin = human.transform.position;
 			shootRay.direction = randomDirection;
 
 
@@ -64,7 +64,7 @@ public class HumanRandomWalk : ReactiveBehaviour
 				continue;
 			} else {
 				randomDirection *= range;
-				humanState.Actuators.ChangeDestination(humanState.transform.position + randomDirection);
+				human.Actuators.ChangeDestination(human.transform.position + randomDirection);
 				return;
 			}
 		}

@@ -7,11 +7,11 @@ public class VitalsBelief : Belief
     private int healthLevel;
     private bool isGrabbed;
 
-    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-        healthLevel = humanState.HealthLevel();
-        isGrabbed = humanState.IsGrabbed();
-		maxHealthLevel = humanState.MaxHealthLevel ();
+        healthLevel = human.Sensors.HealthLevel();
+        isGrabbed = human.Sensors.IsGrabbed();
+		maxHealthLevel = human.Sensors.MaxHealthLevel ();
 	}
 
 

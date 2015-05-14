@@ -7,9 +7,9 @@ public class NavigationBelief : Belief
     private Transform currentPosition;
     
 
-    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-        currentPosition = humanState.CurrentPosition();
+        currentPosition = human.Sensors.CurrentPosition();
     }
 
     public Transform CurrentPosition()

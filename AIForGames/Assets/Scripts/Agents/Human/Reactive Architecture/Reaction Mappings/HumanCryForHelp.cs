@@ -3,25 +3,25 @@ using System.Collections;
 
 public class HumanCryForHelp : ReactiveBehaviour
 {
-	Human humanState;
+	Human human;
 
 
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <Human> ();
+		human = transform.root.GetComponent <Human> ();
 	}	
 	
 	
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.IsGrabbed ();
+		return human.Sensors.IsGrabbed ();
 	}
 	
 	protected override void Execute ()
 	{
 		//Debug.Log ("PLEASE HELP HELP HELP HEP");
-		humanState.Actuators.SendCryForHelp ();	
+		human.Actuators.SendCryForHelp ();	
 	}
 	
 }

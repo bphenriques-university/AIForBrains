@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HearingBelief : MonoBehaviour
+public class HearingBelief : Belief
 {
 
     private GameObject humanHeard;
@@ -11,11 +11,6 @@ public class HearingBelief : MonoBehaviour
 	bool grabbed = false;
 	bool exitFound = false;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
 	void identififyBelief(HumanSpeak.Message m){
 		if (m == HumanSpeak.Message.NeedFood) {
@@ -29,9 +24,8 @@ public class HearingBelief : MonoBehaviour
 		}
 	}
 
-    // Update is called once per frame
-    void Update()
+    public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-
+        throw new System.NotImplementedException();
     }
 }

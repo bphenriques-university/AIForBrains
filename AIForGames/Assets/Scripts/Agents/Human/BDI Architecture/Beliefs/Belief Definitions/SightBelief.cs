@@ -18,21 +18,21 @@ public class SightBelief : Belief
 
     private Vector3 currentPosition;
 
-    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-        foodSeen = humanState.Sensors.FoodSeen();
-        ammoSeen = humanState.Sensors.AmmoSeen();
-        zombieSeen = humanState.Sensors.ZombiesSeen();
-        humansSeen = humanState.Sensors.HumansSeen();
-        exitSeen = humanState.Sensors.ExitSeen();
+        foodSeen = human.Sensors.FoodSeen();
+        ammoSeen = human.Sensors.AmmoSeen();
+        zombieSeen = human.Sensors.ZombiesSeen();
+        humansSeen = human.Sensors.HumansSeen();
+        exitSeen = human.Sensors.ExitSeen();
 
-        sawFood = humanState.Sensors.SawFood();
-        sawAmmo = humanState.Sensors.SawAmmo();
-        sawZombie = humanState.Sensors.SawZombies();
-        sawExit = humanState.Sensors.SawExit();
-        sawHuman = humanState.Sensors.SawHumans();
+        sawFood = human.Sensors.SawFood();
+        sawAmmo = human.Sensors.SawAmmo();
+        sawZombie = human.Sensors.SawZombies();
+        sawExit = human.Sensors.SawExit();
+        sawHuman = human.Sensors.SawHumans();
 
-        currentPosition = humanState.CurrentPosition().position;
+        currentPosition = human.Sensors.CurrentPosition().position;
     }
 
 	public float DistanceToZombie(GameObject zombie){
