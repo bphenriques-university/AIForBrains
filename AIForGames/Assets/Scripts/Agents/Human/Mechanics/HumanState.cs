@@ -153,6 +153,11 @@ public class HumanState : MonoBehaviour
 	public int HealthLevel() {
 		return health.getHealthLevel ();
 	}
+
+	public int MaxHealthLevel ()
+	{
+		return health.getMaxHealthLevel ();
+	}
 	
 	public bool DidArrivedAtTargetPosition(){
 		return Vector3.Distance (transform.position, targetPosition) < 1;

@@ -3,20 +3,26 @@ using System.Collections;
 
 public class VitalsBelief : Belief 
 {
-    private float healthLevel;
+	private int maxHealthLevel;
+    private int healthLevel;
     private bool isGrabbed;
 
     public override void ReviewBelief(BeliefsManager beliefs, HumanState humanState)
     {
         healthLevel = humanState.HealthLevel();
         isGrabbed = humanState.IsGrabbed();
-    }
+		maxHealthLevel = humanState.MaxHealthLevel ();
+	}
 
 
-    public float GetHealthLevel()
+    public int GetHealthLevel()
     {
         return healthLevel;
     }
+
+	public int GetMaxHealthLevel(){
+		return maxHealthLevel;
+	}
 
     public bool IsGrabbed()
     {

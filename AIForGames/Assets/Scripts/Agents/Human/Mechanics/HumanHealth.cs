@@ -105,4 +105,9 @@ public class HumanHealth : MonoBehaviour
 	public int getHealthLevel() {
 		return currentHealth;
 	}
+
+	public int getMaxHealthLevel ()
+	{
+		return startingHealth;
+	}
 }
