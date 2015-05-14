@@ -69,9 +69,13 @@ public class SightBelief : Belief
         return ammoSeen;
     }
 
-    public IList<GameObject> GetZombieSeen()
+    public IList<GameObject> ZombieSeen()
     {
         return zombieSeen;
+    }
+    public IList<GameObject> HumanSeen()
+    {
+        return humansSeen;
     }
 
     public GameObject GetExitSeen()
