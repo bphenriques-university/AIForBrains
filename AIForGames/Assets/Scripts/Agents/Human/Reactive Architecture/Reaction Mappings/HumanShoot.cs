@@ -16,7 +16,7 @@ public class HumanShoot : ReactiveBehaviour
 	{
 		return humanState.IsAimingToZombie (humanState.Sensors.GetClosestZombie()) && 
 				humanState.CanShoot() && 
-				humanState.IsSeeingZombie() &&
+				humanState.Sensors.SawZombies() &&
                 humanState.getDistanceToObject(humanState.Sensors.GetClosestZombie()) > minShootingDistance;
 	}
 	

@@ -19,14 +19,12 @@ public class HumanAmmo : MonoBehaviour
 		
 		//Due to non-deterministic environment
 		if (!ammo.gameObject) {
-			humanState.onAmmo = false;
 			return;
 		}
 		
 		
 		playerShooting.GrabAmmo(ammo.GrabAmmo ());
 		
-		humanState.onAmmo = false;
 	}
 }
 

@@ -21,14 +21,10 @@ public class HumanCatchFood : ReactiveBehaviour
 		GameObject foodObject = humanState.Sensors.GetTouchingFood();
 		//Due to non-deterministic environment
 		if (foodObject == null) {
-			humanState.onFood = false;
 			return;
 		}
 
 		Food food = foodObject.GetComponent<Food> ();
 		humanState.Actuators.CatchFood (food.catchFood ());
-
-		humanState.onFood = false;
-
 	}
 }
