@@ -12,6 +12,7 @@ public class BeliefsManager
     private VitalsBelief healthLevelBelief = new VitalsBelief();
     private SightBelief sightBelief = new SightBelief();
     private NavigationBelief navigationBelief = new NavigationBelief();
+	private SocialBelief socialBelief = new SocialBelief();
 
     private Belief[] beliefs;
 
@@ -19,7 +20,7 @@ public class BeliefsManager
 
     public BeliefsManager()
     {
-        beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, sightBelief, navigationBelief };
+        beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, sightBelief, navigationBelief, socialBelief };
     }
 
 
@@ -56,5 +57,10 @@ public class BeliefsManager
     {
         return navigationBelief;
     }
+
+	public SocialBelief GetSocialBelief()
+	{
+		return socialBelief;
+	}
 }
 

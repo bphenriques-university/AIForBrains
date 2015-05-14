@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class Human : MonoBehaviour
 {
+
+	static IList<Human> existingHumans = new List<Human> ();
     HumanSight sight;
     HumanTouch touch;
 
@@ -39,7 +41,6 @@ public class Human : MonoBehaviour
 	/* ------------------------------------------*/
 	
 	public Transform[] randomPoints;
-	public GameObject[] closeFriends;
 	
 	/* ------------------------------------------*/
 	/* ----------       STATE        ------------*/
@@ -54,7 +55,9 @@ public class Human : MonoBehaviour
 
 	public float humanTimer = 0f;
 
-
+	public Human(){
+		existingHumans.Add (this);
+	}
 	
 	void Update(){
 		humanTimer += Time.deltaTime;
@@ -67,6 +70,10 @@ public class Human : MonoBehaviour
 
 	public float GetHumanTime(){
 		return humanTimer;
+	}
+
+	public static IList<Human> GetHumans(){
+		return existingHumans;
 	}
    
 }

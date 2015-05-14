@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class Food : MonoBehaviour
 {
 
-	public float foodPoints;
+	public int foodPoints;
     private bool catched = false;
     private bool eaten = false;
 
