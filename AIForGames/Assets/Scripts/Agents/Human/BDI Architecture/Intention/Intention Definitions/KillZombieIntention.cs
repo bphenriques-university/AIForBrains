@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class KillZombieIntention : Intention
 {
@@ -13,15 +14,39 @@ public class KillZombieIntention : Intention
 
 	public override bool Evaluate (BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
 	{
-		throw new System.NotImplementedException ();
+		SightBelief humanSight = beliefs.GetSightBelief ();
+
+
+		if (humanSight.GetZombieSeen ().Contains (zombie) == false) {
+			return false;
+		}
+
+
+		InventoryBelief inventory = beliefs.GetInventoryBelief ();
+		int nBullets = inventory.AmmoLevel ();
+
+		float killZombieIntentionLevel = 50/Mathf.Ceil(1/(nBullets * 2));
+
+		intentValue = killZombieIntentionLevel;
+
+		return true;
+
 	}
-	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human humanState, BeliefsManager beliefs)
+	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human human, BeliefsManager beliefs)
 	{
-		throw new System.NotImplementedException ();
+		IList<PlanComponent> plan = new List<PlanComponent> ();
+
+		//FIXME: Check if zombie is seen
+		plan.Add(new AimPlanComponent(human, zombie));
+		plan.Add(new ZombieShootPlanComponent(human, zombie));
+
+		return plan;
+
 	}
 	public override bool Succeeded (BeliefsManager beliefs)
 	{
-		throw new System.NotImplementedException ();
+		EnemyHealth eHealth = zombie.GetComponent<EnemyHealth>();
+		return eHealth.hasDied ();
 	}
 	public override bool IsImpossible (BeliefsManager beliefs)
 	{

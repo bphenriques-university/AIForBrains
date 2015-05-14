@@ -8,7 +8,7 @@ public class GetAwayFromZombieIntention : Intention
 	Vector3 desiredDestinationPos;
 
 
-	public GetAwayFromZombieIntention(float desiredIntentionValue, GameObject zombie)
+	public GetAwayFromZombieIntention(GameObject zombie, float desiredIntentionValue)
 		: base(desiredIntentionValue)
 	{
 		this.zombie = zombie;
@@ -17,10 +17,20 @@ public class GetAwayFromZombieIntention : Intention
 	
 	public override bool Evaluate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
 	{
-		if (beliefs.GetSightBelief ().SawZombie ()) {
+	
+		SightBelief sightBelief = beliefs.GetSightBelief ();
+
+		int nZombiesSeen = sightBelief.GetZombieSeen ().Count;
+
+	
+		if (sightBelief.SawZombie ()) {
 			Vector3 currentPosition = beliefs.GetNavigationBelief().CurrentPosition ().position;
 			Vector3 zombiePosition = zombie.gameObject.transform.position;
-			intentValue = 50 / ((currentPosition - zombiePosition).magnitude);
+
+			float distanceToZombie = (currentPosition - zombiePosition).magnitude;
+			float runIntentionLevel = 50 /Mathf.Ceil(1 / (nZombiesSeen * 10 + 1 / (distanceToZombie /10)));
+			//alternative by Nuno Xu : 50 / ((currentPosition - zombiePosition).magnitude)
+			intentValue = runIntentionLevel;
 			
 			return true;
 		}
