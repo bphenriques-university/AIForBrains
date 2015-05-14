@@ -11,15 +11,15 @@ public class HumanFetchAmmo : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return !humanState.IsGrabbed () && humanState.IsSeeingAmmo ();
+		return !humanState.IsGrabbed () && humanState.Sensors.SawAmmo ();
 	}
 	
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.ammoSeen.gameObject;
-		
-		if (humanState.ammoSeen == null) {
-			humanState.sawAmmo = false;
+		GameObject gameObject = humanState.Sensors.GetClosestAmmoSeen();
+
+        if (gameObject == null)
+        {
 			return;
 		}
 		

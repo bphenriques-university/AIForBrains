@@ -14,10 +14,10 @@ public class HumanShoot : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.IsAimingToZombie () && 
+		return humanState.IsAimingToZombie (humanState.Sensors.GetClosestZombie()) && 
 				humanState.CanShoot() && 
 				humanState.IsSeeingZombie() &&
-				humanState.getDistanceToZombie() > minShootingDistance;
+                humanState.getDistanceToObject(humanState.Sensors.GetClosestZombie()) > minShootingDistance;
 	}
 	
 	protected override void Execute ()

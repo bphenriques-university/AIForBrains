@@ -5,11 +5,6 @@ using System.Collections;
 public class HumanSight : MonoBehaviour
 {
 
-    public bool SawFood = false;
-    public bool SawZombie = false;
-    public bool SawHumanInDanger = false;
-    public bool SawAmmo = false;
-    public bool SawExitDoor = false;
 
     // If a new attribute list is added, remember to add to SeenLists in constructor.
     private IList<GameObject>[] seenLists;
@@ -70,6 +65,9 @@ public class HumanSight : MonoBehaviour
             foreach (GameObject gameObjectInList in list)
             {
                 if (!seenGameObjects.Contains(gameObjectInList))
+                    gameObjectsToDelete.Add(gameObjectInList); 
+                
+                if (gameObjectInList == null)
                     gameObjectsToDelete.Add(gameObjectInList);
             }
 

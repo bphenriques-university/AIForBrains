@@ -16,8 +16,8 @@ public class HumanMovement : MonoBehaviour
 	
 	void Awake ()
 	{
-		nav = GetComponent<NavMeshAgent> ();
-		anim = GetComponent<Animator> ();
+		nav = GetComponentInParent<NavMeshAgent> ();
+        anim = GetComponentInParent<Animator>();
 	}
 
 	void Update ()

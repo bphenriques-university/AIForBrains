@@ -9,17 +9,18 @@ public partial class Sensors : MonoBehaviour
     HumanMovement movement;
     HumanSpeak speech;
     HumanSight sight;
+    HumanTouch touch;
 
     void Awake()
     {
-        hunger = GetComponent<HumanHunger>();
-        health = GetComponent<HumanHealth>();
+        hunger = GetComponentInChildren<HumanHunger>();
+        health = GetComponentInChildren<HumanHealth>();
         shooting = GetComponentInChildren<HumanShooting>();
         movement = GetComponentInChildren<HumanMovement>();
         speech = GetComponentInChildren<HumanSpeak>();
         sight = GetComponentInChildren<HumanSight>();
+        touch = GetComponentInChildren<HumanTouch>();
     }
-
 
 
     

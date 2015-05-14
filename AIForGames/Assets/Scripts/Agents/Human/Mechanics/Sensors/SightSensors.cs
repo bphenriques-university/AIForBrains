@@ -46,6 +46,52 @@ public partial class Sensors : MonoBehaviour
         return sight.ExitSeen;
     }
 
+    public GameObject GetClosestZombie()
+    {
+        return GetClosest(sight.ZombiesSeen);
+    }
+
+    public GameObject GetClosestAmmoSeen()
+    {
+        return GetClosest(sight.AmmoSeen);
+    }
+
+    public GameObject GetClosestFoodSeen()
+    {
+        return GetClosest(sight.FoodsSeen);
+    }
+
+
+    private GameObject GetClosest(IList<GameObject> list)
+    {
+        if (list.Count <= 0)
+            return null;
+
+        GameObject closest = null;
+        foreach (GameObject gObject in list)
+        {
+            if (gObject == null)
+                continue;
+
+            if (closest == null)
+            {
+                closest = gObject;
+            }
+
+            float distance = (transform.position - gObject.transform.position).magnitude;
+            float distanceToCurrentClosestObject = (transform.position - closest.transform.position).magnitude;
+
+            if (distance < distanceToCurrentClosestObject)
+            {
+                closest = gObject;
+            }
+        }
+
+        return closest;
+    }
+
+
+    
     public bool SawFood()
     {
         return sight.FoodsSeen.Count > 0;

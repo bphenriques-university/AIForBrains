@@ -15,7 +15,7 @@ public class Actuators : MonoBehaviour
 		
 		Transform gunBarrelEnd = transform.root.FindChild ("GunBarrelEnd");
 		playerShooting = gunBarrelEnd.GetComponent<HumanShooting> ();
-		hunger = GetComponent<HumanHunger> ();
+		hunger = GetComponentInChildren<HumanHunger> ();
 		shooting = GetComponentInChildren<HumanShooting> ();
 		movement = GetComponentInChildren<HumanMovement> ();
 		speak = GetComponentInChildren<HumanSpeak> ();

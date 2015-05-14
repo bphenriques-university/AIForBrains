@@ -12,17 +12,16 @@ public class HumanCatchFood : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.IsOnFood ();
+		return humanState.Sensors.IsTouchingFood ();
 	}
 	
 	protected override void Execute ()
 	{
 
-		GameObject foodObject = humanState.foodSeen;
+		GameObject foodObject = humanState.Sensors.GetTouchingFood();
 		//Due to non-deterministic environment
 		if (foodObject == null) {
 			humanState.onFood = false;
-			humanState.sawFood = false;
 			return;
 		}
 
@@ -30,7 +29,6 @@ public class HumanCatchFood : ReactiveBehaviour
 		humanState.Actuators.CatchFood (food.catchFood ());
 
 		humanState.onFood = false;
-		humanState.sawFood = false;
 
 	}
 }

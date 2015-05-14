@@ -12,15 +12,15 @@ public class HumanFetchFood : ReactiveBehaviour
 
 	protected override bool IsInSituation ()
 	{
-		return !humanState.IsGrabbed () && humanState.IsSeeingFood ();
+		return !humanState.IsGrabbed () && humanState.Sensors.SawFood ();
 	}
 
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.foodSeen;
+		GameObject gameObject = humanState.Sensors.GetClosestFoodSeen();
 
-		if (humanState.foodSeen == null) {
-			humanState.sawFood = false;
+        if (gameObject == null)
+        {
 			return;
 		}
 

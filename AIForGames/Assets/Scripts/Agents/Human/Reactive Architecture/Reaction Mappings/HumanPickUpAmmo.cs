@@ -13,12 +13,12 @@ public class HumanPickUpAmmo : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.IsOnAmmo ();
+		return humanState.Sensors.IsTouchingAmmo ();
 	}
 	
 	protected override void Execute ()
 	{
-		humanState.Actuators.GrabAmmo ();
+        humanState.Actuators.GrabAmmo(humanState.Sensors.GetTouchingAmmo().GetComponent<Ammo>());
 	}
 }
 

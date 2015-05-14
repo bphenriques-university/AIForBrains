@@ -14,32 +14,19 @@ public class HumanAmmo : MonoBehaviour
 
 	}
 
-	void OnCollisionEnter (Collision other){
-
-		if (other.gameObject.tag == "Ammo") {
-			humanState.onAmmo = true;
-			humanState.ammoSeen = other.gameObject.GetComponent<Ammo>();
-		}
-	}
-
-	public void GrabAmmo ()
+	public void GrabAmmo (Ammo ammo)
 	{
-		GameObject ammoObject = humanState.ammoSeen.gameObject;
 		
 		//Due to non-deterministic environment
-		if (ammoObject == null) {
+		if (!ammo.gameObject) {
 			humanState.onAmmo = false;
-			humanState.sawAmmo = false;
 			return;
 		}
 		
 		
-		Ammo ammo = ammoObject.GetComponent<Ammo> ();
-		
 		playerShooting.GrabAmmo(ammo.GrabAmmo ());
 		
 		humanState.onAmmo = false;
-		humanState.sawAmmo = false;
 	}
 }
 

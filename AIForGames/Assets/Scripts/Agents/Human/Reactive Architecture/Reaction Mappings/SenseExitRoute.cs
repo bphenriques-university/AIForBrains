@@ -19,10 +19,10 @@ public class SenseExitRoute : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.exitSeen;
-		
-		if (humanState.exitSeen == null) {
-			humanState.sawExitDoor = false;
+		GameObject gameObject = humanState.Sensors.ExitSeen();
+
+        if (gameObject == null)
+        {
 			return;
 		}
 		

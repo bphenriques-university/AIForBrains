@@ -29,7 +29,7 @@ public class HOOMANRUUUN : ReactiveBehaviour
 		} else {
 
 			if (humanState.IsSeeingZombie ()) {
-				EnemyHealth enemyHealth = humanState.zombieSeen.GetComponent<EnemyHealth> ();
+				EnemyHealth enemyHealth = humanState.Sensors.GetClosestZombie().GetComponent<EnemyHealth> ();
 				if (enemyHealth.hasDied ()) {
 					return false;
 				}
@@ -45,7 +45,7 @@ public class HOOMANRUUUN : ReactiveBehaviour
 
 	protected override void Execute ()
 	{
-		GameObject THINGTHATWANTSTOEATMYBRAINS = humanState.zombieSeen;
+		GameObject THINGTHATWANTSTOEATMYBRAINS = humanState.Sensors.GetClosestZombie();
 
 		Vector3 RUNTHISWAY = - (THINGTHATWANTSTOEATMYBRAINS.transform.position - transform.position);
 

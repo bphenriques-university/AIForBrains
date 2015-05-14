@@ -11,10 +11,12 @@ public class Human : MonoBehaviour
 	HumanMovement movement;
     HumanSpeak speech;
     HumanSight sight;
+    HumanTouch touch;
 
-    
 
-    SightCollider sightColliderScript;
+
+    SightCollider sightColliderScript;     
+    TouchCollider touchColliderScript;
 
 	int shootableMask;
 
@@ -31,16 +33,25 @@ public class Human : MonoBehaviour
 
 		targetPosition = transform.position;
 
-        speech = GetComponent<HumanSpeak>();
-		hunger = GetComponent<HumanHunger> ();
-		health = GetComponent<HumanHealth> ();
+        speech = GetComponentInChildren<HumanSpeak>();
+        hunger = GetComponentInChildren<HumanHunger>();
+        health = GetComponentInChildren<HumanHealth>();
 		shooting = GetComponentInChildren<HumanShooting> ();
         movement = GetComponentInChildren<HumanMovement>();
         sight = GetComponentInChildren<HumanSight>();
+        touch = GetComponentInChildren<HumanTouch>();
+
+        Sensors = GetComponent<Sensors>();
+
+
 		shootableMask = LayerMask.GetMask ("Shootable");
         Actuators = GetComponent<Actuators>();
         sightCollider = GetComponentInChildren<MeshCollider>();
+
+
         sightColliderScript = GetComponentInChildren<SightCollider>();
+        touchColliderScript = GetComponentInChildren<TouchCollider>();
+
         memory = new HumanObjectMemory(sightCollider);
 
 	}
@@ -66,9 +77,7 @@ public class Human : MonoBehaviour
 
 	public float humanTimer = 0f;
 
-	public bool onFood = false;
 	public bool bitten = false;
-	public bool onAmmo = false;
 
 	
 	void Update(){
@@ -77,6 +86,7 @@ public class Human : MonoBehaviour
 		memory.CleanWrongMemories ();
 
         sight.ProcessSight(sightColliderScript.SeenGameObjects);
+        touch.ProcessTouch(touchColliderScript);
 	}
 
 	
@@ -85,26 +95,6 @@ public class Human : MonoBehaviour
 	/* ----------------- Sensors  ---------------*/
 	/* ------------------------------------------*/
 	
-	public bool IsSeeingFood(){
-		return sight.FoodsSeen.Count > 0;
-	}
-
-	public bool IsOnFood(){
-		return onFood;
-	}
-
-	public bool IsOnAmmo ()
-	{
-		return onAmmo;
-	}
-
-	public bool IsSeeingZombie(){
-		return sight.ZombiesSeen.Count > 0;
-	}
-
-	public bool IsSeeingHumanInDanger(){
-		return sight.HumansSeen.Count > 0;
-	}
 
 	public bool IsGrabbed(){
 		return movement.isBeingGrabbed();
@@ -214,4 +204,9 @@ public class Human : MonoBehaviour
  	throw new System.NotImplementedException();
 	}
 
+
+    public float getDistanceToObject(GameObject gameObject)
+    {
+        return (transform.position - gameObject.transform.position).magnitude;
+    }
 }
