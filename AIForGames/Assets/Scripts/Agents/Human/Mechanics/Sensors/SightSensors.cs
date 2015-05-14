@@ -90,6 +90,37 @@ public partial class Sensors : MonoBehaviour
         return closest;
     }
 
+    private GameObject GetClosestZombie(IList<GameObject> list)
+    {
+        if (list.Count <= 0)
+            return null;
+
+        GameObject closest = null;
+        foreach (GameObject gObject in list)
+        {
+            if (gObject == null)
+                continue;
+
+            if (gObject.GetComponent<EnemyHealth>().currentHealth <= 0)
+                continue;
+
+            if (closest == null)
+            {
+                closest = gObject;
+            }
+
+            float distance = (transform.position - gObject.transform.position).magnitude;
+            float distanceToCurrentClosestObject = (transform.position - closest.transform.position).magnitude;
+
+            if (distance < distanceToCurrentClosestObject)
+            {
+                closest = gObject;
+            }
+        }
+
+        return closest;
+    }
+
 
     
     public bool SawFood()

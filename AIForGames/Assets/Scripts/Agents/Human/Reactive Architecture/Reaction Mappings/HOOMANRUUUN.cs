@@ -28,7 +28,7 @@ public class HOOMANRUUUN : ReactiveBehaviour
 			return true;
 		} else {
 
-			if (humanState.IsSeeingZombie ()) {
+			if (humanState.Sensors.SawZombies()) {
 				EnemyHealth enemyHealth = humanState.Sensors.GetClosestZombie().GetComponent<EnemyHealth> ();
 				if (enemyHealth.hasDied ()) {
 					return false;
