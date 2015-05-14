@@ -4,10 +4,10 @@ using System;
 public class HumanAttacked : ReactiveBehaviour
 {
 	
-	HumanState humanState;
+	Human humanState;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 	
 	protected override bool IsInSituation ()
@@ -17,6 +17,6 @@ public class HumanAttacked : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		humanState.actuator.Run ();
+		humanState.Actuators.Run ();
 	}
 }

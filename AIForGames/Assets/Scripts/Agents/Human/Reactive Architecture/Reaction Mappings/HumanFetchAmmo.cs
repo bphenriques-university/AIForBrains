@@ -3,29 +3,29 @@ using UnityEngine;
 
 public class HumanFetchAmmo : ReactiveBehaviour
 {
-	HumanState humanState;
+	Human humanState;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 	
 	protected override bool IsInSituation ()
 	{
-		return !humanState.IsGrabbed () && humanState.IsSeeingAmmo ();
+		return !humanState.IsGrabbed () && humanState.Sensors.SawAmmo ();
 	}
 	
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.ammoSeen.gameObject;
-		
-		if (humanState.ammoSeen == null) {
-			humanState.sawAmmo = false;
+		GameObject gameObject = humanState.Sensors.GetClosestAmmoSeen();
+
+        if (gameObject == null)
+        {
 			return;
 		}
 		
 		Vector3 ammoPosition = gameObject.transform.position;
-		humanState.actuator.ChangeDestination (ammoPosition);
-		humanState.actuator.Walk ();
+		humanState.Actuators.ChangeDestination (ammoPosition);
+		humanState.Actuators.Walk ();
 	}
 }
 

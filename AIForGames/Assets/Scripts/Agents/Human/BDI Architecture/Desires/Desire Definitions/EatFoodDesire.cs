@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -20,13 +20,13 @@ public class EatFoodDesire : Desire
             EatFoodIntention intention = new EatFoodIntention(carriedFoods[0], desireLevel);
             desiredIntentions.Add(intention);
         }
-        else {
-            if (beliefs.GetSightBelief().SawFood())
-            {
-                EatFoodIntention intention = new EatFoodIntention(beliefs.GetSightBelief().GetFoodSeen(), desireLevel);
-                desiredIntentions.Add(intention);
-            }
+        else if (beliefs.GetSightBelief().SawFood())
+     	{
+			//FIXME: Dirty hack to compile
+			EatFoodIntention intention = new EatFoodIntention(beliefs.GetSightBelief().FoodSeen()[0], desireLevel);
+            desiredIntentions.Add(intention);
         }
+        
 
 
         return desiredIntentions;

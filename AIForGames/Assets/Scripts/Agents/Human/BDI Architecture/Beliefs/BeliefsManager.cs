@@ -23,7 +23,7 @@ public class BeliefsManager
     }
 
 
-	public BeliefsManager BeliefReviewFunction(HumanState humanState) 
+	public BeliefsManager BeliefReviewFunction(Human humanState) 
 	{
         foreach (Belief belief in beliefs)
         {

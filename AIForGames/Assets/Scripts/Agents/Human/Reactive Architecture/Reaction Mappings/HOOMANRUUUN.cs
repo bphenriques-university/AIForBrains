@@ -10,10 +10,10 @@ public class HOOMANRUUUN : ReactiveBehaviour
 	public float GOTTARUNTIME = 2f;
 	float timer;
 
-	HumanState humanState;
+	Human humanState;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 		timer = GOTTARUNTIME + 4;
 	}
 
@@ -29,7 +29,7 @@ public class HOOMANRUUUN : ReactiveBehaviour
 		} else {
 
 			if (humanState.IsSeeingZombie ()) {
-				EnemyHealth enemyHealth = humanState.zombieSeen.GetComponent<EnemyHealth> ();
+				EnemyHealth enemyHealth = humanState.Sensors.GetClosestZombie().GetComponent<EnemyHealth> ();
 				if (enemyHealth.hasDied ()) {
 					return false;
 				}
@@ -45,12 +45,12 @@ public class HOOMANRUUUN : ReactiveBehaviour
 
 	protected override void Execute ()
 	{
-		GameObject THINGTHATWANTSTOEATMYBRAINS = humanState.zombieSeen;
+		GameObject THINGTHATWANTSTOEATMYBRAINS = humanState.Sensors.GetClosestZombie();
 
 		Vector3 RUNTHISWAY = - (THINGTHATWANTSTOEATMYBRAINS.transform.position - transform.position);
 
-		humanState.actuator.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
-		humanState.actuator.Run ();
+		humanState.Actuators.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
+		humanState.Actuators.Run ();
 
 	}
 

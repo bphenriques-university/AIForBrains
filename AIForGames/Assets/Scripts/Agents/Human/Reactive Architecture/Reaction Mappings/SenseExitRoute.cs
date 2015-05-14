@@ -4,11 +4,11 @@ using System.Collections;
 
 public class SenseExitRoute : ReactiveBehaviour
 {
-	HumanState humanState;
+	Human humanState;
 	
 	void Awake ()
 	{
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 	
 	
@@ -19,16 +19,16 @@ public class SenseExitRoute : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		GameObject gameObject = humanState.exitSeen;
-		
-		if (humanState.exitSeen == null) {
-			humanState.sawExitDoor = false;
+		GameObject gameObject = humanState.Sensors.ExitSeen();
+
+        if (gameObject == null)
+        {
 			return;
 		}
 		
 		Vector3 exitPosition = gameObject.transform.position;
-		humanState.actuator.ChangeDestination (exitPosition);
-		humanState.actuator.Run ();
+		humanState.Actuators.ChangeDestination (exitPosition);
+		humanState.Actuators.Run ();
 	}
 
 }

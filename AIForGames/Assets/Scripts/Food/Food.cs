@@ -7,7 +7,7 @@ public abstract class Food : MonoBehaviour
 	public float foodPoints;
     private bool catched = false;
     private bool eaten = false;
-    private HumanState humanThatAteMe;
+    private Human humanThatAteMe;
 
 	public virtual Food catchFood(){
 		Object.Destroy (this.gameObject);

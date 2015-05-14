@@ -7,7 +7,7 @@ public class HungerBelief : Belief
     private float hungerLevel;
 
 
-    public override void ReviewBelief(BeliefsManager beliefs, HumanState humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
     {
         hungerLevel = humanState.HungerLevel();
     }

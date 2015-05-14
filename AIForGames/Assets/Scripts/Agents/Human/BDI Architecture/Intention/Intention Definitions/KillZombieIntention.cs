@@ -3,7 +3,7 @@ using System.Collections;
 
 public class KillZombieIntention : Intention
 {
-	#region implemented abstract members of Intention
+
 
 	public KillZombieIntention(GameObject zombie, float desiredIntention) : base (desiredIntention){
 		
@@ -14,7 +14,7 @@ public class KillZombieIntention : Intention
 	{
 		throw new System.NotImplementedException ();
 	}
-	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (HumanState humanState, BeliefsManager beliefs)
+	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human humanState, BeliefsManager beliefs)
 	{
 		throw new System.NotImplementedException ();
 	}
@@ -26,7 +26,7 @@ public class KillZombieIntention : Intention
 	{
 		throw new System.NotImplementedException ();
 	}
-	#endregion
+
 
 	// Use this for initialization
 	void Start ()

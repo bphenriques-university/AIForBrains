@@ -3,12 +3,12 @@ using System.Collections;
 
 public class HumanCryForHelp : ReactiveBehaviour
 {
-	HumanState humanState;
+	Human humanState;
 
 
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}	
 	
 	
@@ -21,7 +21,7 @@ public class HumanCryForHelp : ReactiveBehaviour
 	protected override void Execute ()
 	{
 		//Debug.Log ("PLEASE HELP HELP HELP HEP");
-		humanState.actuator.SendCryForHelp ();	
+		humanState.Actuators.SendCryForHelp ();	
 	}
 	
 }

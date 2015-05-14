@@ -1,143 +1,29 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class SightCollider : MonoBehaviour {
 
+
+    private const float RANGE = 20f;
+
 	RaycastHit shootHit;
-	float range = 20f;
 	int shootableMask;
 
-	HumanState humanState;
+    public IList<GameObject> SeenGameObjects = new List<GameObject>();
+
 	
 	void Awake(){
 		shootableMask = LayerMask.GetMask ("Shootable") | LayerMask.GetMask ("Viewable");
-		humanState = transform.root.GetComponent <HumanState> ();
 	}
 
+    void Update()
+    {
+        cleanNullPointers();
+    }
+
 	void OnTriggerEnter (Collider other){
-		if (other.gameObject.tag == "Food") {
-
-			if(isVisible (other)){
-				//Debug.Log("Saw Food!");
-				if(humanState.sawFood == true && humanState.foodSeen != null){
-
-					if(isCloser (other.gameObject, humanState.foodSeen))
-					{
-						humanState.foodSeen = other.gameObject;
-
-					}
-
-				}else{
-
-					humanState.sawFood = true;
-
-					humanState.foodSeen = other.gameObject;
-				}
-
-                humanState.memory.RememberFood(other.gameObject);
-
-			}else{
-				humanState.sawFood = false;
-			}
-		}
-
-		if (other.gameObject.tag == "Enemy") {
-			//Debug.Log ("ZOMBIE!");
-			if(isVisible(other)){
-				//Debug.Log ("ZOMBIE!");
-				if(humanState.sawZombie == true && humanState.zombieSeen != null){
-
-					if(isCloser (other.gameObject, humanState.zombieSeen)){
-						humanState.zombieSeen = other.gameObject;
-					}
-
-				}else{
-					humanState.sawZombie = true;
-					humanState.zombieSeen = other.gameObject;
-				}
-
-				humanState.memory.RememberZombie(other.gameObject);
-
-			}else{
-				humanState.sawZombie = false;
-			}
-
-
-			//HUMAN
-			if (other.gameObject.tag == "Human") {
-				
-				if(isVisible (other)){
-					//Debug.Log("Saw Human!");
-					if(humanState.sawHumanInDanger == true && humanState.lastHumanSeen != null){
-						
-						if(isCloser (other.gameObject, humanState.lastHumanSeen))
-						{
-							humanState.lastHumanSeen = other.gameObject;
-							
-						}
-
-					}else{
-						
-						humanState.sawHumanInDanger = true;
-						
-						humanState.lastHumanSeen = other.gameObject;
-					}
-
-                    humanState.memory.RememberHuman(other.gameObject);
-
-				}else{
-					humanState.sawHumanInDanger = false;
-				}
-			}
-
-
-		}
-
-		if (other.gameObject.tag == "Ammo") 
-		{
-
-			if(isVisible(other)){
-				//Debug.Log("Saw Ammo!");
-				if(humanState.sawAmmo == true && humanState.ammoSeen != null){
-
-					if(isCloser (other.gameObject, humanState.ammoSeen.gameObject))
-					{
-						humanState.ammoSeen = other.gameObject.GetComponent<Ammo>();
-					
-					}
-
-				}else{
-					
-					humanState.sawAmmo = true;
-			
-					humanState.ammoSeen = other.gameObject.GetComponent<Ammo>();
-				}
-
-                humanState.memory.RememberAmmo(other.gameObject);
-			}else{
-				humanState.sawAmmo = false;
-			}
-		}
-
-
-		if (other.gameObject.tag == "EscapeExit") {
-			if(isVisible(other)){
-				//Debug.Log("@@@@@@@@@@@@@@@ Saw ESCAPE EXIT!");
-				if(humanState.sawExitDoor == true && humanState.exitSeen != null){
-					
-					if(isCloser (other.gameObject, humanState.exitSeen))
-					{
-						humanState.exitSeen = other.gameObject;
-					}
-					
-				}else{
-					humanState.sawExitDoor = true;
-					humanState.exitSeen = other.gameObject;
-				}
-			}else{
-				humanState.sawExitDoor = false;
-			}
-		}
+        if (isVisible(other))
+            SeenGameObjects.Add(other.gameObject);
 	}
 
 	void OnTriggerStay(Collider other)
@@ -148,31 +34,35 @@ public class SightCollider : MonoBehaviour {
 
 	void OnTriggerExit(Collider other){
 
-		if (other.gameObject.tag == "Food") {
-			humanState.sawFood = false;
-		}
+        GameObject gameObject = other.gameObject;
 
-		if (other.gameObject.tag == "Enemy") {
-			humanState.sawZombie = false;
-		}
-
-		if (other.gameObject.tag == "Ammo") {
-			humanState.sawAmmo = false;
-		}
-
-		if (other.gameObject.tag == "EscapeExit") {
-			humanState.sawExitDoor = false;
-		}
-		
-		
-
+        if (SeenGameObjects.Contains(gameObject))
+            SeenGameObjects.Remove(gameObject);
 	
 	}
 
-	bool isVisible (Collider other)
+
+
+    private void cleanNullPointers()
+    {
+        IList<GameObject> gameObjectsToRemove = new List<GameObject>();
+        foreach (GameObject seenGameObject in SeenGameObjects)
+        {
+            if (!seenGameObject)
+                gameObjectsToRemove.Add(seenGameObject);
+        }
+
+        foreach (GameObject deleteGameObject in gameObjectsToRemove)
+        {
+            SeenGameObjects.Remove(deleteGameObject);
+        }
+    }
+
+
+	private bool isVisible (Collider other)
 	{
 		Vector3 direction = (other.transform.position) - transform.position;
-		if (Physics.Raycast (transform.position, direction.normalized, out shootHit, range, shootableMask)) {
+		if (Physics.Raycast (transform.position, direction.normalized, out shootHit, RANGE, shootableMask)) {
 			//Debug.Log ("VI: Daqui: " + transform.position + "para ali: " + other.transform.position + "vendo um " + shootHit.collider.gameObject);
 			if (shootHit.collider.gameObject.Equals (other.gameObject)) {
 				//Debug.Log ("VI MESMO um " + shootHit.collider.gameObject);
@@ -183,7 +73,7 @@ public class SightCollider : MonoBehaviour {
 		return false;
 	}
 
-	bool isCloser(GameObject a, GameObject b){
+	private bool isCloser(GameObject a, GameObject b){
 
 		float distance;
 		Vector3 distanceVector = a.transform.position - transform.position;

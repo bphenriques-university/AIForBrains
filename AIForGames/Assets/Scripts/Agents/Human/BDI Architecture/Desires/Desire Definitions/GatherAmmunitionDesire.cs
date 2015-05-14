@@ -14,7 +14,8 @@ public class GatherAmmunitionDesire : Desire
     {
 		IList<Intention> desiredIntentions = new List<Intention>();
 				
-		desiredIntentions.Add (new GatherAmmunitionIntention(desireLevel, beliefs.GetSightBelief().GetAmmoSeen()));
+        // TODO - Fix this hack
+		desiredIntentions.Add (new GatherAmmunitionIntention(desireLevel, beliefs.GetSightBelief().AmmoSeen()[0]));
 		
 		return desiredIntentions;
 

@@ -18,7 +18,7 @@ public class GatherFoodDesire : Desire
 
         if (beliefs.GetSightBelief().SawFood())
         {
-            desiredIntentions.Add(new GatherFoodIntention(desireLevel, beliefs.GetSightBelief().GetFoodSeen()));
+            desiredIntentions.Add(new GatherFoodIntention(desireLevel, beliefs.GetSightBelief().FoodSeen()[0]));
         }
         else
         {

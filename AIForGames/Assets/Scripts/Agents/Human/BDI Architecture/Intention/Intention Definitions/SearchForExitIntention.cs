@@ -13,7 +13,7 @@ public class SearchForExitIntention : Intention
         return !beliefs.GetSightBelief().SawExit();
     }
 
-    public override IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs)
+    public override IList<PlanComponent> GivePlanComponents(Human humanState, BeliefsManager beliefs)
     {
         IList<PlanComponent> plan = new List<PlanComponent> ();
         plan.Add(new RandomWalkPlanComponent(humanState));

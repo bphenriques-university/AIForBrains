@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class Planner
 {
-    private HumanState humanState;
+    private Human humanState;
 
-    public Planner(HumanState humanState)
+    public Planner(Human humanState)
     {
         this.humanState = humanState;
     }

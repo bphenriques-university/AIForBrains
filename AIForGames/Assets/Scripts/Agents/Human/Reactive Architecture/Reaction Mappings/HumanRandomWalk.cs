@@ -6,11 +6,11 @@ public class HumanRandomWalk : ReactiveBehaviour
 	public float timeBetweenChanges = 1.5f;
 	public float range = 6f;
 
-	HumanState humanState;
+	Human humanState;
 	float timeSinceChange;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 
 	void Update() {
@@ -30,18 +30,18 @@ public class HumanRandomWalk : ReactiveBehaviour
 		if (!humanState.isMoving ()) {
 
 			changeDirection();
-			humanState.actuator.Walk();
+			humanState.Actuators.Walk();
 			timeSinceChange = 0f;
 			return;
 		}
 
 		int randomNum = Random.Range (0, 100);
 		if (randomNum < 70) {
-			humanState.actuator.Walk ();
+			humanState.Actuators.Walk ();
 		} else if (randomNum < 99) {
 			changeDirection ();
 		} else {
-			humanState.actuator.Stop();
+			humanState.Actuators.Stop();
 		}
 
 		timeSinceChange = 0f;
@@ -64,7 +64,7 @@ public class HumanRandomWalk : ReactiveBehaviour
 				continue;
 			} else {
 				randomDirection *= range;
-				humanState.actuator.ChangeDestination(humanState.transform.position + randomDirection);
+				humanState.Actuators.ChangeDestination(humanState.transform.position + randomDirection);
 				return;
 			}
 		}
