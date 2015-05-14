@@ -17,7 +17,7 @@ public class HumanAim : ReactiveBehaviour
 	{
 
 		return human.Sensors.SawZombies() && 
-				!human.Sensors.IsAimingToZombie(human.Sensors.GetClosestZombie()) && 
+				!human.Sensors.IsAimingToObject(human.Sensors.GetClosestZombie()) && 
 				(human.Sensors.GetDistanceToObject (human.Sensors.GetClosestZombie()) > distanceToAim) &&
 				human.Sensors.CanShoot();
 

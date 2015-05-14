@@ -150,7 +150,7 @@ public partial class Sensors : MonoBehaviour
     }
 
 
-    public bool IsAimingToZombie(GameObject zombieSeen)
+    public bool IsAimingToObject(GameObject target)
     {
         Ray shootRay = new Ray();
         RaycastHit shootHit;
@@ -164,7 +164,7 @@ public partial class Sensors : MonoBehaviour
         // Perform the raycast against gameobjects on the shootable layer and if it hits something...
         if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
-            if (shootHit.collider.gameObject == zombieSeen)
+            if (shootHit.collider.gameObject == target)
             {
                 EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
 

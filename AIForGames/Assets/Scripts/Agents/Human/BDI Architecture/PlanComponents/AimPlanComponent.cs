@@ -11,7 +11,9 @@ public class AimPlanComponent : PlanComponent
 
 	public override bool TryExecuteAction ()
 	{
-		throw new System.NotImplementedException ();
+		human.Actuators.TurnTo (zombie.transform.position);
+
+		return human.Sensors.IsAimingToObject (zombie);
 	}
 
 }

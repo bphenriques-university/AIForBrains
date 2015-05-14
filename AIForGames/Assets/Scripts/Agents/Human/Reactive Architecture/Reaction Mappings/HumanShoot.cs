@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 
 public class HumanShoot : ReactiveBehaviour
@@ -14,7 +14,7 @@ public class HumanShoot : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return human.Sensors.IsAimingToZombie (human.Sensors.GetClosestZombie()) && 
+		return human.Sensors.IsAimingToObject (human.Sensors.GetClosestZombie()) && 
 				human.Sensors.CanShoot() && 
 				human.Sensors.SawZombies() &&
                 human.Sensors.GetDistanceToObject(human.Sensors.GetClosestZombie()) > minShootingDistance;

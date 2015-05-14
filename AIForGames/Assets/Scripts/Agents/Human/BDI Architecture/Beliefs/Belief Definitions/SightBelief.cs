@@ -88,4 +88,29 @@ public class SightBelief : Belief
     {
         throw new System.NotImplementedException();
     }
+
+	public bool IsAimingAt(Transform transform, GameObject target)
+	{
+		Ray shootRay = new Ray ();
+		RaycastHit shootHit;
+		float range = 100f;
+		
+		shootRay.origin = transform.position;
+		shootRay.direction = transform.forward;
+		
+		int shootableMask = LayerMask.GetMask ("Shootable");
+		
+		// Perform the raycast against gameobjects on the shootable layer and if it hits something...
+		if (Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
+			if (shootHit.collider.gameObject == target) {
+				EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth> ();
+				
+				// If the EnemyHealth component exist...
+				return enemyHealth != null;
+			}
+		}
+
+		return false;
+	}
+
 }

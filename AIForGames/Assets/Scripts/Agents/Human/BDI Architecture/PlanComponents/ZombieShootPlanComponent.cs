@@ -10,7 +10,10 @@ public class ZombieShootPlanComponent : PlanComponent
 
 	public override bool TryExecuteAction ()
 	{
-		throw new System.NotImplementedException ();
+		int ammoBefore = human.Sensors.AmmoLevel ();
+		human.Actuators.FireWeapon ();
+
+		return ammoBefore == human.Sensors.AmmoLevel () + 1;
 	}
 
 

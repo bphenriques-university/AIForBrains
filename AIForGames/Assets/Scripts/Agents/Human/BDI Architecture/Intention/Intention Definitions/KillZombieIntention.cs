@@ -36,8 +36,13 @@ public class KillZombieIntention : Intention
 	{
 		IList<PlanComponent> plan = new List<PlanComponent> ();
 
-		//FIXME: Check if zombie is seen
-		plan.Add(new AimPlanComponent(human, zombie));
+		SightBelief humanSight = beliefs.GetSightBelief ();
+		NavigationBelief navBelief = beliefs.GetNavigationBelief ();
+
+		//Only if human is not aiming at him.
+		if (humanSight.IsAimingAt(navBelief.CurrentPosition(), zombie) == false) {
+			plan.Add (new AimPlanComponent (human, zombie));
+		}
 		plan.Add(new ZombieShootPlanComponent(human, zombie));
 
 		return plan;
@@ -60,17 +65,6 @@ public class KillZombieIntention : Intention
 		return false;
 	}
 
-
-	// Use this for initialization
-	void Start ()
-	{
 	
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
-	}
 }
 

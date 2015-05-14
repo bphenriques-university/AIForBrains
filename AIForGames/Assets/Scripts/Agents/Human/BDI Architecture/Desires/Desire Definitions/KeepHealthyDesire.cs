@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class KeepHealthyDesire : Desire
 {
+	public static float safeDistanceToZombie = 3.5f;
 
     public override void Deliberate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {
@@ -27,7 +28,6 @@ public class KeepHealthyDesire : Desire
 				desiredIntentions.Add (zombieIntention);
 			
 			}
-
 
 
 			Intention runIntention = new GetAwayFromZombieIntention (zombie, this.desireLevel);

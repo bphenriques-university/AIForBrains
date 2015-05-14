@@ -9,13 +9,13 @@ public class DesiresManager{
     private EatFoodDesire eatFoodDesire = new EatFoodDesire();
     private EscapeDesire escapeDesire = new EscapeDesire();
 	private GatherAmmunitionDesire gatherAmmoDesire = new GatherAmmunitionDesire ();
-	private GetAwayFromZombieDesire getAwayFromZombie = new GetAwayFromZombieDesire ();
+	private KeepHealthyDesire keepHealthyDesire = new KeepHealthyDesire ();
     private Desire[] desires;
 
 
     public DesiresManager()
     {
-        desires = new Desire[] { gatherFoodDesire, eatFoodDesire, escapeDesire, gatherAmmoDesire, getAwayFromZombie };
+        desires = new Desire[] { gatherFoodDesire, eatFoodDesire, escapeDesire, gatherAmmoDesire, keepHealthyDesire };
     }
 
 
