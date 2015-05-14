@@ -3,20 +3,11 @@ using System.Collections.Generic;
 
 public class Human : MonoBehaviour
 {
-	Collider sightCollider;
-
-	HumanHunger hunger;
-	HumanHealth health;
-	HumanShooting shooting;
-	HumanMovement movement;
-    HumanSpeak speech;
     HumanSight sight;
     HumanTouch touch;
 
     SightCollider sightColliderScript;     
     TouchCollider touchColliderScript;
-
-	int shootableMask;
 
     
 	public GameObject ExitRoute;
@@ -30,20 +21,11 @@ public class Human : MonoBehaviour
 
 		targetPosition = transform.position;
 
-        speech = GetComponentInChildren<HumanSpeak>();
-        hunger = GetComponentInChildren<HumanHunger>();
-        health = GetComponentInChildren<HumanHealth>();
-		shooting = GetComponentInChildren<HumanShooting> ();
-        movement = GetComponentInChildren<HumanMovement>();
         sight = GetComponentInChildren<HumanSight>();
         touch = GetComponentInChildren<HumanTouch>();
 
         Sensors = GetComponent<Sensors>();
-
-
-		shootableMask = LayerMask.GetMask ("Shootable");
         Actuators = GetComponent<Actuators>();
-        sightCollider = GetComponentInChildren<MeshCollider>();
 
 
         sightColliderScript = GetComponentInChildren<SightCollider>();

@@ -16,7 +16,7 @@ public class KeepHealthyDesire : Desire
     {
 		IList<Intention> desiredIntentions = new List<Intention>();
 
-		int nZombiesSeen = beliefs.GetSightBelief ().GetZombieSeen ().Count;
+		int nZombiesSeen = beliefs.GetSightBelief ().ZombieSeen ().Count;
 		int nBullets = beliefs.GetInventoryBelief ().AmmoLevel ();
 
 		if (nZombiesSeen > 0) {

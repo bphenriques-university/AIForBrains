@@ -17,7 +17,7 @@ public class KillZombieIntention : Intention
 		SightBelief humanSight = beliefs.GetSightBelief ();
 
 
-		if (humanSight.GetZombieSeen ().Contains (zombie) == false) {
+		if (humanSight.ZombieSeen ().Contains (zombie) == false) {
 			return false;
 		}
 

@@ -7,7 +7,6 @@ public partial class Sensors : MonoBehaviour
     private HumanHealth health;
     private HumanShooting shooting;
     private HumanMovement movement;
-    private HumanSpeak speech;
     private HumanSight sight;
     private HumanTouch touch;
 
@@ -20,7 +19,6 @@ public partial class Sensors : MonoBehaviour
         health = GetComponentInChildren<HumanHealth>();
         shooting = GetComponentInChildren<HumanShooting>();
         movement = GetComponentInChildren<HumanMovement>();
-        speech = GetComponentInChildren<HumanSpeak>();
         sight = GetComponentInChildren<HumanSight>();
         touch = GetComponentInChildren<HumanTouch>();
 

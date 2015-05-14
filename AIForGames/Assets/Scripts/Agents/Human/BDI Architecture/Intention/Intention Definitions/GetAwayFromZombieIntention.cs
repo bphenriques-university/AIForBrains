@@ -20,7 +20,7 @@ public class GetAwayFromZombieIntention : Intention
 	
 		SightBelief sightBelief = beliefs.GetSightBelief ();
 
-		int nZombiesSeen = sightBelief.GetZombieSeen ().Count;
+		int nZombiesSeen = sightBelief.ZombieSeen ().Count;
 
 	
 		if (sightBelief.SawZombie ()) {
