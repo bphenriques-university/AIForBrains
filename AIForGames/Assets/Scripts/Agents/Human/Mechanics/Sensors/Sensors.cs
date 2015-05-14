@@ -9,6 +9,10 @@ public partial class Sensors : MonoBehaviour
     private HumanMovement movement;
     private HumanSight sight;
     private HumanTouch touch;
+	private HumanTrade trade;
+	private HumanSpeak speech;
+	private HumanHear hearing;
+
 
     private int lastSeenHealth;
     private int shootableMask;
@@ -21,6 +25,9 @@ public partial class Sensors : MonoBehaviour
         movement = GetComponentInChildren<HumanMovement>();
         sight = GetComponentInChildren<HumanSight>();
         touch = GetComponentInChildren<HumanTouch>();
+		trade = GetComponentInChildren<HumanTrade> ();
+		speech = GetComponent<HumanSpeak> ();
+		hearing = GetComponent<HumanHear> ();
 
         lastSeenHealth = health.startingHealth;
         shootableMask = LayerMask.GetMask("Shootable");
