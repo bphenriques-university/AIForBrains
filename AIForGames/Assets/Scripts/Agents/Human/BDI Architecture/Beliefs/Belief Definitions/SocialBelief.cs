@@ -50,7 +50,6 @@ public class SocialBelief : Belief
 
 	public SocialBelief() : this(Human.GetHumans ()){
 		Acquaintances = new Dictionary<string, Acquaintance>();
-
 	}
 
 	public void AddAcquaintances(IList<Human> acquaintances){
