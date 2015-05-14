@@ -4,11 +4,11 @@ using System.Collections;
 public class FoodCollider : MonoBehaviour {
 
 
-	private HumanState humanState;
+	private Human humanState;
 
 	// Use this for initialization
 	void Start () {
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 
 
@@ -16,7 +16,6 @@ public class FoodCollider : MonoBehaviour {
 		
 		if (other.gameObject.tag == "Food") {
 			humanState.onFood = true;
-			humanState.foodSeen = other.gameObject;
 		}
 	}
 }

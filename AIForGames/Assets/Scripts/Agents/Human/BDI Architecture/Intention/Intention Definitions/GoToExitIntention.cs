@@ -32,7 +32,7 @@ public class GoToExitIntention : Intention
         return beliefs.GetSightBelief().SawExit();
     }
 
-    public override IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs)
+    public override IList<PlanComponent> GivePlanComponents(Human humanState, BeliefsManager beliefs)
     {
         IList<PlanComponent> plan = new List<PlanComponent>();
         plan.Add(new WalkToPlanComponent(humanState, beliefs.GetSightBelief().GetExitSeen().transform.position));

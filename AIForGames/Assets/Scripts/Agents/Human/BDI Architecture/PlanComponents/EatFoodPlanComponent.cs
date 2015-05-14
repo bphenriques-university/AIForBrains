@@ -5,7 +5,7 @@ public class EatFoodPlanComponent : PlanComponent
 {
     private Food foodToBeEaten;
 
-    public EatFoodPlanComponent(HumanState humanState, Food foodToBeEaten) : base(humanState)
+    public EatFoodPlanComponent(Human humanState, Food foodToBeEaten) : base(humanState)
     {
         this.foodToBeEaten = foodToBeEaten;
     }
@@ -13,7 +13,7 @@ public class EatFoodPlanComponent : PlanComponent
     public override bool TryExecuteAction()
     {
         float oldFoodLevel = humanState.HungerLevel();
-        humanState.actuator.EatFood(foodToBeEaten);
+        humanState.Actuators.EatFood(foodToBeEaten);
         return humanState.HungerLevel() > oldFoodLevel;
     }
 }

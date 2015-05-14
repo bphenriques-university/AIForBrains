@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class HumanCatchAmmo : ReactiveBehaviour
 {
-	HumanState humanState;
+	Human humanState;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 	
 	protected override bool IsInSituation ()
@@ -24,8 +24,8 @@ public class HumanCatchAmmo : ReactiveBehaviour
 		}
 		
 		Vector3 ammoPosition = gameObject.transform.position;
-		humanState.actuator.ChangeDestination (ammoPosition);
-		humanState.actuator.Walk ();
+		humanState.Actuators.ChangeDestination (ammoPosition);
+		humanState.Actuators.Walk ();
 	}
 }
 

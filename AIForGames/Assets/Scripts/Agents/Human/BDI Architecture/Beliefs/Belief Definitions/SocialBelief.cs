@@ -15,7 +15,7 @@ public class SocialBelief : Belief
 			this.lastKnownPosition = lastKnownPosition;
 		}
 
-		public Acquaintance(HumanState human, int friendshipValue): 
+		public Acquaintance(Human human, int friendshipValue): 
 			this(human.name, friendshipValue, human.CurrentPosition().position){}
 
 
@@ -42,7 +42,7 @@ public class SocialBelief : Belief
 
 	Dictionary<string, Acquaintance> Acquaintances;
     
-	public SocialBelief(IList<HumanState> friends) : this(){
+	public SocialBelief(IList<Human> friends) : this(){
 
 		AddAcquaintances (friends);
 
@@ -52,8 +52,8 @@ public class SocialBelief : Belief
 		Acquaintances = new Dictionary<string, Acquaintance>();
 	}
 
-	public void AddAcquaintances(IList<HumanState> acquaintances){
-		foreach (HumanState human in acquaintances) {
+	public void AddAcquaintances(IList<Human> acquaintances){
+		foreach (Human human in acquaintances) {
 			AddAcquaintance(new Acquaintance (human, 0));
 		}
 	}
@@ -62,7 +62,7 @@ public class SocialBelief : Belief
 			this.Acquaintances.Add(relationship.getName(),relationship);
 	}
 
-	public void improveRelationShip(HumanState human, int value){
+	public void improveRelationShip(Human human, int value){
 		Acquaintance friendship;
 		if (Acquaintances.TryGetValue (human.name, out friendship)) {
 			friendship.addToFriendship(value);
@@ -72,7 +72,7 @@ public class SocialBelief : Belief
 	}
 
 
-    public override void ReviewBelief(BeliefsManager beliefs, HumanState humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
     {
         //TODO:Actualizar Amizades 
 

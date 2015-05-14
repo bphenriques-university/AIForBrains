@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class SightBelief : Belief
 {
-    private Food foodSeen = null;
-    private Ammo ammoSeen = null;
-    private GameObject zombieSeen = null;
+    private IList<Food> foodSeen = null;
+    private IList<Ammo> ammoSeen = null;
+    private IList<GameObject> zombieSeen = null;
+    private IList<GameObject> humansSeen = null;
     private GameObject exitSeen = null;
-	private HumanState humanState = null;
 
     private bool sawFood = false;
     private bool sawAmmo = false;
@@ -18,24 +18,25 @@ public class SightBelief : Belief
 
     private Vector3 currentPosition;
 
-    public override void ReviewBelief(BeliefsManager beliefs, HumanState humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
     {
-        foodSeen = humanState.FoodSeen();
-        ammoSeen = humanState.ammoSeen;
-        zombieSeen = humanState.zombieSeen;
-        exitSeen = humanState.exitSeen;
+        foodSeen = humanState.Sensors.FoodSeen();
+        ammoSeen = humanState.Sensors.AmmoSeen();
+        zombieSeen = humanState.Sensors.ZombiesSeen();
+        humansSeen = humanState.Sensors.HumansSeen();
+        exitSeen = humanState.Sensors.ExitSeen();
 
-        sawFood = humanState.sawFood;
-        sawAmmo = humanState.sawAmmo;
-        sawZombie = humanState.sawZombie;
-        sawExit = humanState.sawExitDoor;
-        sawHuman = humanState.sawHumanInDanger;
+        sawFood = humanState.Sensors.SawFood();
+        sawAmmo = humanState.Sensors.SawAmmo();
+        sawZombie = humanState.Sensors.SawZombies();
+        sawExit = humanState.Sensors.SawExit();
+        sawHuman = humanState.Sensors.SawHumans();
 
         currentPosition = humanState.CurrentPosition().position;
     }
 
-	public float DistanceToZombie(){
-        return Vector3.Distance(currentPosition, zombieSeen.gameObject.transform.position);
+	public float DistanceToZombie(GameObject zombie){
+        return Vector3.Distance(currentPosition, zombie.gameObject.transform.position);
 	}
 
     public bool SawFood()
@@ -58,17 +59,17 @@ public class SightBelief : Belief
         return sawExit;
     }
 
-    public Food GetFoodSeen()
+    public IList<Food> FoodSeen()
     {
         return foodSeen;
     }
 
-    public Ammo GetAmmoSeen()
+    public IList<Ammo> AmmoSeen()
     {
         return ammoSeen;
     }
 
-    public GameObject GetZombieSeen()
+    public IList<GameObject> GetZombieSeen()
     {
         return zombieSeen;
     }
@@ -76,5 +77,15 @@ public class SightBelief : Belief
     public GameObject GetExitSeen()
     {
         return exitSeen;
+    }
+
+    internal int DistanceToClosestZombie()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    internal GameObject GetClosestZombie()
+    {
+        throw new System.NotImplementedException();
     }
 }

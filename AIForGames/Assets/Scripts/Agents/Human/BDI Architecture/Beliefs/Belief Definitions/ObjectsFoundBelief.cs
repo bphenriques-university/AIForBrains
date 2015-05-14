@@ -5,7 +5,7 @@ public class ObjectsFoundBelief : Belief
 {
 
 
-    public override void ReviewBelief(BeliefsManager beliefs, HumanState humanState)
+    public override void ReviewBelief(BeliefsManager beliefs, Human humanState)
     {
         throw new System.NotImplementedException();
     }

@@ -9,7 +9,7 @@ public class RandomWalkPlanComponent : PlanComponent
     private const float KEEP_DIRECTION_CHANCE = 70f;
     private Vector3 newDirection;
 
-    public RandomWalkPlanComponent(HumanState humanState) : base(humanState) {
+    public RandomWalkPlanComponent(Human humanState) : base(humanState) {
 
         
         while (true)
@@ -50,8 +50,8 @@ public class RandomWalkPlanComponent : PlanComponent
     public override bool TryExecuteAction()
     {
         
-        humanState.actuator.ChangeDestination(newDirection);
-        humanState.actuator.Walk();
+        humanState.Actuators.ChangeDestination(newDirection);
+        humanState.Actuators.Walk();
 
         if ((humanState.CurrentPosition().position - newDirection).magnitude < MIN_STOPPING_DISTANCE)
             return true;

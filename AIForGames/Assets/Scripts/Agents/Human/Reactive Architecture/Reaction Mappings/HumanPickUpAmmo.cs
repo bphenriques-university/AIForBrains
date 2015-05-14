@@ -4,11 +4,11 @@ using UnityEngine;
 public class HumanPickUpAmmo : ReactiveBehaviour
 {
 	
-	HumanState humanState;
+	Human humanState;
 	HumanShooting playerShooting;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 	
 	protected override bool IsInSituation ()
@@ -18,7 +18,7 @@ public class HumanPickUpAmmo : ReactiveBehaviour
 	
 	protected override void Execute ()
 	{
-		humanState.actuator.GrabAmmo ();
+		humanState.Actuators.GrabAmmo ();
 	}
 }
 

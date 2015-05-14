@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BDIManager : MonoBehaviour {
 
-	private HumanState humanState;
+	private Human humanState;
     private BeliefsManager beliefs;
     private DesiresManager desires;
     private IntentionsManager intentions;
@@ -20,7 +20,7 @@ public class BDIManager : MonoBehaviour {
 
 
 	void Start () {
-        humanState = this.transform.root.GetComponent<HumanState>();
+        humanState = this.transform.root.GetComponent<Human>();
         if (humanState == null)
             Debug.Log("SOME SHIT HAPPENED THAT WASN'T SUPPOSED TO");
 

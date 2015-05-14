@@ -27,7 +27,7 @@ public class GetAwayFromZombieIntention : Intention
 		return false;
 	}
 	
-	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents(HumanState humanState, BeliefsManager beliefs)
+	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents(Human humanState, BeliefsManager beliefs)
 	{
 		IList<PlanComponent> plan = new List<PlanComponent> ();
 		if (beliefs.GetSightBelief().SawZombie())

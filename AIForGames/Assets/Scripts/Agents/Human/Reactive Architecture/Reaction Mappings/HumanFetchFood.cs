@@ -4,10 +4,10 @@ using UnityEngine;
 public class HumanFetchFood : ReactiveBehaviour
 {
 
-	HumanState humanState;
+	Human humanState;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 
 	protected override bool IsInSituation ()
@@ -25,8 +25,8 @@ public class HumanFetchFood : ReactiveBehaviour
 		}
 
 		Vector3 foodPosition = gameObject.transform.position;
-		humanState.actuator.ChangeDestination (foodPosition);
-		humanState.actuator.Walk ();
+		humanState.Actuators.ChangeDestination (foodPosition);
+		humanState.Actuators.Walk ();
 	}
 }
 

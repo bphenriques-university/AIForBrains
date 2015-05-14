@@ -6,7 +6,7 @@ public class CatchFoodPlanComponent : PlanComponent
 
     private Food foodToBeCaught;
 
-    public CatchFoodPlanComponent(HumanState humanState, Food foodToBeCaught)
+    public CatchFoodPlanComponent(Human humanState, Food foodToBeCaught)
         : base(humanState)
     {
         this.foodToBeCaught = foodToBeCaught;
@@ -15,7 +15,7 @@ public class CatchFoodPlanComponent : PlanComponent
 
     public override bool TryExecuteAction()
     {
-        humanState.actuator.CatchFood(foodToBeCaught);
+        humanState.Actuators.CatchFood(foodToBeCaught);
         return humanState.FoodsCarried().Contains(foodToBeCaught);
     }
 }

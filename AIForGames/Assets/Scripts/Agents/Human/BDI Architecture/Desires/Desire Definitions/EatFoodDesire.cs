@@ -23,7 +23,8 @@ public class EatFoodDesire : Desire
         else {
             if (beliefs.GetSightBelief().SawFood())
             {
-                EatFoodIntention intention = new EatFoodIntention(beliefs.GetSightBelief().GetFoodSeen(), desireLevel);
+                //TODO - FIX this hack
+                EatFoodIntention intention = new EatFoodIntention(beliefs.GetSightBelief().FoodSeen()[0], desireLevel);
                 desiredIntentions.Add(intention);
             }
         }

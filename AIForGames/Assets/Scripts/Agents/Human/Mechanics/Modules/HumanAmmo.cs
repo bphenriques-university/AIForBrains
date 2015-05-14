@@ -4,11 +4,11 @@ using System.Collections;
 
 public class HumanAmmo : MonoBehaviour
 {
-	HumanState humanState;
+	Human humanState;
 	HumanShooting playerShooting;
 
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 		Transform gunBarrelEnd = transform.root.FindChild ("GunBarrelEnd");
 		playerShooting = gunBarrelEnd.GetComponent<HumanShooting> ();
 

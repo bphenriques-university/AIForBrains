@@ -3,9 +3,9 @@ using System.Collections;
 
 public abstract class PlanComponent
 {
-	public HumanState humanState;
+	public Human humanState;
 
-    public PlanComponent(HumanState humanstate)
+    public PlanComponent(Human humanstate)
     {
         this.humanState = humanstate;
 	}

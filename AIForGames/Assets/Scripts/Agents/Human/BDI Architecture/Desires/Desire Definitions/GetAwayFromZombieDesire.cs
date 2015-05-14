@@ -11,7 +11,7 @@ public class GetAwayFromZombieDesire  : Desire
 
         if (beliefs.GetSightBelief().SawZombie())
         {
-            desireLevel = (12 / beliefs.GetSightBelief().DistanceToZombie()) * 10;
+            desireLevel = (12 / beliefs.GetSightBelief().DistanceToClosestZombie()) * 10;
         }
         else
             desireLevel = 0;
@@ -23,7 +23,7 @@ public class GetAwayFromZombieDesire  : Desire
 		IList<Intention> desiredIntentions = new List<Intention>();
 
 		if(beliefs.GetSightBelief().SawZombie())
-			desiredIntentions.Add (new GetAwayFromZombieIntention(desireLevel, beliefs.GetSightBelief().GetZombieSeen()));
+			desiredIntentions.Add (new GetAwayFromZombieIntention(desireLevel, beliefs.GetSightBelief().GetClosestZombie()));
 		
 		return desiredIntentions;
 	}

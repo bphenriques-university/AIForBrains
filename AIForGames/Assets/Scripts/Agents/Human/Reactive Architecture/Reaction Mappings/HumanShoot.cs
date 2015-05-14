@@ -6,10 +6,10 @@ public class HumanShoot : ReactiveBehaviour
 
 	public float minShootingDistance = 1f;
 
-	HumanState humanState;
+	Human humanState;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 	}
 	
 	protected override bool IsInSituation ()
@@ -23,6 +23,6 @@ public class HumanShoot : ReactiveBehaviour
 	protected override void Execute ()
 	{
 		
-		humanState.actuator.FireWeapon ();
+		humanState.Actuators.FireWeapon ();
 	}
 }

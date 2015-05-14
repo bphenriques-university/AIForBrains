@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class Actuator : MonoBehaviour
+public class Actuators : MonoBehaviour
 {
-	HumanState humanState;
+	Human humanState;
 	HumanHunger hunger;
 	HumanShooting shooting;
 	HumanMovement movement;
@@ -20,7 +20,7 @@ public class Actuator : MonoBehaviour
 		movement = GetComponentInChildren<HumanMovement> ();
 		speak = GetComponentInChildren<HumanSpeak> ();
 
-		humanState = GetComponent<HumanState> ();
+		humanState = GetComponent<Human> ();
 	}		
 
 	/* ------------------------------------------*/
@@ -61,24 +61,15 @@ public class Actuator : MonoBehaviour
 	}
 
 
-	public void GrabAmmo ()
+	public void GrabAmmo (Ammo ammo)
 	{
-		GameObject ammoObject = humanState.ammoSeen.gameObject;
-		
 		//Due to non-deterministic environment
-		if (ammoObject == null) {
-			humanState.onAmmo = false;
-			humanState.sawAmmo = false;
+		if (ammo == null) {
 			return;
 		}
 		
-		
-		Ammo ammo = ammoObject.GetComponent<Ammo> ();
-		
 		playerShooting.GrabAmmo(ammo.GrabAmmo ());
 		
-		humanState.onAmmo = false;
-		humanState.sawAmmo = false;
 	}
 	
 	public void ChangeDestination(Vector3 newDirection){

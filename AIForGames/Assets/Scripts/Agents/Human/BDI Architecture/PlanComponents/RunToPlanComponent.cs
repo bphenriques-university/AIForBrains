@@ -7,7 +7,7 @@ public class RunToPlanComponent : PlanComponent
     private const float MIN_STOPPING_DISTANCE = 0.3f;
     private Vector3 goToPosition;
 
-    public RunToPlanComponent(HumanState humanState, Vector3 goToPosition)
+    public RunToPlanComponent(Human humanState, Vector3 goToPosition)
         : base(humanState)
     {
         this.goToPosition = goToPosition;
@@ -16,8 +16,8 @@ public class RunToPlanComponent : PlanComponent
 
     public override bool TryExecuteAction()
     {
-        humanState.actuator.ChangeDestination(goToPosition);
-        humanState.actuator.Run();
+        humanState.Actuators.ChangeDestination(goToPosition);
+        humanState.Actuators.Run();
         Vector3 currentPosition = humanState.CurrentPosition().position;
         return ((currentPosition - goToPosition).magnitude < MIN_STOPPING_DISTANCE);
     }

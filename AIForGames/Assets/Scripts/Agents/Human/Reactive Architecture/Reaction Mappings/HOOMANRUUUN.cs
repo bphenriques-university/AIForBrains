@@ -10,10 +10,10 @@ public class HOOMANRUUUN : ReactiveBehaviour
 	public float GOTTARUNTIME = 2f;
 	float timer;
 
-	HumanState humanState;
+	Human humanState;
 	
 	void Awake(){
-		humanState = transform.root.GetComponent <HumanState> ();
+		humanState = transform.root.GetComponent <Human> ();
 		timer = GOTTARUNTIME + 4;
 	}
 
@@ -49,8 +49,8 @@ public class HOOMANRUUUN : ReactiveBehaviour
 
 		Vector3 RUNTHISWAY = - (THINGTHATWANTSTOEATMYBRAINS.transform.position - transform.position);
 
-		humanState.actuator.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
-		humanState.actuator.Run ();
+		humanState.Actuators.ChangeDestination (transform.position + RUNTHISWAY.normalized * SAFEDISTANCE);
+		humanState.Actuators.Run ();
 
 	}
 
