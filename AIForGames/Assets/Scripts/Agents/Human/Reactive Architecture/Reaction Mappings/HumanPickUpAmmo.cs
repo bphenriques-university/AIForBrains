@@ -5,7 +5,6 @@ public class HumanPickUpAmmo : ReactiveBehaviour
 {
 	
 	Human human;
-	HumanShooting playerShooting;
 	
 	void Awake(){
 		human = transform.root.GetComponent <Human> ();

@@ -12,7 +12,6 @@ public class EnemyHealth : MonoBehaviour
 	AudioSource enemyAudio;                     // Reference to the audio source.
 	ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
 	bool isDead;                                // Whether the enemy is dead.
-	bool isSinking;                             // Whether the enemy has started sinking through the floor.
 	
 	
 	void Awake ()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class HumanObjectMemory
 {
-    Collider sightCollider;
+    
 
     public Memory FoodMemory;
     public Memory AmmoMemory;
@@ -11,9 +11,8 @@ public class HumanObjectMemory
     public Memory ZombieMemory;
    
 
-    public HumanObjectMemory(Collider sightCollider)
+    public HumanObjectMemory()
     {
-        this.sightCollider = sightCollider;
         FoodMemory = new Memory();
         ZombieMemory = new Memory();
         HumanMemory = new Memory();
@@ -41,7 +40,7 @@ public class HumanObjectMemory
         AmmoMemory.AddMemory(ammo);
     }
 
-    public void CleanWrongMemories()
+    public void CleanWrongMemories(Collider sightCollider)
     {
         Bounds bounds = sightCollider.bounds;
 

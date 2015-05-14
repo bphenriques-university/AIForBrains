@@ -21,7 +21,6 @@ public class Human : MonoBehaviour
     
 	public GameObject ExitRoute;
 
-    public HumanObjectMemory memory;
     public Actuators Actuators;
     public Sensors Sensors;
 
@@ -50,7 +49,6 @@ public class Human : MonoBehaviour
         sightColliderScript = GetComponentInChildren<SightCollider>();
         touchColliderScript = GetComponentInChildren<TouchCollider>();
 
-        memory = new HumanObjectMemory(sightCollider);
 
 	}
 	
@@ -66,7 +64,6 @@ public class Human : MonoBehaviour
 	/* ------------------------------------------*/
 
 	float attackTimer;
-	int lastSeenHealth;
 	
 	public bool targetObjectInRangeToAttack;
 	public Vector3 targetPosition;
@@ -80,7 +77,6 @@ public class Human : MonoBehaviour
 	void Update(){
 		humanTimer += Time.deltaTime;
 		attackTimer += Time.deltaTime;
-		memory.CleanWrongMemories ();
 
         sight.ProcessSight(sightColliderScript.SeenGameObjects);
         touch.ProcessTouch(touchColliderScript);

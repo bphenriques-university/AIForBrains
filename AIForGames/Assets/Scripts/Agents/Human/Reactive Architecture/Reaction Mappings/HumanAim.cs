@@ -27,7 +27,7 @@ public class HumanAim : ReactiveBehaviour
 	{
 		Vector3 zombiePosition = human.Sensors.GetClosestZombie().transform.position;
 		human.Actuators.Stop ();
-		human.Actuators.turnTo (zombiePosition);
+		human.Actuators.TurnTo (zombiePosition);
 	}
 
 }

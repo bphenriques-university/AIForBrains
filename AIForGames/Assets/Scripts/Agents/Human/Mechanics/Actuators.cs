@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Actuators : MonoBehaviour
 {
-	Human humanState;
 	HumanHunger hunger;
 	HumanShooting shooting;
 	HumanMovement movement;
@@ -20,7 +19,6 @@ public class Actuators : MonoBehaviour
 		movement = GetComponentInChildren<HumanMovement> ();
 		speak = GetComponentInChildren<HumanSpeak> ();
 
-		humanState = GetComponent<Human> ();
 	}		
 
 	/* ------------------------------------------*/
@@ -36,7 +34,7 @@ public class Actuators : MonoBehaviour
         hunger.EatFood(foodToBeEaten);
     }
 	
-	public void turnTo (Vector3 position)
+	public void TurnTo (Vector3 position)
 	{
 		movement.LookToDirection (position);
 	}
