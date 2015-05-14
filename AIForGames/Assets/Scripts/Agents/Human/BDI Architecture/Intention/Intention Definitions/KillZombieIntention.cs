@@ -25,7 +25,16 @@ public class KillZombieIntention : Intention
 		InventoryBelief inventory = beliefs.GetInventoryBelief ();
 		int nBullets = inventory.AmmoLevel ();
 
-		float killZombieIntentionLevel = 50/Mathf.Ceil(1/(nBullets * 2));
+		int wasShootingExtraMotivation = 0;
+
+		foreach (Intention i in previousIntentions) {
+			if(i.GetType().Equals(typeof(KillZombieIntention))){
+				wasShootingExtraMotivation = 10;
+				break;
+			}
+		}
+
+		float killZombieIntentionLevel = 50/Mathf.Ceil(1/(nBullets * 2 + wasShootingExtraMotivation));
 
 		intentValue = killZombieIntentionLevel;
 
