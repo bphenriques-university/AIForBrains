@@ -11,9 +11,12 @@ public abstract class Desire
     public abstract void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions);
     public abstract IList<Intention> GenerateIntentions(BeliefsManager beliefs, IList<Intention> previousIntentions);
 
-    public float getDesireLevel()
+    public float DesireLevel()
     {
         return desireLevel;
     }
+
+
+
 
 }

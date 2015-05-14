@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class DesiresManager{
 
-    private GatherFoodDesire catchFoodDesire = new GatherFoodDesire();
+    private GatherFoodDesire gatherFoodDesire = new GatherFoodDesire();
     private EatFoodDesire eatFoodDesire = new EatFoodDesire();
     private EscapeDesire escapeDesire = new EscapeDesire();
 	private GatherAmmunitionDesire gatherAmmoDesire = new GatherAmmunitionDesire ();
@@ -15,7 +15,7 @@ public class DesiresManager{
 
     public DesiresManager()
     {
-		desires = new Desire[] { getAwayFromZombie, gatherAmmoDesire, eatFoodDesire, escapeDesire };
+        desires = new Desire[] { gatherFoodDesire, eatFoodDesire, escapeDesire, gatherAmmoDesire, getAwayFromZombie };
     }
 
 

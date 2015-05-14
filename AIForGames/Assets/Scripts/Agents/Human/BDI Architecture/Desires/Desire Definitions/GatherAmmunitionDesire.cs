@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class GatherAmmunitionDesire : Desire
 {
-	private float minimumDesiredAmmoLevel = 10.0f;
 
     public override void Deliberate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {

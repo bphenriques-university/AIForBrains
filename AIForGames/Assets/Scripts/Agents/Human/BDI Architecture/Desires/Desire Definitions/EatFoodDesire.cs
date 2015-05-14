@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public class EatFoodDesire : Desire
 {
 
-
     public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
         desireLevel = 100f - beliefs.GetHungerBelief().GetFoodLevel();
     }
+
 
     public override IList<Intention> GenerateIntentions(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
@@ -30,7 +30,5 @@ public class EatFoodDesire : Desire
 
 
         return desiredIntentions;
-
-
     }
 }

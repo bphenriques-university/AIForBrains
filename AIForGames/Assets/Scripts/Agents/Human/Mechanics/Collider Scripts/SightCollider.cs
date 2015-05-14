@@ -34,7 +34,7 @@ public class SightCollider : MonoBehaviour {
 					humanState.foodSeen = other.gameObject;
 				}
 
-				humanState.rememberFood(other.gameObject);
+                humanState.memory.RememberFood(other.gameObject);
 
 			}else{
 				humanState.sawFood = false;
@@ -56,7 +56,7 @@ public class SightCollider : MonoBehaviour {
 					humanState.zombieSeen = other.gameObject;
 				}
 
-				humanState.rememberZombie(other.gameObject);
+				humanState.memory.RememberZombie(other.gameObject);
 
 			}else{
 				humanState.sawZombie = false;
@@ -83,7 +83,7 @@ public class SightCollider : MonoBehaviour {
 						humanState.lastHumanSeen = other.gameObject;
 					}
 
-					humanState.rememberHuman(other.gameObject);
+                    humanState.memory.RememberHuman(other.gameObject);
 
 				}else{
 					humanState.sawHumanInDanger = false;
@@ -113,7 +113,7 @@ public class SightCollider : MonoBehaviour {
 					humanState.ammoSeen = other.gameObject.GetComponent<Ammo>();
 				}
 
-				humanState.rememberAmmo(other.gameObject);
+                humanState.memory.RememberAmmo(other.gameObject);
 			}else{
 				humanState.sawAmmo = false;
 			}
@@ -196,5 +196,8 @@ public class SightCollider : MonoBehaviour {
 		return distance < currentDistance;
 		
 	}
-	
+
+
+    
+
 }

@@ -42,7 +42,7 @@ public class HumanHear : MonoBehaviour
 
 	public void HearMessage(GameObject human, HumanSpeak.Message m){
 		Debug.Log ("HEARD FROM " + human + " " + m.ToString ());
-		humanState.rememberHuman (human);
+        humanState.memory.RememberHuman(human);
 		MessageLog.Add (new MessageLogEntry (human, humanState.getHumanTime(), m));
 
 	}

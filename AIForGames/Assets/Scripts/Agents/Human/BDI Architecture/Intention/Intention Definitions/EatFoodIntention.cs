@@ -19,7 +19,7 @@ public class EatFoodIntention : Intention
 
     public override bool IsImpossible(BeliefsManager beliefs)
     {
-        return foodToBeEaten.Eaten() || 
+        return !foodToBeEaten || foodToBeEaten.Eaten() || 
             (foodToBeEaten.Catched() && !beliefs.GetInventoryBelief().Foods().Contains(foodToBeEaten));
     }
 
@@ -28,14 +28,15 @@ public class EatFoodIntention : Intention
         if (beliefs.GetInventoryBelief().Foods().Contains(foodToBeEaten)) {
             intentValue = 50;
         } else {
-            if (beliefs.GetSightBelief().SawFood())
+            if (beliefs.GetSightBelief().SawFood() && foodToBeEaten)
             {
                 Vector3 currentPosition = beliefs.GetNavigationBelief().CurrentPosition().position;
                 Vector3 foodPosition = foodToBeEaten.transform.position;
-                intentValue = 50 / ((currentPosition - foodPosition).magnitude);
+                intentValue = 50 / Mathf.Ceil((currentPosition - foodPosition).magnitude);
             }
             else
             {
+                intentValue = 0;
                 return false;
             }
         }

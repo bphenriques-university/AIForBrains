@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class EscapeDesire : Desire
 {
 
-    private const float BASE_DESIRE_LEVEL = 0f;
+    private const float BASE_DESIRE_LEVEL = 10f;
     private const float SAW_EXIT_DESIRE_LEVEL = 120f;
 
 
