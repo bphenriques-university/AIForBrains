@@ -47,10 +47,10 @@ GameObject:
   - 95: {fileID: 9571892}
   - 54: {fileID: 5425574}
   - 136: {fileID: 13648494}
-  - 114: {fileID: 11416386}
   - 114: {fileID: 11425110}
   - 114: {fileID: 11401752}
   - 114: {fileID: 11434558}
+  - 114: {fileID: 11477730}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -664,7 +664,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128720}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb371dea48cdd354ba992290073f23cd, type: 3}
   m_Name: 
@@ -674,6 +674,8 @@ MonoBehaviour:
   hungerSlider: {fileID: 11418790}
   playerName: {fileID: 11425138}
   numberFood: {fileID: 11466960}
+  hunger: 0
+  foods: []
 --- !u!114 &11402646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -757,19 +759,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11416386
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 128720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec45203ae7a1a54c9d02c355f983833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
-  cameraHolderTransform: {fileID: 0}
 --- !u!114 &11418602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -840,15 +829,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 128720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6343e0c34ef99964680aa0b02986d46d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ec45203ae7a1a54c9d02c355f983833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 0
-  hitSound: {fileID: 8284280}
-  deadSound: {fileID: 8299886}
-  healthSlider: {fileID: 11412658}
-  playerName: {fileID: 11425138}
+  speed: 6
+  cameraHolderTransform: {fileID: 0}
 --- !u!114 &11425138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,6 +1040,23 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ( 0 )
+--- !u!114 &11477730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77583f7fe925f0e4180ca9796a04f365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  hitSound: {fileID: 8284280}
+  deadSound: {fileID: 8299886}
+  healthSlider: {fileID: 11412658}
+  playerName: {fileID: 11425138}
 --- !u!120 &12015554
 LineRenderer:
   m_ObjectHideFlags: 1

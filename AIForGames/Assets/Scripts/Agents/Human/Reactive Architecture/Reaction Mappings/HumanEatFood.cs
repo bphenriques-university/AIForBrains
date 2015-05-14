@@ -13,7 +13,7 @@ public class HumanEatFood : ReactiveBehaviour
 	
 	protected override bool IsInSituation ()
 	{
-		return humanState.HungerLevel() < minHungerToEat && humanState.FoodCarried () > 0;
+		return humanState.HungerLevel() < minHungerToEat && humanState.Sensors.FoodCarried () > 0;
 	}
 	
 	protected override void Execute ()
