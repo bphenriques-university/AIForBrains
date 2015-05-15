@@ -14,14 +14,14 @@ public class HelpHumansDesire : Desire
 				hearing.identififyBelief(entry.getMessage());
 
 				if(hearing.FoodNeededMessage()){
-					if(desireLevel < 60)
-						desireLevel = 60;
+					if(desireLevel < 40)
+						desireLevel = 40;
 				}else if(hearing.AmmoNeededMessage()){
-					if(desireLevel < 60)
-						desireLevel = 60;
+					if(desireLevel < 40)
+						desireLevel = 40;
 				}else if(hearing.RescueNeededMessage()){
-					if(desireLevel < 60)
-						desireLevel = 60;
+					if(desireLevel < 40)
+						desireLevel = 40;
 				}else if(hearing.FoundExitMessage()){
 					desireLevel = 70;
 				}
@@ -34,20 +34,26 @@ public class HelpHumansDesire : Desire
     public override System.Collections.Generic.IList<Intention> GenerateIntentions(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {
 		IList<Intention> desiredIntentions = new List<Intention> ();
-
-		int a;
-
 		HearingBelief hearing = beliefs.GetHearingBelief ();
+
 		foreach (HumanHear.MessageLogEntry entry in hearing.GetMessageLog()) {
 			hearing.identififyBelief (entry.getMessage ());
+			InventoryBelief inventoryBelief = beliefs.GetInventoryBelief ();
 			
 			if (hearing.FoodNeededMessage ()) {
-				IList<Food> foods = beliefs.GetInventoryBelief ().Foods ();
-				if (foods.Count > 0)
-					a = 2 + 2;//desiredIntentions.Add(new GiveFoodIntention(
+			IList<Food> foods = inventoryBelief.Foods ();
+				if (foods.Count > 0){
+
+					Food toGive = foods[0];
+					desiredIntentions.Add(new GiveFoodIntention(entry.getHuman().GetComponent<Human>(), toGive, desireLevel));
+
+				}
+
+
+
 			} else if (hearing.AmmoNeededMessage ()) {
-				if (desireLevel < 60)
-					desireLevel = 60;
+				if (inventoryBelief.AmmoLevel() > 0)
+					desiredIntentions.Add(new GiveAmmoIntention(entry.getHuman().GetComponent<Human>(), desireLevel));
 			} else if (hearing.RescueNeededMessage ()) {
 				if (desireLevel < 60)
 					desireLevel = 60;

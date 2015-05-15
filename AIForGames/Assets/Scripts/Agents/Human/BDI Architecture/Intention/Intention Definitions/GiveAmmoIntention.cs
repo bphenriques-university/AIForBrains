@@ -4,7 +4,7 @@ using System.Collections;
 public class GiveAmmoIntention : Intention
 {
 
-	public GiveAmmoIntention(Human me, Human recipient, int bullets, float desiredIntentionValue): base(desiredIntentionValue){
+	public GiveAmmoIntention( Human recipient, float desiredIntentionValue): base(desiredIntentionValue){
 		//TODO
 	}
 	

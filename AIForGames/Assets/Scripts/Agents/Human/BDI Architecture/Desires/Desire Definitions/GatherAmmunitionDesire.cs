@@ -13,9 +13,9 @@ public class GatherAmmunitionDesire : Desire
     public override System.Collections.Generic.IList<Intention> GenerateIntentions(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {
 		IList<Intention> desiredIntentions = new List<Intention>();
-				
-        if (beliefs.GetSightBelief().SawAmmo())
-            desiredIntentions.Add (new GatherAmmunitionIntention(desireLevel, beliefs.GetSightBelief()));
+	//FIXME: buscar municoes vistas	
+        //if (beliefs.GetSightBelief().SawAmmo())
+          //  desiredIntentions.Add (new GatherAmmunitionIntention(desireLevel, beliefs.GetSightBelief()));
 		
 		return desiredIntentions;
 
