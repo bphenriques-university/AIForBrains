@@ -5,18 +5,13 @@ using System.Collections.Generic;
 public class SocialBelief : Belief
 {
 	private struct Acquaintance{
-		string name;
+		Human human;
 		int friendshipValue;
-		Vector3 lastKnownPosition;
 
-		public Acquaintance(string name, int friendship, Vector3 lastKnownPosition){
-			this.name = name;
+		public Acquaintance(Human human, int friendship){
+			this.human = human;
 			this.friendshipValue = friendship;
-			this.lastKnownPosition = lastKnownPosition;
 		}
-
-		public Acquaintance(Human human, int friendshipValue): 
-			this(human.name, friendshipValue, human.Sensors.CurrentPosition().position){}
 
 
 		public int addToFriendship(int value){
@@ -28,32 +23,24 @@ public class SocialBelief : Belief
 			return this.friendshipValue;
 		}
 
-		public string getName ()
+		public Human getHuman ()
 		{
-			return this.name;
+			return this.human;
 		}
 
 		public int getFriendshipValue(){
 			return this.friendshipValue;
 		}
 
-		public Vector3 getLastKnownPosition(){
-			return lastKnownPosition;
-		}
-
 	}
 
 
-	Dictionary<string, Acquaintance> Acquaintances;
+	IList<Acquaintance> Acquaintances;
     
-	public SocialBelief(IList<Human> friends) {
 
-		AddAcquaintances (friends);
-
-	}
-
-	public SocialBelief() : this(Human.GetHumans ()){
-		Acquaintances = new Dictionary<string, Acquaintance>();
+	public SocialBelief(){
+		Acquaintances = new List<Acquaintance>();
+		AddAcquaintances (Human.GetHumans ());
 	}
 
 	public void AddAcquaintances(IList<Human> acquaintances){
@@ -63,25 +50,30 @@ public class SocialBelief : Belief
 	}
 
 	private void AddAcquaintance(Acquaintance relationship){
-			this.Acquaintances.Add(relationship.getName(),relationship);
+			this.Acquaintances.Add(relationship);
 	}
 
 	public void improveRelationShip(Human human, int value){
 		Acquaintance friendship;
-		if (Acquaintances.TryGetValue (human.name, out friendship)) {
-			friendship.addToFriendship(value);
-		}else{
-			AddAcquaintance(new Acquaintance(human, value));
+		foreach (Acquaintance friend in Acquaintances) {
+			if(human.Equals(friend.getHuman())){
+				friend.addToFriendship(value);
+				return;
+			}
+		
 		}
+
+		AddAcquaintance(new Acquaintance(human, value));
+
 	}
 
 
     public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-        IList<HumanTrade.Trade> trades = human.Sensors.GetTrades();
+        IList<Trade> trades = human.Sensors.GetTrades();
         SocialBelief social = beliefs.GetSocialBelief();
 
-        foreach (HumanTrade.Trade trade in trades)
+        foreach (Trade trade in trades)
         {
             if (trade.isAmmoTrade())
             {

@@ -21,7 +21,7 @@ public partial class Sensors : MonoBehaviour
     }
 
 
-	public IList<HumanTrade.Trade> GetTrades(){
+	public IList<Trade> GetTrades(){
 
 		return trade.GetTrades ();
 	}

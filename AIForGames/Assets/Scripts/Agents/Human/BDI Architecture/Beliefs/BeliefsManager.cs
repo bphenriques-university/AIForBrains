@@ -12,7 +12,7 @@ public class BeliefsManager
     private VitalsBelief healthLevelBelief = new VitalsBelief();
     private SightBelief sightBelief = new SightBelief();
     private NavigationBelief navigationBelief;
-	//private SocialBelief socialBelief = new SocialBelief();
+	private SocialBelief socialBelief = new SocialBelief();
 	private HearingBelief hearingBelief = new HearingBelief();
 
     private Belief[] beliefs;
@@ -22,7 +22,7 @@ public class BeliefsManager
     public BeliefsManager(NavMap humanNavMap)
     {
         navigationBelief = new NavigationBelief(humanNavMap);
-        beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, sightBelief, navigationBelief };
+        beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, sightBelief, navigationBelief, socialBelief };
 
     }
 
@@ -63,8 +63,7 @@ public class BeliefsManager
 
     public SocialBelief GetSocialBelief()
     {
-        //FixME
-        return null;
+		return socialBelief;
     }
 
 	public HearingBelief GetHearingBelief ()

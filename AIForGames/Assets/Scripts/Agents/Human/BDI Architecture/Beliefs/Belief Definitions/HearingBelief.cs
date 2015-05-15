@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HearingBelief : Belief
 {
 
     private GameObject humanHeard;
+	private List<HumanHear.MessageLogEntry> MessageLog = new List<HumanHear.MessageLogEntry> ();
 
 	bool needsFood = false;
 	bool needsAmmo = false;
@@ -24,8 +26,20 @@ public class HearingBelief : Belief
 		}
 	}
 
+	public IList<HumanHear.MessageLogEntry> GetMessageLog(){
+		return MessageLog;
+	}
+
     public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-        throw new System.NotImplementedException();
+		IList<HumanHear.MessageLogEntry> newMessages = human.Sensors.GetHumanMessages();
+
+		while(MessageLog.Count > 5){
+			MessageLog.RemoveAt(0);
+		}
+
+		MessageLog.AddRange (newMessages);
+		newMessages.Clear ();
+
     }
 }
