@@ -8,6 +8,7 @@ public class Actuators : MonoBehaviour
 	HumanMovement movement;
 	HumanShooting playerShooting;
 	HumanSpeak speak;
+	HumanAmmo ammo;
 
 	void Awake(){
 		GameOverManager.humansAlive++;
@@ -18,7 +19,7 @@ public class Actuators : MonoBehaviour
 		shooting = GetComponentInChildren<HumanShooting> ();
 		movement = GetComponentInChildren<HumanMovement> ();
 		speak = GetComponentInChildren<HumanSpeak> ();
-
+		ammo = GetComponentInChildren<HumanAmmo> ();
 	}		
 
 	/* ------------------------------------------*/
@@ -80,6 +81,16 @@ public class Actuators : MonoBehaviour
 
 	public void SendCryForHelp(){
 		speak.SendMessageToHumansNearby (HumanSpeak.Message.IAmGrabbed);
+	}
+
+	public bool GiveAmmo(Human humanRecipient, Human me,int bullets){
+		HumanTrade hisTrade = humanRecipient.GetComponentInChildren<HumanTrade> ();
+		if (ammo.TakeAmmo (bullets)) {
+			hisTrade.ReceiveAmmoFrom(me, bullets);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 

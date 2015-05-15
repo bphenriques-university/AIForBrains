@@ -76,14 +76,18 @@ public class HumanShooting : MonoBehaviour
 		currentAmmo += ammo;
 		transform.root.Find ("HUD/AmmoText").GetComponent<Text> ().text = currentAmmo + " Bullets";
 	}
-	
+
+	public void DecrementBullets(int ammo){
+		currentAmmo-=ammo;
+		transform.root.Find ("HUD/AmmoText").GetComponent<Text> ().text = currentAmmo + " Bullets";
+	}
+
 	public void Shoot ()
 	{
 		// Reset the timer.
 		timer = 0f;
 
-		currentAmmo--;
-		transform.root.Find ("HUD/AmmoText").GetComponent<Text> ().text = currentAmmo + " Bullets";
+		DecrementBullets (1);
 
 		// Play the gun shot audioclip.
 		gunAudio.Play ();

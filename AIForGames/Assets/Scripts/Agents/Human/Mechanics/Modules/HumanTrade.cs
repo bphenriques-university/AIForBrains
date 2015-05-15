@@ -58,10 +58,10 @@ public class HumanTrade : MonoBehaviour
 		
 	}
 
-	public void ReceiveAmmoFrom(Human human, Ammo ammo){
+	public void ReceiveAmmoFrom(Human human, int bullets){
 		
-		tradeReceived.Add(new AmmoTrade(human, ammo.ammountAmmo));
-		humanAmmo.GrabAmmo (ammo);
+		tradeReceived.Add(new AmmoTrade(human, bullets));
+		humanAmmo.AddAmmo (bullets);
 		
 	}
 
