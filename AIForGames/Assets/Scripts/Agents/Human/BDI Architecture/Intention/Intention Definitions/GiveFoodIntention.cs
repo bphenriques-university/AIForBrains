@@ -1,14 +1,17 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GiveFoodIntention : Intention
 {
-	public GiveFoodIntention(Human recipient, Food food, float desiredIntentionLevel) : base(desiredIntentionLevel){
+	public GiveFoodIntention(Human recipient, float desiredIntentionLevel) : base(desiredIntentionLevel){
 		//TODO
 	}
 
 	public override bool Evaluate (BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
 	{
+		IList<Food> foods = beliefs.GetInventoryBelief ().Foods ();
+		Food toGive = foods[0];
 		throw new System.NotImplementedException ();
 	}
 

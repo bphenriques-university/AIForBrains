@@ -44,8 +44,8 @@ public class HelpHumansDesire : Desire
 			IList<Food> foods = inventoryBelief.Foods ();
 				if (foods.Count > 0){
 
-					Food toGive = foods[0];
-					desiredIntentions.Add(new GiveFoodIntention(entry.getHuman().GetComponent<Human>(), toGive, desireLevel));
+
+					desiredIntentions.Add(new GiveFoodIntention(entry.getHuman().GetComponent<Human>(), desireLevel));
 
 				}
 
