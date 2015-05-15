@@ -28,7 +28,7 @@ public class GiveFoodIntention : Intention
 	{
 		IList<PlanComponent> plan = new List<PlanComponent>();
 
-		plan.Add(new GiveFoodPlanComponent(null, desiredHuman, foodIWantToGive));
+		plan.Add(new GiveFoodPlanComponent(desiredHuman, foodIWantToGive));
 
 		return plan;
 
@@ -43,9 +43,5 @@ public class GiveFoodIntention : Intention
 	{
 		return beliefs.GetInventoryBelief ().Foods ().Count == 0;
 	}
-	
-
-
-
 }
 
