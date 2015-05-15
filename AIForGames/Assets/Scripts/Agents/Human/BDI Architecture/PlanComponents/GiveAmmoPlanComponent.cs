@@ -16,6 +16,8 @@ public class GiveAmmoPlanComponent : PlanComponent
 	public override bool TryExecuteAction()
 	{
 		human.Actuators.GiveAmmo(human, numBullets);
+
+
 		
 		return true;
 	}
