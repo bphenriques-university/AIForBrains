@@ -43,6 +43,7 @@ public class Memory {
         return entry;
     }
 
+
     public void CleanMemory(Bounds sightBounds)
     {
         GameObject gObject;

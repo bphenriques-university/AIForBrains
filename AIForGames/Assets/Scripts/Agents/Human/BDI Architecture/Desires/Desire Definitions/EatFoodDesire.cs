@@ -26,6 +26,8 @@ public class EatFoodDesire : Desire
 			EatFoodIntention intention = new EatFoodIntention(beliefs.GetSightBelief().FoodSeen()[0], desireLevel);
             desiredIntentions.Add(intention);
         }
+        else if (beliefs.GetMemoryBelief().GetMemory().FoodMemory.Memories.GetClosestFood()) { 
+        }
         
 
 

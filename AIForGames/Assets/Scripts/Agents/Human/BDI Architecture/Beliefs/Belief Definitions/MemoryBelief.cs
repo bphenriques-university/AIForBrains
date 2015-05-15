@@ -19,6 +19,36 @@ public class MemoryBelief : Belief
         saidExit = human.Sensors.SaidExit();
     }
 
+
+
+    private GameObject GetClosest(IList<GameObject> list)
+    {
+        if (list.Count <= 0)
+            return null;
+
+        GameObject closest = null;
+        foreach (GameObject gObject in list)
+        {
+            if (gObject == null)
+                continue;
+
+            if (closest == null)
+            {
+                closest = gObject;
+            }
+
+            float distance = (transform.position - gObject.transform.position).magnitude;
+            float distanceToCurrentClosestObject = (transform.position - closest.transform.position).magnitude;
+
+            if (distance < distanceToCurrentClosestObject)
+            {
+                closest = gObject;
+            }
+        }
+
+        return closest;
+    }
+
     private void RememberHuman(IList<GameObject> list)
     {
         foreach (GameObject human in list)
