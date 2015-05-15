@@ -48,9 +48,6 @@ public class Actuators : MonoBehaviour
 		shooting.Shoot ();
 	}
 	
-	public void GiveFood(){
-	}
-	
 	public void Walk(){
 		movement.Walk ();
 	}
@@ -91,6 +88,11 @@ public class Actuators : MonoBehaviour
 		} else {
 			return false;
 		}
+	}
+	
+	public void GiveFood(Human humanRecipient, Human me, Food food){
+		HumanTrade hisTrade = humanRecipient.GetComponentInChildren<HumanTrade> ();
+		hisTrade.ReceiveFoodFrom(me, food);
 	}
 }
 
