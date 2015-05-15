@@ -22,8 +22,6 @@ public class HelpHumansDesire : Desire
 				}else if(hearing.RescueNeededMessage()){
 					if(desireLevel < 40)
 						desireLevel = 40;
-				}else if(hearing.FoundExitMessage()){
-					desireLevel = 70;
 				}
 
 			}
@@ -39,7 +37,6 @@ public class HelpHumansDesire : Desire
 		foreach (HumanHear.MessageLogEntry entry in hearing.GetMessageLog()) {
 			hearing.identififyBelief (entry.getMessage ());
 			InventoryBelief inventoryBelief = beliefs.GetInventoryBelief ();
-			
 			if (hearing.FoodNeededMessage ()) {
 			IList<Food> foods = inventoryBelief.Foods ();
 				if (foods.Count > 0){
@@ -48,17 +45,11 @@ public class HelpHumansDesire : Desire
 					desiredIntentions.Add(new GiveFoodIntention(entry.getHuman().GetComponent<Human>(), desireLevel));
 
 				}
-
-
-
 			} else if (hearing.AmmoNeededMessage ()) {
 				if (inventoryBelief.AmmoLevel() > 0)
 					desiredIntentions.Add(new GiveAmmoIntention(entry.getHuman().GetComponent<Human>(), desireLevel));
 			} else if (hearing.RescueNeededMessage ()) {
-				if (desireLevel < 60)
-					desireLevel = 60;
-			} else if (hearing.FoundExitMessage ()) {
-				desireLevel = 70;
+				desiredIntentions.Add(new KillZombieIntention(entry.getHuman().GetComponent<Human>(), desireLevel));
 			}
 		}
 
