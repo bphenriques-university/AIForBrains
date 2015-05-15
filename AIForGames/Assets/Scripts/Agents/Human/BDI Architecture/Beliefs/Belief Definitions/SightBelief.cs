@@ -10,6 +10,12 @@ public class SightBelief : Belief
     private IList<NavPoint> navPointsSeen = null;
     private GameObject exitSeen = null;
 
+
+    private Food closestFoodSeen = null;
+    private Ammo closestAmmoSeen = null;
+    private GameObject closestZombieSeen = null;
+    private GameObject closestHumansSeen = null;
+
     private bool sawFood = false;
     private bool sawAmmo = false;
     private bool sawZombie = false;
@@ -27,6 +33,8 @@ public class SightBelief : Belief
         humansSeen = human.Sensors.HumansSeen();
         exitSeen = human.Sensors.ExitSeen();
         navPointsSeen = human.Sensors.NavPointsSeen();
+
+        closestZombieSeen = human.Sensors.GetClosestZombie();
 
         sawFood = human.Sensors.SawFood();
         sawAmmo = human.Sensors.SawAmmo();
@@ -91,14 +99,14 @@ public class SightBelief : Belief
         return exitSeen;
     }
 
-    internal int DistanceToClosestZombie()
+    public float DistanceToClosestZombie()
     {
-        throw new System.NotImplementedException();
+        return DistanceToZombie(closestZombieSeen);
     }
 
-    internal GameObject GetClosestZombie()
+    public GameObject GetClosestZombie()
     {
-        throw new System.NotImplementedException();
+        return closestZombieSeen;
     }
 
 	public bool IsAimingAt(Transform transform, GameObject target)
