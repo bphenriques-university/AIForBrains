@@ -1,31 +1,48 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GiveAmmoIntention : Intention
 {
 
+	Human desiredHuman;
+	int numBullets;
+	int previousValue = 0;
 	public GiveAmmoIntention( Human recipient, float desiredIntentionValue): base(desiredIntentionValue){
-		//TODO
+		desiredHuman = recipient;
 	}
 	
 	public override bool Evaluate (BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
 	{
-		throw new System.NotImplementedException ();
+		intentValue = beliefs.GetInventoryBelief ().AmmoLevel ();
+		previousValue = beliefs.GetInventoryBelief ().AmmoLevel ();
+
+		if(previousValue > 10)
+			numBullets = 5;
+
+		if(previousValue > 15)
+		   numBullets = 8;
+
+		return beliefs.GetInventoryBelief ().AmmoLevel () > 5;
 	}
 	
 	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human humanState, BeliefsManager beliefs)
 	{
-		throw new System.NotImplementedException ();
+		IList<PlanComponent> plan = new List<PlanComponent>();
+		
+		plan.Add(new GiveAmmoPlanComponent(desiredHuman, numBullets));
+		
+		return plan;
 	}
 	
 	public override bool Succeeded (BeliefsManager beliefs)
 	{
-		throw new System.NotImplementedException ();
+		return previousValue > beliefs.GetInventoryBelief ().AmmoLevel ();
 	}
 	
 	public override bool IsImpossible (BeliefsManager beliefs)
 	{
-		throw new System.NotImplementedException ();
+		return beliefs.GetInventoryBelief ().AmmoLevel () <= 0;
 	}
 }
 
