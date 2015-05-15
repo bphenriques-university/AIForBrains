@@ -17,7 +17,7 @@ public class GiveFoodPlanComponent  : PlanComponent
 	
 	public override bool TryExecuteAction()
 	{
-		human.Actuators.GiveFood(destination, me, food);
+		human.Actuators.GiveFood(destination, food);
 
 		return true;
 	}
