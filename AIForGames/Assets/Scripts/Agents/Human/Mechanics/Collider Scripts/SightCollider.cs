@@ -22,7 +22,7 @@ public class SightCollider : MonoBehaviour {
     }
 
 	void OnTriggerEnter (Collider other){
-        if (isVisible(other))
+        if (isVisible(other) && !SeenGameObjects.Contains(other.gameObject))
             SeenGameObjects.Add(other.gameObject);
 	}
 
@@ -48,7 +48,7 @@ public class SightCollider : MonoBehaviour {
         IList<GameObject> gameObjectsToRemove = new List<GameObject>();
         foreach (GameObject seenGameObject in SeenGameObjects)
         {
-            if (!seenGameObject)
+            if (seenGameObject == null)
                 gameObjectsToRemove.Add(seenGameObject);
         }
 

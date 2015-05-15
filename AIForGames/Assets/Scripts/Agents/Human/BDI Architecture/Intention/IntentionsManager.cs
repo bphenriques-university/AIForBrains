@@ -23,6 +23,8 @@ public class IntentionsManager
             {
                 intentionsToDelete.Add(desiredIntention);
             }
+
+            Debug.Log("Evaluated " + desiredIntention.GetType() + ": " + desiredIntention.IntentValue());
         }
 
         foreach (Intention intention in intentionsToDelete)

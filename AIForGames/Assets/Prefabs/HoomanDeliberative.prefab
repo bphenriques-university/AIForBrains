@@ -264,6 +264,7 @@ GameObject:
   - 114: {fileID: 11473258}
   - 114: {fileID: 11404088}
   - 114: {fileID: 11467866}
+  - 114: {fileID: 11432076}
   m_Layer: 0
   m_Name: Mechanics
   m_TagString: Untagged
@@ -287,6 +288,7 @@ GameObject:
   - 82: {fileID: 8256434}
   - 114: {fileID: 11442344}
   - 114: {fileID: 11460838}
+  - 114: {fileID: 11479814}
   m_Layer: 0
   m_Name: HoomanDeliberative
   m_TagString: Human
@@ -417,7 +419,7 @@ Transform:
   m_GameObject: {fileID: 103148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: .200000003, z: -1.07991616e-06}
-  m_LocalScale: {x: 2.9000001, y: 1, z: 3.5}
+  m_LocalScale: {x: 4, y: 1, z: 2.5}
   m_Children: []
   m_Father: {fileID: 447588}
   m_RootOrder: 4
@@ -463,8 +465,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179542}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: .608761489, z: 0, w: .793353319}
+  m_LocalPosition: {x: -5, y: 0, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22448924}
@@ -972,6 +974,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &11432076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a48be2de183a5f4186fca9409a17196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11434132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1046,6 +1059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoColided: {fileID: 0}
   foodColided: {fileID: 0}
+  humanColided: {fileID: 0}
 --- !u!114 &11443002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1139,13 +1153,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03e7dd2ec5a3f4c48bccb8fc62c5f9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startingHunger: 80
-  hungerLossSpeed: 1
+  hungerLossSpeed: 0
   hungerSlider: {fileID: 11443002}
   playerName: {fileID: 11463750}
   numberFood: {fileID: 11435004}
@@ -1218,6 +1232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodTouched: {fileID: 0}
   ammoTouched: {fileID: 0}
+  humanTouched: {fileID: 0}
 --- !u!114 &11473258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1248,11 +1263,20 @@ MonoBehaviour:
   Actuators: {fileID: 0}
   Sensors: {fileID: 0}
   randomPoints: []
-  closeFriends: []
   targetObjectInRangeToAttack: 0
   targetPosition: {x: 0, y: 0, z: 0}
   targetObject: {fileID: 0}
-  humanTimer: 0
+--- !u!114 &11479814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac657d4a7c9ccc4087bc30cc371d139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11480832
 MonoBehaviour:
   m_ObjectHideFlags: 1

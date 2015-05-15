@@ -11,7 +11,7 @@ public class Plan
         this.planComponents = planComponents;
     }
 
-    public bool MakesSense(Human beliefs, IList<Intention> intentions)
+    public bool MakesSense(IList<Intention> intentions, BeliefsManager beliefs)
     {
         //TODO
         return true;

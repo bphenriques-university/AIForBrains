@@ -23,23 +23,19 @@ public class HumanNavMap
     {
 
         //Put more random in here
-        int index = Random.Range(0, navPoints.Count);
-        int limit = index;
+        
 
-        for (; index != limit - 1; index = ++index % navPoints.Count)
-        {
+        while (true) {
+            int index = Random.Range(0, navPoints.Count);
+
             HumanNavPoint navPoint = navPoints[index];
 
             if (!navPoint.Seen())
             {
-                Vector3 navPointPosition = navPoint.navPoint.transform.position;
-                if ((navPointPosition - originPosition).magnitude < radius)
-                    return navPoint.navPoint.transform.position;
+                return navPoint.navPoint.transform.position;
             }
         }
 
-        cleanNavPointsSeen();
-        return GetRandomUnvisitedPosition(originPosition, radius);
     }
 
     private void cleanNavPointsSeen()

@@ -7,10 +7,10 @@ public class NavMap : MonoBehaviour
 
     public IList<NavPoint> navPoints = new List<NavPoint>();
 
-    private const int stepNumber = 33;
+    private const int stepNumber = 16;
 
     private Vector3 startingPosition = new Vector3(-33, 0, 0);
-    private float stepLength = Mathf.Sqrt(2f);
+    private float stepLength = Mathf.Sqrt(8f);
 
 
     void Start()
@@ -49,7 +49,7 @@ public class NavMap : MonoBehaviour
                 NavMeshHit edgeHit;
                 NavMesh.FindClosestEdge(position, out edgeHit, NavMesh.AllAreas);
 
-                if (edgeHit.distance < 0.8f)
+                if (edgeHit.distance < 1f)
                 {
                     position.x += stepLength;
                     position.z += stepLength;

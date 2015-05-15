@@ -18,11 +18,12 @@ public class LookForFoodIntention : Intention
 
     public override IList<PlanComponent> GivePlanComponents(Human human, BeliefsManager beliefs)
     {
-        IList<PlanComponent> plan = new List<PlanComponent>();
+        List<PlanComponent> plan = new List<PlanComponent>();
 
+       
         Vector3 currentPosition = beliefs.GetNavigationBelief().CurrentPosition().position;
         Vector3 randomPosition = beliefs.GetNavigationBelief().HumanNavMap().GetRandomUnvisitedPosition(currentPosition, SEARCH_RADIUS);
-        plan.Add(new WalkToPlanComponent(human, randomPosition));
+        plan.AddRange(Planner.CreateWalkPath(human, currentPosition, randomPosition));
         return plan;
     }
 
