@@ -22,7 +22,6 @@ public class Planner
             newPlan.AddRange(intention.GivePlanComponents(humanState, beliefs));
         }
         
-        Debug.Log("GENERATING PLAN");
         return new Plan(newPlan);
     }
 

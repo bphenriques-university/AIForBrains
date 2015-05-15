@@ -59,7 +59,6 @@ public class BDIManager : MonoBehaviour {
 
             if (ShouldReconsiderIntention(currentIntentions, beliefs))
             {
-				Debug.Log ("Reconsider? Yes!");
                 currentDesires = desires.Options(beliefs, currentIntentions);
                 currentIntentions = intentions.Filter(beliefs, currentDesires, currentIntentions);
 
@@ -69,7 +68,6 @@ public class BDIManager : MonoBehaviour {
 			}
 
 			if (!currentPlan.MakesSense(currentIntentions, beliefs)){
-				Debug.Log ("PlanMakesSense? No!");
 				currentPlan = planner.GeneratePlan(beliefs, currentIntentions);
                 time = 0f;
 			}

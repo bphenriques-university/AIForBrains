@@ -15,6 +15,7 @@ public class BeliefsManager
 	private SocialBelief socialBelief = new SocialBelief();
 	private HearingBelief hearingBelief = new HearingBelief();
     private ObjectsFoundBelief objectsBelief = new ObjectsFoundBelief();
+    private TouchBelief touchBelief = new TouchBelief();
 
     private Belief[] beliefs;
 
@@ -24,7 +25,7 @@ public class BeliefsManager
     {
         navigationBelief = new NavigationBelief(humanNavMap);
         beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, 
-            sightBelief, navigationBelief, socialBelief, objectsBelief };
+            sightBelief, navigationBelief, socialBelief, hearingBelief, objectsBelief, touchBelief };
 
     }
 
@@ -76,6 +77,11 @@ public class BeliefsManager
     public ObjectsFoundBelief GetObjectsFoundBelief()
     {
         return objectsBelief;
+    }
+
+    public TouchBelief GetTouchBelief()
+    {
+        return touchBelief;
     }
 }
 

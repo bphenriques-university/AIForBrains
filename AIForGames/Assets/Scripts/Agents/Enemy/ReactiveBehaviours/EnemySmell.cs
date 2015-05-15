@@ -27,7 +27,7 @@ public class EnemySmell : ReactiveBehaviour
 		//will change this to collider
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Human")
 		{
-			HumanHealth hp = other.gameObject.GetComponent<HumanHealth>();
+			HumanHealth hp = other.gameObject.GetComponentInChildren<HumanHealth>();
 			if (!hp.isHumanDead()) {
 				zombieState.smelling = true;
 				zombieState.targetObject = other.gameObject;

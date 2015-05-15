@@ -59,7 +59,7 @@ public class ZombieState : MonoBehaviour
 
 	public bool IsTargetDead(){
 		if (targetObject != null) {
-			return targetObject.GetComponent<HumanHealth> ().isHumanDead ();
+			return targetObject.GetComponentInChildren<HumanHealth> ().isHumanDead ();
 		} else {
 			return false;
 		}
@@ -119,7 +119,7 @@ public class ZombieState : MonoBehaviour
 	{
 		attackTimer = 0;
 		
-		HumanHealth humanHealth = targetObject.GetComponent<HumanHealth> ();
+		HumanHealth humanHealth = targetObject.GetComponentInChildren<HumanHealth> ();
 		if (humanHealth != null) {
 			humanHealth.TakeDamage(attackDamage);
 			isAttacking = true;
@@ -127,7 +127,7 @@ public class ZombieState : MonoBehaviour
 	}
 
 	public void Grab(){
-		HumanMovement m = targetObject.GetComponent<HumanMovement>();
+        HumanMovement m = targetObject.GetComponentInChildren<HumanMovement>();
 
 		if(m != null){
 			m.SetGrab(true);
@@ -135,7 +135,7 @@ public class ZombieState : MonoBehaviour
 			return;
 		}
 
-		PlayerMovement p = targetObject.GetComponent<PlayerMovement> ();
+        PlayerMovement p = targetObject.GetComponentInChildren<PlayerMovement>();
 		if (p != null) {
 			p.SetMove (true);
 			targetGrabbed = true;
@@ -148,7 +148,7 @@ public class ZombieState : MonoBehaviour
 		if (targetObject == null)
 			return;
 
-		HumanMovement m = targetObject.GetComponent<HumanMovement>();
+        HumanMovement m = targetObject.GetComponentInChildren<HumanMovement>();
 		
 		if(m != null){
 			m.SetGrab(false);
@@ -156,7 +156,7 @@ public class ZombieState : MonoBehaviour
 			timerFromGrabUntilAttack = 0;
 		}
 
-		PlayerMovement p = targetObject.GetComponent<PlayerMovement> ();
+        PlayerMovement p = targetObject.GetComponentInChildren<PlayerMovement>();
 		if (p != null) {
 			p.SetMove (true);
 			targetGrabbed = false;
