@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class KillZombieIntention : Intention
 {
 	GameObject zombie;
+	Human human;
 
 	public KillZombieIntention(GameObject zombie, float desiredIntention) : base (desiredIntention){
 		
@@ -12,21 +13,21 @@ public class KillZombieIntention : Intention
 
 	}
 
+	public KillZombieIntention(Human humanToHelp, float desiredIntention) : base (desiredIntention){
+		
+		this.zombie = null;
+		this.human = humanToHelp;
+		
+	}
+
 	public override bool Evaluate (BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
 	{
 		SightBelief humanSight = beliefs.GetSightBelief ();
 
-
-		if (humanSight.ZombieSeen ().Contains (zombie) == false) {
-			return false;
-		}
-
-
 		InventoryBelief inventory = beliefs.GetInventoryBelief ();
 		int nBullets = inventory.AmmoLevel ();
-
 		int wasShootingExtraMotivation = 0;
-
+		
 		foreach (Intention i in previousIntentions) {
 			if(i.GetType().Equals(typeof(KillZombieIntention))){
 				wasShootingExtraMotivation = 10;
@@ -35,8 +36,20 @@ public class KillZombieIntention : Intention
 		}
 
 		float killZombieIntentionLevel = 50/Mathf.Ceil(1/(nBullets * 2 + wasShootingExtraMotivation));
-
 		intentValue = killZombieIntentionLevel;
+
+		if (this.zombie == null) {
+			return true;
+		}
+
+		if (humanSight.ZombieSeen ().Contains (zombie) == false) {
+			return false;
+		}
+
+
+
+
+
 
 		return true;
 
@@ -47,6 +60,19 @@ public class KillZombieIntention : Intention
 
 		SightBelief humanSight = beliefs.GetSightBelief ();
 		NavigationBelief navBelief = beliefs.GetNavigationBelief ();
+
+		//cry for help case
+		if (this.zombie = null) {
+			Vector3 positionToAidFrom = (this.human.transform.position - human.transform.position).normalized;
+			//FIXME: 3.5f should be fetched from beliefs
+			plan.Add (new RunToPlanComponent(human, positionToAidFrom * 3.5f));
+			SightBelief sightBelief = beliefs.GetSightBelief();
+
+			GameObject closestZombie = sightBelief.GetClosestZombie();
+			plan.Add(new AimPlanComponent(human, closestZombie));
+			plan.Add (new ZombieShootPlanComponent(human, closestZombie));
+			return plan;
+		}
 
 		//Only if human is not aiming at him.
 		if (humanSight.IsAimingAt(navBelief.CurrentPosition(), zombie) == false) {
