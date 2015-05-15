@@ -11,8 +11,8 @@ public class Human : MonoBehaviour
     SightCollider sightColliderScript;     
     TouchCollider touchColliderScript;
 
+
     
-	public GameObject ExitRoute;
 
     public Actuators Actuators;
     public Sensors Sensors;

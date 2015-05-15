@@ -5,17 +5,24 @@ using System.Collections.Generic;
 public class HelpHumansDesire : Desire
 {
 
-    public override void Deliberate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+    public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
+        desireLevel = 0f;
+
 		HearingBelief hearing = beliefs.GetHearingBelief ();
 		if (hearing.GetMessageLog ().Count > 0) {
-
             desireLevel = 40f;
-
 		}
+
+        SightBelief sight = beliefs.GetSightBelief();
+        MemoryBelief memory = beliefs.GetMemoryBelief();
+        if (sight.SawExit() && !memory.SaidExit())
+        {
+            desireLevel = 100f;
+        }
     }
 
-    public override System.Collections.Generic.IList<Intention> GenerateIntentions(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+    public override IList<Intention> GenerateIntentions(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
 		IList<Intention> desiredIntentions = new List<Intention> ();
 		HearingBelief hearing = beliefs.GetHearingBelief ();
@@ -38,6 +45,11 @@ public class HelpHumansDesire : Desire
 				desiredIntentions.Add(new RescueHumanIntention(entry.getHuman().GetComponent<Human>(), desireLevel));
 			}
 		}
+
+        SightBelief sight = beliefs.GetSightBelief();
+        MemoryBelief memory = beliefs.GetMemoryBelief();
+        if (sight.SawExit() && !memory.SaidExit())
+            desiredIntentions.Add(new NotifyExitIntention(desireLevel));
 
 		return desiredIntentions;
 	}

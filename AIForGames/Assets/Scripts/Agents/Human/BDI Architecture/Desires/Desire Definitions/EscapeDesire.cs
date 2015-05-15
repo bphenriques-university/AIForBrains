@@ -10,7 +10,7 @@ public class EscapeDesire : Desire
 
     public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
-        if (beliefs.GetSightBelief().SawExit() || beliefs.GetObjectsFoundBelief().GetExit() != null) {
+        if (beliefs.GetSightBelief().SawExit() || beliefs.GetMemoryBelief().GetExit() != null) {
             desireLevel = SAW_EXIT_DESIRE_LEVEL;
         }
         else

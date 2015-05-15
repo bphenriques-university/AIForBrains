@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class ObjectsFoundBelief : Belief
+public class MemoryBelief : Belief
 {
 
     HumanObjectMemory memory = new HumanObjectMemory();
     GameObject exit = null;
-
-
+    bool saidExit = false;
 
     public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
@@ -16,6 +15,8 @@ public class ObjectsFoundBelief : Belief
         RememberExit(beliefs.GetSightBelief().GetExitSeen());
         RememberZombie(beliefs.GetSightBelief().ZombieSeen());
         RememberHuman(beliefs.GetSightBelief().HumanSeen());
+
+        saidExit = human.Sensors.SaidExit();
     }
 
     private void RememberHuman(IList<GameObject> list)
@@ -63,5 +64,10 @@ public class ObjectsFoundBelief : Belief
     public GameObject GetExit()
     {
         return exit;
+    }
+
+    public bool SaidExit()
+    {
+        return saidExit;
     }
 }

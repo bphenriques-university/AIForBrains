@@ -9,7 +9,7 @@ public class NotifyExitIntention : Intention
 
     public override bool Evaluate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {
-        if (beliefs.GetSightBelief().SawExit() || beliefs.GetObjectsFoundBelief().GetExit() != null)
+        if (beliefs.GetSightBelief().SawExit() || beliefs.GetMemoryBelief().GetExit() != null)
         {
             intentValue = 100f;
             return true;
@@ -25,7 +25,7 @@ public class NotifyExitIntention : Intention
         if (beliefs.GetSightBelief().SawExit())
             exit = beliefs.GetSightBelief().GetExitSeen();
         else 
-            exit = beliefs.GetObjectsFoundBelief().GetExit();
+            exit = beliefs.GetMemoryBelief().GetExit();
 
         if (exit != null) {
             plan.Add(new NotifyExitPlanComponent(human, exit));

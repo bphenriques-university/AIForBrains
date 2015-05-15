@@ -10,6 +10,11 @@ public partial class Sensors : MonoBehaviour{
     public GameObject GetExitHeard() {
         return hearing.exit;
     }
+
+    public bool SaidExit()
+    {
+        return speech.SaidExit;
+    }
 	
 
 }

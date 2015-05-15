@@ -83,6 +83,7 @@ public class Actuators : MonoBehaviour
 
     public void SayExit(GameObject exit)
     {
+        speak.SaidExit = true;
         speak.SendExitToAllHumans(exit);
     }
 

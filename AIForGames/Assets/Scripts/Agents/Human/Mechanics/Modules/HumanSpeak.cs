@@ -8,6 +8,8 @@ public class HumanSpeak : MonoBehaviour
 	private int myId;
 	Dictionary<int, HumanHear> humansInRange = new Dictionary<int, HumanHear>();
 
+    public bool SaidExit = false;
+
 	public enum Message{
 		NeedFood,
 		NeedAmmo,

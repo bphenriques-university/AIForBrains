@@ -56,6 +56,7 @@ public class HybridManager : MonoBehaviour
 
         time += Time.deltaTime;
 
+        beliefs.BeliefReviewFunction(human);
         if (transform.root.gameObject.activeInHierarchy)
         {
             foreach (ReactiveBehaviour r in behaviours)
