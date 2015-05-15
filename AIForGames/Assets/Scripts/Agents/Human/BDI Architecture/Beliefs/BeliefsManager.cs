@@ -13,6 +13,7 @@ public class BeliefsManager
     private SightBelief sightBelief = new SightBelief();
     private NavigationBelief navigationBelief = new NavigationBelief();
 	private SocialBelief socialBelief = new SocialBelief();
+	private HearingBelief hearingBelief = new HearingBelief();
 
     private Belief[] beliefs;
 
@@ -61,6 +62,11 @@ public class BeliefsManager
 	public SocialBelief GetSocialBelief()
 	{
 		return socialBelief;
+	}
+
+	public HearingBelief GetHearingBelief ()
+	{
+		return hearingBelief;
 	}
 }
 

@@ -52,25 +52,17 @@ public class Human : MonoBehaviour
 	public Vector3 targetPosition;
 	public GameObject targetObject = null;
 
-
-	public float humanTimer = 0f;
-
 	public Human(){
 		existingHumans.Add (this);
 	}
 	
 	void Update(){
-		humanTimer += Time.deltaTime;
 		attackTimer += Time.deltaTime;
 
         sight.ProcessSight(sightColliderScript.SeenGameObjects);
         touch.ProcessTouch(touchColliderScript);
 	}
-	
 
-	public float GetHumanTime(){
-		return humanTimer;
-	}
 
 	public static IList<Human> GetHumans(){
 		return existingHumans;

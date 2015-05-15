@@ -20,6 +20,10 @@ public class SocialBelief : Belief
 
 
 		public int addToFriendship(int value){
+			if (this.friendshipValue + value > 100) {
+				this.friendshipValue=100;
+				return this.friendshipValue;
+			}
 			this.friendshipValue += value;
 			return this.friendshipValue;
 		}
