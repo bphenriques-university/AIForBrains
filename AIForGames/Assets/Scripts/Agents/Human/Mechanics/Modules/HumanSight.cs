@@ -19,36 +19,43 @@ public class HumanSight : MonoBehaviour
 
     void Start()
     {
-        seenLists = new IList<GameObject>[] { FoodsSeen, AmmoSeen, ZombiesSeen , HumansSeen};
+        seenLists = new IList<GameObject>[] { FoodsSeen, AmmoSeen, ZombiesSeen , HumansSeen, NavPointsSeen};
     }
 
     public void ProcessSight(IList<GameObject> seenGameObjects)
     {
+
+
         foreach (GameObject seenGameObject in seenGameObjects) {
-            switch (seenGameObject.tag)
+            if (seenGameObject != null)
             {
-                case "Food":
-                    Process(FoodsSeen, seenGameObject);
-                    break;
-                case "Enemy":
-                    Process(ZombiesSeen, seenGameObject);
-                    break;
-                case "Ammo":
-                    Process(AmmoSeen, seenGameObject);
-                    break;
-                case "Human":
-                    Process(HumansSeen,  seenGameObject);
-                    break;
-                case "EscapeExit":
-                    ProcessEscapeExit(seenGameObject);
-                    break;
-                case "NavPoint":
-                    Process(NavPointsSeen, seenGameObject);
-                    break;
+                switch (seenGameObject.tag)
+                {
+                    case "Food":
+                        Process(FoodsSeen, seenGameObject);
+                        break;
+                    case "Enemy":
+                        Process(ZombiesSeen, seenGameObject);
+                        break;
+                    case "Ammo":
+                        Process(AmmoSeen, seenGameObject);
+                        break;
+                    case "Human":
+                        Process(HumansSeen, seenGameObject);
+                        break;
+                    case "EscapeExit":
+                        ProcessEscapeExit(seenGameObject);
+                        break;
+                    case "NavPoint":
+                        Process(NavPointsSeen, seenGameObject);
+                        break;
+                }
             }
         }
 
+
         CleanOutOfSightGameObject(seenGameObjects);
+
     }
 
     private void Process(IList<GameObject> objectList,GameObject seenGameObject)

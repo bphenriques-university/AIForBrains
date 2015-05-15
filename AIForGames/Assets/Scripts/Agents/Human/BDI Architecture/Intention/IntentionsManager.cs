@@ -48,7 +48,6 @@ public class IntentionsManager
 
         foreach (Intention intention in desiredIntentions)
         {
-            Debug.Log("Intention " + intention.GetType() + " valued " + intention.IntentValue());
             if (intention.IntentValue() > topIntention.IntentValue())
                 topIntention = intention;
         }
