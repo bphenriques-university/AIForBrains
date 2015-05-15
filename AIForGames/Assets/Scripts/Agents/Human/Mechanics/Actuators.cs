@@ -9,6 +9,7 @@ public class Actuators : MonoBehaviour
 	HumanShooting playerShooting;
 	HumanSpeak speak;
 	HumanAmmo ammo;
+	Human human;
 
 	void Awake(){
 		
@@ -19,6 +20,7 @@ public class Actuators : MonoBehaviour
 		movement = GetComponentInChildren<HumanMovement> ();
 		speak = GetComponentInChildren<HumanSpeak> ();
 		ammo = GetComponentInChildren<HumanAmmo> ();
+		human = GetComponentInParent<Human> ();
 	}		
 
 	/* ------------------------------------------*/
@@ -79,7 +81,8 @@ public class Actuators : MonoBehaviour
 		speak.SendMessageToHumansNearby (HumanSpeak.Message.IAmGrabbed);
 	}
 
-	public bool GiveAmmo(Human humanRecipient, Human me,int bullets){
+	public bool GiveAmmo(Human humanRecipient,int bullets){
+		Human me = this.human;
 		HumanTrade hisTrade = humanRecipient.GetComponentInChildren<HumanTrade> ();
 		if (ammo.TakeAmmo (bullets)) {
 			hisTrade.ReceiveAmmoFrom(me, bullets);
@@ -89,7 +92,8 @@ public class Actuators : MonoBehaviour
 		}
 	}
 	
-	public void GiveFood(Human humanRecipient, Human me, Food food){
+	public void GiveFood(Human humanRecipient, Food food){
+		Human me = this.human;
 		HumanTrade hisTrade = humanRecipient.GetComponentInChildren<HumanTrade> ();
 		hisTrade.ReceiveFoodFrom(me, food);
 	}

@@ -14,7 +14,7 @@ public class HearingBelief : Belief
 	bool exitFound = false;
 
 
-	void identififyBelief(HumanSpeak.Message m){
+	public void identififyBelief(HumanSpeak.Message m){
 		if (m == HumanSpeak.Message.NeedFood) {
 			needsFood = true;
 		} else if (m == HumanSpeak.Message.NeedAmmo) {
@@ -25,6 +25,23 @@ public class HearingBelief : Belief
 			exitFound = true;
 		}
 	}
+
+	public bool FoundExitMessage(){
+		return exitFound;
+	}
+	public bool FoodNeededMessage(){
+		return needsFood;
+	}
+
+	public bool RescueNeededMessage(){
+		return grabbed;
+	}
+
+	public bool AmmoNeededMessage(){
+		return needsAmmo;
+	}
+
+
 
 	public IList<HumanHear.MessageLogEntry> GetMessageLog(){
 		return MessageLog;
