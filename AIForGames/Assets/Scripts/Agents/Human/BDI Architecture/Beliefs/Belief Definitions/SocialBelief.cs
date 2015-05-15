@@ -67,6 +67,17 @@ public class SocialBelief : Belief
 
 	}
 
+	public int getRelationship(Human human){
+		foreach (Acquaintance a in Acquaintances) {
+			if(human.Equals(a.getHuman())){
+				return a.getFriendshipValue();
+			}
+		}
+
+		return 0;
+
+	}
+
 
     public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {

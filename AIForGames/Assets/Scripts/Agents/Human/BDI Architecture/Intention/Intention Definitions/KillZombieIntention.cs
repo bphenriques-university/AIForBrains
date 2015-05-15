@@ -39,6 +39,9 @@ public class KillZombieIntention : Intention
 		intentValue = killZombieIntentionLevel;
 
 		if (this.zombie == null) {
+			SocialBelief socialBelief = beliefs.GetSocialBelief();
+
+			intentValue += socialBelief.getRelationship(this.human)/ 3f;
 			return true;
 		}
 
