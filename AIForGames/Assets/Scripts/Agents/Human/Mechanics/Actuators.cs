@@ -81,7 +81,8 @@ public class Actuators : MonoBehaviour
 		speak.SendMessageToHumansNearby (HumanSpeak.Message.IAmGrabbed);
 	}
 
-	public bool GiveAmmo(Human humanRecipient, Human me,int bullets){
+	public bool GiveAmmo(Human humanRecipient,int bullets){
+		Human me = this.human;
 		HumanTrade hisTrade = humanRecipient.GetComponentInChildren<HumanTrade> ();
 		if (ammo.TakeAmmo (bullets)) {
 			hisTrade.ReceiveAmmoFrom(me, bullets);
