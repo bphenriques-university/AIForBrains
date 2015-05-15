@@ -29,7 +29,7 @@ public class KillZombieIntention : Intention
 			}
 		}
 
-        float killZombieIntentionLevel = nBullets + wasShootingExtraMotivation;
+        float killZombieIntentionLevel = nBullets + wasShootingExtraMotivation - humanSight.DistanceToZombie(zombie);
         killZombieIntentionLevel = Mathf.Min(killZombieIntentionLevel, 50f);
 		intentValue = killZombieIntentionLevel;
 
