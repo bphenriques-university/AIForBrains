@@ -95,6 +95,7 @@ public class Actuators : MonoBehaviour
 	public void GiveFood(Human humanRecipient, Food food){
 		Human me = this.human;
 		HumanTrade hisTrade = humanRecipient.GetComponentInChildren<HumanTrade> ();
+		human.Sensors.FoodsCarried ().Remove (food);
 		hisTrade.ReceiveFoodFrom(me, food);
 	}
 }
