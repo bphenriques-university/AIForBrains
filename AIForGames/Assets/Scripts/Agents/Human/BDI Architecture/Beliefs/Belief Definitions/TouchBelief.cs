@@ -4,15 +4,15 @@ using System.Collections;
 public class TouchBelief : Belief
 {
 
-    private Food foodTouched;
-    private Ammo ammoTouched;
+    private GameObject foodTouched;
+    private GameObject ammoTouched;
 
 
 
     public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-        foodTouched = human.Sensors.GetTouchingFood().GetComponent<Food>();
-        ammoTouched = human.Sensors.GetTouchingAmmo().GetComponent<Ammo>();
+        foodTouched = human.Sensors.GetTouchingFood();
+        ammoTouched = human.Sensors.GetTouchingAmmo();
     }
 
     public bool IsTouchingFood()
@@ -27,7 +27,7 @@ public class TouchBelief : Belief
     public Ammo GetTouchingAmmo()
     {
         if (ammoTouched)
-            return ammoTouched;
+            return ammoTouched.GetComponent<Ammo>();
         else
             return null;
     }
@@ -35,7 +35,7 @@ public class TouchBelief : Belief
     public Food GetTouchingFood()
     {
         if (foodTouched)
-            return foodTouched;
+            return foodTouched.GetComponent<Food>();
         else
             return null;
     }

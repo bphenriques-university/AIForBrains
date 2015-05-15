@@ -21,7 +21,6 @@ public class DesiresManager{
 
     public IList<Desire> Options(BeliefsManager beliefs, IList<Intention> intentions)
     {
-        Debug.Log("Running Options.");
         IList<Desire> desired = new List<Desire>();
         foreach (Desire desire in desires)
         {

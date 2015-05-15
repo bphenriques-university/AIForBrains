@@ -26,8 +26,8 @@ public partial class Sensors : MonoBehaviour
         sight = GetComponentInChildren<HumanSight>();
         touch = GetComponentInChildren<HumanTouch>();
 		trade = GetComponentInChildren<HumanTrade> ();
-		speech = GetComponent<HumanSpeak> ();
-		hearing = GetComponent<HumanHear> ();
+        speech = GetComponentInChildren<HumanSpeak>();
+        hearing = GetComponentInChildren<HumanHear>();
 
         lastSeenHealth = health.startingHealth;
         shootableMask = LayerMask.GetMask("Shootable");
