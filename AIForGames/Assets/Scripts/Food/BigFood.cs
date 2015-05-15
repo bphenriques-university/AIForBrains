@@ -5,6 +5,6 @@ public class BigFood : Food {
 
 
 	public BigFood(){
-		foodPoints = 50f;
+		foodPoints = 50;
 	}
 }

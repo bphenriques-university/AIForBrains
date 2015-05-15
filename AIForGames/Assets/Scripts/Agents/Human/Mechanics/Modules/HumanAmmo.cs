@@ -24,6 +24,19 @@ public class HumanAmmo : MonoBehaviour
 		playerShooting.GrabAmmo(ammo.GrabAmmo ());
 		
 	}
+
+	public void AddAmmo(int number){
+		playerShooting.GrabAmmo (number);
+	}
+
+	public bool TakeAmmo(int number){
+		if (playerShooting.currentAmmo >= number) {
+
+			playerShooting.DecrementBullets (number);
+			return true;
+		}
+		return false;
+	}
 }
 
 

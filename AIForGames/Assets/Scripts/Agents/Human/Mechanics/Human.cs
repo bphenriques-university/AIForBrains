@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public class Human : MonoBehaviour
 {
-    public HumanSight sight;
+	static IList<Human> existingHumans = new List<Human> ();
+    HumanSight sight;
     HumanTouch touch;
     
 
@@ -40,7 +41,6 @@ public class Human : MonoBehaviour
 	/* ------------------------------------------*/
 	
 	public Transform[] randomPoints;
-	public GameObject[] closeFriends;
 	
 	/* ------------------------------------------*/
 	/* ----------       STATE        ------------*/
@@ -52,22 +52,20 @@ public class Human : MonoBehaviour
 	public Vector3 targetPosition;
 	public GameObject targetObject = null;
 
-
-	public float humanTimer = 0f;
-
-
+	public Human(){
+		existingHumans.Add (this);
+	}
 	
 	void Update(){
-		humanTimer += Time.deltaTime;
 		attackTimer += Time.deltaTime;
 
         sight.ProcessSight(sightColliderScript.SeenGameObjects);
         touch.ProcessTouch(touchColliderScript);
 	}
-	
 
-	public float GetHumanTime(){
-		return humanTimer;
+
+	public static IList<Human> GetHumans(){
+		return existingHumans;
 	}
    
 }

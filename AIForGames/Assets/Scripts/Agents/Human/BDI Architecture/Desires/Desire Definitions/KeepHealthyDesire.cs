@@ -20,7 +20,7 @@ public class KeepHealthyDesire : Desire
 		int nBullets = beliefs.GetInventoryBelief ().AmmoLevel ();
 
 		if (nZombiesSeen > 0) {
-			GameObject zombie = null;//beliefs.GetSightBelief ().getClosestZombie ();
+			GameObject zombie = beliefs.GetSightBelief ().GetClosestZombie ();
 
 			if (nBullets > 0) {
 

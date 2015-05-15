@@ -19,4 +19,11 @@ public partial class Sensors : MonoBehaviour
     {
         return shooting.currentAmmo;
     }
+
+
+	public IList<HumanTrade.Trade> GetTrades(){
+
+		return trade.GetTrades ();
+	}
+
 }

@@ -20,6 +20,10 @@ public class SocialBelief : Belief
 
 
 		public int addToFriendship(int value){
+			if (this.friendshipValue + value > 100) {
+				this.friendshipValue=100;
+				return this.friendshipValue;
+			}
 			this.friendshipValue += value;
 			return this.friendshipValue;
 		}
@@ -42,13 +46,13 @@ public class SocialBelief : Belief
 
 	Dictionary<string, Acquaintance> Acquaintances;
     
-	public SocialBelief(IList<Human> friends) : this(){
+	public SocialBelief(IList<Human> friends) {
 
 		AddAcquaintances (friends);
 
 	}
 
-	public SocialBelief(){
+	public SocialBelief() : this(Human.GetHumans ()){
 		Acquaintances = new Dictionary<string, Acquaintance>();
 	}
 
@@ -74,9 +78,25 @@ public class SocialBelief : Belief
 
     public override void ReviewBelief(BeliefsManager beliefs, Human human)
     {
-        //TODO:Actualizar Amizades 
+        IList<HumanTrade.Trade> trades = human.Sensors.GetTrades();
+        SocialBelief social = beliefs.GetSocialBelief();
 
+        foreach (HumanTrade.Trade trade in trades)
+        {
+            if (trade.isAmmoTrade())
+            {
+                //2 points for each ammo given
+                social.improveRelationShip(trade.getBenefactor(), trade.getPoints() * 2);
+            }
+            else if (trade.isFoodTrade())
+            {
+                social.improveRelationShip(trade.getBenefactor(), trade.getPoints());
+            }
+        }
 
-        throw new System.NotImplementedException();
+        trades.Clear();
+	
+
+		
     }
 }

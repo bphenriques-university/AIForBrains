@@ -5,7 +5,7 @@ public class NormalFood : Food
 {
 	public NormalFood ()
 	{
-		foodPoints = 20f;
+		foodPoints = 20;
 	}
 }
 
