@@ -1,19 +1,25 @@
 using UnityEngine;
 using System.Collections;
 
-public class GiveFoodPlanComponent : MonoBehaviour
+public class GiveFoodPlanComponent  : PlanComponent
 {
-
-	// Use this for initialization
-	void Start ()
+	Human me;
+	Human destination;
+	Food food;
+	public GiveFoodPlanComponent(Human me, Human human, Food food)
+		: base(human)
 	{
-	
+		this.me = me;
+		destination = human;
+		this.food = food;
 	}
 	
-	// Update is called once per frame
-	void Update ()
-	{
 	
+	public override bool TryExecuteAction()
+	{
+		human.Actuators.GiveFood(destination, me, food);
+
+		return true;
 	}
 }
 
