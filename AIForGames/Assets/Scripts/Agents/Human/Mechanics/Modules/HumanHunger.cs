@@ -39,8 +39,8 @@ public class HumanHunger : MonoBehaviour
 				hoomanHealth.Death();
 			}
 			else {
-				this.hungerLossSpeed = human.Sensors.GetSpeed() / 2;
-				this.hunger -= hungerLossSpeed * Time.deltaTime;
+				float hungerLoss = (human.Sensors.GetSpeed() / 2) * hungerLossSpeed;
+                this.hunger -= hungerLoss * Time.deltaTime;
 
 				//FIXME FIXME FIXME
 				if(hungerSlider != null){

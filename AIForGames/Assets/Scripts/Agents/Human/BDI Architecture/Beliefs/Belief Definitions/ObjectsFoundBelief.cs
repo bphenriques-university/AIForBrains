@@ -5,6 +5,7 @@ public class ObjectsFoundBelief : Belief
 {
 
     HumanObjectMemory memory = new HumanObjectMemory();
+    GameObject exit = null;
 
 
 
@@ -12,6 +13,30 @@ public class ObjectsFoundBelief : Belief
     {
         RememberFood(beliefs.GetSightBelief().FoodSeen());
         RememberAmmo(beliefs.GetSightBelief().AmmoSeen());
+        RememberExit(beliefs.GetSightBelief().GetExitSeen());
+        RememberZombie(beliefs.GetSightBelief().ZombieSeen());
+        RememberHuman(beliefs.GetSightBelief().HumanSeen());
+    }
+
+    private void RememberHuman(IList<GameObject> list)
+    {
+        foreach (GameObject human in list)
+        {
+            memory.RememberHuman(human);
+        }
+    }
+
+    private void RememberZombie(IList<GameObject> list)
+    {
+        foreach (GameObject zombie in list)
+        {
+            memory.RememberZombie(zombie);
+        }
+    }
+
+    private void RememberExit(GameObject gameObject)
+    {
+        exit = gameObject;
     }
 
     private void RememberFood(IList<Food> list)
@@ -33,5 +58,10 @@ public class ObjectsFoundBelief : Belief
     public HumanObjectMemory GetMemory()
     {
         return memory;
+    }
+
+    public GameObject GetExit()
+    {
+        return exit;
     }
 }

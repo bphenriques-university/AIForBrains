@@ -21,7 +21,7 @@ public class HumanCryForHelp : ReactiveBehaviour
 	protected override void Execute ()
 	{
 		//Debug.Log ("PLEASE HELP HELP HELP HEP");
-		human.Actuators.SendCryForHelp ();	
+		human.Actuators.SendCryForHelp (HumanSpeak.Message.IAmGrabbed);	
 	}
 	
 }

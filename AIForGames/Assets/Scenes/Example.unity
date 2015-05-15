@@ -1539,23 +1539,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22464162, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22464162, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22475344, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22475344, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 179542, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
@@ -4809,19 +4809,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22464162, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22464162, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22475344, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22475344, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 179542, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_IsActive
@@ -6449,7 +6449,7 @@ MonoBehaviour:
   - {fileID: 960905422}
   - {fileID: 1639448606}
   radius: 3
-  max_number_spawns: 20
+  max_number_spawns: 10
 --- !u!4 &1895198026
 Transform:
   m_ObjectHideFlags: 0

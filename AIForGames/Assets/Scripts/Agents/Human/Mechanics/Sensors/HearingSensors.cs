@@ -6,6 +6,10 @@ public partial class Sensors : MonoBehaviour{
 	public IList<HumanHear.MessageLogEntry> GetHumanMessages(){
 		return hearing.GetMessageLog();
 	}
+
+    public GameObject GetExitHeard() {
+        return hearing.exit;
+    }
 	
 
 }

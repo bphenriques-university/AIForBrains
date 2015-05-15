@@ -32,7 +32,7 @@ public class EatFoodIntention : Intention
             {
                 Vector3 currentPosition = beliefs.GetNavigationBelief().CurrentPosition().position;
                 Vector3 foodPosition = foodToBeEaten.transform.position;
-                intentValue = 50 / Mathf.Ceil((currentPosition - foodPosition).magnitude);
+                intentValue = 25 / Mathf.Ceil((currentPosition - foodPosition).magnitude);
             }
             else
             {

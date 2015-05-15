@@ -19,6 +19,11 @@ public class KeepHealthyDesire : Desire
 		int nZombiesSeen = beliefs.GetSightBelief ().ZombieSeen ().Count;
 		int nBullets = beliefs.GetInventoryBelief ().AmmoLevel ();
 
+        if (beliefs.GetVitalsBelief().IsGrabbed()) {
+
+            desiredIntentions.Add(new CallForHelpIntention(HumanSpeak.Message.IAmGrabbed, desireLevel));
+        }
+
 		if (nZombiesSeen > 0) {
 			GameObject zombie = beliefs.GetSightBelief ().GetClosestZombie ();
 

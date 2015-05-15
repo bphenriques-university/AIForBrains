@@ -70,6 +70,11 @@ public class SightBelief : Belief
         return sawExit;
     }
 
+    public bool SawHuman()
+    {
+        return sawHuman;
+    }
+
     public IList<Food> FoodSeen()
     {
         return foodSeen;
@@ -133,4 +138,6 @@ public class SightBelief : Belief
 		return false;
 	}
 
+
+   
 }

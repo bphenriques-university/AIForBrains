@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class HearingBelief : Belief
 {
 
-    private GameObject humanHeard;
+    private GameObject exitHeard;
 	private List<HumanHear.MessageLogEntry> MessageLog = new List<HumanHear.MessageLogEntry> ();
 
 	bool needsFood = false;
@@ -41,6 +41,10 @@ public class HearingBelief : Belief
 		return needsAmmo;
 	}
 
+    public GameObject GetExit() {
+        return exitHeard;
+    }
+
 
 
 	public IList<HumanHear.MessageLogEntry> GetMessageLog(){
@@ -54,6 +58,8 @@ public class HearingBelief : Belief
 		while(MessageLog.Count > 5){
 			MessageLog.RemoveAt(0);
 		}
+
+        exitHeard = human.Sensors.GetExitHeard();
 
 		MessageLog.AddRange (newMessages);
 		newMessages.Clear ();

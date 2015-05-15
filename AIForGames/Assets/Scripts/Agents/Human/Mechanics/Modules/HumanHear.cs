@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class HumanHear : MonoBehaviour
 {
 	IList<MessageLogEntry> MessageLog = new List<MessageLogEntry> ();
+    public GameObject exit;
 
 	public struct MessageLogEntry{
 		GameObject human;
@@ -23,6 +24,8 @@ public class HumanHear : MonoBehaviour
 			this.message = message;
 		}
 	}
+
+
 	public IList<MessageLogEntry> GetMessageLog(){
 		return MessageLog;
 	}
@@ -34,4 +37,9 @@ public class HumanHear : MonoBehaviour
 	}
 
 
+    public void HearExit(GameObject human, GameObject exit)
+    {
+        MessageLog.Add(new MessageLogEntry(human, HumanSpeak.Message.ExitIsOpen));
+        this.exit = exit;
+    }
 }

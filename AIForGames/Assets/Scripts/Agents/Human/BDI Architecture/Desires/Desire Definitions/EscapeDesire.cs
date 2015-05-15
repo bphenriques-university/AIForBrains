@@ -5,12 +5,12 @@ public class EscapeDesire : Desire
 {
 
     private const float BASE_DESIRE_LEVEL = 10f;
-    private const float SAW_EXIT_DESIRE_LEVEL = 100f;
+    private const float SAW_EXIT_DESIRE_LEVEL = 95f;
 
 
     public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
-        if (beliefs.GetSightBelief().SawExit()) {
+        if (beliefs.GetSightBelief().SawExit() || beliefs.GetObjectsFoundBelief().GetExit() != null) {
             desireLevel = SAW_EXIT_DESIRE_LEVEL;
         }
         else
@@ -26,7 +26,11 @@ public class EscapeDesire : Desire
         {
             desiredIntentions.Add(new GoToExitIntention(beliefs.GetSightBelief().GetExitSeen(), desireLevel));
         }
-        else
+        else if(beliefs.GetHearingBelief().FoundExitMessage()){
+
+            desiredIntentions.Add(new GoToExitIntention(beliefs.GetHearingBelief().GetExit(), desireLevel));
+        
+        }else
         {
             desiredIntentions.Add(new SearchForExitIntention(desireLevel));
         }

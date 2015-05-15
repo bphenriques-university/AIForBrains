@@ -41,19 +41,20 @@ public class HumanSpeak : MonoBehaviour
 	}
 
 	public void SendMessageToHumansNearby(Message m){
-		foreach (KeyValuePair<int, HumanHear> pair in humansInRange) {
-			//supposed to send a human game object
-			pair.Value.HearMessage(this.transform.root.gameObject, m);
+
+        foreach (Human recipient in Human.GetHumans()) {
+            HumanHear hearing = recipient.GetComponentInChildren<HumanHear>();
+			hearing.HearMessage(this.transform.root.gameObject, m);
 		}
 	}
 
-	// Use this for initialization
 
-
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
-	}
+    public void SendExitToAllHumans(GameObject exit)
+    {
+        foreach (KeyValuePair<int, HumanHear> pair in humansInRange)
+        {
+            //supposed to send a human game object
+            pair.Value.HearExit(this.transform.root.gameObject, exit);
+        }
+    }
 }

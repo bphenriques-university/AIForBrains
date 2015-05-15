@@ -465,8 +465,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179542}
-  m_LocalRotation: {x: 0, y: .608761489, z: 0, w: .793353319}
-  m_LocalPosition: {x: -5, y: 0, z: -13}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22448924}
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   runSpeed: 6
   walkSpeed: 2
   rotationSpeed: 2
-  playerText: {fileID: 0}
+  playerText: {fileID: 11463750}
 --- !u!114 &11475956
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -77,9 +77,14 @@ public class Actuators : MonoBehaviour
 		movement.Stop ();
 	}
 
-	public void SendCryForHelp(){
-		speak.SendMessageToHumansNearby (HumanSpeak.Message.IAmGrabbed);
+	public void SendCryForHelp(HumanSpeak.Message m){
+		speak.SendMessageToHumansNearby (m);
 	}
+
+    public void SayExit(GameObject exit)
+    {
+        speak.SendExitToAllHumans(exit);
+    }
 
 	public bool GiveAmmo(Human humanRecipient,int bullets){
 		Human me = this.human;

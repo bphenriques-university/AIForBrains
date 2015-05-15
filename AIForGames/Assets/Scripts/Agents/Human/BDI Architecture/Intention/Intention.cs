@@ -57,7 +57,7 @@ public abstract class Intention {
      *  GivePlanComponents
      *  Gives plan components required to perform intention.
      **/
-    public abstract IList<PlanComponent> GivePlanComponents(Human humanState, BeliefsManager beliefs);
+    public abstract IList<PlanComponent> GivePlanComponents(Human human, BeliefsManager beliefs);
 
     public abstract bool Succeeded(BeliefsManager beliefs);
     public abstract bool IsImpossible(BeliefsManager beliefs);
