@@ -21,7 +21,6 @@ public class GoToExitIntention : Intention
     public override bool IsImpossible(BeliefsManager beliefs)
     {
 
-        //TODO
         return false;
 		
 	}

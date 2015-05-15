@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 6
   walkSpeed: 2
-  rotationSpeed: 2
+  rotationSpeed: 500
   playerText: {fileID: 11463750}
 --- !u!114 &11475956
 MonoBehaviour:

@@ -24,10 +24,11 @@ public class GiveFoodIntention : Intention
 		return previousFoodCount > 0;
 	}
 
-	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human humanState, BeliefsManager beliefs)
+	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human human, BeliefsManager beliefs)
 	{
 		IList<PlanComponent> plan = new List<PlanComponent>();
 
+        plan.Add(new WalkToPlanComponent(human, desiredHuman.transform.position));
 		plan.Add(new GiveFoodPlanComponent(desiredHuman, foodIWantToGive));
 
 		return plan;

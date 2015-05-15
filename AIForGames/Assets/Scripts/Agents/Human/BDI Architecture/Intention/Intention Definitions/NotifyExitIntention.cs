@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 public class NotifyExitIntention : Intention
 {
-    public NotifyExitIntention(float desireLevel) : base(desireLevel) { 
-        //FIXME
-    }
+    public NotifyExitIntention(float desireLevel) : base(desireLevel) {}
 
     public override bool Evaluate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {

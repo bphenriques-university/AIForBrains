@@ -31,7 +31,7 @@ public class KeepHealthyDesire : Desire
 
 			if (nBullets > 0) {
 
-                Intention zombieIntention = new KillZombieIntention(zombie, 0);
+                Intention zombieIntention = new KillZombieIntention(zombie, this.desireLevel);
 				desiredIntentions.Add (zombieIntention);
 			
 			}

@@ -87,6 +87,65 @@ NavMeshSettings:
     cellSize: .25
     manualCellSize: 0
   m_NavMeshData: {fileID: 23800000, guid: 86ff957eca2b0469bb6020aef411c686, type: 2}
+--- !u!1 &9587866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 9587867}
+  - 114: {fileID: 9587868}
+  m_Layer: 0
+  m_Name: HybridHoomanManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9587867
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 9587866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.79487538, y: 0, z: -.552581429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 632229140}
+  m_Father: {fileID: 536862187}
+  m_RootOrder: 5
+--- !u!114 &9587868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 9587866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb148b06ef59de449b95c34eff138789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawneeObject: {fileID: 188936, guid: 708eb64c805a21b4689a86905dafd14b, type: 2}
+  spawnAreas:
+  - {fileID: 1435854928}
+  - {fileID: 2117831640}
+  - {fileID: 1692719493}
+  - {fileID: 589420183}
+  radius: 1
+  max_number_spawns: 4
+  agentNames:
+  - Mr. Smith
+  - Lady Gaga
+  - Mr. T
+  - Frodo
+  - Darth
+  - Fred
+  - Arnold
+  - Sr. Tobias
+  - Mufasa
+  - Simba
 --- !u!1001 &11900245
 Prefab:
   m_ObjectHideFlags: 0
@@ -126,29 +185,33 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 22475344, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
+    - target: {fileID: 179542, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
+      propertyPath: m_Name
+      value: HoomanDeliberative 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22464162, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22475344, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
+    - target: {fileID: 22464162, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22464162, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
+    - target: {fileID: 22475344, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22464162, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
+    - target: {fileID: 22475344, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 179542, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 179542, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
-      propertyPath: m_Name
-      value: HoomanDeliberative 1
+    - target: {fileID: 11473258, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
+      propertyPath: rotationSpeed
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
@@ -1079,7 +1142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &187877283
 Transform:
   m_ObjectHideFlags: 0
@@ -1520,7 +1583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &319372003
 Transform:
   m_ObjectHideFlags: 0
@@ -1621,7 +1684,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 179542, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cda99313948dd403b9a4af54762b60f9, type: 2}
@@ -1993,7 +2056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &536862187
 Transform:
   m_ObjectHideFlags: 0
@@ -2009,6 +2072,7 @@ Transform:
   - {fileID: 813647618}
   - {fileID: 187877283}
   - {fileID: 319372003}
+  - {fileID: 9587867}
   m_Father: {fileID: 0}
   m_RootOrder: 16
 --- !u!1 &559195539
@@ -2164,6 +2228,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.08405995, y: 2.67811155, z: 4.65794277}
   m_Center: {x: -1.41014087, y: 1.14438879, z: .406303883}
+--- !u!1 &589420182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 589420183}
+  m_Layer: 0
+  m_Name: HoomanPoint4
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &589420183
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 589420182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.4000001, y: 0, z: 16.2999992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 632229140}
+  m_RootOrder: 3
 --- !u!1 &599846570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,6 +2323,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1652858374}
   m_RootOrder: 17
+--- !u!1 &632229139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 632229140}
+  m_Layer: 0
+  m_Name: HoomanSpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632229140
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 632229139}
+  m_LocalRotation: {x: 0, y: .866025269, z: 0, w: -.500000238}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1435854928}
+  - {fileID: 2117831640}
+  - {fileID: 1692719493}
+  - {fileID: 589420183}
+  m_Father: {fileID: 9587867}
+  m_RootOrder: 0
 --- !u!1 &636401376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,7 +2714,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 480042, guid: a8ea41c7748d88c41bc955d3e86a5c86, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 3.67000008
+      value: 7.86999989
       objectReference: {fileID: 0}
     - target: {fileID: 480042, guid: a8ea41c7748d88c41bc955d3e86a5c86, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2616,7 +2738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 146898, guid: a8ea41c7748d88c41bc955d3e86a5c86, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8ea41c7748d88c41bc955d3e86a5c86, type: 2}
@@ -2774,7 +2896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &813647618
 Transform:
   m_ObjectHideFlags: 0
@@ -4303,7 +4425,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 7bca9c2cd581dbb4f971ad087c21f5f9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .529999971
+      value: .200000003
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7bca9c2cd581dbb4f971ad087c21f5f9, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4311,7 +4433,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7bca9c2cd581dbb4f971ad087c21f5f9, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 6.73999977
+      value: 11.8800001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7bca9c2cd581dbb4f971ad087c21f5f9, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4707,6 +4829,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .475382268, y: 1.74889231, z: .455459952}
   m_Center: {x: .694255829, y: .00261179125, z: -.00728529133}
+--- !u!1 &1435854927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1435854928}
+  m_Layer: 0
+  m_Name: HoomanPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1435854928
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435854927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.32000017, y: 0, z: 7.38999987}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 632229140}
+  m_RootOrder: 0
 --- !u!1 &1441434132
 GameObject:
   m_ObjectHideFlags: 0
@@ -4873,21 +5022,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 22400286, guid: 708eb64c805a21b4689a86905dafd14b, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22400286, guid: 708eb64c805a21b4689a86905dafd14b, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 22401598, guid: 708eb64c805a21b4689a86905dafd14b, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22401598, guid: 708eb64c805a21b4689a86905dafd14b, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400286, guid: 708eb64c805a21b4689a86905dafd14b, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22400286, guid: 708eb64c805a21b4689a86905dafd14b, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 188936, guid: 708eb64c805a21b4689a86905dafd14b, type: 2}
       propertyPath: m_IsActive
@@ -5058,7 +5207,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416654, guid: 4faae9d435397e740b49598f159aeb0e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 15
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 416654, guid: 4faae9d435397e740b49598f159aeb0e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5627,6 +5776,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 264661a642c271542841966646e53a7c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1692719492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1692719493}
+  m_Layer: 0
+  m_Name: HoomanPoint3
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692719493
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692719492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.3799992, y: 0, z: 8.17000008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 632229140}
+  m_RootOrder: 2
 --- !u!1 &1707629239
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,7 +6665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1895198025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6511,7 +6687,7 @@ MonoBehaviour:
   - {fileID: 960905422}
   - {fileID: 1639448606}
   radius: 3
-  max_number_spawns: 10
+  max_number_spawns: 15
 --- !u!4 &1895198026
 Transform:
   m_ObjectHideFlags: 0
@@ -7175,6 +7351,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1652858374}
   m_RootOrder: 18
+--- !u!1 &2117831639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2117831640}
+  m_Layer: 0
+  m_Name: HoomanPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2117831640
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2117831639}
+  m_LocalRotation: {x: 0, y: .866025507, z: 0, w: .499999881}
+  m_LocalPosition: {x: 1.07000005, y: 0, z: -19.7999992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 632229140}
+  m_RootOrder: 1
 --- !u!1 &2127335532
 GameObject:
   m_ObjectHideFlags: 0

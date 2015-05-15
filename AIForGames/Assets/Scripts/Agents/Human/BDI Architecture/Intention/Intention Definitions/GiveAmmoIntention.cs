@@ -26,10 +26,11 @@ public class GiveAmmoIntention : Intention
 		return beliefs.GetInventoryBelief ().AmmoLevel () > 5;
 	}
 	
-	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human humanState, BeliefsManager beliefs)
+	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human human, BeliefsManager beliefs)
 	{
 		IList<PlanComponent> plan = new List<PlanComponent>();
-		
+
+        plan.Add(new WalkToPlanComponent(human, desiredHuman.transform.position));
 		plan.Add(new GiveAmmoPlanComponent(desiredHuman, numBullets));
 		
 		return plan;
