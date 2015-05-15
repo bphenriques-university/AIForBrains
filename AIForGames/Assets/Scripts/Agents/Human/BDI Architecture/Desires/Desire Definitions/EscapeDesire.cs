@@ -5,7 +5,7 @@ public class EscapeDesire : Desire
 {
 
     private const float BASE_DESIRE_LEVEL = 10f;
-    private const float SAW_EXIT_DESIRE_LEVEL = 120f;
+    private const float SAW_EXIT_DESIRE_LEVEL = 100f;
 
 
     public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
