@@ -23,8 +23,13 @@ public class HumanNavMap
     {
 
         //Put more random in here
-        foreach (HumanNavPoint navPoint in navPoints)
+        int index = Random.Range(0, navPoints.Count);
+        int limit = index;
+
+        for (; index != limit - 1; index = ++index % navPoints.Count)
         {
+            HumanNavPoint navPoint = navPoints[index];
+
             if (!navPoint.Seen())
             {
                 Vector3 navPointPosition = navPoint.navPoint.transform.position;

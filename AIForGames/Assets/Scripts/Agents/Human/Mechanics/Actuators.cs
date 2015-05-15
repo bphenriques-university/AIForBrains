@@ -11,7 +11,6 @@ public class Actuators : MonoBehaviour
 	HumanAmmo ammo;
 
 	void Awake(){
-		GameOverManager.humansAlive++;
 		
 		Transform gunBarrelEnd = transform.root.FindChild ("GunBarrelEnd");
 		playerShooting = gunBarrelEnd.GetComponent<HumanShooting> ();
