@@ -13,6 +13,10 @@ public partial class Sensors : MonoBehaviour
         return touch.ammoTouched;
     }
 
+	public bool IsTouchingHuman(){
+		return touch.humanTouched;
+	}
+
     public GameObject GetTouchingAmmo()
     {
         if (touch.ammoTouched)
@@ -28,4 +32,11 @@ public partial class Sensors : MonoBehaviour
         else
             return null;
     }
+
+	public GameObject GetTouchingHuman(){
+		if (touch.humanTouched) {
+			return touch.humanTouched;
+		} else
+			return null;
+	}
 }
