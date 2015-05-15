@@ -11,19 +11,20 @@ public class BeliefsManager
     private InventoryBelief inventoryBelief = new InventoryBelief();
     private VitalsBelief healthLevelBelief = new VitalsBelief();
     private SightBelief sightBelief = new SightBelief();
-    private NavigationBelief navigationBelief;
 	private SocialBelief socialBelief = new SocialBelief();
 	private HearingBelief hearingBelief = new HearingBelief();
-    private MemoryBelief memoryBelief = new MemoryBelief();
     private TouchBelief touchBelief = new TouchBelief();
+    private NavigationBelief navigationBelief;
+    private MemoryBelief memoryBelief;
 
     private Belief[] beliefs;
 
 
 
-    public BeliefsManager(NavMap humanNavMap)
+    public BeliefsManager(NavMap humanNavMap, Collider meshCollider)
     {
         navigationBelief = new NavigationBelief(humanNavMap);
+        memoryBelief = new MemoryBelief(meshCollider);
         beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, 
             sightBelief, navigationBelief, socialBelief, hearingBelief, memoryBelief, touchBelief };
 
@@ -38,6 +39,12 @@ public class BeliefsManager
         }
         return this;
 	}
+
+    public bool CheckImportantBeliefs()
+    {
+        return GetSightBelief().SawAmmo() || GetSightBelief().SawFood() || 
+            GetSightBelief().SawZombie() || GetSightBelief().SawHuman();
+    }
 
     public HungerBelief GetHungerBelief()
     {

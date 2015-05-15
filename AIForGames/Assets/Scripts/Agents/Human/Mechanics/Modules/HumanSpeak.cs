@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class HumanSpeak : MonoBehaviour
-{	
+{
+    Human human;
 	private int myId;
 	Dictionary<int, HumanHear> humansInRange = new Dictionary<int, HumanHear>();
 
@@ -19,7 +20,8 @@ public class HumanSpeak : MonoBehaviour
 
 	void Start ()
 	{
-		myId = this.gameObject.GetInstanceID ();	
+		myId = this.gameObject.GetInstanceID ();
+        human = GetComponentInParent<Human>();
 	}
 
 	void OnTriggerEnter (Collider other){	
@@ -42,9 +44,11 @@ public class HumanSpeak : MonoBehaviour
 		}
 	}
 
-	public void SendMessageToHumansNearby(Message m){
+	public void SendMessageToAllHumans(Message m){
 
         foreach (Human recipient in Human.GetHumans()) {
+            if (recipient.Equals(human))
+                continue;
             HumanHear hearing = recipient.GetComponentInChildren<HumanHear>();
 			hearing.HearMessage(this.transform.root.gameObject, m);
 		}
@@ -53,10 +57,17 @@ public class HumanSpeak : MonoBehaviour
 
     public void SendExitToAllHumans(GameObject exit)
     {
-        foreach (KeyValuePair<int, HumanHear> pair in humansInRange)
+        foreach (Human recipient in Human.GetHumans())
         {
+            if (recipient.Equals(human))
+                continue;
             //supposed to send a human game object
-            pair.Value.HearExit(this.transform.root.gameObject, exit);
+            if (recipient != null)
+            {
+                HumanHear hear = recipient.GetComponentInChildren<HumanHear>();
+                if (hear != null)
+                    hear.HearExit(transform.root.gameObject, exit);
+            }
         }
     }
 }

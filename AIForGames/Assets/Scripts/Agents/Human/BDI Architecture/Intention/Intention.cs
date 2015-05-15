@@ -61,4 +61,9 @@ public abstract class Intention {
 
     public abstract bool Succeeded(BeliefsManager beliefs);
     public abstract bool IsImpossible(BeliefsManager beliefs);
+
+    public virtual bool IsImportant()
+    {
+        return true;
+    }
 }

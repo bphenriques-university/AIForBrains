@@ -5,15 +5,19 @@ using System.Collections.Generic;
 public class Plan
 {
     private IList<PlanComponent> planComponents;
+    private Intention topIntention;
 
-    public Plan(IList<PlanComponent> planComponents)
+    public Plan(IList<PlanComponent> planComponents, IList<Intention> intentions)
     {
         this.planComponents = planComponents;
+        if (intentions.Count > 0)
+            topIntention = IntentionsManager.getMostDesiredIntention(intentions)[0];
     }
 
     public bool MakesSense(IList<Intention> intentions, BeliefsManager beliefs)
     {
-        //TODO
+        if (intentions.Count > 0)
+            return topIntention.GetType() == IntentionsManager.getMostDesiredIntention(intentions)[0].GetType();
         return true;
     }
 
@@ -33,9 +37,4 @@ public class Plan
         planComponents.Remove(planComponents[0]);
     }
 
-    //succeded(I, B)
-   
-
-    //reconsider (I, B)
-    
 }

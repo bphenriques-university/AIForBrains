@@ -20,6 +20,8 @@ public class Human : MonoBehaviour
 	void Awake(){
 		GameOverManager.humansAlive++;
 
+        existingHumans.Add(this);
+
 
 		targetPosition = transform.position;
 
@@ -52,9 +54,6 @@ public class Human : MonoBehaviour
 	public Vector3 targetPosition;
 	public GameObject targetObject = null;
 
-	public Human(){
-		existingHumans.Add (this);
-	}
 	
 	void Update(){
 		attackTimer += Time.deltaTime;

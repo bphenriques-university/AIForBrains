@@ -76,10 +76,17 @@ public class HumanSight : MonoBehaviour
             foreach (GameObject gameObjectInList in list)
             {
                 if (!seenGameObjects.Contains(gameObjectInList))
-                    gameObjectsToDelete.Add(gameObjectInList); 
-                
-                if (gameObjectInList == null)
                     gameObjectsToDelete.Add(gameObjectInList);
+
+                if (gameObjectInList == null)
+                {
+                    gameObjectsToDelete.Add(gameObjectInList);
+                    continue;
+                }
+
+                if (checkZombieHealth(gameObjectInList))
+                    gameObjectsToDelete.Add(gameObjectInList);
+
             }
 
             foreach (GameObject gameObjectToDelete in gameObjectsToDelete)
@@ -87,6 +94,16 @@ public class HumanSight : MonoBehaviour
                 list.Remove(gameObjectToDelete);
             }
         }
+    }
+
+    private bool checkZombieHealth(GameObject gameObjectInList)
+    {
+        EnemyHealth enemyHealth = gameObjectInList.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+            return enemyHealth.hasDied();
+        else
+            return false;
+
     }
 
 

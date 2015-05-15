@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BDIManager : MonoBehaviour {
 
-    private const float PLAN_TIME_LIMIT = 2f;
+    private const float PLAN_TIME_LIMIT = 5f;
 
 	private Human human;
     private BeliefsManager beliefs;
@@ -29,9 +29,10 @@ public class BDIManager : MonoBehaviour {
             Debug.Log("SOME SHIT HAPPENED THAT WASN'T SUPPOSED TO");
 
         NavMap navMap = GameObject.FindGameObjectWithTag("NavMap").GetComponent<NavMap>();
+        Collider meshCollider = transform.root.GetComponentInChildren<MeshCollider>();
 
         planner = new Planner(human);
-        beliefs = new BeliefsManager(navMap);
+        beliefs = new BeliefsManager(navMap, meshCollider);
         desires = new DesiresManager();
         intentions = new IntentionsManager();
 
@@ -55,19 +56,21 @@ public class BDIManager : MonoBehaviour {
             if (action.TryExecuteAction())
                 currentPlan.Pop();
 
+
             beliefs.BeliefReviewFunction(human);
 
             if (ShouldReconsiderIntention(currentIntentions, beliefs))
             {
+                Debug.Log("Reconsidering..." + time);
                 currentDesires = desires.Options(beliefs, currentIntentions);
                 currentIntentions = intentions.Filter(beliefs, currentDesires, currentIntentions);
-
-                //Also reconsiders plan
-                currentPlan = planner.GeneratePlan(beliefs, currentIntentions);
                 time = 0f;
+
 			}
 
 			if (!currentPlan.MakesSense(currentIntentions, beliefs)){
+
+                Debug.Log("Plan Unsound!");
 				currentPlan = planner.GeneratePlan(beliefs, currentIntentions);
                 time = 0f;
 			}
@@ -79,7 +82,8 @@ public class BDIManager : MonoBehaviour {
             beliefs.BeliefReviewFunction(human);
             currentDesires = desires.Options(beliefs, new List<Intention>());
             currentIntentions = intentions.Filter(beliefs, currentDesires, new List<Intention>());
-            currentPlan = planner.GeneratePlan( beliefs, currentIntentions);
+            currentPlan = planner.GeneratePlan(beliefs, currentIntentions);
+            time = 0f;
         }
 		
 		
@@ -120,6 +124,7 @@ public class BDIManager : MonoBehaviour {
     bool ShouldReconsiderIntention(IList<Intention> intentions, BeliefsManager beliefs)
     {
 
+
         float oldIntentionValue = 0f;
         float newIntentionValue = 0f;
         foreach (Intention intention in intentions)
@@ -127,9 +132,14 @@ public class BDIManager : MonoBehaviour {
             oldIntentionValue += intention.IntentValue();
             if (!intention.Evaluate(beliefs, intentions))
                 return true;
+
+            if (!intention.IsImportant())
+            {
+                if (beliefs.CheckImportantBeliefs())
+                    return true;
+            }
             newIntentionValue += intention.IntentValue();
         }
-
 
         if (oldIntentionValue < newIntentionValue)
             return true;

@@ -49,4 +49,9 @@ public class GatherFoodIntention : Intention
     {
         return !foodToBeGathered || foodToBeGathered.Eaten() || (foodToBeGathered.Catched() && !beliefs.GetInventoryBelief().Foods().Contains(foodToBeGathered));
     }
+
+    public override bool IsImportant()
+    {
+        return false;
+    }
 }

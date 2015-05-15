@@ -13,7 +13,7 @@ public class NavMap : MonoBehaviour
     private float stepLength = Mathf.Sqrt(8f);
 
 
-    void Start()
+    void Awake()
     {
         IList<Vector3> positions = GeneratePositions(startingPosition, stepLength, stepNumber);
         int i = 0;

@@ -39,6 +39,8 @@ public class HumanHear : MonoBehaviour
 
     public void HearExit(GameObject human, GameObject exit)
     {
+
+        Debug.Log("Heard Exit Location.");
         MessageLog.Add(new MessageLogEntry(human, HumanSpeak.Message.ExitIsOpen));
         this.exit = exit;
     }

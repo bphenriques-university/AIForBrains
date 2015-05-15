@@ -36,9 +36,10 @@ public class HybridManager : MonoBehaviour
             Debug.Log("SOME SHIT HAPPENED THAT WASN'T SUPPOSED TO");
 
         NavMap navMap = GameObject.FindGameObjectWithTag("NavMap").GetComponent<NavMap>();
+        Collider meshCollider = transform.root.GetComponentInChildren<MeshCollider>();
 
         planner = new Planner(human);
-        beliefs = new BeliefsManager(navMap);
+        beliefs = new BeliefsManager(navMap, meshCollider);
         desires = new DesiresManager();
         intentions = new IntentionsManager();
 
@@ -54,9 +55,9 @@ public class HybridManager : MonoBehaviour
     void Update()
     {
 
-        time += Time.deltaTime;
+        ReactiveBehaviour reaction = null;
 
-        beliefs.BeliefReviewFunction(human);
+        time += Time.deltaTime;
         if (transform.root.gameObject.activeInHierarchy)
         {
             foreach (ReactiveBehaviour r in behaviours)
@@ -65,14 +66,20 @@ public class HybridManager : MonoBehaviour
 
                 if (r.WasTriggered())
                 {
-                    r.Action();
+                    reaction = r;
                     lastBehaviour = r;
-                    return;
+                    break;
                 }
             }
         }
 
+        beliefs.BeliefReviewFunction(human);
 
+        if (reaction != null)
+        {
+            reaction.Action();
+            return;
+        }
 
         if (currentPlan.Count() > 0 &&
                 !(WasASuccess(currentIntentions, beliefs) || IsImpossible(currentIntentions, beliefs)))

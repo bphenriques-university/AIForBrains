@@ -23,6 +23,7 @@ public class IntentionsManager
                 intentionsToDelete.Add(desiredIntention);
             }
 
+            Debug.Log("Evaluated intention " + desiredIntention + " with " + desiredIntention.IntentValue());
         }
 
         foreach (Intention intention in intentionsToDelete)
@@ -35,7 +36,9 @@ public class IntentionsManager
         return desiredIntentions;
     }
 
-    private IList<Intention> getMostDesiredIntention(IList<Intention> desiredIntentions)
+
+
+    public static IList<Intention> getMostDesiredIntention(IList<Intention> desiredIntentions)
     {
 
 

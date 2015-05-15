@@ -35,4 +35,9 @@ public class SearchForExitIntention : Intention
     {
         return beliefs.GetSightBelief().SawExit();
     }
+
+    public override bool IsImportant()
+    {
+        return false;
+    }
 }

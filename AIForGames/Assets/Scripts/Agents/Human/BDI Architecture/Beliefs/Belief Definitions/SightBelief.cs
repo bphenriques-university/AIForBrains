@@ -35,6 +35,13 @@ public class SightBelief : Belief
         navPointsSeen = human.Sensors.NavPointsSeen();
 
         closestZombieSeen = human.Sensors.GetClosestZombie();
+        GameObject closestFoodObject = human.Sensors.GetClosestFoodSeen();
+        if (closestFoodObject != null)
+            closestFoodSeen = closestFoodObject.GetComponent<Food>();
+
+        GameObject closestAmmoObject = human.Sensors.GetClosestAmmoSeen();
+        if (closestAmmoObject != null)
+            closestAmmoSeen = closestAmmoObject.GetComponent<Ammo>();
 
         sawFood = human.Sensors.SawFood();
         sawAmmo = human.Sensors.SawAmmo();
@@ -44,35 +51,38 @@ public class SightBelief : Belief
 
         currentPosition = human.Sensors.CurrentPosition().position;
 
+
+
     }
 
-	public float DistanceToZombie(GameObject zombie){
+    public float DistanceToZombie(GameObject zombie)
+    {
         return Vector3.Distance(currentPosition, zombie.gameObject.transform.position);
-	}
+    }
 
     public bool SawFood()
     {
-        return sawFood;
+        return foodSeen.Count > 0;
     }
 
     public bool SawAmmo()
     {
-        return sawAmmo;
+        return ammoSeen.Count > 0;
     }
 
     public bool SawZombie()
     {
-        return sawZombie;
+        return zombieSeen.Count > 0;
     }
 
     public bool SawExit()
     {
-        return sawExit;
+        return exitSeen;
     }
 
     public bool SawHuman()
     {
-        return sawHuman;
+        return humansSeen.Count > 0;
     }
 
     public IList<Food> FoodSeen()
@@ -114,30 +124,43 @@ public class SightBelief : Belief
         return closestZombieSeen;
     }
 
-	public bool IsAimingAt(Transform transform, GameObject target)
-	{
-		Ray shootRay = new Ray ();
-		RaycastHit shootHit;
-		float range = 100f;
-		
-		shootRay.origin = transform.position;
-		shootRay.direction = transform.forward;
-		
-		int shootableMask = LayerMask.GetMask ("Shootable");
-		
-		// Perform the raycast against gameobjects on the shootable layer and if it hits something...
-		if (Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
-			if (shootHit.collider.gameObject == target) {
-				EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth> ();
-				
-				// If the EnemyHealth component exist...
-				return enemyHealth != null;
-			}
-		}
+    public Food GetClosestFood()
+    {
+        return closestFoodSeen;
+    }
 
-		return false;
-	}
+    public Ammo GetClosestAmmo()
+    {
+        return closestAmmoSeen;
+    }
 
+    public bool IsAimingAt(Transform transform, GameObject target)
+    {
+        Ray shootRay = new Ray();
+        RaycastHit shootHit;
+        float range = 100f;
 
-   
+        shootRay.origin = transform.position;
+        shootRay.direction = transform.forward;
+
+        int shootableMask = LayerMask.GetMask("Shootable");
+
+        // Perform the raycast against gameobjects on the shootable layer and if it hits something...
+        if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
+        {
+            if (shootHit.collider.gameObject == target)
+            {
+                EnemyHealth enemyHealth = shootHit.collider.GetComponent<EnemyHealth>();
+
+                // If the EnemyHealth component exist...
+                return enemyHealth != null;
+            }
+        }
+
+        return false;
+    }
+
 }
+
+
+    

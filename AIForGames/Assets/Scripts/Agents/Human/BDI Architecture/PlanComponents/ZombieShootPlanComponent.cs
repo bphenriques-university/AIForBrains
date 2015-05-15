@@ -11,6 +11,7 @@ public class ZombieShootPlanComponent : PlanComponent
 	public override bool TryExecuteAction ()
 	{
 		int ammoBefore = human.Sensors.AmmoLevel ();
+        human.Actuators.TurnTo(zombie.transform.position);
 		human.Actuators.FireWeapon ();
 
 		return ammoBefore == human.Sensors.AmmoLevel () + 1;

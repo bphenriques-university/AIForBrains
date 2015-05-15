@@ -22,7 +22,7 @@ public class Planner
             newPlan.AddRange(intention.GivePlanComponents(humanState, beliefs));
         }
         
-        return new Plan(newPlan);
+        return new Plan(newPlan, intentions);
     }
 
 

@@ -78,11 +78,12 @@ public class Actuators : MonoBehaviour
 	}
 
 	public void SendCryForHelp(HumanSpeak.Message m){
-		speak.SendMessageToHumansNearby (m);
+		speak.SendMessageToAllHumans (m);
 	}
 
     public void SayExit(GameObject exit)
     {
+        Debug.Log("Saying Exit");
         speak.SaidExit = true;
         speak.SendExitToAllHumans(exit);
     }

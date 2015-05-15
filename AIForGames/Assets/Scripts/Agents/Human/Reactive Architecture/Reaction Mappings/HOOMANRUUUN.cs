@@ -11,6 +11,7 @@ public class HOOMANRUUUN : ReactiveBehaviour
 	float timer;
 
 	Human human;
+    GameObject THINGTHATWANTSTOEATMYBRAINS;
 	
 	void Awake(){
 		human = transform.root.GetComponent <Human> ();
@@ -45,7 +46,11 @@ public class HOOMANRUUUN : ReactiveBehaviour
 
 	protected override void Execute ()
 	{
-		GameObject THINGTHATWANTSTOEATMYBRAINS = human.Sensors.GetClosestZombie();
+        GameObject zombieGO = human.Sensors.GetClosestZombie();
+        if (zombieGO != null)
+        {
+            THINGTHATWANTSTOEATMYBRAINS = human.Sensors.GetClosestZombie();
+        }
 
 		Vector3 RUNTHISWAY = - (THINGTHATWANTSTOEATMYBRAINS.transform.position - transform.position);
 

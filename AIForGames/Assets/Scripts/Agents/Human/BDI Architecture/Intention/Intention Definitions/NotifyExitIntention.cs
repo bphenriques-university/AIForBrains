@@ -9,6 +9,9 @@ public class NotifyExitIntention : Intention
 
     public override bool Evaluate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
     {
+        if (beliefs.GetMemoryBelief().SaidExit())
+            return false; 
+
         if (beliefs.GetSightBelief().SawExit() || beliefs.GetMemoryBelief().GetExit() != null)
         {
             intentValue = 100f;
@@ -20,6 +23,7 @@ public class NotifyExitIntention : Intention
 
     public override IList<PlanComponent> GivePlanComponents(Human human, BeliefsManager beliefs)
     {
+
         IList<PlanComponent> plan = new List<PlanComponent>();
         GameObject exit;
         if (beliefs.GetSightBelief().SawExit())
@@ -27,7 +31,8 @@ public class NotifyExitIntention : Intention
         else 
             exit = beliefs.GetMemoryBelief().GetExit();
 
-        if (exit != null) {
+        if (exit != null)
+        {
             plan.Add(new NotifyExitPlanComponent(human, exit));
         }
             
@@ -37,7 +42,7 @@ public class NotifyExitIntention : Intention
 
     public override bool Succeeded(BeliefsManager beliefs)
     {
-        return true;
+        return beliefs.GetMemoryBelief().SaidExit();
     }
 
     public override bool IsImpossible(BeliefsManager beliefs)

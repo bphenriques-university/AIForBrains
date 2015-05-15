@@ -5,14 +5,16 @@ using System.Collections.Generic;
 public class KeepHealthyDesire : Desire
 {
 	public static float safeDistanceToZombie = 3.5f;
+    private int maxDesireLevel; 
 
-    public override void Deliberate(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+    public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
 		VitalsBelief belief = beliefs.GetVitalsBelief ();
-		desireLevel = belief.GetMaxHealthLevel() - belief.GetHealthLevel();
+        maxDesireLevel = belief.GetMaxHealthLevel();
+        desireLevel = maxDesireLevel - belief.GetHealthLevel();
     }
 
-    public override System.Collections.Generic.IList<Intention> GenerateIntentions(BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+    public override IList<Intention> GenerateIntentions(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
 		IList<Intention> desiredIntentions = new List<Intention>();
 
@@ -29,7 +31,7 @@ public class KeepHealthyDesire : Desire
 
 			if (nBullets > 0) {
 
-				Intention zombieIntention = new KillZombieIntention (zombie, this.desireLevel);
+                Intention zombieIntention = new KillZombieIntention(zombie, maxDesireLevel - this.desireLevel);
 				desiredIntentions.Add (zombieIntention);
 			
 			}

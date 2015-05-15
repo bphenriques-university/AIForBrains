@@ -8,41 +8,77 @@ public class MemoryBelief : Belief
     GameObject exit = null;
     bool saidExit = false;
 
-    public override void ReviewBelief(BeliefsManager beliefs, Human human)
-    {
-        RememberFood(beliefs.GetSightBelief().FoodSeen());
-        RememberAmmo(beliefs.GetSightBelief().AmmoSeen());
-        RememberExit(beliefs.GetSightBelief().GetExitSeen());
-        RememberZombie(beliefs.GetSightBelief().ZombieSeen());
-        RememberHuman(beliefs.GetSightBelief().HumanSeen());
+    Collider meshCollider;
 
-        saidExit = human.Sensors.SaidExit();
+    public MemoryBelief(Collider meshCollider)
+    {
+        this.meshCollider = meshCollider;
     }
 
+    public override void ReviewBelief(BeliefsManager beliefs, Human human)
+    {
+        RememberFood(human.Sensors.FoodSeen());
+        RememberAmmo(human.Sensors.AmmoSeen());
+        RememberExit(human.Sensors.ExitSeen());
+        RememberZombie(human.Sensors.ZombiesSeen());
+        RememberHuman(human.Sensors.HumansSeen());
 
+        saidExit = human.Sensors.SaidExit();
+        memory.CleanWrongMemories(meshCollider);
+    }
 
-    private GameObject GetClosest(IList<GameObject> list)
+    public bool RemembersZombie()
+    {
+        return memory.ZombieMemory.Memories.Count > 0;
+    }
+
+    public bool RemembersFood()
+    {
+        return memory.FoodMemory.Memories.Count > 0;
+    }
+
+    public GameObject GetClosestHuman(Vector3 currentPostition)
+    {
+        return GetClosest(currentPostition, memory.HumanMemory.Memories);
+    }
+
+    public GameObject GetClosestZombie(Vector3 currentPostition)
+    {
+        return GetClosest(currentPostition, memory.ZombieMemory.Memories);
+    }
+
+    public GameObject GetClosestAmmo(Vector3 currentPostition)
+    {
+        return GetClosest(currentPostition, memory.AmmoMemory.Memories);
+    }
+
+    public GameObject GetClosestFood(Vector3 currentPostition)
+    {
+        return GetClosest(currentPostition, memory.FoodMemory.Memories);
+    }
+
+    private GameObject GetClosest(Vector3 currentPostition, Dictionary<int, Memory.MemoryEntry> list)
     {
         if (list.Count <= 0)
             return null;
 
         GameObject closest = null;
-        foreach (GameObject gObject in list)
+        foreach (Memory.MemoryEntry value in list.Values)
         {
-            if (gObject == null)
+            if (value.getGameObject() == null)
                 continue;
 
             if (closest == null)
             {
-                closest = gObject;
+                closest = value.getGameObject();
             }
 
-            float distance = (transform.position - gObject.transform.position).magnitude;
-            float distanceToCurrentClosestObject = (transform.position - closest.transform.position).magnitude;
+            float distance = (currentPostition - value.getLastKnownPosition()).magnitude;
+            float distanceToCurrentClosestObject = (currentPostition - closest.transform.position).magnitude;
 
             if (distance < distanceToCurrentClosestObject)
             {
-                closest = gObject;
+                closest = value.getGameObject();
             }
         }
 

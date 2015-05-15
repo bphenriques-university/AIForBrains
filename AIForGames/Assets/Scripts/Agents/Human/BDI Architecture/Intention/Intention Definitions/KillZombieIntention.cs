@@ -14,7 +14,7 @@ public class KillZombieIntention : Intention
 
 	
 
-	public override bool Evaluate (BeliefsManager beliefs, System.Collections.Generic.IList<Intention> previousIntentions)
+	public override bool Evaluate (BeliefsManager beliefs, IList<Intention> previousIntentions)
 	{
 		SightBelief humanSight = beliefs.GetSightBelief ();
 
@@ -29,18 +29,19 @@ public class KillZombieIntention : Intention
 			}
 		}
 
-		float killZombieIntentionLevel = 50/Mathf.Ceil(1/(nBullets * 2 + wasShootingExtraMotivation));
+        float killZombieIntentionLevel = nBullets + wasShootingExtraMotivation;
+        killZombieIntentionLevel = Mathf.Min(killZombieIntentionLevel, 50f);
 		intentValue = killZombieIntentionLevel;
 
 
-		if (humanSight.ZombieSeen ().Contains (zombie) == false) {
+		if (humanSight.ZombieSeen().Contains (zombie) == false) {
 			return false;
 		}
 
 		return true;
 
 	}
-	public override System.Collections.Generic.IList<PlanComponent> GivePlanComponents (Human human, BeliefsManager beliefs)
+	public override IList<PlanComponent> GivePlanComponents (Human human, BeliefsManager beliefs)
 	{
 		IList<PlanComponent> plan = new List<PlanComponent> ();
 
@@ -49,10 +50,7 @@ public class KillZombieIntention : Intention
 
 	
 
-		//Only if human is not aiming at him.
-		if (humanSight.IsAimingAt(navBelief.CurrentPosition(), zombie) == false) {
-			plan.Add (new AimPlanComponent (human, zombie));
-		}
+	    plan.Add (new AimPlanComponent (human, zombie));
 		plan.Add(new ZombieShootPlanComponent(human, zombie));
 
 		return plan;

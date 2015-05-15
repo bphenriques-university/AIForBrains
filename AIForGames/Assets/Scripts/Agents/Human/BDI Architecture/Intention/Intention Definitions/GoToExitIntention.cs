@@ -29,14 +29,20 @@ public class GoToExitIntention : Intention
     public override bool Evaluate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
         intentValue = 50f;
-        return beliefs.GetSightBelief().SawExit();
+        return beliefs.GetSightBelief().SawExit() || beliefs.GetMemoryBelief().GetExit() !=null ||
+            beliefs.GetHearingBelief().GetExit()!= null;
     }
 
     public override IList<PlanComponent> GivePlanComponents(Human humanState, BeliefsManager beliefs)
     {
         IList<PlanComponent> plan = new List<PlanComponent>();
-        plan.Add(new WalkToPlanComponent(humanState, beliefs.GetSightBelief().GetExitSeen().transform.position));
+        plan.Add(new WalkToPlanComponent(humanState, exit.transform.position));
         return plan;
+    }
+
+    public override bool IsImportant()
+    {
+        return false;
     }
 }
 

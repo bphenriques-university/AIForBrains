@@ -26,7 +26,7 @@ public class HumanNavMap
         
 
         while (true) {
-            int index = Random.Range(0, navPoints.Count);
+            int index = Mathf.FloorToInt(Random.Range(0, navPoints.Count));
 
             HumanNavPoint navPoint = navPoints[index];
 

@@ -37,4 +37,9 @@ public class LookForFoodIntention : Intention
         //It should never be impossible to look for more food.
         return false;
     }
+
+    public override bool IsImportant()
+    {
+        return false;
+    }
 }

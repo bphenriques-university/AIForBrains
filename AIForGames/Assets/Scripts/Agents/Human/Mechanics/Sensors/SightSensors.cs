@@ -167,10 +167,6 @@ public partial class Sensors : MonoBehaviour
         RaycastHit shootHit;
         float range = 100f;
 
-        shootRay.origin = transform.position;
-        shootRay.direction = transform.forward;
-
-
 
         // Perform the raycast against gameobjects on the shootable layer and if it hits something...
         if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
@@ -184,6 +180,9 @@ public partial class Sensors : MonoBehaviour
             }
         }
         return false;
+
+
+
     }
 
     public float GetDistanceToObject(GameObject gameObject)

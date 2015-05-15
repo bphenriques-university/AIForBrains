@@ -46,5 +46,10 @@ public class GatherAmmunitionIntention : Intention
 	{
 		return !beliefs.GetSightBelief ().SawAmmo ();
 	}
+
+    public override bool IsImportant()
+    {
+        return false;
+    }
 }
 

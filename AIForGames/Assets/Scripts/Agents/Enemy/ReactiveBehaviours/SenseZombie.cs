@@ -8,6 +8,11 @@ public class SenseZombie : ReactiveBehaviour
 	{
 		zombieState = transform.root.GetComponent <ZombieState> ();
 	}
+
+    void Update()
+    {
+        
+    }
 	
 	
 	protected override bool IsInSituation ()
@@ -19,15 +24,31 @@ public class SenseZombie : ReactiveBehaviour
 	{
 		zombieState.FollowNearestZombie ();
 	}
+
 	
 	void OnTriggerEnter (Collider other)
 	{
 		if(other.gameObject.tag == "Enemy")
 		{
-			zombieState.sensingZombie = true;
-			zombieState.nearestZombie = other.gameObject;
+            if (!other.gameObject.GetComponent<EnemyHealth>().hasDied())
+            {
+                zombieState.sensingZombie = true;
+                zombieState.nearestZombie = other.gameObject;
+            }
 		}
 	}
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            if (!other.gameObject.GetComponent<EnemyHealth>().hasDied())
+            {
+                zombieState.sensingZombie = true;
+                zombieState.nearestZombie = other.gameObject;
+            }
+        }
+    }
 	
 	void OnTriggerExit (Collider other)
 	{

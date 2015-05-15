@@ -4,6 +4,7 @@ using System.Collections;
 public class AimPlanComponent : PlanComponent
 {
 	GameObject zombie;
+    float adjust = 1.0f;
 	
 	public AimPlanComponent(Human human, GameObject zombie) : base(human){
 		this.zombie = zombie;
@@ -11,9 +12,14 @@ public class AimPlanComponent : PlanComponent
 
 	public override bool TryExecuteAction ()
 	{
-		human.Actuators.TurnTo (zombie.transform.position);
+        Debug.Log("Aiming to " + zombie.transform.position);
 
-		return human.Sensors.IsAimingToObject (zombie);
+        human.Actuators.Stop();
+
+		human.Actuators.TurnTo (zombie.transform.position + zombie.transform.forward * adjust);
+
+
+        return true;
 	}
 
 }

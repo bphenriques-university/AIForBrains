@@ -84,6 +84,9 @@ public class HumanShooting : MonoBehaviour
 
 	public void Shoot ()
 	{
+        if (!CanAttack())
+            return;
+
 		// Reset the timer.
 		timer = 0f;
 

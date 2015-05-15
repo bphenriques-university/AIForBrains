@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GatherFoodDesire : Desire
 {
 
-    private const float BASE_DESIRE_LEVEL = 5f;
+    private const float BASE_DESIRE_LEVEL = 50f;
 
     public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {
@@ -18,8 +18,7 @@ public class GatherFoodDesire : Desire
 
         if (beliefs.GetSightBelief().SawFood())
         {
-            //TODO - Fix this shit before tomorow
-            desiredIntentions.Add(new GatherFoodIntention(desireLevel, beliefs.GetSightBelief().FoodSeen()[0]));
+            desiredIntentions.Add(new GatherFoodIntention(desireLevel, beliefs.GetSightBelief().GetClosestFood()));
         }
         else
         {
