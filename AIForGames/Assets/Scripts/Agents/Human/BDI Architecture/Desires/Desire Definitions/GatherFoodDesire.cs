@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GatherFoodDesire : Desire
 {
 
-    private const float BASE_DESIRE_LEVEL = 10f;
+    private const float BASE_DESIRE_LEVEL = 5f;
 
     public override void Deliberate(BeliefsManager beliefs, IList<Intention> previousIntentions)
     {

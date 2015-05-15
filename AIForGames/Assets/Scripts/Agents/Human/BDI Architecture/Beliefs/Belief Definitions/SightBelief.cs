@@ -7,6 +7,7 @@ public class SightBelief : Belief
     private IList<Ammo> ammoSeen = null;
     private IList<GameObject> zombieSeen = null;
     private IList<GameObject> humansSeen = null;
+    private IList<NavPoint> navPointsSeen = null;
     private GameObject exitSeen = null;
 
     private bool sawFood = false;
@@ -25,6 +26,7 @@ public class SightBelief : Belief
         zombieSeen = human.Sensors.ZombiesSeen();
         humansSeen = human.Sensors.HumansSeen();
         exitSeen = human.Sensors.ExitSeen();
+        navPointsSeen = human.Sensors.NavPointsSeen();
 
         sawFood = human.Sensors.SawFood();
         sawAmmo = human.Sensors.SawAmmo();
@@ -33,6 +35,7 @@ public class SightBelief : Belief
         sawHuman = human.Sensors.SawHumans();
 
         currentPosition = human.Sensors.CurrentPosition().position;
+
     }
 
 	public float DistanceToZombie(GameObject zombie){
@@ -76,6 +79,11 @@ public class SightBelief : Belief
     public IList<GameObject> HumanSeen()
     {
         return humansSeen;
+    }
+
+    public IList<NavPoint> NavPointsSeen()
+    {
+        return navPointsSeen;
     }
 
     public GameObject GetExitSeen()

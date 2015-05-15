@@ -42,6 +42,17 @@ public partial class Sensors : MonoBehaviour
         return sight.ZombiesSeen;
     }
 
+    public IList<NavPoint> NavPointsSeen()
+    {
+        IList<NavPoint> navPoints = new List<NavPoint>();
+
+        foreach (GameObject navPoint in sight.NavPointsSeen)
+        {
+            navPoints.Add(navPoint.GetComponent<NavPoint>());
+        }
+        return navPoints;
+    }
+
     public GameObject ExitSeen()
     {
         return sight.ExitSeen;

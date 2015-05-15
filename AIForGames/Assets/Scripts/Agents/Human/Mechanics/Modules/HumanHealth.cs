@@ -23,10 +23,10 @@ public class HumanHealth : MonoBehaviour
 
 	void Awake ()
 	{
-		anim = GetComponent <Animator> ();
-		agentMovement = GetComponent <NavMeshAgent> ();
-		agentShooting = GetComponentInChildren <HumanShooting> ();
-		agentCollider = GetComponent<CapsuleCollider> ();
+        anim = transform.root.GetComponent<Animator>();
+        agentMovement = transform.root.GetComponent<NavMeshAgent>();
+		agentShooting = transform.root.GetComponentInChildren <HumanShooting> ();
+        agentCollider = transform.root.GetComponent<CapsuleCollider>();
 		currentHealth = startingHealth;
 	}
 	
@@ -93,7 +93,7 @@ public class HumanHealth : MonoBehaviour
 			playerMovement.enabled = false;
 		}
 
-		transform.FindChild ("AI").gameObject.SetActive(false);
+		transform.root.FindChild ("AI").gameObject.SetActive(false);
 
 		enabled = false;
 	}

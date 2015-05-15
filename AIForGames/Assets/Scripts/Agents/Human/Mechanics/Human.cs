@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 public class Human : MonoBehaviour
 {
-    HumanSight sight;
+    public HumanSight sight;
     HumanTouch touch;
+    
 
     SightCollider sightColliderScript;     
     TouchCollider touchColliderScript;

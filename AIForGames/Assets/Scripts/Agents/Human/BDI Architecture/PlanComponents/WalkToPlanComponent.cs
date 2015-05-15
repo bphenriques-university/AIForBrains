@@ -19,6 +19,7 @@ public class WalkToPlanComponent : PlanComponent
         human.Actuators.ChangeDestination(goToPosition);
         human.Actuators.Walk();
         Vector3 currentPosition = human.Sensors.CurrentPosition().position;
+
         return ((currentPosition - goToPosition).magnitude < MIN_STOPPING_DISTANCE);
     }
 }

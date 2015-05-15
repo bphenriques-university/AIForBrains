@@ -12,13 +12,14 @@ public class HumanSight : MonoBehaviour
     public IList<GameObject> AmmoSeen = new List<GameObject>();
     public IList<GameObject> ZombiesSeen = new List<GameObject>();
     public IList<GameObject> HumansSeen = new List<GameObject>();
+    public IList<GameObject> NavPointsSeen = new List<GameObject>();
 
 
     public GameObject ExitSeen = null;
 
     void Start()
     {
-        seenLists = new IList<GameObject>[] { FoodsSeen, AmmoSeen, ZombiesSeen , HumansSeen };
+        seenLists = new IList<GameObject>[] { FoodsSeen, AmmoSeen, ZombiesSeen , HumansSeen};
     }
 
     public void ProcessSight(IList<GameObject> seenGameObjects)
@@ -40,6 +41,9 @@ public class HumanSight : MonoBehaviour
                     break;
                 case "EscapeExit":
                     ProcessEscapeExit(seenGameObject);
+                    break;
+                case "NavPoint":
+                    Process(NavPointsSeen, seenGameObject);
                     break;
             }
         }
@@ -77,6 +81,7 @@ public class HumanSight : MonoBehaviour
             }
         }
     }
+
 
 
     private void ProcessEscapeExit(GameObject seenGameObject)

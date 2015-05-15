@@ -24,8 +24,10 @@ public class BDIManager : MonoBehaviour {
         if (humanState == null)
             Debug.Log("SOME SHIT HAPPENED THAT WASN'T SUPPOSED TO");
 
+        NavMap navMap = GameObject.FindGameObjectWithTag("NavMap").GetComponent<NavMap>();
+
         planner = new Planner(humanState);
-        beliefs = new BeliefsManager();
+        beliefs = new BeliefsManager(navMap);
         desires = new DesiresManager();
         intentions = new IntentionsManager();
 

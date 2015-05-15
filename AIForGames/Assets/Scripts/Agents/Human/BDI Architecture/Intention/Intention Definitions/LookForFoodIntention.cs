@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 public class LookForFoodIntention : Intention
 {
+
+    private const float SEARCH_RADIUS = 10f;
+
     public LookForFoodIntention(float desiredIntentionValue)
         : base(desiredIntentionValue)
     {}
@@ -13,10 +16,13 @@ public class LookForFoodIntention : Intention
         return !beliefs.GetSightBelief().SawFood();
     }
 
-    public override IList<PlanComponent> GivePlanComponents(Human humanState, BeliefsManager beliefs)
+    public override IList<PlanComponent> GivePlanComponents(Human human, BeliefsManager beliefs)
     {
         IList<PlanComponent> plan = new List<PlanComponent>();
-        plan.Add(new RandomWalkPlanComponent(humanState));
+
+        Vector3 currentPosition = beliefs.GetNavigationBelief().CurrentPosition().position;
+        Vector3 randomPosition = beliefs.GetNavigationBelief().HumanNavMap().GetRandomUnvisitedPosition(currentPosition, SEARCH_RADIUS);
+        plan.Add(new WalkToPlanComponent(human, randomPosition));
         return plan;
     }
 

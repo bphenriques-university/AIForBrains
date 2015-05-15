@@ -9,6 +9,8 @@ TagManager:
   - Food
   - Ammo
   - EscapeExit
+  - NavPoint
+  - NavMap
   layers:
   - Default
   - TransparentFX

@@ -11,14 +11,14 @@ public class BeliefsManager
     private InventoryBelief inventoryBelief = new InventoryBelief();
     private VitalsBelief healthLevelBelief = new VitalsBelief();
     private SightBelief sightBelief = new SightBelief();
-    private NavigationBelief navigationBelief = new NavigationBelief();
-
+    private NavigationBelief navigationBelief;
     private Belief[] beliefs;
 
 
 
-    public BeliefsManager()
+    public BeliefsManager(NavMap humanNavMap)
     {
+        navigationBelief = new NavigationBelief(humanNavMap);
         beliefs = new Belief[] { foodLevelBelief, inventoryBelief, healthLevelBelief, sightBelief, navigationBelief };
     }
 
